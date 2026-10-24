@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "citecheck/golden.schema.json",
+  "title": "CiteCheck golden set",
+  "description": "One file per (target, corpus). Checked structurally by this schema and by the cross-item rules in citecheck.golden.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "golden_version", "target", "corpus", "items"],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "description": "Version of this schema. Bump when a field's meaning changes."
+    },
+    "golden_version": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*-\\d+\\.\\d+\\.\\d+$",
+      "description": "Name and semantic version of this question set, e.g. rag-demo-1.0.0. Changing, adding or removing an item bumps it; saved runs record it."
+    },
+    "target": {
+      "type": "string",
+      "description": "The system these questions were written for (an adapter name)."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Provenance and known limits of the set, in plain words."
+    },
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "documents"],
+      "description": "The documents the questions are about. Gold passages are only meaningful against this exact text.",
+      "properties": {
+        "name": {"type": "string"},
+        "source": {"type": "string", "description": "Where the corpus comes from, e.g. a repository URL."},
+        "commit": {"type": "string", "description": "Revision of the source that the hashes below were taken at."},
+        "documents": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "doc_id -> sha256 of the file's bytes. doc_id is the name the target reports for the document.",
+          "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/item"}
+    }
+  },
+  "$defs": {
+    "text_list": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "passage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["doc_id", "text"],
+      "properties": {
+        "doc_id": {"type": "string"},
+        "section": {"type": "string", "description": "Heading path inside the document, for the human reader."},
+        "page": {"type": ["integer", "null"], "minimum": 1, "description": "Page number for paged formats (PDF), else null."},
+        "text": {"type": "string", "minLength": 1, "description": "The passage copied verbatim from the document."}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anchor", "passages"],
+      "description": "One fact the answer depends on. Retrieval finds it when any of the listed passages (usually just one) is retrieved.",
+      "properties": {
+        "anchor": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The short phrase that identifies the fact. It must occur in every listed passage (compared after lower-casing and collapsing whitespace)."
+        },
+        "passages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/passage"}}
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "split", "category", "question", "expected_abstain", "evidence"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "split": {
+          "enum": ["tuned", "heldout", "unlabeled"],
+          "description": "tuned: the system's prompt or settings were adjusted while looking at these. heldout: written after tuning and not used to tune. unlabeled: no record either way."
+        },
+        "category": {
+          "enum": ["factual", "yes_no", "multi_topic", "edge_case", "follow_up", "unanswerable", "ambiguous", "conflicting"]
+        },
+        "question": {"type": "string", "minLength": 3},
+        "follow_up_to": {
+          "type": ["string", "null"],
+          "description": "id of the earlier item whose question and answer form this question's history."
+        },
+        "expected_abstain": {
+          "type": "boolean",
+          "description": "True when the corpus does not answer the question and the right reply is to say so."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/evidence"},
+          "description": "Facts that must be retrievable. Empty when there is nothing to retrieve (unanswerable) or retrieval is not scored (follow-ups)."
+        },
+        "reference_answer": {"type": "string", "description": "A correct answer in full sentences, once someone has written and checked one."},
+        "answer_contains": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/text_list"},
+          "description": "Keyword check: every inner list needs at least one of its phrases in the answer."
+        },
+        "answer_not_contains": {"$ref": "#/$defs/text_list"},
+        "expected_sources": {
+          "$ref": "#/$defs/text_list",
+          "description": "doc_ids the target should name as sources, when that differs from the documents of the evidence."
+        },
+        "acceptable_sources": {
+          "$ref": "#/$defs/text_list",
+          "description": "doc_ids that may be named as sources without counting as noise, because they also state the fact."
+        },
+        "notes": {"type": "string"},
+        "origin": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "id"],
+          "description": "Where the item was converted from.",
+          "properties": {"file": {"type": "string"}, "id": {"type": "string"}}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"category": {"const": "unanswerable"}}, "required": ["category"]},
+          "then": {"properties": {"expected_abstain": {"const": true}, "evidence": {"maxItems": 0}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "follow_up"}}, "required": ["category"]},
+          "then": {"required": ["follow_up_to"], "properties": {"follow_up_to": {"type": "string"}}}
+        },
+        {
+          "if": {"properties": {"expected_abstain": {"const": false}, "category": {"not": {"const": "follow_up"}}}, "required": ["expected_abstain", "category"]},
+          "then": {"properties": {"evidence": {"minItems": 1}}}
+        }
+      ]
+    }
+  }
+}

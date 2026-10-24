@@ -1,0 +1,4263 @@
+{
+  "schema_version": 1,
+  "golden_version": "rag-demo-1.0.0",
+  "target": "rag-project",
+  "notes": "Converted from the question files in https://github.com/Nbhaskell/rag-project by tools/convert_ragproject.py. 'tuned' items were used while the prompt and thresholds were adjusted, so scores on them flatter the system. 'heldout' items were written afterwards and not used to tune, but were written by Claude from the documents (per that project's README), so they are unseen by the prompt, not blind to the corpus. No item is 'ambiguous' or 'conflicting' yet, and no item has a reference_answer.",
+  "corpus": {
+    "name": "demo_docs",
+    "source": "https://github.com/Nbhaskell/rag-project",
+    "commit": "cb4ebe02355e9e62866178141f451596078bb8aa",
+    "documents": {
+      "01-vaccination-and-health-requirements.md": "bf3f8dc5d5c7807303ca8b54fcee6721f44d0cadae89c0d73ac825c62c97635d",
+      "02-temperament-and-admission-policy.md": "aeed1d0a0b879011fea17d21bc30a1a30def38fba47d47252caf0ef71e346642",
+      "03-pricing-and-packages.md": "49edc11b6c3e5853c8177d19309baa94148f995e7bbbe4d321e79840493571a8",
+      "04-hours-and-schedule.md": "f838938b9876eea3391ebb4cd32fe192943d179e007c2668c7e950e77cc53c19",
+      "05-daily-routine.md": "830410d110423d553c3ba73fc53f351c9cef80d6cb53cca762e167f6b81a5206",
+      "06-cancellation-payment-and-refund-policy.md": "57f64bd6dd774af7b4300c3d12350e93dde6673a6413b3ec70fc1c694fcdb373",
+      "07-visitor-guide.pdf": "21ae79bf0887f0cc79b9e78a21d142c37c1dbcc712a25aaf42466b39723c9a9f"
+    }
+  },
+  "items": [
+    {
+      "id": "vaccines-required",
+      "split": "tuned",
+      "category": "factual",
+      "question": "Which vaccinations does my dog need before attending?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Bordetella, also called kennel cough",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Bordetella, also called kennel cough (must be given within the last 12 months)"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "rabies"
+        ],
+        [
+          "dhpp",
+          "distemper"
+        ],
+        [
+          "bordetella",
+          "kennel cough"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "vaccines-required"
+      }
+    },
+    {
+      "id": "flu-vaccine",
+      "split": "tuned",
+      "category": "yes_no",
+      "question": "Is the canine influenza vaccine required?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Canine influenza: recommended",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Canine influenza: recommended"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "no",
+          "not required",
+          "recommended"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "notes": "It is only recommended, so the answer is no.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "flu-vaccine"
+      }
+    },
+    {
+      "id": "rabies-valid",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How long is a rabies vaccination valid for?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Rabies (valid for 3 years",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Rabies (valid for 3 years, depending on the vaccine given)"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "3 years",
+          "three years"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "rabies-valid"
+      }
+    },
+    {
+      "id": "paper-photo",
+      "split": "tuned",
+      "category": "yes_no",
+      "question": "Can I send a photo of my dog's paper vaccination records?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Photos of paper records are not accepted",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > How to Provide Proof",
+              "page": null,
+              "text": "Owners must send vaccination records from their veterinarian by email address,  in person or by online form. Records must show the dog's name, the vaccine, the date given, and the date it expires. Photos of paper records are not accepted."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "no",
+          "not accepted",
+          "cannot",
+          "can't"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "notes": "Photos of paper records are not accepted.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "paper-photo"
+      }
+    },
+    {
+      "id": "grace-period",
+      "split": "tuned",
+      "category": "factual",
+      "question": "Is there a grace period if my dog's vaccination expires?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "grace period of 5 days",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Expired Vaccinations",
+              "page": null,
+              "text": "If a dog's vaccination expires, the dog cannot attend until updated proof is received. We do allow a grace period of 5 days."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5 days",
+          "five days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "grace-period"
+      }
+    },
+    {
+      "id": "sick-wait",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How long after being sick can my dog come back?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "may return after 2 days, or with a vet's note",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Sick Dog Policy",
+              "page": null,
+              "text": "Do not bring your dog if they have had any of these in the last 48 hours: vomiting, diarrhea, coughing, sneezing, eye or nose discharge, fever, or open wounds. Dogs showing signs of illness during the day will be separated and the owner will be called for pickup within 1 hour. A dog who has been ill may return after 2 days, or with a vet's note."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "2 days",
+          "two days"
+        ],
+        [
+          "vet's note",
+          "vet note",
+          "note from"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "sick-wait"
+      }
+    },
+    {
+      "id": "sick-symptom-window",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How many hours without vomiting or diarrhea before I can bring my dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "in the last 48 hours",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Sick Dog Policy",
+              "page": null,
+              "text": "Do not bring your dog if they have had any of these in the last 48 hours: vomiting, diarrhea, coughing, sneezing, eye or nose discharge, fever, or open wounds. Dogs showing signs of illness during the day will be separated and the owner will be called for pickup within 1 hour. A dog who has been ill may return after 2 days, or with a vet's note."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "48"
+        ]
+      ],
+      "notes": "Symptoms in the last 48 hours mean stay home.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "sick-symptom-window"
+      }
+    },
+    {
+      "id": "neuter-age",
+      "split": "tuned",
+      "category": "factual",
+      "question": "At what age does my dog have to be spayed or neutered?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Dogs over 6 months old must be spayed or neutered",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Spay and Neuter Requirements",
+              "page": null,
+              "text": "Dogs over 6 months old must be spayed or neutered to attend. Female dogs in heat cannot attend."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "6 months",
+          "six months"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "neuter-age"
+      }
+    },
+    {
+      "id": "unneutered-8mo",
+      "split": "tuned",
+      "category": "edge_case",
+      "question": "My dog is 8 months old and not neutered. Can he attend?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Dogs over 6 months old must be spayed or neutered",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Spay and Neuter Requirements",
+              "page": null,
+              "text": "Dogs over 6 months old must be spayed or neutered to attend. Female dogs in heat cannot attend."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "no",
+          "not",
+          "cannot",
+          "can't",
+          "must be"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "notes": "Needs applying the over-6-months rule to age 8 months: no.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unneutered-8mo"
+      }
+    },
+    {
+      "id": "min-age",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What is the minimum age for a puppy to attend?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "at least 4 months old",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Puppies",
+              "page": null,
+              "text": "Puppies must be at least 4 months old and have completed their puppy vaccination series before attending."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "4 months",
+          "four months"
+        ]
+      ],
+      "acceptable_sources": [
+        "02-temperament-and-admission-policy.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "min-age"
+      }
+    },
+    {
+      "id": "medication-fee",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "Can staff give my dog medication, and what does it cost?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we charge $10 per dose",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Medications",
+              "page": null,
+              "text": "Staff can give medications. If we can, owners must provide the medication in its original container with written instructions, and we charge $10 per dose."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "yes",
+          "can"
+        ],
+        [
+          "$10"
+        ]
+      ],
+      "answer_not_contains": [
+        "$1 "
+      ],
+      "notes": "The health document says staff can; both it and pricing say $10.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "medication-fee"
+      }
+    },
+    {
+      "id": "eval-cost",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How much does the temperament evaluation cost?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "free of cost",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "- **Cost:** free of cost."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "free",
+          "no charge",
+          "no cost",
+          "$0"
+        ]
+      ],
+      "acceptable_sources": [
+        "03-pricing-and-packages.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "eval-cost"
+      }
+    },
+    {
+      "id": "eval-length",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How long does the temperament evaluation take?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "about 1 hour",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "- **Length:** about 1 hour."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "1 hour",
+          "one hour"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "eval-length"
+      }
+    },
+    {
+      "id": "eval-bring",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What do I need to bring to the temperament evaluation?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "the signed owner agreement",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "Owners should bring: vaccination records, the signed owner agreement, and the dog's vet contact information."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "vaccination"
+        ],
+        [
+          "owner agreement"
+        ],
+        [
+          "vet",
+          "veterinar"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "eval-bring"
+      }
+    },
+    {
+      "id": "weight-limit",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What is the maximum weight for a dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "up to 250 pounds",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Who Can Attend",
+              "page": null,
+              "text": "We welcome dogs who are 4 months and older, up to 250 pounds, who are healthy, vaccinated, and comfortable around other dogs and people. Separate play groups are organized by size, temperament and age."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "250"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "weight-limit"
+      }
+    },
+    {
+      "id": "incident-policy",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What happens after three incidents within five days?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "After 3 incidents within 5 days",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Incident and Removal Policy",
+              "page": null,
+              "text": "- After 3 incidents within 5 days, the dog is suspended for 1 day then re-evaluated or removed."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "suspended",
+          "suspension"
+        ],
+        [
+          "re-evaluated",
+          "re-evaluation",
+          "removed"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "incident-policy"
+      }
+    },
+    {
+      "id": "reevaluation",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How soon can a declined dog be re-evaluated?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "re-evaluated after 30 days",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Re-evaluation",
+              "page": null,
+              "text": "A dog who was declined may be re-evaluated after 30 days or 1 month."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "30 days",
+          "1 month",
+          "one month"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "reevaluation"
+      }
+    },
+    {
+      "id": "full-day-price",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How much is a full day of daycare?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Full day (over 4 hours): $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Full day (over 4 hours): $100.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$100"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "full-day-price"
+      }
+    },
+    {
+      "id": "half-day-price",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How much is a half day of daycare, and how many hours is that?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Half day (up to 4 hours): $50.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Half day (up to 4 hours): $50.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ],
+        [
+          "4 hours",
+          "four hours"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "half-day-price"
+      }
+    },
+    {
+      "id": "five-hours",
+      "split": "tuned",
+      "category": "edge_case",
+      "question": "I'll be picking my dog up after 5 hours. Is that a half day or a full day, and what does it cost?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Full day (over 4 hours): $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Full day (over 4 hours): $100.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "full"
+        ],
+        [
+          "$100"
+        ]
+      ],
+      "notes": "Up to 4 hours is a half day; anything over 4 is a full day ($100). A correct answer may quote the half-day price ($50) while explaining the rule, so $50 is not forbidden; a wrong 'half day, $50' verdict lacks 'full' and '$100' and fails the required words.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "five-hours"
+      }
+    },
+    {
+      "id": "second-dog-two-dogs-total",
+      "split": "tuned",
+      "category": "edge_case",
+      "question": "How much for two dogs from the same household for one full day?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Second dog from the same household: $50 per day",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Second dog from the same household: $50 per day"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$150"
+        ]
+      ],
+      "notes": "$100 for the first dog plus $50 for the second: $150. Needs adding.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "second-dog-two-dogs-total"
+      }
+    },
+    {
+      "id": "ten-day-package",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is the 10-day package and how long is it valid?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "10-day package: $800, valid for 90 days",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- 10-day package: $800, valid for 90 days"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$800"
+        ],
+        [
+          "90 days",
+          "ninety days"
+        ]
+      ],
+      "acceptable_sources": [
+        "06-cancellation-payment-and-refund-policy.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "ten-day-package"
+      }
+    },
+    {
+      "id": "unlimited-monthly",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What does the unlimited monthly membership cost?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Unlimited monthly: $2,500",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- Unlimited monthly: $2,500 per month with terms"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$2,500",
+          "2500"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unlimited-monthly"
+      }
+    },
+    {
+      "id": "unused-days",
+      "split": "tuned",
+      "category": "factual",
+      "question": "Can unused package days be transferred to another dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Unused days can be transferred to another dog",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "Unused days can be transferred to another dog."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "yes",
+          "can be transferred"
+        ]
+      ],
+      "answer_not_contains": [
+        "cannot",
+        "can't"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unused-days"
+      }
+    },
+    {
+      "id": "boarding-price",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How much is a standard overnight stay?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Standard overnight: $125.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Standard overnight: $125.00 per night"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$125"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "boarding-price"
+      }
+    },
+    {
+      "id": "boarding-checkin",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What are the boarding check-in and check-out times?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "9:00am. Check-out is by 6:00pm",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Check-in is between 8:00am and 9:00am. Check-out is by 6:00pm."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "8:00",
+          "8 am",
+          "8am"
+        ],
+        [
+          "9:00",
+          "9 am",
+          "9am"
+        ],
+        [
+          "6:00",
+          "6 pm",
+          "6pm"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "boarding-checkin"
+      }
+    },
+    {
+      "id": "late-pickup-fee",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What is the fee for picking up late?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Late pickup: $5.00 for every 30 minutes",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Late pickup: $5.00 for every 30 minutes after closing time"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$5"
+        ],
+        [
+          "30 minutes"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "late-pickup-fee"
+      }
+    },
+    {
+      "id": "discounts",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What discounts do you offer and how much are they?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "discounts: 10%",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Discounts",
+              "page": null,
+              "text": "- Multi-dog, military, rescue, or referral discounts: 10%."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "10%",
+          "10 percent"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "discounts"
+      }
+    },
+    {
+      "id": "sunday-hours",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What are your hours on Sundays?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Sunday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Sunday: 8:00am to 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "8:00",
+          "8 am",
+          "8am"
+        ],
+        [
+          "6:00",
+          "6 pm",
+          "6pm"
+        ]
+      ],
+      "answer_not_contains": [
+        "closed"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "sunday-hours"
+      }
+    },
+    {
+      "id": "closed-christmas",
+      "split": "tuned",
+      "category": "yes_no",
+      "question": "Are you open on Christmas Day?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Christmas Day",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Holidays",
+              "page": null,
+              "text": "We are closed on: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "no",
+          "closed"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "closed-christmas"
+      }
+    },
+    {
+      "id": "evening-pickup",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What is the evening pick-up window?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Evening pick-up: between 5:30pm and 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Drop-Off and Pick-Up Windows",
+              "page": null,
+              "text": "- Evening pick-up: between 5:30pm and 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5:30"
+        ],
+        [
+          "6:00",
+          "6 pm",
+          "6pm"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "evening-pickup"
+      }
+    },
+    {
+      "id": "late-dropoff",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What happens if I drop my dog off after 9am?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "dropped off after 9:00am may be charged for a full day",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Drop-Off and Pick-Up Windows",
+              "page": null,
+              "text": "Dogs dropped off after 9:00am may be charged for a full day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "full day"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "late-dropoff"
+      }
+    },
+    {
+      "id": "boarding-notice",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How far ahead do I need to reserve boarding?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "at least 3 days ahead",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Reservations",
+              "page": null,
+              "text": "- Boarding reservations: required, at least 3 days ahead"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "3 days",
+          "three days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "boarding-notice"
+      }
+    },
+    {
+      "id": "address",
+      "split": "tuned",
+      "category": "factual",
+      "question": "Where is the daycare located?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "123 puppy drive, Oakland ME",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Contact",
+              "page": null,
+              "text": "Nathan, email@address.com, 123 puppy drive, Oakland ME."
+            },
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 1,
+              "text": "Barks n Woofs is at 123 puppy drive, Oakland ME. Look for the green awning. The front door is for"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "123 puppy drive"
+        ],
+        [
+          "oakland"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "address"
+      }
+    },
+    {
+      "id": "staff-ratio",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How many dogs does each staff member supervise?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "1 staff member for every 5 dogs",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Play Groups",
+              "page": null,
+              "text": "Dogs are grouped by size, age, energy level, and play style. A staff member supervises each group at a ratio of 1 staff member for every 5 dogs."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5",
+          "five"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "staff-ratio"
+      }
+    },
+    {
+      "id": "nap-time",
+      "split": "tuned",
+      "category": "factual",
+      "question": "When is nap time?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "12:00 PM to 2:30 PM Nap time",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Schedule",
+              "page": null,
+              "text": "- 12:00 PM to 2:30 PM Nap time. Dogs rest in individual or shared quiet areas."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "12:00",
+          "noon"
+        ],
+        [
+          "2:30"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "nap-time"
+      }
+    },
+    {
+      "id": "bring-blanket",
+      "split": "tuned",
+      "category": "yes_no",
+      "question": "Can my dog bring a blanket or toy?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "A leash, toys, or a blanket: allowed",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > What to Bring",
+              "page": null,
+              "text": "- A leash, toys, or a blanket: allowed"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "yes",
+          "allowed"
+        ]
+      ],
+      "answer_not_contains": [
+        "not allowed",
+        "no,"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "bring-blanket"
+      }
+    },
+    {
+      "id": "daily-report",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How will I get an update on my dog's day?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "daily report with notes on meals",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Report Cards and Photos",
+              "page": null,
+              "text": "Owners receive a daily report with notes on meals, bathroom breaks, and behavior by email. Photos are shared daily."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "email"
+        ],
+        [
+          "report",
+          "daily"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "daily-report"
+      }
+    },
+    {
+      "id": "cancel-notice",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How far ahead do I have to cancel a daycare day to avoid a charge?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Cancel at least 12 hours before drop-off",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling a Daycare Day",
+              "page": null,
+              "text": "Cancel at least 12 hours before drop-off by phone, email or text to avoid a charge."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "12 hours",
+          "twelve hours"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "cancel-notice"
+      }
+    },
+    {
+      "id": "late-cancel-fee",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What is the fee for a late cancellation or no-show for daycare?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "charged a fee of $50.00",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling a Daycare Day",
+              "page": null,
+              "text": "- Late cancellation or no-show: charged a fee of $50.00, and a package day is used."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "late-cancel-fee"
+      }
+    },
+    {
+      "id": "boarding-deposit",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How much is the boarding deposit?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "deposit of $25.00",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Deposits",
+              "page": null,
+              "text": "Boarding reservations require a deposit of $25.00, due at booking. The deposit is applied to the final bill."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$25"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "boarding-deposit"
+      }
+    },
+    {
+      "id": "cancel-boarding-3-days",
+      "split": "tuned",
+      "category": "edge_case",
+      "question": "What happens to my deposit if I cancel boarding 3 days before arrival?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "deposit is partly refunded",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling Boarding",
+              "page": null,
+              "text": "- Cancel less than 5 days before arrival: deposit is partly refunded."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "partly",
+          "partial",
+          "part"
+        ]
+      ],
+      "answer_not_contains": [
+        "fully refunded"
+      ],
+      "notes": "Less than 5 days before arrival: partly refunded.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "cancel-boarding-3-days"
+      }
+    },
+    {
+      "id": "package-refund",
+      "split": "tuned",
+      "category": "yes_no",
+      "question": "Can I get a refund on package days I haven't used?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Package days are non-refundable",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Packages and Memberships",
+              "page": null,
+              "text": "- Package days are non-refundable after purchase, except if the dog is permanently removed by us."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "no",
+          "non-refundable",
+          "not refundable",
+          "not"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "notes": "Non-refundable, except if the dog is permanently removed by the daycare.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "package-refund"
+      }
+    },
+    {
+      "id": "payment-methods",
+      "split": "tuned",
+      "category": "factual",
+      "question": "What payment methods do you accept?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Payment methods accepted: Cash, Check, Card",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Payment",
+              "page": null,
+              "text": "- Payment methods accepted: Cash, Check, Card."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "cash"
+        ],
+        [
+          "check"
+        ],
+        [
+          "card"
+        ]
+      ],
+      "acceptable_sources": [
+        "03-pricing-and-packages.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "payment-methods"
+      }
+    },
+    {
+      "id": "refund-timing",
+      "split": "tuned",
+      "category": "factual",
+      "question": "How long does it take to receive a refund?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "within 5 business days",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Refunds",
+              "page": null,
+              "text": "- Refunds are issued to the original payment method within 5 business days."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5 business days",
+          "five business days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "refund-timing"
+      }
+    },
+    {
+      "id": "sick-sent-home-refund",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "If my dog is sent home early because they got sick, do I get a refund?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we refund the unused portion",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Refunds",
+              "page": null,
+              "text": "- If a dog is sent home early for illness or an incident, we refund the unused portion."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "refund"
+        ],
+        [
+          "unused portion",
+          "unused"
+        ]
+      ],
+      "answer_not_contains": [
+        "no refund"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "sick-sent-home-refund"
+      }
+    },
+    {
+      "id": "expired-rabies",
+      "split": "tuned",
+      "category": "edge_case",
+      "question": "My dog's rabies vaccination expired yesterday. Can I still bring him?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "grace period of 5 days",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Expired Vaccinations",
+              "page": null,
+              "text": "If a dog's vaccination expires, the dog cannot attend until updated proof is received. We do allow a grace period of 5 days."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "grace",
+          "5 days",
+          "five days"
+        ]
+      ],
+      "notes": "Needs the 5-day grace period.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "expired-rabies"
+      }
+    },
+    {
+      "id": "full-day-and-cancel",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is a full day of daycare, and how far ahead do I have to cancel to avoid a charge?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Full day (over 4 hours): $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Full day (over 4 hours): $100.00"
+            }
+          ]
+        },
+        {
+          "anchor": "Cancel at least 12 hours before drop-off",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling a Daycare Day",
+              "page": null,
+              "text": "Cancel at least 12 hours before drop-off by phone, email or text to avoid a charge."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$100"
+        ],
+        [
+          "12 hours",
+          "twelve hours"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "06-cancellation-payment-and-refund-policy.md"
+      ],
+      "notes": "Needs the pricing file and the cancellation file.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "full-day-and-cancel"
+      }
+    },
+    {
+      "id": "open-and-bath",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "What time do you open on Saturdays, and how much is a bath?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Saturday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Saturday: 8:00am to 6:00pm"
+            }
+          ]
+        },
+        {
+          "anchor": "Bath: $50.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Bath: $50.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "8:00",
+          "8 am",
+          "8am"
+        ],
+        [
+          "$50"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "04-hours-and-schedule.md"
+      ],
+      "notes": "Needs the hours file and the pricing file.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "open-and-bath"
+      }
+    },
+    {
+      "id": "eval-and-vaccines",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "Does my dog need a temperament evaluation, and which vaccines are required?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Every new dog must complete a temperament evaluation",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "Every new dog must complete a temperament evaluation before their first full day."
+            }
+          ]
+        },
+        {
+          "anchor": "Bordetella, also called kennel cough",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Bordetella, also called kennel cough (must be given within the last 12 months)"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "yes",
+          "must",
+          "required",
+          "need"
+        ],
+        [
+          "rabies"
+        ]
+      ],
+      "expected_sources": [
+        "01-vaccination-and-health-requirements.md",
+        "02-temperament-and-admission-policy.md"
+      ],
+      "notes": "Needs the admission policy and the health requirements.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "eval-and-vaccines"
+      }
+    },
+    {
+      "id": "close-and-late-fee",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "What time do you close, and what is the fee for picking up late?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Late pickup: $5.00 for every 30 minutes",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Late pickup: $5.00 for every 30 minutes after closing time"
+            }
+          ]
+        },
+        {
+          "anchor": "Monday to Friday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Monday to Friday: 8:00am to 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "6:00",
+          "6 pm",
+          "6pm"
+        ],
+        [
+          "$5"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "04-hours-and-schedule.md"
+      ],
+      "notes": "Needs the hours file and the pricing file.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "close-and-late-fee"
+      }
+    },
+    {
+      "id": "deposit-and-checkin",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is the boarding deposit, and what time is check-in?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "deposit of $25.00",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Deposits",
+              "page": null,
+              "text": "Boarding reservations require a deposit of $25.00, due at booking. The deposit is applied to the final bill."
+            }
+          ]
+        },
+        {
+          "anchor": "Check-in is between 8:00am and 9:00am",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Check-in is between 8:00am and 9:00am. Check-out is by 6:00pm."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$25"
+        ],
+        [
+          "8:00",
+          "8 am",
+          "8am"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "06-cancellation-payment-and-refund-policy.md"
+      ],
+      "notes": "Needs the cancellation file and the pricing file.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "deposit-and-checkin"
+      }
+    },
+    {
+      "id": "nail-and-nap",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is a nail trim, and when is nap time?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Nail trim: $30.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Nail trim: $30.00"
+            }
+          ]
+        },
+        {
+          "anchor": "12:00 PM to 2:30 PM Nap time",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Schedule",
+              "page": null,
+              "text": "- 12:00 PM to 2:30 PM Nap time. Dogs rest in individual or shared quiet areas."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$30"
+        ],
+        [
+          "12:00",
+          "noon"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "05-daily-routine.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "nail-and-nap"
+      }
+    },
+    {
+      "id": "ratio-and-eval-length",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How many dogs does each staff member supervise, and how long does the temperament evaluation take?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "1 staff member for every 5 dogs",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Play Groups",
+              "page": null,
+              "text": "Dogs are grouped by size, age, energy level, and play style. A staff member supervises each group at a ratio of 1 staff member for every 5 dogs."
+            }
+          ]
+        },
+        {
+          "anchor": "about 1 hour",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "- **Length:** about 1 hour."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5",
+          "five"
+        ],
+        [
+          "1 hour",
+          "one hour"
+        ]
+      ],
+      "expected_sources": [
+        "02-temperament-and-admission-policy.md",
+        "05-daily-routine.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "ratio-and-eval-length"
+      }
+    },
+    {
+      "id": "unlimited-and-expiry",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is the unlimited monthly membership, and how long until package days expire?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Unlimited monthly: $2,500",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- Unlimited monthly: $2,500 per month with terms"
+            }
+          ]
+        },
+        {
+          "anchor": "Packages expire 90 days after purchase",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Packages and Memberships",
+              "page": null,
+              "text": "- Packages expire 90 days after purchase unless stated otherwise."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$2,500",
+          "2500"
+        ],
+        [
+          "90 days"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "06-cancellation-payment-and-refund-policy.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unlimited-and-expiry"
+      }
+    },
+    {
+      "id": "blanket-and-christmas",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "Can my dog bring a blanket, and are you open on Christmas Day?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "A leash, toys, or a blanket: allowed",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > What to Bring",
+              "page": null,
+              "text": "- A leash, toys, or a blanket: allowed"
+            }
+          ]
+        },
+        {
+          "anchor": "Christmas Day",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Holidays",
+              "page": null,
+              "text": "We are closed on: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "yes",
+          "allowed"
+        ],
+        [
+          "closed",
+          "not open",
+          "no"
+        ]
+      ],
+      "expected_sources": [
+        "04-hours-and-schedule.md",
+        "05-daily-routine.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "blanket-and-christmas"
+      }
+    },
+    {
+      "id": "weight-and-rabies",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "What is the maximum weight for a dog, and how long is a rabies vaccination valid?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "up to 250 pounds",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Who Can Attend",
+              "page": null,
+              "text": "We welcome dogs who are 4 months and older, up to 250 pounds, who are healthy, vaccinated, and comfortable around other dogs and people. Separate play groups are organized by size, temperament and age."
+            }
+          ]
+        },
+        {
+          "anchor": "Rabies (valid for 3 years",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Rabies (valid for 3 years, depending on the vaccine given)"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "250"
+        ],
+        [
+          "3 years",
+          "three years"
+        ]
+      ],
+      "expected_sources": [
+        "01-vaccination-and-health-requirements.md",
+        "02-temperament-and-admission-policy.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "weight-and-rabies"
+      }
+    },
+    {
+      "id": "half-day-and-sick-return",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "How much is a half day, and how long after being sick can my dog return?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Half day (up to 4 hours): $50.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Half day (up to 4 hours): $50.00"
+            }
+          ]
+        },
+        {
+          "anchor": "may return after 2 days, or with a vet's note",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Sick Dog Policy",
+              "page": null,
+              "text": "Do not bring your dog if they have had any of these in the last 48 hours: vomiting, diarrhea, coughing, sneezing, eye or nose discharge, fever, or open wounds. Dogs showing signs of illness during the day will be separated and the owner will be called for pickup within 1 hour. A dog who has been ill may return after 2 days, or with a vet's note."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ],
+        [
+          "2 days",
+          "two days"
+        ]
+      ],
+      "expected_sources": [
+        "01-vaccination-and-health-requirements.md",
+        "03-pricing-and-packages.md"
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "half-day-and-sick-return"
+      }
+    },
+    {
+      "id": "three-topics",
+      "split": "tuned",
+      "category": "multi_topic",
+      "question": "What is the full-day price, how much is the boarding deposit, and how many dogs does each staff member supervise?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Full day (over 4 hours): $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Full day (over 4 hours): $100.00"
+            }
+          ]
+        },
+        {
+          "anchor": "deposit of $25.00",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Deposits",
+              "page": null,
+              "text": "Boarding reservations require a deposit of $25.00, due at booking. The deposit is applied to the final bill."
+            }
+          ]
+        },
+        {
+          "anchor": "1 staff member for every 5 dogs",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Play Groups",
+              "page": null,
+              "text": "Dogs are grouped by size, age, energy level, and play style. A staff member supervises each group at a ratio of 1 staff member for every 5 dogs."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$100"
+        ],
+        [
+          "$25"
+        ],
+        [
+          "5",
+          "five"
+        ]
+      ],
+      "expected_sources": [
+        "03-pricing-and-packages.md",
+        "05-daily-routine.md",
+        "06-cancellation-payment-and-refund-policy.md"
+      ],
+      "notes": "Three separate topics in three different files.",
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "three-topics"
+      }
+    },
+    {
+      "id": "unknown-grooming",
+      "split": "tuned",
+      "category": "unanswerable",
+      "question": "Do you offer full grooming and haircuts?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unknown-grooming"
+      }
+    },
+    {
+      "id": "unknown-transport",
+      "split": "tuned",
+      "category": "unanswerable",
+      "question": "Do you offer pickup and drop-off transportation for dogs?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unknown-transport"
+      }
+    },
+    {
+      "id": "unknown-webcam",
+      "split": "tuned",
+      "category": "unanswerable",
+      "question": "Is there a webcam so I can watch my dog during the day?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unknown-webcam"
+      }
+    },
+    {
+      "id": "unknown-cats",
+      "split": "tuned",
+      "category": "unanswerable",
+      "question": "Do you take cats?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "unknown-cats"
+      }
+    },
+    {
+      "id": "followup-half-day",
+      "split": "tuned",
+      "category": "follow_up",
+      "question": "And a half day?",
+      "follow_up_to": "full-day-price",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$50"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "followup-half-day"
+      }
+    },
+    {
+      "id": "followup-second-dog",
+      "split": "tuned",
+      "category": "follow_up",
+      "question": "What about for a second dog sharing the room?",
+      "follow_up_to": "boarding-price",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$50"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "followup-second-dog"
+      }
+    },
+    {
+      "id": "followup-bordetella",
+      "split": "tuned",
+      "category": "follow_up",
+      "question": "What about bordetella?",
+      "follow_up_to": "rabies-valid",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "12 months",
+          "twelve months",
+          "1 year",
+          "one year"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "followup-bordetella"
+      }
+    },
+    {
+      "id": "followup-cancel-fee",
+      "split": "tuned",
+      "category": "follow_up",
+      "question": "And what's the fee if I miss that?",
+      "follow_up_to": "cancel-notice",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$50"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions.json",
+        "id": "followup-cancel-fee"
+      }
+    },
+    {
+      "id": "holiday-surcharge",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Is there an extra charge for boarding on holidays?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Holiday surcharge: $25.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Holiday surcharge: $25.00 per night on listed holidays."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$25"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "holiday-surcharge"
+      }
+    },
+    {
+      "id": "training-price",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How much does a training session cost?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Training session: $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Training session: $100.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$100"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "training-price"
+      }
+    },
+    {
+      "id": "bounced-payment",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What do you charge if my payment bounces?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Returned payment fee: $10.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Returned payment fee: $10.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$10"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "bounced-payment"
+      }
+    },
+    {
+      "id": "accident-cleanup",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Will I be charged if my dog has an accident indoors?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Cleanup fee for accidents or illness: $10.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Cleanup fee for accidents or illness: $10.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$10"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "accident-cleanup"
+      }
+    },
+    {
+      "id": "fleas",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What happens if my dog is found to have fleas?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "A dog found with fleas or ticks will be sent home",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Flea and Tick Policy",
+              "page": null,
+              "text": "Dogs must be on a flea and tick preventive. A dog found with fleas or ticks will be sent home and the owner will be notified."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "sent home"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "fleas"
+      }
+    },
+    {
+      "id": "heat-cycle",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Can my female dog come while she is in heat?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Female dogs in heat cannot attend",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Spay and Neuter Requirements",
+              "page": null,
+              "text": "Dogs over 6 months old must be spayed or neutered to attend. Female dogs in heat cannot attend."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "cannot",
+          "can't",
+          "not allowed",
+          "not permitted"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "heat-cycle"
+      }
+    },
+    {
+      "id": "sick-pickup-time",
+      "split": "heldout",
+      "category": "factual",
+      "question": "If my dog gets sick during the day, how fast do I have to come get them?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "called for pickup within 1 hour",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Sick Dog Policy",
+              "page": null,
+              "text": "Do not bring your dog if they have had any of these in the last 48 hours: vomiting, diarrhea, coughing, sneezing, eye or nose discharge, fever, or open wounds. Dogs showing signs of illness during the day will be separated and the owner will be called for pickup within 1 hour. A dog who has been ill may return after 2 days, or with a vet's note."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "1 hour",
+          "one hour",
+          "an hour"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "sick-pickup-time"
+      }
+    },
+    {
+      "id": "midday-pickup",
+      "split": "heldout",
+      "category": "factual",
+      "question": "When can I pick up a half-day dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Midday pick-up: 11:00am and 1:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Drop-Off and Pick-Up Windows",
+              "page": null,
+              "text": "- Midday pick-up: 11:00am and 1:00pm (half-day dogs)"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "11:00"
+        ],
+        [
+          "1:00"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "midday-pickup"
+      }
+    },
+    {
+      "id": "holidays-closed",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Which holidays are you closed?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "We are closed on: New Year's Day",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Holidays",
+              "page": null,
+              "text": "We are closed on: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "new year"
+        ],
+        [
+          "memorial day"
+        ],
+        [
+          "independence day"
+        ],
+        [
+          "labor day"
+        ],
+        [
+          "thanksgiving"
+        ],
+        [
+          "christmas"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "holidays-closed"
+      }
+    },
+    {
+      "id": "memorial-day",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Can I drop my dog off on Memorial Day?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Memorial Day",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Holidays",
+              "page": null,
+              "text": "We are closed on: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "closed",
+          "not open"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "memorial-day"
+      }
+    },
+    {
+      "id": "snow-closure",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What happens to my reservation if you close because of a snowstorm?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "refunded or given a credit",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Bad Weather and Emergencies",
+              "page": null,
+              "text": "Owners with confirmed reservations are refunded or given a credit for days we close."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "refund",
+          "credit"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "snow-closure"
+      }
+    },
+    {
+      "id": "how-to-reserve",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How do I make a reservation?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Reserve by phone, website or email",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Reservations",
+              "page": null,
+              "text": "- Reserve by phone, website or email"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "phone"
+        ],
+        [
+          "website"
+        ],
+        [
+          "email"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "how-to-reserve"
+      }
+    },
+    {
+      "id": "holiday-boarding-notice",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How early should I book boarding over a holiday?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "reservations 30 days prior",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Holidays",
+              "page": null,
+              "text": "Holiday boarding and daycare may require reservations 30 days prior to boarding."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "30 days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "holiday-boarding-notice"
+      }
+    },
+    {
+      "id": "lunch-time",
+      "split": "heldout",
+      "category": "factual",
+      "question": "When do the dogs have lunch?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "11:30 AM to 12:00 PM Lunch",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Schedule",
+              "page": null,
+              "text": "- 11:30 AM to 12:00 PM Lunch and water break. Dogs who need a meal are fed in separate spaces."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "11:30"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "lunch-time"
+      }
+    },
+    {
+      "id": "treats",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Will you give my dog treats?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Treats are only given with owner permission",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Feeding",
+              "page": null,
+              "text": "- Treats are only given with owner permission."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "permission"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "treats"
+      }
+    },
+    {
+      "id": "collar-id",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Does my dog need a collar or ID tag when attending?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "A collar with ID tag",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > What to Bring",
+              "page": null,
+              "text": "- A collar with ID tag"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "collar"
+        ],
+        [
+          "tag"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "collar-id"
+      }
+    },
+    {
+      "id": "enrichment",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What kind of enrichment do the dogs get?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "puzzle toys, sniff games, water play",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Rest and Enrichment",
+              "page": null,
+              "text": "Rest periods are scheduled so that dogs do not get overtired. Enrichment includes puzzle toys, sniff games, water play, and training practice."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "puzzle"
+        ],
+        [
+          "sniff"
+        ],
+        [
+          "water"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "enrichment"
+      }
+    },
+    {
+      "id": "membership-cancel",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How far ahead do I need to cancel the monthly membership?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Cancel at least 5 days before renewal",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Packages and Memberships",
+              "page": null,
+              "text": "- Monthly memberships renew automatically on 1st of each month. Cancel at least 5 days before renewal to avoid the next charge."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5 days",
+          "five days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "membership-cancel"
+      }
+    },
+    {
+      "id": "membership-renewal",
+      "split": "heldout",
+      "category": "factual",
+      "question": "When does the monthly membership renew?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "renew automatically on 1st of each month",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Packages and Memberships",
+              "page": null,
+              "text": "- Monthly memberships renew automatically on 1st of each month. Cancel at least 5 days before renewal to avoid the next charge."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "1st",
+          "first"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "membership-renewal"
+      }
+    },
+    {
+      "id": "refund-window",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How long do I have to request a refund?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Refund requests must be made within 5 days",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Refunds",
+              "page": null,
+              "text": "- Refund requests must be made within 5 days of the charge."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "5 days",
+          "five days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "refund-window"
+      }
+    },
+    {
+      "id": "holiday-boarding-cancel",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How far ahead must I cancel holiday boarding?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Holiday boarding requires cancellation at least 10 days ahead",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling Boarding",
+              "page": null,
+              "text": "- Holiday boarding requires cancellation at least 10 days ahead. Late cancellations are charged $10.00."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "10 days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "holiday-boarding-cancel"
+      }
+    },
+    {
+      "id": "meal-packing",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How should I send my dog's food?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Bring meals in a labeled container",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Feeding",
+              "page": null,
+              "text": "- Bring meals in a labeled container with the dog's name, portion, and any instructions."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "labeled"
+        ],
+        [
+          "container"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "meal-packing"
+      }
+    },
+    {
+      "id": "report-contents",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What is included in the daily report?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "notes on meals, bathroom breaks, and behavior",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Report Cards and Photos",
+              "page": null,
+              "text": "Owners receive a daily report with notes on meals, bathroom breaks, and behavior by email. Photos are shared daily."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "meals"
+        ],
+        [
+          "bathroom"
+        ],
+        [
+          "behavior"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "report-contents"
+      }
+    },
+    {
+      "id": "medication-how",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How should I send my dog's medication?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "original container with written instructions",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Medications",
+              "page": null,
+              "text": "Staff can give medications. If we can, owners must provide the medication in its original container with written instructions, and we charge $10 per dose."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "original container"
+        ],
+        [
+          "instructions"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "medication-how"
+      }
+    },
+    {
+      "id": "first-visit",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Can my new dog stay for a full day on the first visit?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "complete a temperament evaluation before their first full day",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > The Temperament Evaluation",
+              "page": null,
+              "text": "Every new dog must complete a temperament evaluation before their first full day."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "evaluation"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "first-visit"
+      }
+    },
+    {
+      "id": "play-groups",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How are play groups put together?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "grouped by size, age, energy level, and play style",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Play Groups",
+              "page": null,
+              "text": "Dogs are grouped by size, age, energy level, and play style. A staff member supervises each group at a ratio of 1 staff member for every 5 dogs."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "size"
+        ],
+        [
+          "age"
+        ],
+        [
+          "energy"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "play-groups"
+      }
+    },
+    {
+      "id": "removal-reasons",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What could get my dog removed from daycare?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Aggression toward people or dogs",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Reasons a Dog May Be Declined or Removed",
+              "page": null,
+              "text": "- Aggression toward people or dogs, including biting or attempted biting"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "aggression"
+        ],
+        [
+          "resource guarding"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "removal-reasons"
+      }
+    },
+    {
+      "id": "flu-only-recommended",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Which vaccine is only recommended and not required?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Canine influenza: recommended",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Required Vaccinations",
+              "page": null,
+              "text": "- Canine influenza: recommended"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "influenza",
+          "flu"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "flu-only-recommended"
+      }
+    },
+    {
+      "id": "military-discount",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Do you give a military discount?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Multi-dog, military, rescue, or referral discounts: 10%",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Discounts",
+              "page": null,
+              "text": "- Multi-dog, military, rescue, or referral discounts: 10%."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "10%"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "military-discount"
+      }
+    },
+    {
+      "id": "package-20",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "What does the 20-day package cost and how long is it valid?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "20-day package: $1,500",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- 20-day package: $1,500, valid for 90 days"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$1,500"
+        ],
+        [
+          "90 days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "package-20"
+      }
+    },
+    {
+      "id": "dispute-charge",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "Who do I contact about a charge I think is wrong, and how soon?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Questions about a charge should go to Nathan",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Disputes",
+              "page": null,
+              "text": "Questions about a charge should go to Nathan at 111-111-1111 or email@address.com within 5 days."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "nathan"
+        ],
+        [
+          "5 days",
+          "five days"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "dispute-charge"
+      }
+    },
+    {
+      "id": "boarding-3-nights",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "How much would three nights of boarding cost for one dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Standard overnight: $125.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Standard overnight: $125.00 per night"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$375"
+        ]
+      ],
+      "notes": "3 x $125 = $375.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "boarding-3-nights"
+      }
+    },
+    {
+      "id": "boarding-two-dogs",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "What is the nightly price for two dogs sharing a boarding room?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Standard overnight: $125.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Standard overnight: $125.00 per night"
+            }
+          ]
+        },
+        {
+          "anchor": "Second dog sharing a room: $50.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Second dog sharing a room: $50.00 per night"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$175"
+        ]
+      ],
+      "notes": "$125 + $50 = $175.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "boarding-two-dogs"
+      }
+    },
+    {
+      "id": "late-7pm",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "I picked my dog up at 7pm on a Tuesday. How much is the late fee?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Late pickup: $5.00 for every 30 minutes",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Late pickup: $5.00 for every 30 minutes after closing time"
+            }
+          ]
+        },
+        {
+          "anchor": "Monday to Friday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Monday to Friday: 8:00am to 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$10"
+        ]
+      ],
+      "notes": "Closing is 6pm (hours document); 60 minutes late at $5 per 30 minutes = $10.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "late-7pm"
+      }
+    },
+    {
+      "id": "ten-day-savings",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "How much do I save per day with the 10-day package compared with paying for single full days?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "10-day package: $800",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- 10-day package: $800, valid for 90 days"
+            }
+          ]
+        },
+        {
+          "anchor": "Full day (over 4 hours): $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Daycare Rates",
+              "page": null,
+              "text": "- Full day (over 4 hours): $100.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$20",
+          "$200"
+        ]
+      ],
+      "notes": "$800 / 10 = $80 a day against $100: saves $20 a day ($200 in total).",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "ten-day-savings"
+      }
+    },
+    {
+      "id": "late-cancel-package",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "I'm using a package and cancel a daycare day two hours before drop-off. What happens?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Late cancellation or no-show: charged a fee of $50.00, and a package day is used.",
+          "passages": [
+            {
+              "doc_id": "06-cancellation-payment-and-refund-policy.md",
+              "section": "Barks n Woofs: Cancellation, Payment and Refund Policy > Cancelling a Daycare Day",
+              "page": null,
+              "text": "- Late cancellation or no-show: charged a fee of $50.00, and a package day is used."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ],
+        [
+          "used",
+          "lost",
+          "not returned",
+          "forfeit"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "late-cancel-package"
+      }
+    },
+    {
+      "id": "expired-8-days",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "My dog's DHPP booster expired 8 days ago. Can he attend today?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "grace period of 5 days",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Expired Vaccinations",
+              "page": null,
+              "text": "If a dog's vaccination expires, the dog cannot attend until updated proof is received. We do allow a grace period of 5 days."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "cannot",
+          "can't",
+          "not allowed",
+          "unable"
+        ]
+      ],
+      "answer_not_contains": [
+        "yes"
+      ],
+      "notes": "The grace period is 5 days, so 8 days is too long.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "expired-8-days"
+      }
+    },
+    {
+      "id": "puppy-5-months",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "My puppy is 5 months old and not neutered. Is that allowed?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Dogs over 6 months old must be spayed or neutered",
+          "passages": [
+            {
+              "doc_id": "01-vaccination-and-health-requirements.md",
+              "section": "Barks n Woofs: Vaccination and Health Requirements > Spay and Neuter Requirements",
+              "page": null,
+              "text": "Dogs over 6 months old must be spayed or neutered to attend. Female dogs in heat cannot attend."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "6 months",
+          "six months"
+        ]
+      ],
+      "notes": "Only dogs over 6 months need to be fixed.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "puppy-5-months"
+      }
+    },
+    {
+      "id": "sunday-false-premise",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "Why are you closed on Sundays?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Sunday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Sunday: 8:00am to 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "8:00"
+        ],
+        [
+          "6:00"
+        ]
+      ],
+      "notes": "False premise: Sundays are open 8am to 6pm.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "sunday-false-premise"
+      }
+    },
+    {
+      "id": "unlimited-false-premise",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "Is the unlimited monthly membership $250?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Unlimited monthly: $2,500 per month",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Packages",
+              "page": null,
+              "text": "- Unlimited monthly: $2,500 per month with terms"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$2,500"
+        ]
+      ],
+      "notes": "False premise: it is $2,500.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unlimited-false-premise"
+      }
+    },
+    {
+      "id": "phone-and-sunday",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "What's your phone number, and are you open on Sundays?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Sunday: 8:00am to 6:00pm",
+          "passages": [
+            {
+              "doc_id": "04-hours-and-schedule.md",
+              "section": "Barks n Woofs: Hours and Schedule > Regular Hours",
+              "page": null,
+              "text": "- Sunday: 8:00am to 6:00pm"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "111-111-1111"
+        ],
+        [
+          "8:00"
+        ]
+      ],
+      "notes": "The phone number is printed in every document, so only the Sunday hours decide which file the Sources line should show.",
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "phone-and-sunday"
+      }
+    },
+    {
+      "id": "training-and-cards",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "How much is a training session, and do you accept cards?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Training session: $100.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Training session: $100.00"
+            }
+          ]
+        },
+        {
+          "anchor": "cash, check, cards",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Payment",
+              "page": null,
+              "text": "Payment is due at drop-off or when billed. We accept cash, check, cards."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$100"
+        ],
+        [
+          "card"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "training-and-cards"
+      }
+    },
+    {
+      "id": "lunch-late-weight",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "When is lunch, what is the late fee per 30 minutes, and what is the maximum dog weight?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "11:30 AM to 12:00 PM Lunch",
+          "passages": [
+            {
+              "doc_id": "05-daily-routine.md",
+              "section": "Barks n Woofs: A Typical Day > Schedule",
+              "page": null,
+              "text": "- 11:30 AM to 12:00 PM Lunch and water break. Dogs who need a meal are fed in separate spaces."
+            }
+          ]
+        },
+        {
+          "anchor": "Late pickup: $5.00 for every 30 minutes",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Fees",
+              "page": null,
+              "text": "- Late pickup: $5.00 for every 30 minutes after closing time"
+            }
+          ]
+        },
+        {
+          "anchor": "up to 250 pounds",
+          "passages": [
+            {
+              "doc_id": "02-temperament-and-admission-policy.md",
+              "section": "Barks n Woofs: Temperament Evaluation and Admission Policy > Who Can Attend",
+              "page": null,
+              "text": "We welcome dogs who are 4 months and older, up to 250 pounds, who are healthy, vaccinated, and comfortable around other dogs and people. Separate play groups are organized by size, temperament and age."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "11:30"
+        ],
+        [
+          "$5"
+        ],
+        [
+          "250"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "lunch-late-weight"
+      }
+    },
+    {
+      "id": "bath-and-surcharge",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "How much is a bath, and how much extra is boarding on a holiday?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Bath: $50.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Bath: $50.00"
+            }
+          ]
+        },
+        {
+          "anchor": "Holiday surcharge: $25.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Holiday surcharge: $25.00 per night on listed holidays."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ],
+        [
+          "$25"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "bath-and-surcharge"
+      }
+    },
+    {
+      "id": "unknown-tour",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Can I tour the facility before signing up?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unknown-tour"
+      }
+    },
+    {
+      "id": "unknown-insurance",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Do you accept pet insurance?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unknown-insurance"
+      }
+    },
+    {
+      "id": "unknown-vet",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Is there a veterinarian on staff?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unknown-vet"
+      }
+    },
+    {
+      "id": "unknown-indoor",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Do you have an indoor play area for rainy days?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unknown-indoor"
+      }
+    },
+    {
+      "id": "unknown-senior",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Do you offer a senior citizen discount?",
+      "expected_abstain": true,
+      "evidence": [],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "unknown-senior"
+      }
+    },
+    {
+      "id": "bath-price",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How much is a bath?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Bath: $50.00",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Add-Ons",
+              "page": null,
+              "text": "- Bath: $50.00"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$50"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "bath-price"
+      }
+    },
+    {
+      "id": "followup-nail",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "And a nail trim?",
+      "follow_up_to": "bath-price",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$30"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "followup-nail"
+      }
+    },
+    {
+      "id": "boarding-night",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How much is boarding per night?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Standard overnight: $125.00 per night",
+          "passages": [
+            {
+              "doc_id": "03-pricing-and-packages.md",
+              "section": "Barks n Woofs: Pricing and Packages > Boarding (overnight stays)",
+              "page": null,
+              "text": "- Standard overnight: $125.00 per night"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "$125"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "boarding-night"
+      }
+    },
+    {
+      "id": "followup-holiday-night",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "What about on a holiday?",
+      "follow_up_to": "boarding-night",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$25",
+          "$150"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "followup-holiday-night"
+      }
+    },
+    {
+      "id": "followup-late-holiday-cancel",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "And what if I cancel late?",
+      "follow_up_to": "holiday-boarding-cancel",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "$10"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "followup-late-holiday-cancel"
+      }
+    },
+    {
+      "id": "followup-sick-return",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "How long before he can come back?",
+      "follow_up_to": "sick-pickup-time",
+      "expected_abstain": false,
+      "evidence": [],
+      "answer_contains": [
+        [
+          "2 days",
+          "two days"
+        ],
+        [
+          "vet"
+        ]
+      ],
+      "origin": {
+        "file": "eval_questions_fresh.json",
+        "id": "followup-sick-return"
+      }
+    },
+    {
+      "id": "pdf-parking-spaces",
+      "split": "unlabeled",
+      "category": "factual",
+      "question": "How many parking spaces are there?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "There are 12 spaces",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 1,
+              "text": "Free parking is in the lot behind the building. There are 12 spaces, including 2 close to the side door"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "12"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 1 of the visitor guide PDF.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-parking-spaces"
+      }
+    },
+    {
+      "id": "pdf-drop-off-door",
+      "split": "unlabeled",
+      "category": "factual",
+      "question": "Which door do I use to drop off my dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "use the side door",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 1,
+              "text": "visitors. Dogs being dropped off or picked up use the side door."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "side door"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 1.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-drop-off-door"
+      }
+    },
+    {
+      "id": "pdf-lobby-wait",
+      "split": "unlabeled",
+      "category": "factual",
+      "question": "Where do I wait when I come to pick up my dog?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "wait at the lobby counter",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 2,
+              "text": "At pick-up, wait at the lobby counter. Staff bring your dog out to you with the daily report. Please do"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "lobby counter",
+          "lobby"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 2.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-lobby-wait"
+      }
+    },
+    {
+      "id": "pdf-ramp",
+      "split": "unlabeled",
+      "category": "yes_no",
+      "question": "Is there a ramp up from the parking lot?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "A ramp leads up from the parking lot",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 2,
+              "text": "The lobby, the side door and the restroom have no steps. A ramp leads up from the parking lot, and"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "ramp"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 2, accessibility.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-ramp"
+      }
+    },
+    {
+      "id": "pdf-lost-items",
+      "split": "unlabeled",
+      "category": "factual",
+      "question": "How long do you keep things my dog leaves behind?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "kept at the front desk for 30 days",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 3,
+              "text": "Items left behind are kept at the front desk for 30 days. Collars, leashes and toys are washed before"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "30 days"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 3: lost and found, 30 days.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-lost-items"
+      }
+    },
+    {
+      "id": "pdf-social-media",
+      "split": "unlabeled",
+      "category": "yes_no",
+      "question": "Can you post my dog's photo on social media?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "without written permission",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 3,
+              "text": "media without written permission from the owner."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "permission"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Page 3: only with written permission from the owner.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-social-media"
+      }
+    },
+    {
+      "id": "pdf-two-topics",
+      "split": "unlabeled",
+      "category": "multi_topic",
+      "question": "Where do I wait at pick-up, and how many parking spaces are there?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "wait at the lobby counter",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 2,
+              "text": "At pick-up, wait at the lobby counter. Staff bring your dog out to you with the daily report. Please do"
+            }
+          ]
+        },
+        {
+          "anchor": "There are 12 spaces",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 1,
+              "text": "Free parking is in the lot behind the building. There are 12 spaces, including 2 close to the side door"
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "lobby"
+        ],
+        [
+          "12"
+        ]
+      ],
+      "expected_sources": [
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "Two facts on two pages: waiting at the lobby counter (page 2) and 12 parking spaces (page 1).",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-two-topics"
+      }
+    },
+    {
+      "id": "pdf-nap-time-across-documents",
+      "split": "unlabeled",
+      "category": "edge_case",
+      "question": "Is it a good idea to drop by at 1pm?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "avoid dropping by",
+          "passages": [
+            {
+              "doc_id": "07-visitor-guide.pdf",
+              "section": "",
+              "page": 3,
+              "text": "Please avoid dropping by during this time."
+            }
+          ]
+        }
+      ],
+      "answer_contains": [
+        [
+          "nap",
+          "quiet hours",
+          "12:00"
+        ]
+      ],
+      "acceptable_sources": [
+        "05-daily-routine.md",
+        "07-visitor-guide.pdf"
+      ],
+      "notes": "The PDF says to avoid dropping by during nap time (12:00 to 2:30pm); the daily routine gives the same hours. Either file may be cited.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-nap-time-across-documents"
+      }
+    },
+    {
+      "id": "pdf-unanswerable",
+      "split": "unlabeled",
+      "category": "unanswerable",
+      "question": "Is there a dog park next door?",
+      "expected_abstain": true,
+      "evidence": [],
+      "notes": "Not in the documents.",
+      "origin": {
+        "file": "eval_questions_pdf.json",
+        "id": "pdf-unanswerable"
+      }
+    }
+  ]
+}

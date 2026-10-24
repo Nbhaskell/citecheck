@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "citecheck"
+version = "0.0.1"
+description = "Evaluation harness for RAG answer quality and citation validity"
+requires-python = ">=3.13"
+dependencies = ["jsonschema>=4.21,<5"]
+
+[project.scripts]
+citecheck = "citecheck.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
