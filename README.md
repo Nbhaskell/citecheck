@@ -125,8 +125,16 @@ Each item has:
 
 Known limits:
 
-- **No reference answers yet.** The source files only had keyword checks, so `answer_contains` is carried over as it was
-  and `reference_answer` is empty. The judge step needs them.
+- **Reference answers were written for this harness.** The source files only had keyword checks, so `answer_contains` is
+  carried over as it was. Since `rag-demo-1.1.0` every item has a `reference_answer`, drafted by Claude from the corpus
+  documents, then checked by hand before merging; they live in
+  [`golden/reference_answers_rag_demo_v1.json`](golden/reference_answers_rag_demo_v1.json) and the converter merges them
+  in. For unanswerable items the reference says the documents do not cover the question. Some answers apply a rule or
+  do arithmetic (late fees, package savings) rather than quote a line, and the 5-day vaccination grace period is read as
+  "may attend within 5 days of expiry", which the documents do not spell out.
+- **The published step 1 runs were asked from `rag-demo-1.0.0`** (the same questions without reference answers), so `score`
+  refuses them against 1.1.0 and the hash check is doing its job. Their saved scores are unchanged; re-scoring them needs
+  the 1.0.0 file from git history or `--ignore-golden-mismatch`.
 - **No `ambiguous` or `conflicting` questions.** The categories exist; the source sets had none.
 - **The held-out set was written by Claude** from the documents (as rag-project's README states), so it is unseen by the
   prompt but not blind to the corpus.

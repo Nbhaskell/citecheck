@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "golden_version": "rag-demo-1.0.0",
+  "golden_version": "rag-demo-1.1.0",
   "target": "rag-project",
-  "notes": "Converted from the question files in https://github.com/Nbhaskell/rag-project by tools/convert_ragproject.py. 'tuned' items were used while the prompt and thresholds were adjusted, so scores on them flatter the system. 'heldout' items were written afterwards and not used to tune, but were written by Claude from the documents (per that project's README), so they are unseen by the prompt, not blind to the corpus. No item is 'ambiguous' or 'conflicting' yet, and no item has a reference_answer.",
+  "notes": "Converted from the question files in https://github.com/Nbhaskell/rag-project by tools/convert_ragproject.py. 'tuned' items were used while the prompt and thresholds were adjusted, so scores on them flatter the system. 'heldout' items were written afterwards and not used to tune, but were written by Claude from the documents (per that project's README), so they are unseen by the prompt, not blind to the corpus. Every item has a reference_answer, drafted by Claude from the corpus documents and checked by hand before merging (unanswerable items say the documents do not cover the question). No item is 'ambiguous' or 'conflicting' yet.",
   "corpus": {
     "name": "demo_docs",
     "source": "https://github.com/Nbhaskell/rag-project",
@@ -37,6 +37,7 @@
           ]
         }
       ],
+      "reference_answer": "Before the first visit, every dog needs current proof of three vaccinations: rabies (valid for 3 years, depending on the vaccine given), DHPP, also called distemper/parvo (valid for 1 year after the booster series), and Bordetella, also called kennel cough (given within the last 12 months). The canine influenza vaccine is recommended but not required.",
       "answer_contains": [
         [
           "rabies"
@@ -74,6 +75,7 @@
           ]
         }
       ],
+      "reference_answer": "No. The canine influenza vaccine is only recommended, not required.",
       "answer_contains": [
         [
           "no",
@@ -109,6 +111,7 @@
           ]
         }
       ],
+      "reference_answer": "A rabies vaccination is valid for 3 years, depending on the vaccine given.",
       "answer_contains": [
         [
           "3 years",
@@ -139,6 +142,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Photos of paper records are not accepted. Vaccination records must come from your veterinarian, sent by email, in person or through the online form, and must show the dog's name, the vaccine, the date given and the date it expires.",
       "answer_contains": [
         [
           "no",
@@ -175,6 +179,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. A dog whose vaccination has expired cannot attend until updated proof is received, but there is a grace period of 5 days.",
       "answer_contains": [
         [
           "5 days",
@@ -205,6 +210,7 @@
           ]
         }
       ],
+      "reference_answer": "A dog who has been ill may return after 2 days, or sooner with a vet's note.",
       "answer_contains": [
         [
           "2 days",
@@ -240,6 +246,7 @@
           ]
         }
       ],
+      "reference_answer": "Do not bring your dog if they have had vomiting or diarrhea (or coughing, sneezing, eye or nose discharge, fever, or open wounds) in the last 48 hours.",
       "answer_contains": [
         [
           "48"
@@ -270,6 +277,7 @@
           ]
         }
       ],
+      "reference_answer": "Dogs over 6 months old must be spayed or neutered to attend.",
       "answer_contains": [
         [
           "6 months",
@@ -300,6 +308,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Dogs over 6 months old must be spayed or neutered to attend, so an unneutered 8-month-old dog cannot attend.",
       "answer_contains": [
         [
           "no",
@@ -337,6 +346,7 @@
           ]
         }
       ],
+      "reference_answer": "Puppies must be at least 4 months old and have completed their puppy vaccination series before attending.",
       "answer_contains": [
         [
           "4 months",
@@ -370,6 +380,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes, staff can give medications. Owners must provide the medication in its original container with written instructions, and the charge is $10 per dose.",
       "answer_contains": [
         [
           "yes",
@@ -407,6 +418,7 @@
           ]
         }
       ],
+      "reference_answer": "The temperament evaluation is free of cost.",
       "answer_contains": [
         [
           "free",
@@ -442,6 +454,7 @@
           ]
         }
       ],
+      "reference_answer": "The temperament evaluation takes about 1 hour.",
       "answer_contains": [
         [
           "1 hour",
@@ -472,6 +485,7 @@
           ]
         }
       ],
+      "reference_answer": "Bring the dog's vaccination records, the signed owner agreement, and the dog's vet contact information.",
       "answer_contains": [
         [
           "vaccination"
@@ -508,6 +522,7 @@
           ]
         }
       ],
+      "reference_answer": "Dogs up to 250 pounds are welcome.",
       "answer_contains": [
         [
           "250"
@@ -537,6 +552,7 @@
           ]
         }
       ],
+      "reference_answer": "After 3 incidents within 5 days, the dog is suspended for 1 day and then re-evaluated or removed.",
       "answer_contains": [
         [
           "suspended",
@@ -572,6 +588,7 @@
           ]
         }
       ],
+      "reference_answer": "A dog who was declined may be re-evaluated after 30 days (1 month).",
       "answer_contains": [
         [
           "30 days",
@@ -603,6 +620,7 @@
           ]
         }
       ],
+      "reference_answer": "A full day of daycare (over 4 hours) is $100.00.",
       "answer_contains": [
         [
           "$100"
@@ -632,6 +650,7 @@
           ]
         }
       ],
+      "reference_answer": "A half day is $50.00, and it covers up to 4 hours.",
       "answer_contains": [
         [
           "$50"
@@ -665,6 +684,7 @@
           ]
         }
       ],
+      "reference_answer": "That is a full day, because a half day covers only up to 4 hours and a full day is anything over 4 hours. A full day costs $100.00.",
       "answer_contains": [
         [
           "full"
@@ -698,6 +718,7 @@
           ]
         }
       ],
+      "reference_answer": "$150 for the day: $100 for the first dog's full day plus $50 for the second dog from the same household.",
       "answer_contains": [
         [
           "$150"
@@ -728,6 +749,7 @@
           ]
         }
       ],
+      "reference_answer": "The 10-day package is $800 and is valid for 90 days.",
       "answer_contains": [
         [
           "$800"
@@ -764,6 +786,7 @@
           ]
         }
       ],
+      "reference_answer": "The unlimited monthly membership is $2,500 per month, with terms.",
       "answer_contains": [
         [
           "$2,500",
@@ -794,6 +817,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes, unused package days can be transferred to another dog.",
       "answer_contains": [
         [
           "yes",
@@ -828,6 +852,7 @@
           ]
         }
       ],
+      "reference_answer": "A standard overnight stay is $125.00 per night.",
       "answer_contains": [
         [
           "$125"
@@ -857,6 +882,7 @@
           ]
         }
       ],
+      "reference_answer": "Boarding check-in is between 8:00am and 9:00am, and check-out is by 6:00pm.",
       "answer_contains": [
         [
           "8:00",
@@ -898,6 +924,7 @@
           ]
         }
       ],
+      "reference_answer": "The late pickup fee is $5.00 for every 30 minutes after closing time.",
       "answer_contains": [
         [
           "$5"
@@ -930,6 +957,7 @@
           ]
         }
       ],
+      "reference_answer": "There is a 10% discount for multi-dog households, military, rescue and referrals.",
       "answer_contains": [
         [
           "10%",
@@ -960,6 +988,7 @@
           ]
         }
       ],
+      "reference_answer": "On Sundays we are open from 8:00am to 6:00pm.",
       "answer_contains": [
         [
           "8:00",
@@ -999,6 +1028,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Christmas Day is one of the holidays we are closed.",
       "answer_contains": [
         [
           "no",
@@ -1032,6 +1062,7 @@
           ]
         }
       ],
+      "reference_answer": "Evening pick-up is between 5:30pm and 6:00pm.",
       "answer_contains": [
         [
           "5:30"
@@ -1066,6 +1097,7 @@
           ]
         }
       ],
+      "reference_answer": "Dogs dropped off after 9:00am may be charged for a full day.",
       "answer_contains": [
         [
           "full day"
@@ -1095,6 +1127,7 @@
           ]
         }
       ],
+      "reference_answer": "Boarding reservations are required and must be made at least 3 days ahead.",
       "answer_contains": [
         [
           "3 days",
@@ -1131,6 +1164,7 @@
           ]
         }
       ],
+      "reference_answer": "Barks n Woofs is at 123 puppy drive, Oakland ME.",
       "answer_contains": [
         [
           "123 puppy drive"
@@ -1163,6 +1197,7 @@
           ]
         }
       ],
+      "reference_answer": "Each staff member supervises a group at a ratio of 1 staff member for every 5 dogs.",
       "answer_contains": [
         [
           "5",
@@ -1193,6 +1228,7 @@
           ]
         }
       ],
+      "reference_answer": "Nap time is from 12:00 PM to 2:30 PM.",
       "answer_contains": [
         [
           "12:00",
@@ -1226,6 +1262,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. A leash, toys or a blanket are allowed.",
       "answer_contains": [
         [
           "yes",
@@ -1260,6 +1297,7 @@
           ]
         }
       ],
+      "reference_answer": "Owners receive a daily report by email with notes on meals, bathroom breaks and behavior, and photos are shared daily.",
       "answer_contains": [
         [
           "email"
@@ -1293,6 +1331,7 @@
           ]
         }
       ],
+      "reference_answer": "Cancel at least 12 hours before drop-off, by phone, email or text, to avoid a charge.",
       "answer_contains": [
         [
           "12 hours",
@@ -1323,6 +1362,7 @@
           ]
         }
       ],
+      "reference_answer": "A late cancellation or no-show is charged a fee of $50.00, and a package day is used.",
       "answer_contains": [
         [
           "$50"
@@ -1352,6 +1392,7 @@
           ]
         }
       ],
+      "reference_answer": "The boarding deposit is $25.00, due at booking and applied to the final bill.",
       "answer_contains": [
         [
           "$25"
@@ -1381,6 +1422,7 @@
           ]
         }
       ],
+      "reference_answer": "Cancelling less than 5 days before arrival means the deposit is only partly refunded (a full refund needs 5 days or more of notice).",
       "answer_contains": [
         [
           "partly",
@@ -1416,6 +1458,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
       "answer_contains": [
         [
           "no",
@@ -1452,6 +1495,7 @@
           ]
         }
       ],
+      "reference_answer": "We accept cash, check and card.",
       "answer_contains": [
         [
           "cash"
@@ -1490,6 +1534,7 @@
           ]
         }
       ],
+      "reference_answer": "Refunds are issued to the original payment method within 5 business days.",
       "answer_contains": [
         [
           "5 business days",
@@ -1520,6 +1565,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. If a dog is sent home early for illness or an incident, we refund the unused portion.",
       "answer_contains": [
         [
           "refund"
@@ -1556,6 +1602,7 @@
           ]
         }
       ],
+      "reference_answer": "Probably yes. An expired vaccination normally keeps a dog from attending until updated proof is received, but there is a grace period of 5 days, and one day past expiry is within it. Send updated proof as soon as possible.",
       "answer_contains": [
         [
           "grace",
@@ -1599,6 +1646,7 @@
           ]
         }
       ],
+      "reference_answer": "A full day (over 4 hours) is $100.00, and you must cancel at least 12 hours before drop-off to avoid a charge.",
       "answer_contains": [
         [
           "$100"
@@ -1648,6 +1696,7 @@
           ]
         }
       ],
+      "reference_answer": "On Saturdays we open at 8:00am (open until 6:00pm), and a bath is $50.00.",
       "answer_contains": [
         [
           "8:00",
@@ -1698,6 +1747,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. Every new dog must complete a temperament evaluation before their first full day. The required vaccinations are rabies, DHPP (distemper/parvo) and Bordetella (kennel cough); canine influenza is recommended but not required.",
       "answer_contains": [
         [
           "yes",
@@ -1749,6 +1799,7 @@
           ]
         }
       ],
+      "reference_answer": "We close at 6:00pm, and the late pickup fee is $5.00 for every 30 minutes after closing time.",
       "answer_contains": [
         [
           "6:00",
@@ -1799,6 +1850,7 @@
           ]
         }
       ],
+      "reference_answer": "The boarding deposit is $25.00, and check-in is between 8:00am and 9:00am.",
       "answer_contains": [
         [
           "$25"
@@ -1849,6 +1901,7 @@
           ]
         }
       ],
+      "reference_answer": "A nail trim is $30.00, and nap time is from 12:00 PM to 2:30 PM.",
       "answer_contains": [
         [
           "$30"
@@ -1897,6 +1950,7 @@
           ]
         }
       ],
+      "reference_answer": "Each staff member supervises 5 dogs (a ratio of 1 staff member for every 5 dogs), and the temperament evaluation takes about 1 hour.",
       "answer_contains": [
         [
           "5",
@@ -1946,6 +2000,7 @@
           ]
         }
       ],
+      "reference_answer": "The unlimited monthly membership is $2,500 per month with terms, and package days expire 90 days after purchase unless stated otherwise.",
       "answer_contains": [
         [
           "$2,500",
@@ -1994,6 +2049,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes, your dog can bring a blanket. No, we are not open on Christmas Day; it is one of our closed holidays.",
       "answer_contains": [
         [
           "yes",
@@ -2044,6 +2100,7 @@
           ]
         }
       ],
+      "reference_answer": "The maximum weight is 250 pounds, and a rabies vaccination is valid for 3 years, depending on the vaccine given.",
       "answer_contains": [
         [
           "250"
@@ -2092,6 +2149,7 @@
           ]
         }
       ],
+      "reference_answer": "A half day (up to 4 hours) is $50.00, and a dog who has been ill may return after 2 days, or with a vet's note.",
       "answer_contains": [
         [
           "$50"
@@ -2151,6 +2209,7 @@
           ]
         }
       ],
+      "reference_answer": "A full day is $100.00, the boarding deposit is $25.00, and each staff member supervises 5 dogs (1 staff member for every 5 dogs).",
       "answer_contains": [
         [
           "$100"
@@ -2181,6 +2240,7 @@
       "question": "Do you offer full grooming and haircuts?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not say whether full grooming or haircuts are offered. They list only a bath ($50.00) and a nail trim ($30.00) as add-ons.",
       "origin": {
         "file": "eval_questions.json",
         "id": "unknown-grooming"
@@ -2193,6 +2253,7 @@
       "question": "Do you offer pickup and drop-off transportation for dogs?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not mention any pickup or drop-off transportation for dogs.",
       "origin": {
         "file": "eval_questions.json",
         "id": "unknown-transport"
@@ -2205,6 +2266,7 @@
       "question": "Is there a webcam so I can watch my dog during the day?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not mention a webcam. Owners get a daily report and photos instead.",
       "origin": {
         "file": "eval_questions.json",
         "id": "unknown-webcam"
@@ -2217,6 +2279,7 @@
       "question": "Do you take cats?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents only describe dogs and do not say whether cats are accepted.",
       "origin": {
         "file": "eval_questions.json",
         "id": "unknown-cats"
@@ -2230,6 +2293,7 @@
       "follow_up_to": "full-day-price",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "A half day, up to 4 hours, is $50.00.",
       "answer_contains": [
         [
           "$50"
@@ -2248,6 +2312,7 @@
       "follow_up_to": "boarding-price",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "A second dog sharing a boarding room is $50.00 per night, in addition to the $125.00 standard overnight rate.",
       "answer_contains": [
         [
           "$50"
@@ -2266,6 +2331,7 @@
       "follow_up_to": "rabies-valid",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "The Bordetella (kennel cough) vaccination must have been given within the last 12 months.",
       "answer_contains": [
         [
           "12 months",
@@ -2287,6 +2353,7 @@
       "follow_up_to": "cancel-notice",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "A late cancellation or no-show is charged a fee of $50.00, and a package day is used.",
       "answer_contains": [
         [
           "$50"
@@ -2316,6 +2383,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. There is a holiday surcharge of $25.00 per night on listed holidays.",
       "answer_contains": [
         [
           "$25"
@@ -2345,6 +2413,7 @@
           ]
         }
       ],
+      "reference_answer": "A training session is $100.00.",
       "answer_contains": [
         [
           "$100"
@@ -2374,6 +2443,7 @@
           ]
         }
       ],
+      "reference_answer": "A returned payment fee of $10.00 is charged.",
       "answer_contains": [
         [
           "$10"
@@ -2403,6 +2473,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. There is a cleanup fee of $10.00 for accidents or illness.",
       "answer_contains": [
         [
           "$10"
@@ -2432,6 +2503,7 @@
           ]
         }
       ],
+      "reference_answer": "A dog found with fleas or ticks will be sent home and the owner will be notified. Dogs must be on a flea and tick preventive.",
       "answer_contains": [
         [
           "sent home"
@@ -2461,6 +2533,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Female dogs in heat cannot attend.",
       "answer_contains": [
         [
           "cannot",
@@ -2496,6 +2569,7 @@
           ]
         }
       ],
+      "reference_answer": "The owner will be called to pick up within 1 hour. A dog showing signs of illness is separated until then.",
       "answer_contains": [
         [
           "1 hour",
@@ -2527,6 +2601,7 @@
           ]
         }
       ],
+      "reference_answer": "Half-day dogs can be picked up between 11:00am and 1:00pm.",
       "answer_contains": [
         [
           "11:00"
@@ -2559,6 +2634,7 @@
           ]
         }
       ],
+      "reference_answer": "We are closed on New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving and Christmas Day.",
       "answer_contains": [
         [
           "new year"
@@ -2603,6 +2679,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Memorial Day is one of the holidays we are closed.",
       "answer_contains": [
         [
           "closed",
@@ -2636,6 +2713,7 @@
           ]
         }
       ],
+      "reference_answer": "Owners with confirmed reservations are refunded or given a credit for the days we close.",
       "answer_contains": [
         [
           "refund",
@@ -2666,6 +2744,7 @@
           ]
         }
       ],
+      "reference_answer": "Reserve by phone, website or email.",
       "answer_contains": [
         [
           "phone"
@@ -2701,6 +2780,7 @@
           ]
         }
       ],
+      "reference_answer": "Holiday boarding and daycare may require reservations 30 days prior to boarding.",
       "answer_contains": [
         [
           "30 days"
@@ -2730,6 +2810,7 @@
           ]
         }
       ],
+      "reference_answer": "Lunch and a water break are from 11:30 AM to 12:00 PM.",
       "answer_contains": [
         [
           "11:30"
@@ -2759,6 +2840,7 @@
           ]
         }
       ],
+      "reference_answer": "Treats are only given with owner permission.",
       "answer_contains": [
         [
           "permission"
@@ -2788,6 +2870,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. Your dog should wear a collar with an ID tag.",
       "answer_contains": [
         [
           "collar"
@@ -2820,6 +2903,7 @@
           ]
         }
       ],
+      "reference_answer": "Enrichment includes puzzle toys, sniff games, water play and training practice.",
       "answer_contains": [
         [
           "puzzle"
@@ -2855,6 +2939,7 @@
           ]
         }
       ],
+      "reference_answer": "Cancel at least 5 days before renewal to avoid the next charge.",
       "answer_contains": [
         [
           "5 days",
@@ -2885,6 +2970,7 @@
           ]
         }
       ],
+      "reference_answer": "Monthly memberships renew automatically on the 1st of each month.",
       "answer_contains": [
         [
           "1st",
@@ -2915,6 +3001,7 @@
           ]
         }
       ],
+      "reference_answer": "Refund requests must be made within 5 days of the charge.",
       "answer_contains": [
         [
           "5 days",
@@ -2945,6 +3032,7 @@
           ]
         }
       ],
+      "reference_answer": "Holiday boarding requires cancellation at least 10 days ahead.",
       "answer_contains": [
         [
           "10 days"
@@ -2974,6 +3062,7 @@
           ]
         }
       ],
+      "reference_answer": "Bring meals in a labeled container with the dog's name, portion and any instructions.",
       "answer_contains": [
         [
           "labeled"
@@ -3006,6 +3095,7 @@
           ]
         }
       ],
+      "reference_answer": "The daily report has notes on meals, bathroom breaks and behavior, and it is sent by email. Photos are shared daily.",
       "answer_contains": [
         [
           "meals"
@@ -3041,6 +3131,7 @@
           ]
         }
       ],
+      "reference_answer": "Provide the medication in its original container with written instructions. There is a charge of $10 per dose.",
       "answer_contains": [
         [
           "original container"
@@ -3073,6 +3164,7 @@
           ]
         }
       ],
+      "reference_answer": "No. Every new dog must complete a temperament evaluation before their first full day. The evaluation is free and takes about 1 hour.",
       "answer_contains": [
         [
           "evaluation"
@@ -3102,6 +3194,7 @@
           ]
         }
       ],
+      "reference_answer": "Dogs are grouped by size, age, energy level and play style, and a staff member supervises each group at a ratio of 1 staff member for every 5 dogs.",
       "answer_contains": [
         [
           "size"
@@ -3137,6 +3230,7 @@
           ]
         }
       ],
+      "reference_answer": "A dog may be declined or removed for aggression toward people or dogs (including biting or attempted biting), resource guarding that cannot be managed, extreme fear or anxiety that does not improve after 10 visits, excessive barking, destructiveness or an inability to settle despite staff help, illness or lack of current vaccinations, or repeated incidents.",
       "answer_contains": [
         [
           "aggression"
@@ -3169,6 +3263,7 @@
           ]
         }
       ],
+      "reference_answer": "The canine influenza vaccine is recommended but not required.",
       "answer_contains": [
         [
           "influenza",
@@ -3199,6 +3294,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. Military customers get a 10% discount.",
       "answer_contains": [
         [
           "10%"
@@ -3228,6 +3324,7 @@
           ]
         }
       ],
+      "reference_answer": "The 20-day package is $1,500 and is valid for 90 days.",
       "answer_contains": [
         [
           "$1,500"
@@ -3260,6 +3357,7 @@
           ]
         }
       ],
+      "reference_answer": "Contact Nathan at 111-111-1111 or email@address.com within 5 days.",
       "answer_contains": [
         [
           "nathan"
@@ -3293,6 +3391,7 @@
           ]
         }
       ],
+      "reference_answer": "Three nights of boarding for one dog is $375 (3 x $125.00 per night).",
       "answer_contains": [
         [
           "$375"
@@ -3334,6 +3433,7 @@
           ]
         }
       ],
+      "reference_answer": "$175 per night: $125.00 for the first dog plus $50.00 for the second dog sharing the room.",
       "answer_contains": [
         [
           "$175"
@@ -3375,6 +3475,7 @@
           ]
         }
       ],
+      "reference_answer": "$10. Closing time is 6:00pm, so 7pm is one hour late, and the fee is $5.00 for every 30 minutes (two half-hours).",
       "answer_contains": [
         [
           "$10"
@@ -3416,6 +3517,7 @@
           ]
         }
       ],
+      "reference_answer": "The 10-day package is $800, which is $80 a day, compared with $100 for a single full day. That saves $20 per day, or $200 over the 10 days.",
       "answer_contains": [
         [
           "$20",
@@ -3447,6 +3549,7 @@
           ]
         }
       ],
+      "reference_answer": "Cancelling two hours before drop-off is later than the required 12 hours, so it counts as a late cancellation: a fee of $50.00 is charged and a package day is used.",
       "answer_contains": [
         [
           "$50"
@@ -3482,6 +3585,7 @@
           ]
         }
       ],
+      "reference_answer": "No. The grace period is 5 days, and 8 days is past it, so the dog cannot attend until updated proof of the vaccination is received.",
       "answer_contains": [
         [
           "cannot",
@@ -3518,6 +3622,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes, as far as neutering goes: only dogs over 6 months old must be spayed or neutered, and a 5-month-old is under that. The puppy must also be at least 4 months old and have completed the puppy vaccination series.",
       "answer_contains": [
         [
           "6 months",
@@ -3549,6 +3654,7 @@
           ]
         }
       ],
+      "reference_answer": "We are not closed on Sundays. We are open on Sundays from 8:00am to 6:00pm.",
       "answer_contains": [
         [
           "8:00"
@@ -3582,6 +3688,7 @@
           ]
         }
       ],
+      "reference_answer": "No. The unlimited monthly membership is $2,500 per month, with terms.",
       "answer_contains": [
         [
           "$2,500"
@@ -3612,6 +3719,7 @@
           ]
         }
       ],
+      "reference_answer": "Our phone number is 111-111-1111, and yes, we are open on Sundays from 8:00am to 6:00pm.",
       "answer_contains": [
         [
           "111-111-1111"
@@ -3656,6 +3764,7 @@
           ]
         }
       ],
+      "reference_answer": "A training session is $100.00, and yes, we accept cards (as well as cash and check).",
       "answer_contains": [
         [
           "$100"
@@ -3710,6 +3819,7 @@
           ]
         }
       ],
+      "reference_answer": "Lunch is from 11:30 AM to 12:00 PM, the late pickup fee is $5.00 for every 30 minutes, and the maximum dog weight is 250 pounds.",
       "answer_contains": [
         [
           "11:30"
@@ -3756,6 +3866,7 @@
           ]
         }
       ],
+      "reference_answer": "A bath is $50.00, and boarding on a listed holiday costs an extra $25.00 per night.",
       "answer_contains": [
         [
           "$50"
@@ -3776,6 +3887,7 @@
       "question": "Can I tour the facility before signing up?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not say whether tours of the facility are available. The visitor guide describes where to enter and park but says nothing about tours.",
       "origin": {
         "file": "eval_questions_fresh.json",
         "id": "unknown-tour"
@@ -3788,6 +3900,7 @@
       "question": "Do you accept pet insurance?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not mention pet insurance. They list cash, check and card as payment methods.",
       "origin": {
         "file": "eval_questions_fresh.json",
         "id": "unknown-insurance"
@@ -3800,6 +3913,7 @@
       "question": "Is there a veterinarian on staff?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not say whether a veterinarian is on staff.",
       "origin": {
         "file": "eval_questions_fresh.json",
         "id": "unknown-vet"
@@ -3812,6 +3926,7 @@
       "question": "Do you have an indoor play area for rainy days?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not say whether there is an indoor play area for rainy days. They mention supervised play in the outdoor yard and quiet areas for rest.",
       "origin": {
         "file": "eval_questions_fresh.json",
         "id": "unknown-indoor"
@@ -3824,6 +3939,7 @@
       "question": "Do you offer a senior citizen discount?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not mention a senior citizen discount. The listed discounts are multi-dog, military, rescue and referral discounts, at 10%.",
       "origin": {
         "file": "eval_questions_fresh.json",
         "id": "unknown-senior"
@@ -3848,6 +3964,7 @@
           ]
         }
       ],
+      "reference_answer": "A bath is $50.00.",
       "answer_contains": [
         [
           "$50"
@@ -3866,6 +3983,7 @@
       "follow_up_to": "bath-price",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "A nail trim is $30.00.",
       "answer_contains": [
         [
           "$30"
@@ -3895,6 +4013,7 @@
           ]
         }
       ],
+      "reference_answer": "Boarding is $125.00 per night for a standard overnight stay.",
       "answer_contains": [
         [
           "$125"
@@ -3913,6 +4032,7 @@
       "follow_up_to": "boarding-night",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "On listed holidays there is a holiday surcharge of $25.00 per night, which makes a standard overnight $150.00 for one dog.",
       "answer_contains": [
         [
           "$25",
@@ -3932,6 +4052,7 @@
       "follow_up_to": "holiday-boarding-cancel",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "Holiday boarding requires cancellation at least 10 days ahead, and late cancellations are charged $10.00.",
       "answer_contains": [
         [
           "$10"
@@ -3950,6 +4071,7 @@
       "follow_up_to": "sick-pickup-time",
       "expected_abstain": false,
       "evidence": [],
+      "reference_answer": "A dog who has been ill may return after 2 days, or with a vet's note.",
       "answer_contains": [
         [
           "2 days",
@@ -3983,6 +4105,7 @@
           ]
         }
       ],
+      "reference_answer": "There are 12 free parking spaces in the lot behind the building, including 2 close to the side door for drop-off.",
       "answer_contains": [
         [
           "12"
@@ -4016,6 +4139,7 @@
           ]
         }
       ],
+      "reference_answer": "Dogs being dropped off or picked up use the side door. The front door is for visitors.",
       "answer_contains": [
         [
           "side door"
@@ -4049,6 +4173,7 @@
           ]
         }
       ],
+      "reference_answer": "At pick-up, wait at the lobby counter. Staff bring your dog out to you with the daily report.",
       "answer_contains": [
         [
           "lobby counter",
@@ -4083,6 +4208,7 @@
           ]
         }
       ],
+      "reference_answer": "Yes. A ramp leads up from the parking lot, and the lobby, the side door and the restroom have no steps.",
       "answer_contains": [
         [
           "ramp"
@@ -4116,6 +4242,7 @@
           ]
         }
       ],
+      "reference_answer": "Items left behind are kept at the front desk for 30 days. After that, unclaimed items are given to a local rescue.",
       "answer_contains": [
         [
           "30 days"
@@ -4149,6 +4276,7 @@
           ]
         }
       ],
+      "reference_answer": "Not without your written permission. Staff take photos for the daily report, but we never post a dog's photo on social media without written permission from the owner.",
       "answer_contains": [
         [
           "permission"
@@ -4193,6 +4321,7 @@
           ]
         }
       ],
+      "reference_answer": "At pick-up, wait at the lobby counter. There are 12 parking spaces in the lot behind the building.",
       "answer_contains": [
         [
           "lobby"
@@ -4229,6 +4358,7 @@
           ]
         }
       ],
+      "reference_answer": "Not really. Nap time is 12:00pm to 2:30pm, and the play yards are closed to visitors then so the dogs can rest, so please avoid dropping by at 1pm.",
       "answer_contains": [
         [
           "nap",
@@ -4253,6 +4383,7 @@
       "question": "Is there a dog park next door?",
       "expected_abstain": true,
       "evidence": [],
+      "reference_answer": "The documents do not mention a dog park next door.",
       "notes": "Not in the documents.",
       "origin": {
         "file": "eval_questions_pdf.json",
