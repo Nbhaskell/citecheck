@@ -10,3 +10,6 @@ runs/*
 # judge-call cache and local secrets
 .cache/
 .env
+
+# local assistant instructions (never tracked)
+CLAUDE.local.md
