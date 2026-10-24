@@ -1,0 +1,7 @@
+eval_questions.json: questions on both sides 59, identical (found and rank) 58; found: ours 59/59, published 59/59
+  differs: deposit-and-checkin              ours (found, rank)=(True, 3)  published repeat 1=(True, 2)  published repeats 2+=[(True, 2), (True, 2)]
+eval_questions_fresh.json: questions on both sides 46, identical (found and rank) 45; found: ours 45/46, published 45/46
+  differs: boarding-3-nights                ours (found, rank)=(True, 2)  published repeat 1=(True, 1)  published repeats 2+=[(True, 1), (True, 1)]
+eval_questions_pdf.json: questions on both sides 8, identical (found and rank) 8; found: ours 8/8, published 8/8
+
+total: 111/113 identical

@@ -1,0 +1,4149 @@
+{
+ "scores_version": 1,
+ "run_id": "2026-10-24_104125_repro-step1",
+ "golden_version": "rag-demo-1.0.0",
+ "config": {
+  "ks": [
+   1,
+   2,
+   4
+  ],
+  "require_doc": true
+ },
+ "summary": {
+  "overall": {
+   "asked": 131,
+   "errors": 1,
+   "retrieval": {
+    "n": 112,
+    "found": 111,
+    "found_at": {
+     "1": 85,
+     "2": 97,
+     "4": 110
+    },
+    "top_ranked": 85,
+    "mrr": 0.9516369047619048,
+    "mean_recall_at": {
+     "1": 0.8363095238095238,
+     "2": 0.9107142857142857,
+     "4": 0.9925595238095238
+    },
+    "mean_precision_at": {
+     "1": 0.9196428571428571,
+     "2": 0.5223214285714286,
+     "4": 0.3125
+    },
+    "mean_worst_rank": 1.4234234234234233,
+    "mean_chunks": 3.8839285714285716
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 55,
+    "errors": 1,
+    "retrieval": {
+     "n": 45,
+     "found": 44,
+     "found_at": {
+      "1": 36,
+      "2": 40,
+      "4": 43
+     },
+     "top_ranked": 36,
+     "mrr": 0.9462962962962963,
+     "mean_recall_at": {
+      "1": 0.8518518518518519,
+      "2": 0.9185185185185186,
+      "4": 0.9814814814814814
+     },
+     "mean_precision_at": {
+      "1": 0.9111111111111111,
+      "2": 0.5,
+      "4": 0.2833333333333333
+     },
+     "mean_worst_rank": 1.3636363636363635,
+     "mean_chunks": 3.933333333333333
+    }
+   },
+   "tuned": {
+    "asked": 67,
+    "errors": 0,
+    "retrieval": {
+     "n": 59,
+     "found": 59,
+     "found_at": {
+      "1": 44,
+      "2": 51,
+      "4": 59
+     },
+     "top_ranked": 44,
+     "mrr": 0.9717514124293786,
+     "mean_recall_at": {
+      "1": 0.844632768361582,
+      "2": 0.9265536723163842,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9491525423728814,
+      "2": 0.5508474576271186,
+      "4": 0.33615819209039544
+     },
+     "mean_worst_rank": 1.4406779661016949,
+     "mean_chunks": 3.847457627118644
+    }
+   },
+   "unlabeled": {
+    "asked": 9,
+    "errors": 0,
+    "retrieval": {
+     "n": 8,
+     "found": 8,
+     "found_at": {
+      "1": 5,
+      "2": 6,
+      "4": 8
+     },
+     "top_ranked": 5,
+     "mrr": 0.8333333333333334,
+     "mean_recall_at": {
+      "1": 0.6875,
+      "2": 0.75,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.75,
+      "2": 0.4375,
+      "4": 0.3020833333333333
+     },
+     "mean_worst_rank": 1.625,
+     "mean_chunks": 3.875
+    }
+   }
+  },
+  "by_category": {
+   "edge_case": {
+    "asked": 15,
+    "errors": 0,
+    "retrieval": {
+     "n": 15,
+     "found": 14,
+     "found_at": {
+      "1": 11,
+      "2": 12,
+      "4": 14
+     },
+     "top_ranked": 11,
+     "mrr": 0.9222222222222223,
+     "mean_recall_at": {
+      "1": 0.8,
+      "2": 0.8666666666666667,
+      "4": 0.9666666666666667
+     },
+     "mean_precision_at": {
+      "1": 0.8666666666666667,
+      "2": 0.4666666666666667,
+      "4": 0.2777777777777778
+     },
+     "mean_worst_rank": 1.3571428571428572,
+     "mean_chunks": 3.8666666666666667
+    }
+   },
+   "factual": {
+    "asked": 66,
+    "errors": 0,
+    "retrieval": {
+     "n": 66,
+     "found": 66,
+     "found_at": {
+      "1": 60,
+      "2": 63,
+      "4": 66
+     },
+     "top_ranked": 60,
+     "mrr": 0.9457070707070707,
+     "mean_recall_at": {
+      "1": 0.9090909090909091,
+      "2": 0.9545454545454546,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9090909090909091,
+      "2": 0.48484848484848486,
+      "4": 0.2676767676767677
+     },
+     "mean_worst_rank": 1.1515151515151516,
+     "mean_chunks": 3.878787878787879
+    }
+   },
+   "follow_up": {
+    "asked": 8,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    }
+   },
+   "multi_topic": {
+    "asked": 22,
+    "errors": 1,
+    "retrieval": {
+     "n": 21,
+     "found": 21,
+     "found_at": {
+      "1": 4,
+      "2": 12,
+      "4": 20
+     },
+     "top_ranked": 4,
+     "mrr": 0.9682539682539681,
+     "mean_recall_at": {
+      "1": 0.5555555555555556,
+      "2": 0.7619047619047619,
+      "4": 0.9841269841269842
+     },
+     "mean_precision_at": {
+      "1": 0.9523809523809523,
+      "2": 0.6904761904761905,
+      "4": 0.496031746031746
+     },
+     "mean_worst_rank": 2.5238095238095237,
+     "mean_chunks": 3.9523809523809526
+    }
+   },
+   "unanswerable": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    }
+   },
+   "yes_no": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 10,
+     "found": 10,
+     "found_at": {
+      "1": 10,
+      "2": 10,
+      "4": 10
+     },
+     "top_ranked": 10,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "2": 1.0,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "2": 0.5,
+      "4": 0.275
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 3.8
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 131,
+    "errors": 1,
+    "retrieval": {
+     "n": 112,
+     "found": 111,
+     "found_at": {
+      "1": 85,
+      "2": 97,
+      "4": 110
+     },
+     "top_ranked": 85,
+     "mrr": 0.9516369047619048,
+     "mean_recall_at": {
+      "1": 0.8363095238095238,
+      "2": 0.9107142857142857,
+      "4": 0.9925595238095238
+     },
+     "mean_precision_at": {
+      "1": 0.9196428571428571,
+      "2": 0.5223214285714286,
+      "4": 0.3125
+     },
+     "mean_worst_rank": 1.4234234234234233,
+     "mean_chunks": 3.8839285714285716
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "vaccines-required",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "flu-vaccine",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "rabies-valid",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "paper-photo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "grace-period",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "sick-wait",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "sick-symptom-window",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "neuter-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "unneutered-8mo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "min-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "medication-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "eval-cost",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "eval-bring",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "weight-limit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "incident-policy",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "reevaluation",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "full-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "half-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "five-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "second-dog-two-dogs-total",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "ten-day-package",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-monthly",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "unused-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "boarding-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "boarding-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "late-pickup-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "discounts",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "sunday-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "closed-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "evening-pickup",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "late-dropoff",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "boarding-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "address",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "staff-ratio",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "nap-time",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "bring-blanket",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "daily-report",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "cancel-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "late-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "boarding-deposit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "cancel-boarding-3-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "package-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "payment-methods",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "refund-timing",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "expired-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "full-day-and-cancel",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.6666666666666666
+    }
+   }
+  },
+  {
+   "item_id": "open-and-bath",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "eval-and-vaccines",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 5,
+    "fact_ranks": [
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "close-and-late-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "deposit-and-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.6666666666666666
+    }
+   }
+  },
+  {
+   "item_id": "nail-and-nap",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-and-expiry",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.6666666666666666
+    }
+   }
+  },
+  {
+   "item_id": "blanket-and-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "weight-and-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "three-topics",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 7,
+    "fact_ranks": [
+     2,
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "2": 0.6666666666666666,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.75
+    }
+   }
+  },
+  {
+   "item_id": "unknown-grooming",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-transport",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-webcam",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-cats",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-half-day",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-second-dog",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-bordetella",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "training-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "bounced-payment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "accident-cleanup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "fleas",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "heat-cycle",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "midday-pickup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "holidays-closed",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "memorial-day",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "snow-closure",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "how-to-reserve",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 4,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 0.25,
+    "recall_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "lunch-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "treats",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "collar-id",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "enrichment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "membership-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "membership-renewal",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "refund-window",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "meal-packing",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "report-contents",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "medication-how",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "first-visit",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "play-groups",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "removal-reasons",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "military-discount",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "package-20",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "dispute-charge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": "HTTP 504 from /api/ask: The model took too long to answer. Please try again, or ask a shorter or simpler question.",
+   "retrieval": null
+  },
+  {
+   "item_id": "boarding-3-nights",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "boarding-two-dogs",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "late-7pm",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     null
+    ],
+    "found": false,
+    "first_hit_rank": 1,
+    "worst_hit_rank": null,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 0.5
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "ten-day-savings",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 0.5,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "late-cancel-package",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.3333333333333333
+    }
+   }
+  },
+  {
+   "item_id": "expired-8-days",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "puppy-5-months",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "sunday-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "phone-and-sunday",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "training-and-cards",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "lunch-late-weight",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 6,
+    "fact_ranks": [
+     6,
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 6,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "2": 0.3333333333333333,
+     "4": 0.6666666666666666
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "bath-and-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.5
+    }
+   }
+  },
+  {
+   "item_id": "unknown-tour",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-insurance",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-vet",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-indoor",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "unknown-senior",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "bath-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "followup-nail",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "boarding-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-late-holiday-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "followup-sick-return",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null
+  },
+  {
+   "item_id": "pdf-parking-spaces",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-drop-off-door",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-lobby-wait",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-ramp",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-lost-items",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-social-media",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 0.6666666666666666
+    }
+   }
+  },
+  {
+   "item_id": "pdf-nap-time-across-documents",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "2": false,
+     "4": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "2": 0.0,
+     "4": 0.25
+    }
+   }
+  },
+  {
+   "item_id": "pdf-unanswerable",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null
+  }
+ ]
+}

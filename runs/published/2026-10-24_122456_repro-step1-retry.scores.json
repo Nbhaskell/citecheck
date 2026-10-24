@@ -1,0 +1,164 @@
+{
+ "scores_version": 1,
+ "run_id": "2026-10-24_122456_repro-step1-retry",
+ "golden_version": "rag-demo-1.0.0",
+ "config": {
+  "ks": [
+   1,
+   2,
+   4
+  ],
+  "require_doc": true
+ },
+ "summary": {
+  "overall": {
+   "asked": 1,
+   "errors": 0,
+   "retrieval": {
+    "n": 1,
+    "found": 1,
+    "found_at": {
+     "1": 1,
+     "2": 1,
+     "4": 1
+    },
+    "top_ranked": 1,
+    "mrr": 1.0,
+    "mean_recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "mean_precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    },
+    "mean_worst_rank": 1.0,
+    "mean_chunks": 4.0
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 1,
+    "errors": 0,
+    "retrieval": {
+     "n": 1,
+     "found": 1,
+     "found_at": {
+      "1": 1,
+      "2": 1,
+      "4": 1
+     },
+     "top_ranked": 1,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "2": 1.0,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "2": 0.5,
+      "4": 0.25
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 4.0
+    }
+   }
+  },
+  "by_category": {
+   "multi_topic": {
+    "asked": 1,
+    "errors": 0,
+    "retrieval": {
+     "n": 1,
+     "found": 1,
+     "found_at": {
+      "1": 1,
+      "2": 1,
+      "4": 1
+     },
+     "top_ranked": 1,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "2": 1.0,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "2": 0.5,
+      "4": 0.25
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 4.0
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 1,
+    "errors": 0,
+    "retrieval": {
+     "n": 1,
+     "found": 1,
+     "found_at": {
+      "1": 1,
+      "2": 1,
+      "4": 1
+     },
+     "top_ranked": 1,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "2": 1.0,
+      "4": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "2": 0.5,
+      "4": 0.25
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 4.0
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "dispute-charge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "2": 1.0,
+     "4": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "2": true,
+     "4": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "2": 0.5,
+     "4": 0.25
+    }
+   }
+  }
+ ]
+}

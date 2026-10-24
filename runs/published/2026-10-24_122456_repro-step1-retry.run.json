@@ -1,0 +1,116 @@
+{
+ "run_version": 1,
+ "run_id": "2026-10-24_122456_repro-step1-retry",
+ "label": "repro-step1-retry",
+ "created": "2026-10-24T12:24:56",
+ "citecheck": {
+  "version": "0.0.1",
+  "commit": "4ac1fdb5af6945ae20bffa30919395ce1bc9d242",
+  "dirty": true
+ },
+ "python": "3.13.16",
+ "golden": {
+  "path": "golden/rag_demo_v1.json",
+  "golden_version": "rag-demo-1.0.0",
+  "hash": "c09b699b509f8f24a4c52d59210bd1166b3824c031b0d1f3154caa468bf48e6c"
+ },
+ "target": {
+  "name": "rag-project",
+  "describe": {
+   "url": "http://127.0.0.1:8000",
+   "server": {
+    "chat_model": "qwen3:8b",
+    "embed_model": "embeddinggemma",
+    "thinking": true,
+    "split_search": true,
+    "files": 7,
+    "chunks": 50,
+    "documents": [
+     "01-vaccination-and-health-requirements.md",
+     "02-temperament-and-admission-policy.md",
+     "03-pricing-and-packages.md",
+     "04-hours-and-schedule.md",
+     "05-daily-routine.md",
+     "06-cancellation-payment-and-refund-policy.md",
+     "07-visitor-guide.pdf"
+    ]
+   },
+   "declared": {
+    "RAG_TOP_K": "4",
+    "RAG_SPLIT": "1"
+   }
+  }
+ },
+ "config": {
+  "k": null,
+  "repeats": 1,
+  "ids": [
+   "dispute-charge"
+  ],
+  "splits": null
+ },
+ "records": [
+  {
+   "item_id": "dispute-charge",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Yes, you should contact Nathan at 111-111-1111 or email@address.com within 5 days of identifying the issue with the charge.",
+    "retrieved": [
+     {
+      "doc_id": "06-cancellation-payment-and-refund-policy.md",
+      "text": "Questions about a charge should go to Nathan at 111-111-1111 or email@address.com within 5 days.",
+      "rank": 1,
+      "score": 0.489,
+      "section": "Disputes",
+      "page": null
+     },
+     {
+      "doc_id": "02-temperament-and-admission-policy.md",
+      "text": "Contact Nathan at 111-111-1111 or email@address.com.",
+      "rank": 2,
+      "score": 0.64,
+      "section": "Questions",
+      "page": null
+     },
+     {
+      "doc_id": "06-cancellation-payment-and-refund-policy.md",
+      "text": "- Refund requests must be made within 5 days of the charge.\n- Refunds are issued to the original payment method within 5 business days.\n- If we close because of weather or an emergency, we give a refund.\n- If a dog is sent home early for illness or an incident, we refund the unused portion.",
+      "rank": 3,
+      "score": 0.64,
+      "section": "Refunds",
+      "page": null
+     },
+     {
+      "doc_id": "05-daily-routine.md",
+      "text": "Contact Nathan at 111-111-1111 or email@address.com.",
+      "rank": 4,
+      "score": 0.643,
+      "section": "Questions",
+      "page": null
+     }
+    ],
+    "citations": [
+     {
+      "doc_id": "06-cancellation-payment-and-refund-policy.md",
+      "marker": null,
+      "text": null,
+      "page": null
+     },
+     {
+      "doc_id": "02-temperament-and-admission-policy.md",
+      "marker": null,
+      "text": null,
+      "page": null
+     }
+    ],
+    "abstained": null,
+    "latency_s": 48.372,
+    "error": null,
+    "raw": {
+     "server_seconds": 48.4
+    }
+   }
+  }
+ ]
+}
