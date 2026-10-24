@@ -3,7 +3,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import golden, runner, scoring
+from . import calibration, calibration_sheet, golden, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -103,6 +103,46 @@ def cmd_score(args) -> int:
     return 0
 
 
+def cmd_sheet(args) -> int:
+    run = json.loads(Path(args.run).read_text(encoding="utf-8"))
+    data = golden.load_json(args.golden or run["golden"]["path"])
+    try:
+        scoring.check_golden(run, data)
+    except scoring.GoldenMismatch as e:
+        print(e)
+        return 2
+    scores_list = [json.loads(Path(p).read_text(encoding="utf-8")) for p in args.scores]
+    if any(s["run_id"] != run["run_id"] for s in scores_list):
+        print("every --scores file must come from this run")
+        return 2
+    items = {i["id"]: i for i in data["items"]}
+    sample = calibration.select_sample(scores_list, items, n=args.n, seed=args.seed)
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(calibration_sheet.render(calibration.sheet_data(run, data, sample)), encoding="utf-8", newline="\n")
+    population = sample["population"]
+    print(f"wrote {out}: {len(sample['picks'])} answers "
+          f"({sum(s == calibration.DISAGREE for s in sample['strata'].values())} where the judge settings disagreed; "
+          f"{population.get(calibration.DISAGREE, 0)} such answers in the run, {population.get(calibration.AGREE, 0)} where they agreed)")
+    print("open it in a browser, label every answer, then press Download labels")
+    return 0
+
+
+def cmd_calibrate(args) -> int:
+    try:
+        labels = calibration.load_labels(args.labels)
+        scores_list = [json.loads(Path(p).read_text(encoding="utf-8")) for p in args.scores]
+        results = [calibration.agreement(labels, s) for s in scores_list]
+    except calibration.LabelsError as e:
+        print(f"cannot compare: {e}")
+        return 2
+    print(calibration.format_agreement(labels, results))
+    if args.save:
+        Path(args.save).write_text(json.dumps(results, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+        print(f"\nsaved {args.save}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="citecheck", description="Score a RAG system's retrieval, answers and citations.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -148,6 +188,23 @@ def main(argv=None) -> int:
     p.add_argument("--cache-dir", default=".cache/judge", help="where judge replies are cached (default %(default)s)")
     p.add_argument("--no-cache", action="store_true", help="ask the judge model every time and store nothing")
     p.set_defaults(func=cmd_score)
+
+    p = sub.add_parser("sheet", help="make the HTML sheet for hand-labelling a sample of answers")
+    p.add_argument("run", help="a *.run.json file")
+    p.add_argument("--scores", action="append", required=True, metavar="SCORES_FILE",
+                   help="scores files from different judge settings; answers they disagree on are sampled first (repeatable)")
+    p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
+    p.add_argument("--n", type=int, default=36, help="answers to label (default %(default)s)")
+    p.add_argument("--seed", type=int, default=0, help="sampling seed (default %(default)s)")
+    p.add_argument("--out", required=True, help="where to write the sheet, e.g. labels/sheet.html")
+    p.set_defaults(func=cmd_sheet)
+
+    p = sub.add_parser("calibrate", help="how often the judge agrees with hand labels")
+    p.add_argument("labels", help="the labels file downloaded from the sheet")
+    p.add_argument("--scores", action="append", required=True, metavar="SCORES_FILE",
+                   help="a judged scores file to compare with the labels (repeatable)")
+    p.add_argument("--save", help="also save the agreement numbers as JSON")
+    p.set_defaults(func=cmd_calibrate)
 
     args = parser.parse_args(argv)
     return args.func(args)
