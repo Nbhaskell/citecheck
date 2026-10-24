@@ -6,6 +6,7 @@ from pathlib import Path
 from . import golden, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
+from .judge import DEFAULT_MODEL, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
 
 
 def cmd_validate(args) -> int:
@@ -83,8 +84,20 @@ def cmd_score(args) -> int:
             return 2
         print(f"warning: {e}")
     ks = [int(k) for k in args.ks.split(",")]
-    scores = scoring.score_run(run, data, ks=ks, require_doc=not args.any_document)
-    out = scoring.save_scores(scores, run_path)
+    judge = None
+    if args.judge:
+        judge = Judge(OllamaClient(url=args.ollama_url, timeout=args.judge_timeout, think=args.judge_think), model=args.judge_model,
+                      cache=NoCache() if args.no_cache else JudgeCache(args.cache_dir))
+        try:
+            judge.config()  # fails now, not halfway through, when the model is missing or Ollama is down
+        except JudgeError as e:
+            print(f"cannot use the judge: {e}")
+            return 1
+    scores = scoring.score_run(run, data, ks=ks, require_doc=not args.any_document, judge=judge,
+                               progress=lambda message: print(message, flush=True))
+    if judge is not None:
+        print(f"judge calls: {judge.calls} asked the model, {judge.cache_hits} from the cache")
+    out = scoring.save_scores(scores, run_path, args.out)
     print(scoring.format_report(scores))
     print(f"\nsaved {out}")
     return 0
@@ -123,6 +136,17 @@ def main(argv=None) -> int:
     p.add_argument("--any-document", action="store_true",
                    help="count a chunk as a hit if it contains the anchor phrase, whatever document it is from")
     p.add_argument("--ignore-golden-mismatch", action="store_true")
+    p.add_argument("--out", help="where to save the scores (default: next to the run file)")
+    p.add_argument("--judge", action="store_true",
+                   help="also judge abstention, faithfulness and correctness with a local model (needs Ollama)")
+    p.add_argument("--judge-model", default=DEFAULT_MODEL, help="Ollama model that judges (default %(default)s)")
+    p.add_argument("--judge-think", action="store_true",
+                   help="let the judge model reason before it answers (slower; changes the verdicts)")
+    p.add_argument("--ollama-url", default="http://127.0.0.1:11434", help="Ollama base URL (default %(default)s)")
+    p.add_argument("--judge-timeout", type=float, default=300.0,
+                   help="seconds to wait for one verdict (default %(default)s)")
+    p.add_argument("--cache-dir", default=".cache/judge", help="where judge replies are cached (default %(default)s)")
+    p.add_argument("--no-cache", action="store_true", help="ask the judge model every time and store nothing")
     p.set_defaults(func=cmd_score)
 
     args = parser.parse_args(argv)
