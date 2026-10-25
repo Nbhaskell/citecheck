@@ -1,14 +1,16 @@
 """A small client for Ollama's chat API, used only by the judge.
 
 Plain urllib, like the target adapter, so the judge adds no dependency. Requests ask for a JSON reply that matches a
-schema (Ollama's structured output), with thinking off, temperature 0 and a fixed seed and context size, so the same
-prompt gives the same verdict on the same model.
+schema (Ollama's structured output), with temperature 0 and a fixed seed and context size, so the same prompt gives the
+same verdict on the same model. The model reasons before answering by default (DEFAULT_THINK): with it off, the judge
+flagged most good answers as unsupported (see the README's calibration section).
 """
 import json
 import urllib.error
 import urllib.request
 
 DEFAULT_URL = "http://127.0.0.1:11434"
+DEFAULT_THINK = True  # the model reasons before answering; changes verdicts, so it is saved with every score
 NUM_CTX = 8192  # the longest judge prompt (a question, 4-6 passages and an answer) is well under this
 
 
@@ -17,7 +19,7 @@ class JudgeError(Exception):
 
 
 class OllamaClient:
-    def __init__(self, url: str = DEFAULT_URL, timeout: float = 300.0, seed: int = 0, think: bool = False):
+    def __init__(self, url: str = DEFAULT_URL, timeout: float = 600.0, seed: int = 0, think: bool = DEFAULT_THINK):
         self.url = url.rstrip("/")
         self.timeout = timeout
         self.seed = seed

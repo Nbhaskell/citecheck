@@ -3,10 +3,10 @@ import json
 import sys
 from pathlib import Path
 
-from . import calibration, calibration_sheet, golden, runner, scoring
+from . import calibration, calibration_sheet, golden, known_bad, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
-from .judge import DEFAULT_MODEL, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
+from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
 
 
 def cmd_validate(args) -> int:
@@ -86,12 +86,8 @@ def cmd_score(args) -> int:
     ks = [int(k) for k in args.ks.split(",")]
     judge = None
     if args.judge:
-        judge = Judge(OllamaClient(url=args.ollama_url, timeout=args.judge_timeout, think=args.judge_think), model=args.judge_model,
-                      cache=NoCache() if args.no_cache else JudgeCache(args.cache_dir))
-        try:
-            judge.config()  # fails now, not halfway through, when the model is missing or Ollama is down
-        except JudgeError as e:
-            print(f"cannot use the judge: {e}")
+        judge = build_judge(args)
+        if judge is None:
             return 1
     scores = scoring.score_run(run, data, ks=ks, require_doc=not args.any_document, judge=judge,
                                progress=lambda message: print(message, flush=True))
@@ -143,6 +139,59 @@ def cmd_calibrate(args) -> int:
     return 0
 
 
+def add_judge_options(p, with_switch: bool = False) -> None:
+    if with_switch:
+        p.add_argument("--judge", action="store_true",
+                       help="also judge abstention, faithfulness and correctness with a local model (needs Ollama)")
+    p.add_argument("--judge-model", default=DEFAULT_MODEL, help="Ollama model that judges (default %(default)s)")
+    p.add_argument("--judge-think", action=argparse.BooleanOptionalAction, default=DEFAULT_THINK,
+                   help="let the judge model reason before it answers (default: %(default)s)")
+    p.add_argument("--ollama-url", default="http://127.0.0.1:11434", help="Ollama base URL (default %(default)s)")
+    p.add_argument("--judge-timeout", type=float, default=600.0,
+                   help="seconds to wait for one verdict (default %(default)s)")
+    p.add_argument("--cache-dir", default=".cache/judge", help="where judge replies are cached (default %(default)s)")
+    p.add_argument("--no-cache", action="store_true", help="ask the judge model every time and store nothing")
+
+
+def build_judge(args):
+    """The judge the options describe, or None (after saying why) when Ollama or the model is not available."""
+    judge = Judge(OllamaClient(url=args.ollama_url, timeout=args.judge_timeout, think=args.judge_think),
+                  model=args.judge_model, cache=NoCache() if args.no_cache else JudgeCache(args.cache_dir))
+    try:
+        judge.config()  # fails now, not halfway through, when the model is missing or Ollama is down
+    except JudgeError as e:
+        print(f"cannot use the judge: {e}")
+        return None
+    return judge
+
+
+def cmd_known_bad(args) -> int:
+    run = json.loads(Path(args.run).read_text(encoding="utf-8"))
+    data = golden.load_json(args.golden or run["golden"]["path"])
+    try:
+        scoring.check_golden(run, data)
+        labels = calibration.load_labels(args.labels)
+    except (scoring.GoldenMismatch, calibration.LabelsError) as e:
+        print(e)
+        return 2
+    judge = build_judge(args)
+    if judge is None:
+        return 1
+    candidates, responses, histories = known_bad.candidates_from(run, labels)
+    cases = known_bad.build_cases(candidates)
+    items = {i["id"]: i for i in data["items"]}
+    results = known_bad.judge_cases(judge, items, responses, histories, cases,
+                                    progress=lambda message: print(message, flush=True))
+    summary = known_bad.summarize(results)
+    print(f"\njudge calls: {judge.calls} asked the model, {judge.cache_hits} from the cache\n")
+    print(known_bad.format_report(summary, judge.config()))
+    if args.out:
+        Path(args.out).write_text(json.dumps({"judge": judge.config(), "summary": summary, "cases": results}, indent=1,
+                                             ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+        print(f"\nsaved {args.out}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="citecheck", description="Score a RAG system's retrieval, answers and citations.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -177,16 +226,7 @@ def main(argv=None) -> int:
                    help="count a chunk as a hit if it contains the anchor phrase, whatever document it is from")
     p.add_argument("--ignore-golden-mismatch", action="store_true")
     p.add_argument("--out", help="where to save the scores (default: next to the run file)")
-    p.add_argument("--judge", action="store_true",
-                   help="also judge abstention, faithfulness and correctness with a local model (needs Ollama)")
-    p.add_argument("--judge-model", default=DEFAULT_MODEL, help="Ollama model that judges (default %(default)s)")
-    p.add_argument("--judge-think", action="store_true",
-                   help="let the judge model reason before it answers (slower; changes the verdicts)")
-    p.add_argument("--ollama-url", default="http://127.0.0.1:11434", help="Ollama base URL (default %(default)s)")
-    p.add_argument("--judge-timeout", type=float, default=300.0,
-                   help="seconds to wait for one verdict (default %(default)s)")
-    p.add_argument("--cache-dir", default=".cache/judge", help="where judge replies are cached (default %(default)s)")
-    p.add_argument("--no-cache", action="store_true", help="ask the judge model every time and store nothing")
+    add_judge_options(p, with_switch=True)
     p.set_defaults(func=cmd_score)
 
     p = sub.add_parser("sheet", help="make the HTML sheet for hand-labelling a sample of answers")
@@ -205,6 +245,14 @@ def main(argv=None) -> int:
                    help="a judged scores file to compare with the labels (repeatable)")
     p.add_argument("--save", help="also save the agreement numbers as JSON")
     p.set_defaults(func=cmd_calibrate)
+
+    p = sub.add_parser("known-bad", help="check that the judge flags answers that were damaged on purpose")
+    p.add_argument("run", help="a *.run.json file")
+    p.add_argument("--labels", required=True, help="hand labels; answers labelled supported and correct are damaged")
+    p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
+    p.add_argument("--out", help="also save every case and verdict as JSON")
+    add_judge_options(p)
+    p.set_defaults(func=cmd_known_bad)
 
     args = parser.parse_args(argv)
     return args.func(args)

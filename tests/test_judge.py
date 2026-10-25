@@ -249,7 +249,7 @@ def test_answers_that_errored_are_not_judged():
 
 # --- client ------------------------------------------------------------------------------------------------------
 
-def test_the_client_asks_for_schema_shaped_json_with_thinking_off(monkeypatch):
+def test_the_client_asks_for_schema_shaped_json(monkeypatch):
     sent = {}
 
     def fake_request(self, method, path, body=None):
@@ -257,12 +257,17 @@ def test_the_client_asks_for_schema_shaped_json_with_thinking_off(monkeypatch):
         return {"message": {"content": '{"verdict": "answered", "reasoning": "r"}'}}
 
     monkeypatch.setattr(OllamaClient, "_request", fake_request)
-    reply = OllamaClient(seed=7).chat("qwen3:8b", [{"role": "user", "content": "x"}], prompts.SCHEMAS["abstention"])
+    reply = OllamaClient(seed=7, think=False).chat("qwen3:8b", [{"role": "user", "content": "x"}], prompts.SCHEMAS["abstention"])
     assert json.loads(reply)["verdict"] == "answered"
     body = sent["body"]
     assert sent["path"] == "/api/chat" and body["stream"] is False and body["think"] is False
     assert body["format"] == prompts.SCHEMAS["abstention"]
     assert body["options"]["temperature"] == 0 and body["options"]["seed"] == 7
+
+
+def test_the_judge_model_reasons_before_answering_unless_told_not_to():
+    assert OllamaClient().think is True and OllamaClient(think=False).think is False
+    assert OllamaClient().options()["think"] is True
 
 
 def test_the_client_finds_a_models_digest_and_reports_a_missing_model(monkeypatch):
