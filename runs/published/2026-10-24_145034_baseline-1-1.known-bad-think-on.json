@@ -1,0 +1,1758 @@
+{
+ "judge": {
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "prompt_version": "1",
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 8192,
+  "think": true
+ },
+ "summary": {
+  "control": {
+   "n": 30,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 30,
+     "flagged": 6,
+     "flagged_for_certain": 0
+    },
+    "correctness": {
+     "n": 30,
+     "flagged": 2,
+     "flagged_for_certain": 0
+    }
+   }
+  },
+  "number_changed": {
+   "n": 26,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 25,
+     "flagged": 24,
+     "flagged_for_certain": 12
+    },
+    "correctness": {
+     "n": 26,
+     "flagged": 23,
+     "flagged_for_certain": 16
+    }
+   }
+  },
+  "yes_no_flipped": {
+   "n": 9,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 9,
+     "flagged": 4,
+     "flagged_for_certain": 1
+    },
+    "correctness": {
+     "n": 9,
+     "flagged": 3,
+     "flagged_for_certain": 3
+    }
+   }
+  },
+  "claim_added": {
+   "n": 30,
+   "judge_errors": 1,
+   "dimensions": {
+    "faithfulness": {
+     "n": 29,
+     "flagged": 29,
+     "flagged_for_certain": 1
+    }
+   }
+  },
+  "wrong_answer": {
+   "n": 30,
+   "judge_errors": 1,
+   "dimensions": {
+    "faithfulness": {
+     "n": 3,
+     "flagged": 2,
+     "flagged_for_certain": 1
+    },
+    "correctness": {
+     "n": 29,
+     "flagged": 28,
+     "flagged_for_certain": 28
+    }
+   }
+  },
+  "declined": {
+   "n": 30,
+   "judge_errors": 0,
+   "dimensions": {
+    "abstention": {
+     "n": 30,
+     "flagged": 30,
+     "flagged_for_certain": 30
+    },
+    "correctness": {
+     "n": 30,
+     "flagged": 30,
+     "flagged_for_certain": 30
+    }
+   }
+  }
+ },
+ "cases": [
+  {
+   "item_id": "accident-cleanup",
+   "kind": "control",
+   "answer": "Yes, you will be charged a cleanup fee of $10.00 if your dog has an accident indoors. This fee applies to accidents or illness occurring during the stay.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "address",
+   "kind": "control",
+   "answer": "The daycare is located at 123 puppy drive, Oakland ME. Look for the green awning, with the front door for visitors and the side door for drop-off or pickup.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "boarding-night",
+   "kind": "control",
+   "answer": "The standard overnight boarding rate is $125.00 per night for one dog. If a second dog shares the room, the cost is $50.00 per night. Additionally, a holiday surcharge of $25.00 per night applies on listed holidays. Check-in is between 8:00am and 9:00am, and check-out is by 6:00pm.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "bring-blanket",
+   "kind": "control",
+   "answer": "Yes, the context states that \"A leash, toys, or a blanket: allowed,\" which means bringing a toy or blanket is permitted for your dog. The owner is responsible for bringing these items, and the dog can have access to them.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "eval-length",
+   "kind": "control",
+   "answer": "The temperament evaluation takes about 1 hour.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "kind": "control",
+   "answer": "The Canine influenza vaccine is only recommended and not required.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-bordetella",
+   "kind": "control",
+   "answer": "Bordetella (kennel cough) must be given within the last 12 months. If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "kind": "control",
+   "answer": "On a holiday, the standard overnight boarding rate of $125.00 per night includes a **holiday surcharge of $25.00 per night** (totaling $150.00 per night). Boarding on listed holidays **requires reservations 30 days prior** to arrival. Check-in remains between 8:00am and 9:00am, and check-out is by 6:00pm. The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day).",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-second-dog",
+   "kind": "control",
+   "answer": "The cost for a second dog sharing the room is $50.00 per night. This applies in addition to the standard overnight stay rate of $125.00 per night. There is no mention of exceptions or conditions affecting this rate in the context.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "kind": "control",
+   "answer": "The cost for a half day is $50.00 for up to 4 hours. A dog who has been ill may return after 2 days or with a vet's note.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "kind": "control",
+   "answer": "To cancel holiday boarding, you must provide cancellation at least **10 days ahead**. Late cancellations (less than 10 days before arrival) are charged $10.00.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "kind": "control",
+   "answer": "To book boarding over a holiday, you must reserve **at least 30 days prior to boarding**, as stated in the \"Holidays\" section under Hours and Schedule. This applies to holiday boarding and daycare.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "control",
+   "answer": "Yes, there is an extra charge for boarding on holidays. The context states a **Holiday surcharge of $25.00 per night** applies on listed holidays. The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). Note that holiday boarding may also require reservations 30 days in advance.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "how-to-reserve",
+   "kind": "control",
+   "answer": "To make a reservation, you must reserve by phone, website, or email. Daycare and Boarding reservations are required, with Boarding needing at least 3 days' advance notice. No other conditions or exceptions are specified for the reservation process itself.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "incident-policy",
+   "kind": "control",
+   "answer": "After three incidents within 5 days, the dog is suspended for 1 day, then re-evaluated or removed. Staff have the final decision.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "control",
+   "answer": "No charge is not applied because canceling two hours before drop-off is late cancellation. You are charged a fee of $50.00, and a package day is used. Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "control",
+   "answer": "Yes, staff can give your dog medication if the owner provides it in its original container with written instructions. The cost is $10 per dose. Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "membership-cancel",
+   "kind": "control",
+   "answer": "To cancel a monthly membership and avoid the next charge, you must cancel at least **5 days before the renewal date** (the 1st of each month). This is specified in the \"Packages and Memberships\" policy. There are no exceptions or additional conditions mentioned for this rule.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "control",
+   "answer": "Yes, Barks n Woofs provides a 10% discount for military customers.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "kind": "control",
+   "answer": "At pick-up, wait at the lobby counter. There are 12 parking spaces in total, including 2 close to the side door for drop-off.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "play-groups",
+   "kind": "control",
+   "answer": "Play groups are formed by grouping dogs based on **size, age, energy level, play style, and temperament**. Each group is supervised by a staff member at a ratio of **1 staff member for every 5 dogs**. New dogs must complete a temperament evaluation before their first full day, which may result in conditions like small-group placement. The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "control",
+   "answer": "Yes, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "kind": "control",
+   "answer": "The temperament evaluation takes about 1 hour. The context does not specify how many dogs each staff member supervises during the evaluation, but it mentions that in play groups, staff supervise groups at a ratio of 1 staff member for every 5 dogs. This ratio applies to play groups, not the temperament evaluation itself.",
+   "verdicts": {
+    "abstention": "partly_answered",
+    "faithfulness": "supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "reevaluation",
+   "kind": "control",
+   "answer": "The context states that a dog who was declined may be re-evaluated after **30 days or 1 month**. There are no exceptions or additional conditions provided for this specific rule. \n\nYes, a declined dog can be re-evaluated after 30 days.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "removal-reasons",
+   "kind": "control",
+   "answer": "Your dog could be removed from daycare for the following reasons:  \n1. **Aggression** toward people or dogs, including biting or attempted biting.  \n2. **Resource guarding** that cannot be managed (food, toys, or people).  \n3. **Extreme fear or anxiety** that does not improve after 10 visits.  \n4. **Excessive barking, destructiveness, or inability to settle** despite staff help.  \n5. **Illness** (e.g., vomiting, diarrhea, coughing, sneezing, eye/nose discharge, fever, or open wounds within 48 hours) or **lack of current vaccinations**.  \n6. **Repeated incidents** (3 incidents within 5 days), leading to a 1-day suspension and potential removal.  \n7. **Fleas or ticks** (the dog will be sent home, and the owner notified).  \nStaff have the final decision based on safety considerations.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "report-contents",
+   "kind": "control",
+   "answer": "The daily report includes notes on meals, bathroom breaks, and behavior. Photos are shared daily but are not part of the report itself.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "control",
+   "answer": "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour. The dog will be separated until the owner arrives.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "kind": "control",
+   "answer": "Yes, if your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay. This is explicitly stated in the Refunds policy.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "three-topics",
+   "kind": "control",
+   "answer": "The full-day price is $100.00 for over 4 hours. The boarding deposit is $25.00. Each staff member supervises 5 dogs.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "training-and-cards",
+   "kind": "control",
+   "answer": "The training session costs $100.00. Yes, we accept cards.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "accident-cleanup",
+   "kind": "number_changed",
+   "answer": "Yes, you will be charged a cleanup fee of $27.00 if your dog has an accident indoors. This fee applies to accidents or illness occurring during the stay.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "accident-cleanup",
+   "kind": "yes_no_flipped",
+   "answer": "No, you will be charged a cleanup fee of $10.00 if your dog has an accident indoors. This fee applies to accidents or illness occurring during the stay.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "accident-cleanup",
+   "kind": "claim_added",
+   "answer": "Yes, you will be charged a cleanup fee of $10.00 if your dog has an accident indoors. This fee applies to accidents or illness occurring during the stay. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "accident-cleanup",
+   "kind": "wrong_answer",
+   "answer": "The daycare is located at 123 puppy drive, Oakland ME. Look for the green awning, with the front door for visitors and the side door for drop-off or pickup.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "accident-cleanup",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "address",
+   "kind": "number_changed",
+   "answer": "The daycare is located at 140 puppy drive, Oakland ME. Look for the green awning, with the front door for visitors and the side door for drop-off or pickup.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "address",
+   "kind": "claim_added",
+   "answer": "The daycare is located at 123 puppy drive, Oakland ME. Look for the green awning, with the front door for visitors and the side door for drop-off or pickup. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "address",
+   "kind": "wrong_answer",
+   "answer": "The standard overnight boarding rate is $125.00 per night for one dog. If a second dog shares the room, the cost is $50.00 per night. Additionally, a holiday surcharge of $25.00 per night applies on listed holidays. Check-in is between 8:00am and 9:00am, and check-out is by 6:00pm.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "address",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "boarding-night",
+   "kind": "number_changed",
+   "answer": "The standard overnight boarding rate is $142.00 per night for one dog. If a second dog shares the room, the cost is $50.00 per night. Additionally, a holiday surcharge of $25.00 per night applies on listed holidays. Check-in is between 8:00am and 9:00am, and check-out is by 6:00pm.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "boarding-night",
+   "kind": "claim_added",
+   "answer": "The standard overnight boarding rate is $125.00 per night for one dog. If a second dog shares the room, the cost is $50.00 per night. Additionally, a holiday surcharge of $25.00 per night applies on listed holidays. Check-in is between 8:00am and 9:00am, and check-out is by 6:00pm. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "boarding-night",
+   "kind": "wrong_answer",
+   "answer": "Yes, the context states that \"A leash, toys, or a blanket: allowed,\" which means bringing a toy or blanket is permitted for your dog. The owner is responsible for bringing these items, and the dog can have access to them.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "boarding-night",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "bring-blanket",
+   "kind": "yes_no_flipped",
+   "answer": "No, the context states that \"A leash, toys, or a blanket: allowed,\" which means bringing a toy or blanket is permitted for your dog. The owner is responsible for bringing these items, and the dog can have access to them.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "bring-blanket",
+   "kind": "claim_added",
+   "answer": "Yes, the context states that \"A leash, toys, or a blanket: allowed,\" which means bringing a toy or blanket is permitted for your dog. The owner is responsible for bringing these items, and the dog can have access to them. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "bring-blanket",
+   "kind": "wrong_answer",
+   "answer": "The temperament evaluation takes about 1 hour.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "bring-blanket",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "eval-length",
+   "kind": "number_changed",
+   "answer": "The temperament evaluation takes about 18 hour.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "eval-length",
+   "kind": "claim_added",
+   "answer": "The temperament evaluation takes about 1 hour. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "eval-length",
+   "kind": "wrong_answer",
+   "answer": "The Canine influenza vaccine is only recommended and not required.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "eval-length",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "kind": "claim_added",
+   "answer": "The Canine influenza vaccine is only recommended and not required. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "kind": "wrong_answer",
+   "answer": "Bordetella (kennel cough) must be given within the last 12 months. If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-bordetella",
+   "kind": "number_changed",
+   "answer": "Bordetella (kennel cough) must be given within the last 29 months. If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-bordetella",
+   "kind": "claim_added",
+   "answer": "Bordetella (kennel cough) must be given within the last 12 months. If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-bordetella",
+   "kind": "wrong_answer",
+   "answer": "On a holiday, the standard overnight boarding rate of $125.00 per night includes a **holiday surcharge of $25.00 per night** (totaling $150.00 per night). Boarding on listed holidays **requires reservations 30 days prior** to arrival. Check-in remains between 8:00am and 9:00am, and check-out is by 6:00pm. The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day).",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-bordetella",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "kind": "number_changed",
+   "answer": "On a holiday, the standard overnight boarding rate of $142.00 per night includes a **holiday surcharge of $25.00 per night** (totaling $150.00 per night). Boarding on listed holidays **requires reservations 30 days prior** to arrival. Check-in remains between 8:00am and 9:00am, and check-out is by 6:00pm. The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day).",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "kind": "claim_added",
+   "answer": "On a holiday, the standard overnight boarding rate of $125.00 per night includes a **holiday surcharge of $25.00 per night** (totaling $150.00 per night). Boarding on listed holidays **requires reservations 30 days prior** to arrival. Check-in remains between 8:00am and 9:00am, and check-out is by 6:00pm. The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "kind": "wrong_answer",
+   "answer": "The cost for a second dog sharing the room is $50.00 per night. This applies in addition to the standard overnight stay rate of $125.00 per night. There is no mention of exceptions or conditions affecting this rate in the context.",
+   "verdicts": {
+    "abstention": "partly_answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-second-dog",
+   "kind": "number_changed",
+   "answer": "The cost for a second dog sharing the room is $67.00 per night. This applies in addition to the standard overnight stay rate of $125.00 per night. There is no mention of exceptions or conditions affecting this rate in the context.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-second-dog",
+   "kind": "claim_added",
+   "answer": "The cost for a second dog sharing the room is $50.00 per night. This applies in addition to the standard overnight stay rate of $125.00 per night. There is no mention of exceptions or conditions affecting this rate in the context. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-second-dog",
+   "kind": "wrong_answer",
+   "answer": "The cost for a half day is $50.00 for up to 4 hours. A dog who has been ill may return after 2 days or with a vet's note.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-second-dog",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "kind": "number_changed",
+   "answer": "The cost for a half day is $67.00 for up to 4 hours. A dog who has been ill may return after 2 days or with a vet's note.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "kind": "claim_added",
+   "answer": "The cost for a half day is $50.00 for up to 4 hours. A dog who has been ill may return after 2 days or with a vet's note. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "kind": "wrong_answer",
+   "answer": "To cancel holiday boarding, you must provide cancellation at least **10 days ahead**. Late cancellations (less than 10 days before arrival) are charged $10.00.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "kind": "number_changed",
+   "answer": "To cancel holiday boarding, you must provide cancellation at least **10 days ahead**. Late cancellations (less than 10 days before arrival) are charged $27.00.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "kind": "claim_added",
+   "answer": "To cancel holiday boarding, you must provide cancellation at least **10 days ahead**. Late cancellations (less than 10 days before arrival) are charged $10.00. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "kind": "wrong_answer",
+   "answer": "To book boarding over a holiday, you must reserve **at least 30 days prior to boarding**, as stated in the \"Holidays\" section under Hours and Schedule. This applies to holiday boarding and daycare.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "kind": "number_changed",
+   "answer": "To book boarding over a holiday, you must reserve **at least 47 days prior to boarding**, as stated in the \"Holidays\" section under Hours and Schedule. This applies to holiday boarding and daycare.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "kind": "claim_added",
+   "answer": "To book boarding over a holiday, you must reserve **at least 30 days prior to boarding**, as stated in the \"Holidays\" section under Hours and Schedule. This applies to holiday boarding and daycare. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "kind": "wrong_answer",
+   "answer": "Yes, there is an extra charge for boarding on holidays. The context states a **Holiday surcharge of $25.00 per night** applies on listed holidays. The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). Note that holiday boarding may also require reservations 30 days in advance.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "number_changed",
+   "answer": "Yes, there is an extra charge for boarding on holidays. The context states a **Holiday surcharge of $42.00 per night** applies on listed holidays. The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). Note that holiday boarding may also require reservations 30 days in advance.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "yes_no_flipped",
+   "answer": "No, there is an extra charge for boarding on holidays. The context states a **Holiday surcharge of $25.00 per night** applies on listed holidays. The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). Note that holiday boarding may also require reservations 30 days in advance.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "claim_added",
+   "answer": "Yes, there is an extra charge for boarding on holidays. The context states a **Holiday surcharge of $25.00 per night** applies on listed holidays. The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day). Note that holiday boarding may also require reservations 30 days in advance. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "wrong_answer",
+   "answer": "To make a reservation, you must reserve by phone, website, or email. Daycare and Boarding reservations are required, with Boarding needing at least 3 days' advance notice. No other conditions or exceptions are specified for the reservation process itself.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "how-to-reserve",
+   "kind": "number_changed",
+   "answer": "To make a reservation, you must reserve by phone, website, or email. Daycare and Boarding reservations are required, with Boarding needing at least 20 days' advance notice. No other conditions or exceptions are specified for the reservation process itself.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "how-to-reserve",
+   "kind": "claim_added",
+   "answer": "To make a reservation, you must reserve by phone, website, or email. Daycare and Boarding reservations are required, with Boarding needing at least 3 days' advance notice. No other conditions or exceptions are specified for the reservation process itself. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "how-to-reserve",
+   "kind": "wrong_answer",
+   "answer": "After three incidents within 5 days, the dog is suspended for 1 day, then re-evaluated or removed. Staff have the final decision.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "how-to-reserve",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "incident-policy",
+   "kind": "number_changed",
+   "answer": "After three incidents within 22 days, the dog is suspended for 1 day, then re-evaluated or removed. Staff have the final decision.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "incident-policy",
+   "kind": "claim_added",
+   "answer": "After three incidents within 5 days, the dog is suspended for 1 day, then re-evaluated or removed. Staff have the final decision. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "incident-policy",
+   "kind": "wrong_answer",
+   "answer": "No charge is not applied because canceling two hours before drop-off is late cancellation. You are charged a fee of $50.00, and a package day is used. Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "incident-policy",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "number_changed",
+   "answer": "No charge is not applied because canceling two hours before drop-off is late cancellation. You are charged a fee of $67.00, and a package day is used. Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "yes_no_flipped",
+   "answer": "Yes charge is not applied because canceling two hours before drop-off is late cancellation. You are charged a fee of $50.00, and a package day is used. Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "claim_added",
+   "answer": "No charge is not applied because canceling two hours before drop-off is late cancellation. You are charged a fee of $50.00, and a package day is used. Package days are non-refundable after purchase, except if the dog is permanently removed by us. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "wrong_answer",
+   "answer": "Yes, staff can give your dog medication if the owner provides it in its original container with written instructions. The cost is $10 per dose. Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "late-cancel-package",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "number_changed",
+   "answer": "Yes, staff can give your dog medication if the owner provides it in its original container with written instructions. The cost is $27 per dose. Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "yes_no_flipped",
+   "answer": "No, staff can give your dog medication if the owner provides it in its original container with written instructions. The cost is $10 per dose. Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "claim_added",
+   "answer": "Yes, staff can give your dog medication if the owner provides it in its original container with written instructions. The cost is $10 per dose. Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "wrong_answer",
+   "answer": "To cancel a monthly membership and avoid the next charge, you must cancel at least **5 days before the renewal date** (the 1st of each month). This is specified in the \"Packages and Memberships\" policy. There are no exceptions or additional conditions mentioned for this rule.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "medication-fee",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "membership-cancel",
+   "kind": "number_changed",
+   "answer": "To cancel a monthly membership and avoid the next charge, you must cancel at least **22 days before the renewal date** (the 1st of each month). This is specified in the \"Packages and Memberships\" policy. There are no exceptions or additional conditions mentioned for this rule.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "membership-cancel",
+   "kind": "claim_added",
+   "answer": "To cancel a monthly membership and avoid the next charge, you must cancel at least **5 days before the renewal date** (the 1st of each month). This is specified in the \"Packages and Memberships\" policy. There are no exceptions or additional conditions mentioned for this rule. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "membership-cancel",
+   "kind": "wrong_answer",
+   "answer": "Yes, Barks n Woofs provides a 10% discount for military customers.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "membership-cancel",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "number_changed",
+   "answer": "Yes, Barks n Woofs provides a 27% discount for military customers.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "yes_no_flipped",
+   "answer": "No, Barks n Woofs provides a 10% discount for military customers.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "claim_added",
+   "answer": "Yes, Barks n Woofs provides a 10% discount for military customers. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "wrong_answer",
+   "answer": "At pick-up, wait at the lobby counter. There are 12 parking spaces in total, including 2 close to the side door for drop-off.",
+   "verdicts": {
+    "abstention": null,
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": [
+    "TimeoutError calling http://127.0.0.1:11434/api/chat: timed out"
+   ]
+  },
+  {
+   "item_id": "military-discount",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "kind": "number_changed",
+   "answer": "At pick-up, wait at the lobby counter. There are 29 parking spaces in total, including 2 close to the side door for drop-off.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "kind": "claim_added",
+   "answer": "At pick-up, wait at the lobby counter. There are 12 parking spaces in total, including 2 close to the side door for drop-off. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "kind": "wrong_answer",
+   "answer": "Play groups are formed by grouping dogs based on **size, age, energy level, play style, and temperament**. Each group is supervised by a staff member at a ratio of **1 staff member for every 5 dogs**. New dogs must complete a temperament evaluation before their first full day, which may result in conditions like small-group placement. The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "play-groups",
+   "kind": "number_changed",
+   "answer": "Play groups are formed by grouping dogs based on **size, age, energy level, play style, and temperament**. Each group is supervised by a staff member at a ratio of **18 staff member for every 5 dogs**. New dogs must complete a temperament evaluation before their first full day, which may result in conditions like small-group placement. The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "play-groups",
+   "kind": "claim_added",
+   "answer": "Play groups are formed by grouping dogs based on **size, age, energy level, play style, and temperament**. Each group is supervised by a staff member at a ratio of **1 staff member for every 5 dogs**. New dogs must complete a temperament evaluation before their first full day, which may result in conditions like small-group placement. The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "play-groups",
+   "kind": "wrong_answer",
+   "answer": "Yes, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "play-groups",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "number_changed",
+   "answer": "Yes, your puppy is allowed because dogs over 23 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "yes_no_flipped",
+   "answer": "No, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "claim_added",
+   "answer": "Yes, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": null,
+    "correctness": "correct"
+   },
+   "errors": [
+    "TimeoutError calling http://127.0.0.1:11434/api/chat: timed out"
+   ]
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "wrong_answer",
+   "answer": "The temperament evaluation takes about 1 hour. The context does not specify how many dogs each staff member supervises during the evaluation, but it mentions that in play groups, staff supervise groups at a ratio of 1 staff member for every 5 dogs. This ratio applies to play groups, not the temperament evaluation itself.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "puppy-5-months",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "kind": "number_changed",
+   "answer": "The temperament evaluation takes about 18 hour. The context does not specify how many dogs each staff member supervises during the evaluation, but it mentions that in play groups, staff supervise groups at a ratio of 1 staff member for every 5 dogs. This ratio applies to play groups, not the temperament evaluation itself.",
+   "verdicts": {
+    "abstention": "partly_answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "kind": "claim_added",
+   "answer": "The temperament evaluation takes about 1 hour. The context does not specify how many dogs each staff member supervises during the evaluation, but it mentions that in play groups, staff supervise groups at a ratio of 1 staff member for every 5 dogs. This ratio applies to play groups, not the temperament evaluation itself. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "partly_answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "kind": "wrong_answer",
+   "answer": "The context states that a dog who was declined may be re-evaluated after **30 days or 1 month**. There are no exceptions or additional conditions provided for this specific rule. \n\nYes, a declined dog can be re-evaluated after 30 days.",
+   "verdicts": {
+    "abstention": "partly_answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "reevaluation",
+   "kind": "number_changed",
+   "answer": "The context states that a dog who was declined may be re-evaluated after **47 days or 1 month**. There are no exceptions or additional conditions provided for this specific rule. \n\nYes, a declined dog can be re-evaluated after 30 days.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "reevaluation",
+   "kind": "claim_added",
+   "answer": "The context states that a dog who was declined may be re-evaluated after **30 days or 1 month**. There are no exceptions or additional conditions provided for this specific rule. \n\nYes, a declined dog can be re-evaluated after 30 days. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "reevaluation",
+   "kind": "wrong_answer",
+   "answer": "Your dog could be removed from daycare for the following reasons:  \n1. **Aggression** toward people or dogs, including biting or attempted biting.  \n2. **Resource guarding** that cannot be managed (food, toys, or people).  \n3. **Extreme fear or anxiety** that does not improve after 10 visits.  \n4. **Excessive barking, destructiveness, or inability to settle** despite staff help.  \n5. **Illness** (e.g., vomiting, diarrhea, coughing, sneezing, eye/nose discharge, fever, or open wounds within 48 hours) or **lack of current vaccinations**.  \n6. **Repeated incidents** (3 incidents within 5 days), leading to a 1-day suspension and potential removal.  \n7. **Fleas or ticks** (the dog will be sent home, and the owner notified).  \nStaff have the final decision based on safety considerations.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "reevaluation",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "removal-reasons",
+   "kind": "number_changed",
+   "answer": "Your dog could be removed from daycare for the following reasons:  \n18. **Aggression** toward people or dogs, including biting or attempted biting.  \n2. **Resource guarding** that cannot be managed (food, toys, or people).  \n3. **Extreme fear or anxiety** that does not improve after 10 visits.  \n4. **Excessive barking, destructiveness, or inability to settle** despite staff help.  \n5. **Illness** (e.g., vomiting, diarrhea, coughing, sneezing, eye/nose discharge, fever, or open wounds within 48 hours) or **lack of current vaccinations**.  \n6. **Repeated incidents** (3 incidents within 5 days), leading to a 1-day suspension and potential removal.  \n7. **Fleas or ticks** (the dog will be sent home, and the owner notified).  \nStaff have the final decision based on safety considerations.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "removal-reasons",
+   "kind": "claim_added",
+   "answer": "Your dog could be removed from daycare for the following reasons:  \n1. **Aggression** toward people or dogs, including biting or attempted biting.  \n2. **Resource guarding** that cannot be managed (food, toys, or people).  \n3. **Extreme fear or anxiety** that does not improve after 10 visits.  \n4. **Excessive barking, destructiveness, or inability to settle** despite staff help.  \n5. **Illness** (e.g., vomiting, diarrhea, coughing, sneezing, eye/nose discharge, fever, or open wounds within 48 hours) or **lack of current vaccinations**.  \n6. **Repeated incidents** (3 incidents within 5 days), leading to a 1-day suspension and potential removal.  \n7. **Fleas or ticks** (the dog will be sent home, and the owner notified).  \nStaff have the final decision based on safety considerations. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "removal-reasons",
+   "kind": "wrong_answer",
+   "answer": "The daily report includes notes on meals, bathroom breaks, and behavior. Photos are shared daily but are not part of the report itself.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "removal-reasons",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "report-contents",
+   "kind": "claim_added",
+   "answer": "The daily report includes notes on meals, bathroom breaks, and behavior. Photos are shared daily but are not part of the report itself. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "report-contents",
+   "kind": "wrong_answer",
+   "answer": "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour. The dog will be separated until the owner arrives.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "report-contents",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "number_changed",
+   "answer": "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 18 hour. The dog will be separated until the owner arrives.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "yes_no_flipped",
+   "answer": "No, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour. The dog will be separated until the owner arrives.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "claim_added",
+   "answer": "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour. The dog will be separated until the owner arrives. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "wrong_answer",
+   "answer": "Yes, if your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay. This is explicitly stated in the Refunds policy.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "kind": "yes_no_flipped",
+   "answer": "No, if your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay. This is explicitly stated in the Refunds policy.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "kind": "claim_added",
+   "answer": "Yes, if your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay. This is explicitly stated in the Refunds policy. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "kind": "wrong_answer",
+   "answer": "The full-day price is $100.00 for over 4 hours. The boarding deposit is $25.00. Each staff member supervises 5 dogs.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "three-topics",
+   "kind": "number_changed",
+   "answer": "The full-day price is $117.00 for over 4 hours. The boarding deposit is $25.00. Each staff member supervises 5 dogs.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "three-topics",
+   "kind": "claim_added",
+   "answer": "The full-day price is $100.00 for over 4 hours. The boarding deposit is $25.00. Each staff member supervises 5 dogs. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "three-topics",
+   "kind": "wrong_answer",
+   "answer": "The training session costs $100.00. Yes, we accept cards.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "three-topics",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "training-and-cards",
+   "kind": "number_changed",
+   "answer": "The training session costs $117.00. Yes, we accept cards.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "training-and-cards",
+   "kind": "claim_added",
+   "answer": "The training session costs $100.00. Yes, we accept cards. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "training-and-cards",
+   "kind": "wrong_answer",
+   "answer": "Yes, you will be charged a cleanup fee of $10.00 if your dog has an accident indoors. This fee applies to accidents or illness occurring during the stay.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "training-and-cards",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  }
+ ]
+}

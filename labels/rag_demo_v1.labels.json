@@ -1,0 +1,264 @@
+{
+ "labels_version": 1,
+ "run_id": "2026-10-24_145034_baseline-1-1",
+ "golden_version": "rag-demo-1.1.0",
+ "golden_hash": "b6dde77c7f12f41928bf0a746ddf7e7c0fb96303e9f318a0f035f41d16a2446a",
+ "population": {
+  "agree": 85,
+  "disagree": 46
+ },
+ "items": {
+  "membership-cancel": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-tour": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "play-groups": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-insurance": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "report-contents": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "removal-reasons": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "how-to-reserve": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "eval-length": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "training-and-cards": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "military-discount": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "accident-cleanup": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "holiday-surcharge": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "holiday-boarding-notice": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "followup-second-dog": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "followup-holiday-night": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "address": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-bordetella": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "sick-sent-home-refund": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "pdf-two-topics": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "boarding-night": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-transport": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "three-topics": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "late-cancel-package": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "holiday-boarding-cancel": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "bring-blanket": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-webcam": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "medication-fee": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "sick-pickup-time": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "puppy-5-months": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-vet": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "reevaluation": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "ratio-and-eval-length": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "incident-policy": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "half-day-and-sick-return": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "flu-only-recommended": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "pdf-unanswerable": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  }
+ }
+}

@@ -1,0 +1,7238 @@
+{
+ "scores_version": 2,
+ "run_id": "2026-10-24_145034_baseline-1-1",
+ "golden_version": "rag-demo-1.1.0",
+ "config": {
+  "ks": [
+   1,
+   3,
+   5
+  ],
+  "require_doc": true,
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1",
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": false
+  }
+ },
+ "summary": {
+  "overall": {
+   "asked": 131,
+   "errors": 0,
+   "retrieval": {
+    "n": 113,
+    "found": 112,
+    "found_at": {
+     "1": 87,
+     "3": 107,
+     "5": 111
+    },
+    "top_ranked": 87,
+    "mrr": 0.9564896755162241,
+    "mean_recall_at": {
+     "1": 0.8466076696165192,
+     "3": 0.971976401179941,
+     "5": 0.9926253687315635
+    },
+    "mean_precision_at": {
+     "1": 0.9292035398230089,
+     "3": 0.38348082595870203,
+     "5": 0.3066371681415929
+    },
+    "mean_worst_rank": 1.4017857142857142,
+    "mean_chunks": 3.911504424778761
+   },
+   "answer": {
+    "judged": 131,
+    "judge_errors": 0,
+    "abstention": {
+     "unanswerable": {
+      "n": 10,
+      "abstained": 10,
+      "answered": 0,
+      "partly_answered": 0
+     },
+     "answerable": {
+      "n": 121,
+      "abstained": 2,
+      "answered": 117,
+      "partly_answered": 2
+     }
+    },
+    "faithfulness": {
+     "n": 119,
+     "supported": 77,
+     "partly_supported": 34,
+     "unsupported": 8,
+     "score": 0.7899
+    },
+    "correctness": {
+     "n": 121,
+     "correct": 106,
+     "partly_correct": 14,
+     "incorrect": 1,
+     "score": 0.9339
+    }
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 55,
+    "errors": 0,
+    "retrieval": {
+     "n": 46,
+     "found": 45,
+     "found_at": {
+      "1": 38,
+      "3": 43,
+      "5": 44
+     },
+     "top_ranked": 38,
+     "mrr": 0.9583333333333334,
+     "mean_recall_at": {
+      "1": 0.8768115942028986,
+      "3": 0.9601449275362318,
+      "5": 0.9818840579710144
+     },
+     "mean_precision_at": {
+      "1": 0.9347826086956522,
+      "3": 0.358695652173913,
+      "5": 0.2768115942028985
+     },
+     "mean_worst_rank": 1.3333333333333333,
+     "mean_chunks": 3.9782608695652173
+    },
+    "answer": {
+     "judged": 55,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 5,
+       "abstained": 5,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 50,
+       "abstained": 2,
+       "answered": 48,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 48,
+      "supported": 24,
+      "partly_supported": 20,
+      "unsupported": 4,
+      "score": 0.7083
+     },
+     "correctness": {
+      "n": 50,
+      "correct": 42,
+      "partly_correct": 7,
+      "incorrect": 1,
+      "score": 0.91
+     }
+    }
+   },
+   "tuned": {
+    "asked": 67,
+    "errors": 0,
+    "retrieval": {
+     "n": 59,
+     "found": 59,
+     "found_at": {
+      "1": 44,
+      "3": 56,
+      "5": 59
+     },
+     "top_ranked": 44,
+     "mrr": 0.9717514124293786,
+     "mean_recall_at": {
+      "1": 0.844632768361582,
+      "3": 0.9774011299435028,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9491525423728814,
+      "3": 0.403954802259887,
+      "5": 0.3305084745762712
+     },
+     "mean_worst_rank": 1.423728813559322,
+     "mean_chunks": 3.864406779661017
+    },
+    "answer": {
+     "judged": 67,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 4,
+       "abstained": 4,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 63,
+       "abstained": 0,
+       "answered": 61,
+       "partly_answered": 2
+      }
+     },
+     "faithfulness": {
+      "n": 63,
+      "supported": 46,
+      "partly_supported": 13,
+      "unsupported": 4,
+      "score": 0.8333
+     },
+     "correctness": {
+      "n": 63,
+      "correct": 58,
+      "partly_correct": 5,
+      "incorrect": 0,
+      "score": 0.9603
+     }
+    }
+   },
+   "unlabeled": {
+    "asked": 9,
+    "errors": 0,
+    "retrieval": {
+     "n": 8,
+     "found": 8,
+     "found_at": {
+      "1": 5,
+      "3": 8,
+      "5": 8
+     },
+     "top_ranked": 5,
+     "mrr": 0.8333333333333334,
+     "mean_recall_at": {
+      "1": 0.6875,
+      "3": 1.0,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.75,
+      "3": 0.375,
+      "5": 0.3020833333333333
+     },
+     "mean_worst_rank": 1.625,
+     "mean_chunks": 3.875
+    },
+    "answer": {
+     "judged": 9,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 1,
+       "abstained": 1,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 8,
+       "abstained": 0,
+       "answered": 8,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 8,
+      "supported": 7,
+      "partly_supported": 1,
+      "unsupported": 0,
+      "score": 0.9375
+     },
+     "correctness": {
+      "n": 8,
+      "correct": 6,
+      "partly_correct": 2,
+      "incorrect": 0,
+      "score": 0.875
+     }
+    }
+   }
+  },
+  "by_category": {
+   "edge_case": {
+    "asked": 15,
+    "errors": 0,
+    "retrieval": {
+     "n": 15,
+     "found": 14,
+     "found_at": {
+      "1": 12,
+      "3": 14,
+      "5": 14
+     },
+     "top_ranked": 12,
+     "mrr": 0.9555555555555556,
+     "mean_recall_at": {
+      "1": 0.8666666666666667,
+      "3": 0.9666666666666667,
+      "5": 0.9666666666666667
+     },
+     "mean_precision_at": {
+      "1": 0.9333333333333333,
+      "3": 0.3555555555555555,
+      "5": 0.26666666666666666
+     },
+     "mean_worst_rank": 1.2857142857142858,
+     "mean_chunks": 4.0
+    },
+    "answer": {
+     "judged": 15,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 15,
+       "abstained": 1,
+       "answered": 14,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 14,
+      "supported": 6,
+      "partly_supported": 8,
+      "unsupported": 0,
+      "score": 0.7143
+     },
+     "correctness": {
+      "n": 15,
+      "correct": 14,
+      "partly_correct": 1,
+      "incorrect": 0,
+      "score": 0.9667
+     }
+    }
+   },
+   "factual": {
+    "asked": 66,
+    "errors": 0,
+    "retrieval": {
+     "n": 66,
+     "found": 66,
+     "found_at": {
+      "1": 60,
+      "3": 65,
+      "5": 66
+     },
+     "top_ranked": 60,
+     "mrr": 0.9457070707070707,
+     "mean_recall_at": {
+      "1": 0.9090909090909091,
+      "3": 0.9848484848484849,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9090909090909091,
+      "3": 0.3409090909090909,
+      "5": 0.2676767676767677
+     },
+     "mean_worst_rank": 1.1515151515151516,
+     "mean_chunks": 3.878787878787879
+    },
+    "answer": {
+     "judged": 66,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 66,
+       "abstained": 1,
+       "answered": 64,
+       "partly_answered": 1
+      }
+     },
+     "faithfulness": {
+      "n": 65,
+      "supported": 45,
+      "partly_supported": 13,
+      "unsupported": 7,
+      "score": 0.7923
+     },
+     "correctness": {
+      "n": 66,
+      "correct": 58,
+      "partly_correct": 7,
+      "incorrect": 1,
+      "score": 0.9318
+     }
+    }
+   },
+   "follow_up": {
+    "asked": 8,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 8,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 8,
+       "abstained": 0,
+       "answered": 8,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 8,
+      "supported": 3,
+      "partly_supported": 5,
+      "unsupported": 0,
+      "score": 0.6875
+     },
+     "correctness": {
+      "n": 8,
+      "correct": 5,
+      "partly_correct": 3,
+      "incorrect": 0,
+      "score": 0.8125
+     }
+    }
+   },
+   "multi_topic": {
+    "asked": 22,
+    "errors": 0,
+    "retrieval": {
+     "n": 22,
+     "found": 22,
+     "found_at": {
+      "1": 5,
+      "3": 18,
+      "5": 21
+     },
+     "top_ranked": 5,
+     "mrr": 0.9696969696969696,
+     "mean_recall_at": {
+      "1": 0.5757575757575757,
+      "3": 0.9242424242424242,
+      "5": 0.9848484848484849
+     },
+     "mean_precision_at": {
+      "1": 0.9545454545454546,
+      "3": 0.5454545454545454,
+      "5": 0.4651515151515151
+     },
+     "mean_worst_rank": 2.409090909090909,
+     "mean_chunks": 4.0
+    },
+    "answer": {
+     "judged": 22,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 22,
+       "abstained": 0,
+       "answered": 21,
+       "partly_answered": 1
+      }
+     },
+     "faithfulness": {
+      "n": 22,
+      "supported": 15,
+      "partly_supported": 6,
+      "unsupported": 1,
+      "score": 0.8182
+     },
+     "correctness": {
+      "n": 22,
+      "correct": 19,
+      "partly_correct": 3,
+      "incorrect": 0,
+      "score": 0.9318
+     }
+    }
+   },
+   "unanswerable": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 10,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 10,
+       "abstained": 10,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     },
+     "correctness": {
+      "n": 0,
+      "correct": 0,
+      "partly_correct": 0,
+      "incorrect": 0,
+      "score": null
+     }
+    }
+   },
+   "yes_no": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 10,
+     "found": 10,
+     "found_at": {
+      "1": 10,
+      "3": 10,
+      "5": 10
+     },
+     "top_ranked": 10,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "3": 0.35,
+      "5": 0.275
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 3.8
+    },
+    "answer": {
+     "judged": 10,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 10,
+       "abstained": 0,
+       "answered": 10,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 10,
+      "supported": 8,
+      "partly_supported": 2,
+      "unsupported": 0,
+      "score": 0.9
+     },
+     "correctness": {
+      "n": 10,
+      "correct": 10,
+      "partly_correct": 0,
+      "incorrect": 0,
+      "score": 1.0
+     }
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 131,
+    "errors": 0,
+    "retrieval": {
+     "n": 113,
+     "found": 112,
+     "found_at": {
+      "1": 87,
+      "3": 107,
+      "5": 111
+     },
+     "top_ranked": 87,
+     "mrr": 0.9564896755162241,
+     "mean_recall_at": {
+      "1": 0.8466076696165192,
+      "3": 0.971976401179941,
+      "5": 0.9926253687315635
+     },
+     "mean_precision_at": {
+      "1": 0.9292035398230089,
+      "3": 0.38348082595870203,
+      "5": 0.3066371681415929
+     },
+     "mean_worst_rank": 1.4017857142857142,
+     "mean_chunks": 3.911504424778761
+    },
+    "answer": {
+     "judged": 131,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 10,
+       "abstained": 10,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 121,
+       "abstained": 2,
+       "answered": 117,
+       "partly_answered": 2
+      }
+     },
+     "faithfulness": {
+      "n": 119,
+      "supported": 77,
+      "partly_supported": 34,
+      "unsupported": 8,
+      "score": 0.7899
+     },
+     "correctness": {
+      "n": 121,
+      "correct": 106,
+      "partly_correct": 14,
+      "incorrect": 1,
+      "score": 0.9339
+     }
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "vaccines-required",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive list of required vaccinations for a dog before attending an event, including specific details about each vaccine. It also mentions a recommended vaccination and additional requirements for puppies.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly lists the required vaccinations (rabies, DHPP, Bordetella) with the same validity periods as the reference. It also mentions that canine influenza is recommended but not required, matching the reference. Additionally, it includes the information about puppies needing to be at least 4 months old and have completed their series, which is not in the reference but does not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "flu-vaccine",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by stating that the canine influenza vaccine is recommended but not required, based on the context provided.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The context specifies that it is \"recommended\" under the Required Vaccinations section"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the canine influenza vaccine is recommended but not required, aligning with the reference answer. It also provides additional context about other vaccines being mandatory, which does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "rabies-valid",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific duration for the validity of a rabies vaccination, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer exactly in terms of the duration and the condition about the vaccine type.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "paper-photo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by stating that photos of paper vaccination records are not accepted and explains the acceptable alternatives.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that photos of paper vaccination records are not accepted and mentions the acceptable methods of providing records, aligning with the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "grace-period",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific response to the question about a grace period for a dog's vaccination expiration, stating there is a 5-day grace period. It directly addresses the query with a factual statement.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that there is a grace period of 5 days if a dog's vaccination expires, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sick-wait",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response about the time frame for a dog to return after being sick, even though it mentions a policy allowing either option. It does not explicitly abstain from answering the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a dog may return after 2 days or with a vet's note, aligning with the reference answer. It also mentions the policy allows either option, which is consistent with the reference's implication.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sick-symptom-window",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (48 hours) for when a dog can be brought based on the policy mentioned. It directly addresses the question by giving a clear answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "If the dog has been ill (with these symptoms) and is now symptom-free, they may return after **2 days** (48 hours) or with a vet's note."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the dog must be free of vomiting or diarrhea for 48 hours, which matches the reference answer's 48-hour rule. It also mentions the possibility of a vet's note, which is not in the reference answer but does not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "neuter-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific age (over 6 months) for spaying or neutering dogs to attend an event, which directly addresses the question. It also mentions that puppies younger than 6 months are not subject to this rule, giving a substantive answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that dogs over 6 months old must be spayed or neutered to attend, which matches the reference answer. It also adds relevant context about puppies under 6 months, which is consistent with the reference's implication.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unneutered-8mo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear 'no' and explains the reason based on a specific rule about spaying/neutering for attendance. It gives a substantive answer to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that dogs over 6 months old must be spayed or neutered to attend and confirms that the 8-month-old dog cannot attend as it is not neutered. The answer aligns with the reference answer in all key points.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "min-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific minimum age (4 months) for a puppy to attend, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the minimum age as 4 months and includes the requirement for completed vaccinations, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "medication-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to both parts of the question: it confirms that staff can give medication under certain conditions and specifies the cost. It does not decline to answer or mention lack of information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that staff can give medication and confirms the $10 per dose cost. It also mentions an add-on service for $10.00, which is consistent with the per-dose fee mentioned in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "eval-cost",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to the question by stating the cost of the temperament evaluation, which is 'free of cost'.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct and substantive response to the question about the duration of the temperament evaluation.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer in both wording and content.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "eval-bring",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by listing specific items that need to be brought to the temperament evaluation.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer lists the same three items as the reference answer, with the same details.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "weight-limit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical value for the maximum weight of a dog, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer states the maximum weight for a dog as 250 pounds, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "incident-policy",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific consequence (suspension for 1 day, re-evaluation or removal) for the scenario described in the question, indicating a substantive response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Staff have the final decision."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer agrees with the reference on the suspension duration and the re-evaluation/removal outcome, but adds that 'staff have the final decision', which is not mentioned in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "reevaluation",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (30 days or 1 month) for re-evaluation of a declined dog, which directly addresses the question. It also confirms the possibility of re-evaluation within that period.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a declined dog can be re-evaluated after 30 days or 1 month, which matches the reference answer. It also confirms the rule without adding contradictory information.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "full-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific monetary value for a full day of daycare, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms the same cost and duration as the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "half-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the cost and duration of a half day of daycare, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost and duration of a half day of daycare as $50.00 and up to 4 hours, matching the reference answer exactly.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "five-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to both parts of the question: it states that 5 hours is considered a full day and gives the cost. It also mentions a late fee for pickup after 6:00pm, though the question primarily focused on duration and cost.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "If pickup occurs after 6:00pm, a late fee applies"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies 5 hours as a full day and states the cost as $100.00, matching the reference answer. It also adds relevant information about a late fee if pickup occurs after 6:00pm, which does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "second-dog-two-dogs-total",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific monetary value for the service described in the question, indicating a clear response to the query.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the total cost for two dogs from the same household for one full day as $150.00, breaking it down into $100.00 for the first dog and $50.00 for the second dog, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "ten-day-package",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to both parts of the question: the cost of the 10-day package and its validity period.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost and validity period of the 10-day package as provided in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-monthly",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to the question by stating the cost of the unlimited monthly membership.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost of the unlimited monthly membership as $2,500 per month, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unused-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by providing a yes/no response, indicating that unused package days can be transferred to another dog. There is no indication of uncertainty or lack of information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer in both content and wording.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific monetary value for a standard overnight stay, directly addressing the question with a factual response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer states the same cost and rate as the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific times for both boarding check-in and check-out, directly addressing the question with factual information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the same check-in and check-out times as the reference answer, with the same numerical values and conditions.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "late-pickup-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific fee amount and explains when the fee applies, directly addressing the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the late pickup fee as $5.00 for every 30 minutes after closing time, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "discounts",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific discount (10%) and mentions that no other discounts are covered in the context, which addresses the question directly.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the 10% discount and the applicable categories (multi-dog, military, rescue, referral) as in the reference answer. It also notes that no other discounts are mentioned, which is consistent with the reference answer that only lists these discounts.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sunday-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific hours for Sundays and confirms there are no exceptions, directly addressing the question with a substantive response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms the same hours as the reference answer and adds that there are no exceptions, which is consistent with the reference's implication of regular hours.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "closed-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by stating that the entity is closed on Christmas Day, providing a clear and substantive response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "Both the reference answer and the answer confirm that the service is closed on Christmas Day.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "evening-pickup",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific time range for the evening pick-up window, directly addressing the question with a substantive response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer directly states the same time window as the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "late-dropoff",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by stating the consequence of dropping off a dog after 9am, which is being charged for a full day.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer in wording and meaning.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (3 days) for reserving boarding and states it is a requirement as per the context. It does not indicate a lack of knowledge or mention that the context does not cover the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "There is no exception mentioned for this rule."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that boarding reservations must be made at least 3 days ahead, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "address",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific address and additional details about the location of the daycare, directly answering the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the location of the daycare as 123 puppy drive, Oakland ME, which matches the reference answer. It adds extra details about the green awning and doors, but this does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "staff-ratio",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "partly_answered",
+     "reasoning": "The answer provides a ratio of 1 staff member to 5 dogs, which implies a general supervision ratio rather than a specific number of dogs per staff member. However, it does not directly answer the question about how many dogs each staff member supervises.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "Each staff member supervises a group of dogs at a ratio of 1 staff member for every 5 dogs."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the ratio of 1 staff member for every 5 dogs, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "nap-time",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific time frame for nap time and additional details about the environment during that period, directly addressing the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the nap time as from 12:00 PM to 2:30 PM, which matches the reference answer. The additional details about dogs and play yards do not contradict the reference and are considered extra information.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "bring-blanket",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by confirming that a dog can bring a blanket or toy, citing the context that these items are allowed. It provides a clear 'yes' response with supporting information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms that a toy or blanket is allowed, which matches the reference answer. It adds some context about the owner's responsibility, but this does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "daily-report",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by explaining how owners receive updates on their dog's day, including daily reports and photos.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms the same details as the reference answer, including the method of communication, the content of the report, and the frequency of photo sharing.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "cancel-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific policy regarding cancellation times and fees, directly addressing the question about how far in advance to cancel to avoid a charge.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "To avoid a charge for cancelling a daycare day, you must cancel **at least 12 hours before drop-off** by phone, email, or text."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the 12-hour cancellation policy and the acceptable methods of cancellation, which matches the reference answer. It also adds information about the fee for late cancellation, which is not in the reference answer but does not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "late-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific fee ($50.00) and the conditions under which it applies (late cancellation or no-show). It directly addresses the question with a substantive answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the fee amount of $50.00 but adds extra details not in the reference answer, such as the 12-hour rule and mention of a pet owner, which are not part of the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-deposit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific amount for the boarding deposit and explains its purpose, directly addressing the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the boarding deposit amount as $25.00 and mentions it is required at booking and applied to the final bill, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "cancel-boarding-3-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response about the refund policy when canceling boarding 3 days before arrival, stating that a partial refund occurs. It also mentions the need to contact the service provider for specific details, which adds context without withholding all information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The context does not specify the exact amount of the partial refund, so you would need to contact Barks n Woofs for details on how much of the deposit is returned."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that cancelling 3 days before arrival results in a partial refund, aligning with the reference answer. It also mentions the need to contact Barks n Woofs for refund details, which is not in the reference but does not contradict it. The answer does not provide a specific refund amount, which is consistent with the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "package-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear response to the question about refunds on unused package days, stating that refunds are not allowed under normal circumstances and outlining the only exception. It gives a substantive answer based on the policy.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that refunds for unused package days are not allowed, except in the case of the dog being permanently removed by the company, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "payment-methods",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by listing the payment methods accepted, providing a substantive response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer lists the same payment methods as the reference answer, using slightly different wording but conveying the same information.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "refund-timing",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe for receiving a refund, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "Refunds are issued to the original payment method within 5 business days."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer in both content and timing.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct yes/no response to the question and gives a specific reason based on a policy, indicating a clear answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "If your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms a refund for early discharge due to illness and mentions the Refunds policy, aligning with the reference answer's statement about refunding the unused portion.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "expired-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by explaining that the dog can still be brought during the 5-day grace period and specifies the requirement for updated proof of vaccination.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the 5-day grace period and the requirement for updated proof of vaccination, aligning with the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "full-day-and-cancel",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the cost of a full day of daycare and the cancellation policy, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Cancelling on time: no charge, and a package day is returned."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the cost of a full day and the cancellation policy, but adds extra details about a package day and a $50 fee that are not in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "open-and-bath",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the opening time on Saturdays and the cost of a bath, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the opening time on Saturdays as 8:00am and the cost of a bath as $50.00, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "eval-and-vaccines",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 5,
+    "fact_ranks": [
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.4
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to both parts of the question: it confirms the need for a temperament evaluation and lists the required vaccines. It also includes additional relevant details about the evaluation and vaccines.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Canine influenza is recommended but not required."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a temperament evaluation is needed before the first full day and lists the required vaccines (rabies, DHPP, Bordetella) and recommends canine influenza. It also adds details about the evaluation process and vaccine validity periods, which do not contradict the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "close-and-late-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the closing time and the late pickup fee, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the closing time as 6:00pm and the late pickup fee as $5.00 for every 30 minutes after closing time, matching the reference answer exactly.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "deposit-and-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about both the boarding deposit and check-in time, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer exactly matches the reference answer in both the amount of the boarding deposit and the check-in time range.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "nail-and-nap",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the cost of a nail trim and the duration of nap time, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the same information as the reference answer regarding the cost of a nail trim and the duration of nap time.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "partly_answered",
+     "reasoning": "The answer provides a substantive answer to the temperament evaluation duration but states that the context does not specify the number of dogs each staff member supervises during the evaluation. It also clarifies that the mentioned ratio applies to play groups, not the temperament evaluation.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The context does not specify how many dogs each staff member supervises during the evaluation"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the duration of the temperament evaluation but does not provide a definitive number of dogs per staff member during the evaluation, instead referring to play groups. The reference answer specifies that each staff member supervises 5 dogs during the temperament evaluation.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-and-expiry",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the cost of the unlimited monthly membership and the expiration period for package days, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost of the unlimited monthly membership and the expiration terms for package days, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "blanket-and-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to both parts of the question: it confirms that the dog can bring a blanket and states that the business is closed on Christmas Day.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the dog can bring a blanket and that the service is closed on Christmas Day, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "weight-and-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific numerical values for both parts of the question: the maximum weight for a dog and the validity period of a rabies vaccination. It does not indicate any lack of knowledge or refer to documents not covering the topic.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the same maximum weight and validity period as the reference answer, and includes the same conditional note about the vaccine.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to both parts of the question: it defines a half day in terms of cost and duration, and gives guidance on when a sick dog can return. It does not merely abstain from answering or partially address the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost and duration for a half day, and the conditions for a dog returning after being sick, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "three-topics",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 7,
+    "fact_ranks": [
+     2,
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "3": 0.6666666666666666,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific values for all three parts of the question: full-day price, boarding deposit, and the number of dogs each staff member supervises.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Each staff member supervises 5 dogs."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the full-day price, boarding deposit, and the number of dogs each staff member supervises. However, it adds extra information about the full-day price being for over 4 hours, which is not in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-grooming",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention full grooming and haircuts, and lists the services that are mentioned instead. This indicates the assistant is abstaining from answering the question due to lack of information.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-transport",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention pickup and drop-off transportation for dogs, and it does not provide any substantive information on the topic.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-webcam",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention the availability of a webcam for monitoring dogs, indicating a lack of knowledge based on the provided data.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-cats",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer directly states 'I don't know', indicating the assistant is unsure and does not provide a substantive answer to the question.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-half-day",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific cost for a half day of daycare, directly addressing the question based on the previous context.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost for a half day (up to 4 hours) as $50.00, matching the reference answer exactly.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-second-dog",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific cost for a second dog sharing the room and relates it to the previously mentioned standard overnight stay, giving a substantive response to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "There is no mention of exceptions or conditions affecting this rate in the context."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the additional cost for a second dog and mentions the standard rate, aligning with the reference answer. It also notes there are no exceptions, which is consistent with the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-bordetella",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the validity period and grace period for the Bordetella vaccination, directly addressing the question without referencing any gaps in the context.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states that Bordetella must be given within the last 12 months, matching the reference. However, it adds information about a 5-day grace period which is not mentioned in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by stating the fee and additional details about the policy. It does not decline to answer or only partially address the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the $50.00 fee for missing the cancellation deadline and mentions the use of a package day, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by confirming there is an extra charge for boarding on holidays and provides specific details about the surcharge, applicable holidays, and reservation requirements.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states there is an extra charge for boarding on holidays and specifies the surcharge amount and that it applies to listed holidays. It also adds details about reservations, which are not in the reference answer but do not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "training-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct and substantive response to the question about the cost of a training session.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer states the same cost as the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "bounced-payment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific fee ($10.00) for a bounced payment, which is a substantive answer to the question. The additional information about dogs is irrelevant but does not negate the fact that a charge is mentioned.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Dogs may not attend until the balance is paid."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the $10.00 fee for a bounced payment, which matches the reference answer. However, it adds extra information about dogs not attending until the balance is paid, which is not mentioned in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "accident-cleanup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to the question by stating that a cleanup fee of $10.00 will be charged if the dog has an accident indoors. It gives a specific consequence, which is a substantive answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "You will be charged a cleanup fee of $10.00 if your dog has an accident indoors."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a $10.00 cleanup fee applies for indoor accidents, matching the reference answer. It also adds that the fee applies to accidents or illness, which is consistent with the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "fleas",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific outcome (the dog will be sent home and the owner notified) in response to the question about what happens if a dog has fleas. It gives a substantive answer based on a policy or procedure, even though it does not explain the reasoning behind the action.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states that the dog will be sent home and the owner will be notified, which matches the reference answer. However, it omits the part about dogs needing to be on a flea and tick preventive, which is included in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "heat-cycle",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct 'No' to the question and explains the reason based on a specific policy mentioned in the context.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that female dogs in heat cannot attend, but adds specific information about 'Barks n Woofs' and 'Spay and Neuter Requirements' which is not present in the reference answer. However, the core fact about female dogs in heat not being able to attend is consistent with the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific time frame (within 1 hour) for the owner to pick up the dog if they get sick during the day, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour. The dog will be separated until the owner arrives."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the owner will be called for pickup within 1 hour if the dog shows signs of illness, and that the dog will be separated until the owner arrives, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "midday-pickup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific time window for picking up a half-day dog, directly addressing the question with a factual response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the time window for picking up a half-day dog as between 11:00am and 1:00pm, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "holidays-closed",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific list of holidays when Barks n Woofs is closed, directly addressing the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer lists the same holidays as the reference answer, confirming the days when the business is closed.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "memorial-day",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to the question, stating that drop-off is not allowed on Memorial Day because Barks n Woofs is closed. This is a substantive answer to the question asked.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that drop-off is not allowed on Memorial Day, aligning with the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "snow-closure",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear, substantive response to the question about what happens to a reservation if the facility closes due to a snowstorm, including notification methods, refund policies, and credit options.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "This applies regardless of reservation type (daycare, boarding, etc.), as the policy explicitly covers closures from weather or emergencies."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides more detailed information than the reference answer, including notification methods, refund processing time, and coverage for different reservation types. However, it correctly states that owners with confirmed reservations will be refunded or given a credit for the days the facility is closed, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "how-to-reserve",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by outlining the methods to make a reservation and specifying requirements for certain types of reservations. It does not decline to answer or mention that the documents do not cover the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "No other conditions or exceptions are specified for the reservation process itself."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer provides more details than the reference answer, including specific conditions about daycare and boarding reservations, which were not mentioned in the reference. However, it correctly states the main method of making a reservation as per the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 4,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 0.25,
+    "recall_at": {
+     "1": 0.0,
+     "3": 0.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.0,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific guideline (30 days prior to boarding) for booking boarding over a holiday, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "To book boarding over a holiday, you must reserve at least 30 days prior to boarding"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that reservations should be made at least 30 days prior to boarding for holiday boarding and daycare, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "lunch-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific time frame for when the dogs have lunch, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the time frame for lunch and a water break as 11:30 AM to 12:00 PM, which matches the reference answer. The additional detail about feeding dogs in separate spaces does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "treats",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer addresses the question by explaining that the decision to give treats depends on owner permission, which is a substantive response to the query.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The context states that \"Treats are only given with owner permission.\""
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly reflects the reference answer by stating that treats are only given with owner permission. It elaborates on the condition but does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "collar-id",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct yes/no response to the question and explains the requirement based on the context. It gives a substantive answer about the necessity of a collar and ID tag.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a collar with an ID tag is required, matching the reference answer. It also adds context about the source of the requirement, which is not contradictory.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "enrichment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by listing specific types of enrichment the dogs receive.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer lists the same types of enrichment as the reference answer, using identical terms.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "membership-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (5 days before the renewal date) for canceling a monthly membership to avoid the next charge, based on the mentioned policy. It directly addresses the question with a factual response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that cancellation must occur at least 5 days before the renewal date (the 1st of each month) to avoid the next charge, which matches the reference answer. It also mentions the policy location and notes there are no exceptions, which is consistent with the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "membership-renewal",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific date for the renewal of the monthly membership and includes additional information about cancellation, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that monthly memberships renew on the 1st of each month, which matches the reference answer. However, it adds extra information about canceling 5 days before the renewal date, which is not in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "refund-window",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (5 days) for requesting a refund, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer states the same condition as the reference answer regarding the time frame for requesting a refund.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific answer to the question by stating that cancellation must be done at least 10 days ahead, which directly addresses the query.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Late cancellations (less than 10 days before arrival) are charged $10.00."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that cancellation is required at least 10 days ahead, which matches the reference answer. It also adds additional information about late cancellations, which does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "meal-packing",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not specify how to send the dog's food and mentions that the term 'send' is not addressed in the rules. This indicates the assistant is acknowledging a gap in the provided information rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "incorrect",
+     "reasoning": "The answer acknowledges the reference answer's details but adds that the term 'send' is not addressed, which is not part of the reference answer. The answer does not provide the required information on how to send the food, only restates the container requirements.",
+     "cached": false,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "report-contents",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about what is included in the daily report, directly addressing the question with substantive details.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Photos are shared daily but are not part of the report itself"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the elements included in the daily report as per the reference answer but adds information not present in the reference, specifically that photos are not part of the report itself. The reference answer includes photos as being shared daily, without specifying whether they are part of the report.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "medication-how",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific instructions on how to send a dog's medication, including the requirement to use the original container and written instructions. It also mentions additional details about charges and accepted documentation, which are relevant to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Photos of paper records are not accepted for vaccination proof"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer includes the correct requirement of providing medication in its original container with written instructions and mentions the $10 charge per dose, which matches the reference answer. However, it adds extra information about photos of paper records not being accepted for vaccination proof, which is not part of the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "first-visit",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear, substantive response to the question by explaining the policy regarding the temperament evaluation and when the dog can stay for a full day. It addresses the question directly and gives specific details about the process.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The evaluation itself takes about 1 hour, so the dog can stay for the remainder of the day once the evaluation is done."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a new dog cannot stay for a full day on the first visit without completing the temperament evaluation. It elaborates on the process and timing, which aligns with the reference answer's main point.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "play-groups",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a detailed explanation of how play groups are formed, including factors like size, age, energy level, play style, and temperament, as well as supervision ratios and evaluation processes. It directly addresses the question with substantive information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies the factors used to group dogs (size, age, energy level, play style) and the staff-to-dog ratio. It also adds details about temperament evaluations and conditions for new dogs, which are not in the reference answer but do not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "removal-reasons",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a detailed list of reasons why a dog could be removed from daycare, covering various behavioral, health, and safety-related issues. It does not decline to answer or indicate that the documents do not cover the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Fleas or ticks (the dog will be sent home, and the owner notified)"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer includes all the reasons from the reference answer and adds additional details such as illness examples, lack of vaccinations, repeated incidents, fleas, and ticks. These additions do not contradict the reference answer and provide more specific information.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific vaccine (Canine influenza vaccine) and states it is only recommended and not required, directly answering the question with a substantive fact.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies the canine influenza vaccine as being recommended but not required, matching the reference answer exactly.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "military-discount",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by confirming that a military discount is provided and specifies the discount rate.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "Yes, Barks n Woofs provides a 10% discount for military customers."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms a 10% discount for military customers, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "package-20",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to both parts of the question: the cost of the 20-day package and its validity period.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost and validity period of the 20-day package as provided in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "dispute-charge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific person to contact, a method (phone or email), and a timeframe (within 5 days), directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms the contact method and the time frame as specified in the reference answer, though it adds a redundant 'Yes' and specifies 'of identifying the issue' which is not in the reference. However, this does not contradict the reference and the core information matches.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-3-nights",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear calculation for the cost of three nights of dog boarding and specifies there are no additional charges, directly answering the question with a numerical value.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly calculates the cost for three nights of boarding for one dog as $375, matching the reference answer. It also mentions there are no additional charges, which aligns with the reference's implication that the cost is straightforward.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-two-dogs",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific price for two dogs sharing a boarding room, including the total cost per night. It directly addresses the question with a numerical answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the total nightly price as $175.00 and breaks down the cost into $125.00 for the first dog and $50.00 for the second dog, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "late-7pm",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     null
+    ],
+    "found": false,
+    "first_hit_rank": 1,
+    "worst_hit_rank": null,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 0.5
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific calculation for the late fee based on the given time and policy, addressing the question directly with a numerical answer.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The late fee for picking up after closing time is $5.00 for every 30 minutes past the closing time."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly calculates the late fee as $10.00 based on the reference's explanation of $5.00 per 30 minutes for two intervals.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "ten-day-savings",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear calculation of the daily savings by comparing the cost of the 10-day package to the cost of single days, and it specifies the amount saved per day. It also includes a caveat about discounts and unused days, but the core question about daily savings is answered.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "This calculation assumes no discounts apply (e.g., multi-dog, military, etc.), as the question does not mention such eligibility."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the savings per day and total savings over 10 days, and aligns with the reference answer's numbers. It also provides additional context about discounts and unused days, which does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "late-cancel-package",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by explaining the fee and consequences of canceling two hours before drop-off, even though it also mentions exceptions and additional details.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Package days are non-refundable after purchase, except if the dog is permanently removed by us."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states that a $50.00 fee is charged and a package day is used, which matches the reference answer. However, it adds extra information about package days being non-refundable except if the dog is permanently removed, which is not mentioned in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "expired-8-days",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a clear response to the question, stating that the dog cannot attend because the DHPP booster expired 8 days ago and the grace period has passed. It gives a specific reason based on the expiration date and the grace period policy.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The grace period for expired vaccinations is only 5 days."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the grace period is 5 days and that 8 days have passed, leading to the conclusion that the dog cannot attend.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "puppy-5-months",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question by explaining that neutering is not required for puppies under 6 months old, even though the puppy is not yet neutered. It also gives specific age-related guidelines.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Neutering is not required for puppies under 6 months."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that a 5-month-old puppy is allowed and that neutering is not required until the dog is over 6 months old. It also mentions the vaccination requirement, which aligns with the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "sunday-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention Barks n Woofs being closed on Sundays and provides the regular hours, indicating a lack of information on Sundays specifically.",
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the business is open on Sundays and provides the same hours as the reference answer. It also clarifies that there is no mention of Sundays being closed, which aligns with the reference.",
+     "cached": false,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unlimited-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by providing the correct price for the unlimited monthly membership and clarifies that it is not $250. It also references the context where this information is found.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that the unlimited monthly membership is $2,500 per month, which matches the reference answer. It also clarifies that this is not $250, aligning with the reference's denial of the $250 figure.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "phone-and-sunday",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a phone number and confirms availability on Sundays, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the correct phone number and confirms the same hours of operation on Sundays as the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "training-and-cards",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to both parts of the question: the cost of the training session and whether cards are accepted.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Yes, we accept cards."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost of the training session and confirms that cards are accepted, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "lunch-late-weight",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 6,
+    "fact_ranks": [
+     6,
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 6,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.4
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information for all parts of the question: lunch time, late fee, and maximum dog weight. There is no indication of not knowing or abstaining from answering any part of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the lunch time and maximum dog weight as in the reference. It correctly states the late fee amount but uses slightly different wording ('after closing time' vs. 'for every 30 minutes').",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "bath-and-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific numerical values for both the cost of a bath and the extra charge for boarding on a holiday, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost of a bath as $50.00 and the extra cost for boarding as $25.00 per night, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-tour",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer directly states 'I don't know', indicating the assistant is unable to provide a substantive answer to the question about touring the facility.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-insurance",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer directly states 'I don't know', indicating the assistant is unable to provide a substantive response to the question about accepting pet insurance.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-vet",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer directly states 'I don't know', indicating the assistant is unable to provide a substantive answer to the question about whether there is a veterinarian on staff.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-indoor",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention an indoor play area for rainy days and provides no substantive information on the topic.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "unknown-senior",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention a senior citizen discount and only lists other types of discounts, indicating a lack of knowledge on the specific question.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "bath-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific monetary value for the bath, directly answering the question about its cost.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer states the same price as the reference answer, using different wording.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-nail",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct response to the question about the cost of a nail trim, giving a specific price.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the cost of a nail trim as $30.00, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "boarding-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical value for the boarding cost per night, along with additional details about pricing for multiple dogs and holidays. This constitutes a direct answer to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The standard overnight boarding rate is $125.00 per night for one dog."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer provides more details than the reference answer, including additional costs for multiple dogs, holiday surcharges, and check-in/check-out times, which are not mentioned in the reference. However, it correctly states the standard boarding rate of $125.00 per night.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about the cost and requirements for boarding on holidays, including the surcharge and reservation policy, which directly addresses the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day)."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the holiday surcharge and the total cost for one dog, matching the reference answer. It also adds extra details about reservations and specific holidays, which do not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-late-holiday-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a substantive response to the question about late cancellation fees for holiday boarding, specifying the charge of $10.00 and clarifying that this applies specifically to holiday boarding.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "For other services (e.g., daycare), late cancellations may incur different fees (e.g., $50.00), but those rules do not apply here."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the late cancellation fee for holiday boarding as $10.00, which matches the reference answer. However, it adds extra information about other services like daycare, which is not part of the reference answer and could be considered irrelevant or misleading in this context.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "followup-sick-return",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific timeframe (2 days) for the dog to return, which directly addresses the question. It also mentions the 1-hour pickup rule, which is relevant context.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "If the dog was separated due to illness, the owner must pick up the dog within 1 hour"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer includes the correct information from the reference answer about the dog returning after 2 days or with a vet's note, but it also adds an incorrect detail about the owner needing to pick up the dog within 1 hour, which contradicts the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-parking-spaces",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct and substantive response to the question by stating the exact number of parking spaces.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the total number of parking spaces as 12, which matches the reference answer. However, it omits the detail about 2 spaces being close to the side door for drop-off.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-drop-off-door",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific door (side door) for dropping off a dog and explains that the front door is not used for this purpose, based on the context provided.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies the side door as the one to use for dropping off a dog and accurately notes that the front door is for visitors, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-lobby-wait",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific instructions on where to wait when picking up a dog, indicating a clear and substantive response to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states to wait at the lobby counter and mentions staff bringing the dog with the daily report, which matches the reference answer. However, it adds extra information about not entering the play areas, which is not in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-ramp",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by confirming the existence of a ramp from the parking lot.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms the existence of a ramp from the parking lot, which matches the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-lost-items",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific duration (30 days) and explains what happens after that period, directly addressing the question about how long items are kept.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that items are kept for 30 days and then given to a local rescue, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-social-media",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly responds to the question with a 'No' and provides a reason, indicating a clear stance without ambiguity.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that posting a dog's photo on social media requires written permission from the owner, which aligns with the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific information about where to wait at pick-up and the number of parking spaces, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the waiting location and the number of parking spaces, but adds extra information about parking spaces near the side door for drop-off, which is not in the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-nap-time-across-documents",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific reason why dropping by at 1pm is not a good idea, based on the closure of play yards during quiet hours. It gives a substantive answer to the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "If you visit during this time, you should wait at the lobby counter and avoid accessing the play areas."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that dropping by at 1pm is not a good idea and explains the reason as nap time and closed play yards, matching the reference answer. It adds a detail about waiting at the lobby counter, which is not in the reference, but does not contradict it.",
+     "cached": true,
+     "error": null
+    }
+   }
+  },
+  {
+   "item_id": "pdf-unanswerable",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the context does not mention a dog park next door, indicating a lack of information rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    }
+   }
+  }
+ ]
+}
