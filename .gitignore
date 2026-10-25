@@ -10,3 +10,9 @@ runs/*
 # judge-call cache and local secrets
 .cache/
 .env
+
+# local assistant instructions (never tracked)
+CLAUDE.local.md
+
+# generated labelling sheet (the downloaded labels file is tracked)
+labels/*.html

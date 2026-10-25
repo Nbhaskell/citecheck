@@ -2,11 +2,11 @@
 import json
 from pathlib import Path
 
-from .metrics import retrieval
+from .metrics import answer, retrieval
 from .models import TargetResponse
 from .runner import golden_hash
 
-SCORES_VERSION = 1
+SCORES_VERSION = 2
 DEFAULT_KS = (1, 3, 5)
 
 
@@ -23,7 +23,8 @@ def check_golden(run: dict, golden: dict) -> None:
             f"but this golden set is {golden['golden_version']} (hash {golden_hash(golden)[:10]})")
 
 
-def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True) -> dict:
+def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, judge=None, progress=None) -> dict:
+    """Retrieval metrics for every answer; with a judge, also abstention, faithfulness and correctness."""
     ks = sorted(set(ks))
     items = {i["id"]: i for i in golden["items"]}
     rows = []
@@ -31,15 +32,23 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True) 
         item = items[record["item_id"]]
         response = TargetResponse.from_dict(record["response"])
         row = {"item_id": item["id"], "repeat": record["repeat"], "split": item["split"],
-               "category": item["category"], "error": response.error, "retrieval": None}
+               "category": item["category"], "error": response.error, "retrieval": None,
+               "expected_abstain": item["expected_abstain"], "judged": None}
         if not response.error and item["evidence"]:
             row["retrieval"] = retrieval.score_item(response.retrieved, item["evidence"], ks, require_doc)
+        if judge is not None and not response.error:
+            row["judged"] = judge.judge_item(item, response, history=record.get("history", ()))
+            if progress:
+                progress(f"judged {len(rows) + 1}/{len(run['records'])} {item['id']}")
         rows.append(row)
 
     def group(selected):
         scored = [r["retrieval"] for r in selected if r["retrieval"] is not None]
-        return {"asked": len(selected), "errors": sum(bool(r["error"]) for r in selected),
-                "retrieval": retrieval.summarize(scored, ks)}
+        out = {"asked": len(selected), "errors": sum(bool(r["error"]) for r in selected),
+               "retrieval": retrieval.summarize(scored, ks)}
+        if judge is not None:
+            out["answer"] = answer.summarize([r for r in selected if r["judged"] is not None])
+        return out
 
     def by(key):
         return {value: group([r for r in rows if r[key] == value]) for value in sorted({r[key] for r in rows})}
@@ -49,7 +58,7 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True) 
         "scores_version": SCORES_VERSION,
         "run_id": run["run_id"],
         "golden_version": run["golden"]["golden_version"],
-        "config": {"ks": ks, "require_doc": require_doc},
+        "config": {"ks": ks, "require_doc": require_doc, "judge": None if judge is None else judge.config()},
         "summary": {
             "overall": group(rows),
             "by_split": by("split"),
@@ -60,9 +69,9 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True) 
     }
 
 
-def save_scores(scores: dict, run_path) -> Path:
+def save_scores(scores: dict, run_path, out=None) -> Path:
     run_path = Path(run_path)
-    path = run_path.with_name(run_path.name.removesuffix(".run.json") + ".scores.json")
+    path = Path(out) if out else run_path.with_name(run_path.name.removesuffix(".run.json") + ".scores.json")
     path.write_text(json.dumps(scores, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return path
 
@@ -94,4 +103,37 @@ def format_report(scores: dict) -> str:
         lines += ["", f"found per repeat: {', '.join(map(str, found))}"]
     lines += ["", "scored = answers with evidence and no error; found = every fact retrieved; "
                   "recall@k is the mean share of facts within the first k chunks"]
+    if scores["config"].get("judge") is not None:
+        lines += format_answer_report(scores)
     return "\n".join(lines)
+
+
+def format_answer_report(scores: dict) -> list[str]:
+    judge = scores["config"]["judge"]
+    summary = scores["summary"]
+    lines = ["", f"answer quality, judged by {judge['model']} (prompt v{judge['prompt_version']}, "
+                 f"digest {judge['model_digest'][:12]})", "",
+             f"{'':<14}{'judged':>7}{'faithful':>10}{'n':>5}{'correct':>9}{'n':>5}{'declined (answerable)':>23}"
+             f"{'declined (unanswerable)':>25}"]
+
+    def row(name, g):
+        a = g["answer"]
+        score = lambda t: "-" if t["score"] is None else f"{t['score']:.3f}"
+        declined = lambda t: f"{t['abstained']}/{t['n']}"
+        return (f"{name:<14}{a['judged']:>7}{score(a['faithfulness']):>10}{a['faithfulness']['n']:>5}"
+                f"{score(a['correctness']):>9}{a['correctness']['n']:>5}{declined(a['abstention']['answerable']):>23}"
+                f"{declined(a['abstention']['unanswerable']):>25}")
+
+    lines.append(row("overall", summary["overall"]))
+    for name, g in summary["by_split"].items():
+        lines.append(row(name, g))
+    lines += ["", "by category"]
+    for name, g in summary["by_category"].items():
+        lines.append(row(name, g))
+    lines += ["", "faithful / correct: mean with supported or correct = 1, partly = 0.5, otherwise 0 (n = answers judged). "
+                  "Faithfulness skips answers that abstained. Declined = the answer abstained: wrong for an answerable "
+                  "question, right for an unanswerable one."]
+    errors = summary["overall"]["answer"]["judge_errors"]
+    if errors:
+        lines.append(f"judge errors: {errors} call(s) gave no usable verdict and are left out of the averages")
+    return lines

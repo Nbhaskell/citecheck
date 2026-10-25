@@ -8,8 +8,9 @@ What it does, and what it does not do:
   * Each `retrieval_contains` phrase is located in the corpus (demo_docs/) and stored as an evidence entry with the
     verbatim line it sits on, its heading path, and (PDFs) its page. A phrase on more than one line is an error
     unless CHOSEN or ALTERNATIVES below says what to do, so nothing is guessed silently.
-  * `answer_contains` / `answer_not_contains` are carried over unchanged. They are keywords, not a reference answer;
-    no reference answers are invented.
+  * `answer_contains` / `answer_not_contains` are carried over unchanged. They are keywords, not a reference answer.
+  * `reference_answer` is read from golden/reference_answers_rag_demo_v1.json (item id -> text), written from the
+    corpus documents and reviewed by hand; every item must have one, and no id may be unknown.
   * Splits come from the project's README: eval_questions.json was used to tune the prompt and thresholds (tuned),
     eval_questions_fresh.json was written afterwards and not used to tune (heldout), the PDF set is not
     described either way (unlabeled).
@@ -54,8 +55,11 @@ README_NOTES = (
     "'tuned' items were used while the prompt and thresholds were adjusted, so scores on them flatter the system. "
     "'heldout' items were written afterwards and not used to tune, but were written by Claude from the documents "
     "(per that project's README), so they are unseen by the prompt, not blind to the corpus. "
-    "No item is 'ambiguous' or 'conflicting' yet, and no item has a reference_answer."
+    "Every item has a reference_answer, drafted by Claude from the corpus documents and checked by hand before merging "
+    "(unanswerable items say the documents do not cover the question). "
+    "No item is 'ambiguous' or 'conflicting' yet."
 )
+REFERENCE_ANSWERS = Path(__file__).resolve().parents[1] / "golden" / "reference_answers_rag_demo_v1.json"
 
 
 def sha256(path: Path) -> str:
@@ -100,7 +104,7 @@ def locate(index: dict, phrase: str) -> list:
             for page, section, line in rows if contains(line, phrase)]
 
 
-def convert_item(q: dict, split: str, source: str, index: dict, report: list) -> dict:
+def convert_item(q: dict, split: str, source: str, index: dict, references: dict, report: list) -> dict:
     qid = q["id"]
     item = {"id": qid, "split": split, "category": CATEGORY[q["type"]], "question": q["question"]}
     if q.get("follow_up_to"):
@@ -123,6 +127,9 @@ def convert_item(q: dict, split: str, source: str, index: dict, report: list) ->
         evidence.append({"anchor": anchor, "passages": [
             {"doc_id": doc, "section": section, "page": page, "text": line} for doc, page, section, line in hits]})
     item["evidence"] = evidence
+    if qid not in references:
+        raise SystemExit(f"{source}:{qid}: no reference answer in {REFERENCE_ANSWERS.name}")
+    item["reference_answer"] = references[qid]
 
     if q.get("expected_page") is not None:
         pages = {p["page"] for ev in evidence for p in ev["passages"]}
@@ -148,17 +155,21 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--rag-repo", required=True, type=Path)
     parser.add_argument("--out", type=Path, default=Path(__file__).resolve().parents[1] / "golden" / "rag_demo_v1.json")
-    parser.add_argument("--version", default="rag-demo-1.0.0")
+    parser.add_argument("--version", default="rag-demo-1.1.0")
     args = parser.parse_args()
 
     repo, docs_dir = args.rag_repo, args.rag_repo / "demo_docs"
     index = index_corpus(docs_dir)
     commit = subprocess.run(["git", "-C", str(repo), "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
 
+    references = json.loads(REFERENCE_ANSWERS.read_text(encoding="utf-8"))
     report, items = [], []
     for filename, split in SOURCES:
         for q in json.loads((repo / filename).read_text(encoding="utf-8")):
-            items.append(convert_item(q, split, filename, index, report))
+            items.append(convert_item(q, split, filename, index, references, report))
+    unknown = sorted(set(references) - {i["id"] for i in items})
+    if unknown:
+        raise SystemExit(f"{REFERENCE_ANSWERS.name} has ids that are not golden items: {unknown}")
 
     golden = {
         "schema_version": 1,

@@ -1,0 +1,316 @@
+[
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1",
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": false
+  },
+  "dimensions": {
+   "abstention": {
+    "n": 36,
+    "missing_judge_verdict": 0,
+    "agree": 35,
+    "agreement": 0.972,
+    "weighted_agreement": 0.985,
+    "kappa": 0.908,
+    "top_label_agreement": 1.0,
+    "confusion": {
+     "abstained -> abstained": 6,
+     "answered -> answered": 29,
+     "answered -> partly_answered": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "ratio-and-eval-length",
+      "human": "answered",
+      "judge": "partly_answered"
+     }
+    ]
+   },
+   "faithfulness": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 9,
+    "agreement": 0.3,
+    "weighted_agreement": 0.542,
+    "kappa": 0.0,
+    "top_label_agreement": 0.3,
+    "confusion": {
+     "supported -> partly_supported": 16,
+     "supported -> supported": 9,
+     "supported -> unsupported": 5
+    },
+    "disagreements": [
+     {
+      "item_id": "play-groups",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "report-contents",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "removal-reasons",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "how-to-reserve",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "training-and-cards",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "military-discount",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "accident-cleanup",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "holiday-boarding-notice",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "followup-second-dog",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "followup-holiday-night",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "followup-bordetella",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "sick-sent-home-refund",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "boarding-night",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "three-topics",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "late-cancel-package",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "holiday-boarding-cancel",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "medication-fee",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "sick-pickup-time",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "puppy-5-months",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "ratio-and-eval-length",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "incident-policy",
+      "human": "supported",
+      "judge": "partly_supported"
+     }
+    ]
+   },
+   "correctness": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 22,
+    "agreement": 0.733,
+    "weighted_agreement": 0.826,
+    "kappa": 0.0,
+    "top_label_agreement": 0.733,
+    "confusion": {
+     "correct -> correct": 22,
+     "correct -> partly_correct": 8
+    },
+    "disagreements": [
+     {
+      "item_id": "report-contents",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "how-to-reserve",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "followup-bordetella",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "pdf-two-topics",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "boarding-night",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "late-cancel-package",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "ratio-and-eval-length",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "incident-policy",
+      "human": "correct",
+      "judge": "partly_correct"
+     }
+    ]
+   }
+  }
+ },
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1",
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": true
+  },
+  "dimensions": {
+   "abstention": {
+    "n": 36,
+    "missing_judge_verdict": 0,
+    "agree": 35,
+    "agreement": 0.972,
+    "weighted_agreement": 0.985,
+    "kappa": 0.908,
+    "top_label_agreement": 1.0,
+    "confusion": {
+     "abstained -> abstained": 6,
+     "answered -> answered": 29,
+     "answered -> partly_answered": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "ratio-and-eval-length",
+      "human": "answered",
+      "judge": "partly_answered"
+     }
+    ]
+   },
+   "faithfulness": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 24,
+    "agreement": 0.8,
+    "weighted_agreement": 0.869,
+    "kappa": 0.0,
+    "top_label_agreement": 0.8,
+    "confusion": {
+     "supported -> partly_supported": 6,
+     "supported -> supported": 24
+    },
+    "disagreements": [
+     {
+      "item_id": "report-contents",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "how-to-reserve",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "holiday-boarding-notice",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "followup-bordetella",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "boarding-night",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "bring-blanket",
+      "human": "supported",
+      "judge": "partly_supported"
+     }
+    ]
+   },
+   "correctness": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 28,
+    "agreement": 0.933,
+    "weighted_agreement": 0.956,
+    "kappa": 0.0,
+    "top_label_agreement": 0.933,
+    "confusion": {
+     "correct -> correct": 28,
+     "correct -> partly_correct": 2
+    },
+    "disagreements": [
+     {
+      "item_id": "late-cancel-package",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "ratio-and-eval-length",
+      "human": "correct",
+      "judge": "partly_correct"
+     }
+    ]
+   }
+  }
+ }
+]
