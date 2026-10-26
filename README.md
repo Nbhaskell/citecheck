@@ -7,9 +7,10 @@ citations are valid. Output is a CLI and a readable report.
 The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
 adapter, so one harness can score different projects.
 
-> **Status: steps 0 to 5 done.** Retrieval, answer quality and citations are scored, against two targets (rag-project and
-> CiteWise), with the local judge model checked against hand labels and known-bad answers, each scored run has a report, and
-> one change to a target (`RAG_TOP_K`) has been measured against run-to-run variation.
+> **Status: steps 0 to 6 done.** Retrieval, answer quality and citations are scored, against two targets (rag-project and
+> CiteWise), with the local judge model checked against hand labels and known-bad answers, each scored run has a report, one
+> change to a target (`RAG_TOP_K`) has been measured against run-to-run variation, and a check that needs no model reads
+> answers for figures and dates the judge tends to miss.
 > Sections marked *planned* describe the intended design.
 
 | Step | What | State |
@@ -20,6 +21,7 @@ adapter, so one harness can score different projects.
 | 3 | Citation checks, second target (CiteWise) | done |
 | 4 | Markdown report per run (no HTML), tests-only CI | done |
 | 5 | A measured change to a target: repeated passes at different settings, and `compare` | done |
+| 6 | Figure and date check that needs no model, measured against the judge's gaps | done |
 
 ## Quick start
 
@@ -187,6 +189,80 @@ Known weaknesses, all measured on a small sample:
 - **One labeller, one pass, 36 answers, prompt version 1 untouched.** The prompts were not tuned against these labels, so
   the numbers are a fair read of version 1, and a changed prompt needs the calibration repeated.
 
+### Figure and date check (no model)
+
+The judge often lets a small change to a figure or a date pass (see the known weaknesses above), so a second check reads an
+answer for its figures alone. [`src/citecheck/metrics/figures.py`](src/citecheck/metrics/figures.py) finds every money amount,
+number, date and time of day in an answer and asks whether the same value appears in the sources, the question or the earlier
+turns. It needs no model and no judge, runs with every `score`, and is reported beside the judged scores.
+
+```
+python -m citecheck score runs/<run id>.run.json
+python -m citecheck figure-check runs/<run id>.run.json --labels labels/<labels>.json --judge-results <known-bad file> [--judge]
+```
+
+- **What is compared.** Amounts and numbers by value (`$100` matches `100.00`, `44.0 billion` matches `44,000 million`); a date
+  as a whole year, month and day however it is written; a time on a 12-hour clock, so am and pm are not told apart. Citation
+  markers, list numbering, form names such as 10-K and codes such as H100 are not figures. A number word in a source or question
+  (`three`) counts as its value; a number word in an answer is not checked.
+- **Two counts.** *Not found* is a figure that appears in none of those texts. *Underived* is a number that is also not the sum,
+  difference, product or quotient of two numbers that do appear (0 and 1 are not used as operands, since they would put every
+  number one step from another). Dates and times are never derived.
+- **Sources.** The passages the target returned, or for a target that reports only what an answer cited, the cited excerpts. An
+  answer that cites nothing has every figure not found. Declined answers are not checked.
+
+**On the answers already judged good** (no damage; scored without the judge, so a declined answer is one the target declined):
+
+| Run | Answers with a figure | Every figure found | Figures not found | Every figure derivable | Figures underived |
+|---|---|---|---|---|---|
+| rag-project baseline, 1 pass | 95 | 89 | 8 | 95 | 0 |
+| rag-project `RAG_TOP_K=4`, 5 passes | 467 | 441 | 37 | 467 | 0 |
+| CiteWise baseline | 23 | 23 | 0 | 23 | 0 |
+
+Every unfound figure in the five passes is a total, product or saving computed from the passages (`$100 + $50`, `$125 x 3`) or a
+count taken from two times (`late-7pm`). The strict count therefore flags correct arithmetic in about 6% of the answers that state a figure (6 of 95, 26 of 467); the lenient
+count flags none. Scores: `runs/published/*.figures.scores.json`.
+
+**Does it notice damage?** The same damage the judge was tested with (30 sentences and 30 answers labelled good by hand), plus
+`figure_swapped`: the first figure replaced by the nearest different figure that the sources do state. Judge results are from
+the published known-bad files (reasoning on, prompt version 1); the swapped cases were judged with the same settings.
+
+| Damage | Texts | Not found | Underived | Judge | Either (judge or underived) |
+|---|---|---|---|---|---|
+| **Cited sentences** | | | | | |
+| none (control): flagged | 30 | 0 | 0 | 3 | 3 |
+| a figure changed by 17 to 59 | 18 | 18 | 16 | 12 | 18 |
+| the day of a date changed | 10 | 10 | 10 | 2 | 10 |
+| a figure swapped for another in the sources | 15 | 0 | 0 | 15 | 15 |
+| **Whole answers** | | | | | |
+| none (control): flagged | 30 | 1 | 0 | 8 | 8 |
+| first price or number changed | 26 | 25 | 22 | 25 | 25 |
+| a figure swapped for another in the sources | 25 | 1 | 0 | 24 | 24 |
+
+How to read it:
+
+- **It covers the judge's gap on invented figures and dates.** For cited sentences, a figure or date that appears in no source is
+  found every time, where the judge missed 6 of 18 changed figures and 8 of 10 changed days; together they catch all 28.
+  Two of the 18 changed figures happened to equal a sum or product of source numbers, which is what the lenient count costs.
+- **It adds little for whole answers**, where the judge already flagged 25 of 26 changed numbers.
+- **It cannot see a wrong figure that the sources also state**, by design (0 of 15 and 1 of 25 swapped). The judge flagged 15 of
+  15 and 24 of 25, so the two checks are complementary: the judge notices a figure that is plainly the wrong one, and the check
+  notices a small invented change the judge reads past.
+- **False alarms are low where it matters**: none of the 30 good sentences, one strict and none lenient of the 30 good answers.
+
+Limits:
+
+- **The damage tests for invented figures are close to circular.** The damage is defined as a figure that is in no source, which
+  is what the check detects; the informative rows are the false alarms and the cost of the lenient count.
+- **The swap is not subtle.** The nearest different figure in a long passage is often far from the original, which is easy for a
+  judge to notice. A near miss such as the previous year's headcount was not tested, and the check cannot see it either.
+- **Small samples**: 30 texts per set, 10 date cases, one set of hand labels per target.
+- **The rules were shaped by reading false alarms on these same runs** (marker and list stripping, whole dates, number words,
+  the arithmetic count). The false-alarm rates are therefore measured on data the rules were developed against, and a new target
+  or corpus needs them checked again.
+- **Figures only.** A number word in an answer, a date without a year, and any claim that is not a figure are not checked.
+  A figure the target used but did not cite is flagged for a target scored against cited excerpts.
+
 ### Citation metrics
 
 A target cites in one of two ways. Inline: the answer text carries markers such as `[2]` or `[3][6]`, each naming a listed
@@ -268,7 +344,8 @@ supported), with the unchanged sentences as a control.
 
 - Swapped sources are caught almost every time, so a citation that points at the wrong place is noticed.
 - Small changes to a figure are caught about half to two thirds of the time, and a changed date day is mostly missed: the
-  judge treats it as a minor detail of a statement whose main point is backed.
+  judge treats it as a minor detail of a statement whose main point is backed. The [figure and date check](#figure-and-date-check-no-model)
+  covers the case where the new figure or date appears in no source.
 - An added claim is flagged but usually as `partly_supported` (3 and 4 of 30 as `unsupported`), the intended reading of a minor
   unsupported claim.
 - Unlike faithfulness on whole answers, neither setting is clearly better here: reasoning off has fewer false alarms and
@@ -524,10 +601,17 @@ What running the harness against two targets showed, including where the harness
   in correctness stayed *unclear* under the two-test rule, which is conservative by design.
 - **A setting that is only recorded can be recorded wrongly.** `--set` writes a value the harness cannot check, so `compare`
   checks the passages per answer against it.
+- **Two different checks cover different mistakes.** The judge flagged a figure swapped for another from the same passage in 39
+  of 40 cases but missed 6 of 18 small invented changes and 8 of 10 changed days; the check that needs no model found all of
+  those and none of the swaps. Neither is enough alone, and the table that shows it rests on damage that is partly circular for the
+  check (see [the figure and date check](#figure-and-date-check-no-model)).
+- **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
+  alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: an HTML report, a person's review of the CiteWise reference answers, and a fix for the judge's weak spots (small
-figure and date changes, and the completeness mistake). See [`reports/`](reports/) for the two baselines and the `RAG_TOP_K`
-comparison.
+Not done: an HTML report, a person's review of the CiteWise reference answers, and a fix for the judge's own weak spots. The
+judge still misses small figure and date changes; the separate figure check now catches those where the new figure is in no
+source, and the completeness mistake in the citation verdict is unchanged. See [`reports/`](reports/) for the two baselines and
+the `RAG_TOP_K` comparison.
 
 ## Layout
 
@@ -537,10 +621,11 @@ labels/          hand labels for calibrating the judge (the generated sheet is n
 src/citecheck/
   models.py      what an adapter returns (chunks, citations, response)
   adapters/      the adapter interface, a mock for tests, and the rag-project and CiteWise adapters
-  metrics/       retrieval.py, answer.py (counts the judge's verdicts), citations.py
+  metrics/       retrieval.py, answer.py (counts the judge's verdicts), citations.py, figures.py (figures and dates, no model)
   judge/         the judge: prompts, Ollama client, disk cache, per-answer verdicts
   calibration.py, citation_calibration.py, calibration_sheet.py   hand-label sampling, the labelling sheet, judge-vs-human agreement
   known_bad.py, known_bad_citations.py   damage known-good answers or cited sentences on purpose and check the judge flags it
+  known_bad_figures.py   the same damage, checked against the figure and date check, with the judge's results beside it
   runner.py      `run`: ask the target, save raw responses
   scoring.py     `score`: metrics from a saved run
   golden.py      load and validate a golden set

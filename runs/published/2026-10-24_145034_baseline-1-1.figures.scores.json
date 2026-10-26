@@ -1,0 +1,8765 @@
+{
+ "scores_version": 4,
+ "run_id": "2026-10-24_145034_baseline-1-1",
+ "golden_version": "rag-demo-1.1.0",
+ "config": {
+  "ks": [
+   1,
+   3,
+   5
+  ],
+  "require_doc": true,
+  "judge": null
+ },
+ "summary": {
+  "overall": {
+   "asked": 131,
+   "errors": 0,
+   "retrieval": {
+    "n": 113,
+    "found": 112,
+    "found_at": {
+     "1": 87,
+     "3": 107,
+     "5": 111
+    },
+    "top_ranked": 87,
+    "mrr": 0.9564896755162241,
+    "mean_recall_at": {
+     "1": 0.8466076696165192,
+     "3": 0.971976401179941,
+     "5": 0.9926253687315635
+    },
+    "mean_precision_at": {
+     "1": 0.9292035398230089,
+     "3": 0.38348082595870203,
+     "5": 0.3066371681415929
+    },
+    "mean_worst_rank": 1.4017857142857142,
+    "mean_chunks": 3.911504424778761
+   },
+   "citations": {
+    "answers": 121,
+    "declined": {
+     "n": 10,
+     "with_markers": 0,
+     "with_listed_sources": 0
+    },
+    "with_markers": 0,
+    "with_dangling_marker": 0,
+    "with_unused_source": 0,
+    "cited_sentence_share": 0.0,
+    "evidence": {
+     "n": 113,
+     "all_cited": 111,
+     "mean_share_cited": 0.9823,
+     "text_checked": 0
+    },
+    "source_precision": {
+     "n": 112,
+     "mean": 0.925
+    },
+    "support": {
+     "sentences": 0,
+     "judged": 0,
+     "errors": 0,
+     "supported": 0,
+     "partly_supported": 0,
+     "unsupported": 0,
+     "score": null
+    }
+   },
+   "figures": {
+    "answers": 121,
+    "with_figures": 95,
+    "all_grounded": 89,
+    "all_derivable": 95,
+    "figures": 225,
+    "ungrounded": 8,
+    "underived": 0
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 55,
+    "errors": 0,
+    "retrieval": {
+     "n": 46,
+     "found": 45,
+     "found_at": {
+      "1": 38,
+      "3": 43,
+      "5": 44
+     },
+     "top_ranked": 38,
+     "mrr": 0.9583333333333334,
+     "mean_recall_at": {
+      "1": 0.8768115942028986,
+      "3": 0.9601449275362318,
+      "5": 0.9818840579710144
+     },
+     "mean_precision_at": {
+      "1": 0.9347826086956522,
+      "3": 0.358695652173913,
+      "5": 0.2768115942028985
+     },
+     "mean_worst_rank": 1.3333333333333333,
+     "mean_chunks": 3.9782608695652173
+    },
+    "citations": {
+     "answers": 50,
+     "declined": {
+      "n": 5,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 46,
+      "all_cited": 45,
+      "mean_share_cited": 0.9783,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 45,
+      "mean": 0.8985
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 50,
+     "with_figures": 40,
+     "all_grounded": 35,
+     "all_derivable": 40,
+     "figures": 108,
+     "ungrounded": 7,
+     "underived": 0
+    }
+   },
+   "tuned": {
+    "asked": 67,
+    "errors": 0,
+    "retrieval": {
+     "n": 59,
+     "found": 59,
+     "found_at": {
+      "1": 44,
+      "3": 56,
+      "5": 59
+     },
+     "top_ranked": 44,
+     "mrr": 0.9717514124293786,
+     "mean_recall_at": {
+      "1": 0.844632768361582,
+      "3": 0.9774011299435028,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9491525423728814,
+      "3": 0.403954802259887,
+      "5": 0.3305084745762712
+     },
+     "mean_worst_rank": 1.423728813559322,
+     "mean_chunks": 3.864406779661017
+    },
+    "citations": {
+     "answers": 63,
+     "declined": {
+      "n": 4,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 59,
+      "all_cited": 59,
+      "mean_share_cited": 1.0,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 59,
+      "mean": 0.952
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 63,
+     "with_figures": 51,
+     "all_grounded": 50,
+     "all_derivable": 51,
+     "figures": 110,
+     "ungrounded": 1,
+     "underived": 0
+    }
+   },
+   "unlabeled": {
+    "asked": 9,
+    "errors": 0,
+    "retrieval": {
+     "n": 8,
+     "found": 8,
+     "found_at": {
+      "1": 5,
+      "3": 8,
+      "5": 8
+     },
+     "top_ranked": 5,
+     "mrr": 0.8333333333333334,
+     "mean_recall_at": {
+      "1": 0.6875,
+      "3": 1.0,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.75,
+      "3": 0.375,
+      "5": 0.3020833333333333
+     },
+     "mean_worst_rank": 1.625,
+     "mean_chunks": 3.875
+    },
+    "citations": {
+     "answers": 8,
+     "declined": {
+      "n": 1,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 8,
+      "all_cited": 7,
+      "mean_share_cited": 0.875,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 8,
+      "mean": 0.875
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 8,
+     "with_figures": 4,
+     "all_grounded": 4,
+     "all_derivable": 4,
+     "figures": 7,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_category": {
+   "edge_case": {
+    "asked": 15,
+    "errors": 0,
+    "retrieval": {
+     "n": 15,
+     "found": 14,
+     "found_at": {
+      "1": 12,
+      "3": 14,
+      "5": 14
+     },
+     "top_ranked": 12,
+     "mrr": 0.9555555555555556,
+     "mean_recall_at": {
+      "1": 0.8666666666666667,
+      "3": 0.9666666666666667,
+      "5": 0.9666666666666667
+     },
+     "mean_precision_at": {
+      "1": 0.9333333333333333,
+      "3": 0.3555555555555555,
+      "5": 0.26666666666666666
+     },
+     "mean_worst_rank": 1.2857142857142858,
+     "mean_chunks": 4.0
+    },
+    "citations": {
+     "answers": 15,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 15,
+      "all_cited": 14,
+      "mean_share_cited": 0.9333,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 15,
+      "mean": 0.9
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 15,
+     "with_figures": 15,
+     "all_grounded": 10,
+     "all_derivable": 15,
+     "figures": 52,
+     "ungrounded": 7,
+     "underived": 0
+    }
+   },
+   "factual": {
+    "asked": 66,
+    "errors": 0,
+    "retrieval": {
+     "n": 66,
+     "found": 66,
+     "found_at": {
+      "1": 60,
+      "3": 65,
+      "5": 66
+     },
+     "top_ranked": 60,
+     "mrr": 0.9457070707070707,
+     "mean_recall_at": {
+      "1": 0.9090909090909091,
+      "3": 0.9848484848484849,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 0.9090909090909091,
+      "3": 0.3409090909090909,
+      "5": 0.2676767676767677
+     },
+     "mean_worst_rank": 1.1515151515151516,
+     "mean_chunks": 3.878787878787879
+    },
+    "citations": {
+     "answers": 66,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 66,
+      "all_cited": 65,
+      "mean_share_cited": 0.9848,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 65,
+      "mean": 0.9282
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 66,
+     "with_figures": 51,
+     "all_grounded": 51,
+     "all_derivable": 51,
+     "figures": 90,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "follow_up": {
+    "asked": 8,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 8,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 0,
+      "all_cited": 0,
+      "mean_share_cited": null,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 0,
+      "mean": null
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 8,
+     "with_figures": 8,
+     "all_grounded": 7,
+     "all_derivable": 8,
+     "figures": 22,
+     "ungrounded": 1,
+     "underived": 0
+    }
+   },
+   "multi_topic": {
+    "asked": 22,
+    "errors": 0,
+    "retrieval": {
+     "n": 22,
+     "found": 22,
+     "found_at": {
+      "1": 5,
+      "3": 18,
+      "5": 21
+     },
+     "top_ranked": 5,
+     "mrr": 0.9696969696969696,
+     "mean_recall_at": {
+      "1": 0.5757575757575757,
+      "3": 0.9242424242424242,
+      "5": 0.9848484848484849
+     },
+     "mean_precision_at": {
+      "1": 0.9545454545454546,
+      "3": 0.5454545454545454,
+      "5": 0.4651515151515151
+     },
+     "mean_worst_rank": 2.409090909090909,
+     "mean_chunks": 4.0
+    },
+    "citations": {
+     "answers": 22,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 22,
+      "all_cited": 22,
+      "mean_share_cited": 1.0,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 22,
+      "mean": 0.8985
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 22,
+     "with_figures": 20,
+     "all_grounded": 20,
+     "all_derivable": 20,
+     "figures": 60,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "unanswerable": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 0,
+     "declined": {
+      "n": 10,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": null,
+     "evidence": {
+      "n": 0,
+      "all_cited": 0,
+      "mean_share_cited": null,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 0,
+      "mean": null
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 0,
+     "with_figures": 0,
+     "all_grounded": 0,
+     "all_derivable": 0,
+     "figures": 0,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "yes_no": {
+    "asked": 10,
+    "errors": 0,
+    "retrieval": {
+     "n": 10,
+     "found": 10,
+     "found_at": {
+      "1": 10,
+      "3": 10,
+      "5": 10
+     },
+     "top_ranked": 10,
+     "mrr": 1.0,
+     "mean_recall_at": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0
+     },
+     "mean_precision_at": {
+      "1": 1.0,
+      "3": 0.35,
+      "5": 0.275
+     },
+     "mean_worst_rank": 1.0,
+     "mean_chunks": 3.8
+    },
+    "citations": {
+     "answers": 10,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 10,
+      "all_cited": 10,
+      "mean_share_cited": 1.0,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 10,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 10,
+     "with_figures": 1,
+     "all_grounded": 1,
+     "all_derivable": 1,
+     "figures": 1,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 131,
+    "errors": 0,
+    "retrieval": {
+     "n": 113,
+     "found": 112,
+     "found_at": {
+      "1": 87,
+      "3": 107,
+      "5": 111
+     },
+     "top_ranked": 87,
+     "mrr": 0.9564896755162241,
+     "mean_recall_at": {
+      "1": 0.8466076696165192,
+      "3": 0.971976401179941,
+      "5": 0.9926253687315635
+     },
+     "mean_precision_at": {
+      "1": 0.9292035398230089,
+      "3": 0.38348082595870203,
+      "5": 0.3066371681415929
+     },
+     "mean_worst_rank": 1.4017857142857142,
+     "mean_chunks": 3.911504424778761
+    },
+    "citations": {
+     "answers": 121,
+     "declined": {
+      "n": 10,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.0,
+     "evidence": {
+      "n": 113,
+      "all_cited": 111,
+      "mean_share_cited": 0.9823,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 112,
+      "mean": 0.925
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 121,
+     "with_figures": 95,
+     "all_grounded": 89,
+     "all_derivable": 95,
+     "figures": 225,
+     "ungrounded": 8,
+     "underived": 0
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "vaccines-required",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 6,
+     "cited_sentences": 0,
+     "uncited": [
+      "The required vaccinations for your dog before attending Barks n Woofs are:",
+      "- **Rabies** (valid for 3 years, depending on the vaccine given).",
+      "- **DHPP** (distemper/parvo, valid for 1 year after the booster series).",
+      "- **Bordetella** (kennel cough, must be given within the last 12 months).",
+      "**Canine influenza** is recommended but not required.",
+      "Puppies must also be at least 4 months old and have completed their puppy vaccination series."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "flu-vaccine",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The canine influenza vaccine is **recommended** but not required.",
+      "The context specifies that it is \"recommended\" under the Required Vaccinations section, while Rabies, DHPP, and Bordetella are explicitly stated as mandatory."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "rabies-valid",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The rabies vaccination is valid for 3 years, depending on the vaccine given."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "paper-photo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The context states that photos of paper vaccination records are not accepted.",
+      "Owners must provide vaccination records via email, in person, or by online form, but photos of paper records are explicitly rejected."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "grace-period",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, there is a grace period of 5 days if your dog's vaccination expires."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sick-wait",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Your dog may return after 2 days if they have recovered from illness, or with a vet's note if they are still unwell.",
+      "The policy allows either option, and there is no specific grace period mentioned for this case."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sick-symptom-window",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The policy states that dogs cannot be brought if they have had vomiting or diarrhea in the last 48 hours.",
+      "Therefore, your dog must be free of vomiting or diarrhea for **48 hours** before they can be brought.",
+      "If the dog has been ill (with these symptoms) and is now symptom-free, they may return after **2 days** (48 hours) or with a vet's note."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "neuter-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, dogs over 6 months old must be spayed or neutered to attend.",
+      "The context specifies this requirement directly.",
+      "Puppies younger than 6 months are not subject to this rule, but they must meet other criteria (e.g., vaccination) for attendance."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unneutered-8mo",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Dogs over 6 months old must be spayed or neutered to attend.",
+      "Your dog is 8 months old and not neutered, so he cannot attend unless he meets this requirement."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "min-age",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The minimum age for a puppy to attend is 4 months old.",
+      "Puppies must be at least 4 months old and have completed their puppy vaccination series."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "medication-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, staff can give your dog medication if the owner provides it in its original container with written instructions.",
+      "The cost is $10 per dose.",
+      "Additionally, medication administration is listed as an add-on service for $10.00, which aligns with the per-dose fee."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "eval-cost",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The temperament evaluation is free of cost."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The temperament evaluation takes about 1 hour."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "eval-bring",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "You need to bring vaccination records, the signed owner agreement, and the dog's vet contact information."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "weight-limit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The maximum weight for a dog is 250 pounds."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "incident-policy",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "After three incidents within 5 days, the dog is suspended for 1 day, then re-evaluated or removed.",
+      "Staff have the final decision."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "reevaluation",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The context states that a dog who was declined may be re-evaluated after **30 days or 1 month**.",
+      "There are no exceptions or additional conditions provided for this specific rule.",
+      "Yes, a declined dog can be re-evaluated after 30 days."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "full-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, a full day of daycare (over 4 hours) costs $100.00."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "half-day-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "A half day of daycare costs $50.00 and is up to 4 hours."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "five-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The duration of 5 hours qualifies as a full day (over 4 hours), so it costs $100.00.",
+      "If pickup occurs after 6:00pm, a late fee applies, but the question focuses on the duration, not the pickup time."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "second-dog-two-dogs-total",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The cost for two dogs from the same household for one full day is $100.00 (for the first dog) plus $50.00 (for the second dog), totaling $150.00."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [
+     "$150.00"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "ten-day-package",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The 10-day package costs $800 and is valid for 90 days."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unlimited-monthly",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The unlimited monthly membership costs $2,500 per month."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unused-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, unused package days can be transferred to another dog."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-price",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The standard overnight stay costs $125.00 per night."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The boarding check-in time is between 8:00am and 9:00am."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "late-pickup-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The fee for picking up late is $5.00 for every 30 minutes after closing time.",
+      "Pickup after closing time incurs this late fee, as specified in the Pricing and Packages section."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "discounts",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The discount offered is 10% for multi-dog, military, rescue, or referral cases.",
+      "No other discounts are mentioned in the context."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sunday-hours",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The regular hours on Sundays are 8:00am to 6:00pm.",
+      "There are no exceptions or modified hours noted for Sundays in the context."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "closed-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "No, we are closed on Christmas Day."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "evening-pickup",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The evening pick-up window is between 5:30pm and 6:00pm."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "late-dropoff",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Dogs dropped off after 9:00am may be charged for a full day."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "To reserve boarding, you need to book at least 3 days ahead.",
+      "This is a requirement for boarding reservations as stated in the context.",
+      "There is no exception mentioned for this rule."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "address",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The daycare is located at 123 puppy drive, Oakland ME.",
+      "Look for the green awning, with the front door for visitors and the side door for drop-off or pickup."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "staff-ratio",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Each staff member supervises a group of dogs at a ratio of 1 staff member for every 5 dogs."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nap-time",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Nap time is from 12:00 PM to 2:30 PM.",
+      "During this period, dogs rest in individual or shared quiet areas, and the play yards are closed to visitors."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "bring-blanket",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, the context states that \"A leash, toys, or a blanket: allowed,\" which means bringing a toy or blanket is permitted for your dog.",
+      "The owner is responsible for bringing these items, and the dog can have access to them."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "daily-report",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, owners receive a daily report via email with notes on meals, bathroom breaks, and behavior, and photos are shared daily."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "cancel-notice",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "To avoid a charge for cancelling a daycare day, you must cancel **at least 12 hours before drop-off** by phone, email, or text.",
+      "If you cancel late or do not show, a $50.00 fee applies."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "late-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The fee for a late cancellation or no-show for daycare is $50.00.",
+      "This applies when the cancellation is not made at least 12 hours before drop-off, or if the pet owner does not show up."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-deposit",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The boarding deposit is $25.00.",
+      "This deposit is required at the time of booking and is applied to the final bill."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "cancel-boarding-3-days",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Canceling boarding 3 days before arrival (which is less than 5 days) results in a **partial refund** of the deposit.",
+      "The context does not specify the exact amount of the partial refund, so you would need to contact Barks n Woofs for details on how much of the deposit is returned.",
+      "The deposit is applied to the final bill, but the refund amount depends on the cancellation timing."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "package-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "No, refunds for unused package days are not allowed under normal circumstances.",
+      "Package days are non-refundable after purchase, except if the dog is permanently removed by us.",
+      "The policy does not provide refunds for unused days unless this specific exception applies."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "payment-methods",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The payment methods accepted are cash, check, and card."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "refund-timing",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Refunds are issued to the original payment method within 5 business days."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sick-sent-home-refund",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, if your dog is sent home early due to illness, you will receive a refund for the unused portion of the stay.",
+      "This is explicitly stated in the Refunds policy."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "expired-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, you can still bring your dog during the 5-day grace period after the rabies vaccination expires.",
+      "However, you must provide updated proof of vaccination before the grace period ends.",
+      "If the vaccination expires yesterday, the grace period allows you to bring the dog until the 5 days have passed, but updated proof is required to continue attendance."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "full-day-and-cancel",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "A full day of daycare costs $100.00.",
+      "To avoid a charge, you must cancel at least 12 hours before drop-off.",
+      "Cancelling on time (within this window) results in no charge and a package day being returned.",
+      "Late cancellation or no-show incurs a $50.00 fee."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "open-and-bath",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The opening time on Saturdays is 8:00am."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "eval-and-vaccines",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 5,
+    "fact_ranks": [
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.4
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 8,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, your dog needs a temperament evaluation before their first full day at Barks n Woofs.",
+      "The evaluation is free, lasts about 1 hour, and determines approval for group play, conditions, or denial.",
+      "For vaccines, every dog must have current proof of:",
+      "- Rabies (valid for 3 years, depending on the vaccine)",
+      "- DHPP (distemper/parvo, valid for 1 year after the booster series)",
+      "- Bordetella (kennel cough, must be given within the last 12 months)",
+      "Canine influenza is **recommended** but not required.",
+      "Puppies must also be at least 4 months old and have completed their puppy vaccination series."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 5,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "close-and-late-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The closing time is 6:00pm daily.",
+      "The late pickup fee is $5.00 for every 30 minutes after closing time."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "deposit-and-checkin",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The boarding deposit is $25.00, and check-in is between 8:00am and 9:00am."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nail-and-nap",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The nail trim costs $30.00.",
+      "Nap time is from 12:00 PM to 2:30 PM."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The temperament evaluation takes about 1 hour.",
+      "The context does not specify how many dogs each staff member supervises during the evaluation, but it mentions that in play groups, staff supervise groups at a ratio of 1 staff member for every 5 dogs.",
+      "This ratio applies to play groups, not the temperament evaluation itself."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unlimited-and-expiry",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The unlimited monthly membership costs $2,500 per month.",
+      "Package days expire 90 days after purchase unless stated otherwise."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "blanket-and-christmas",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, your dog can bring a blanket as it is allowed.",
+      "We are closed on Christmas Day."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 3,
+     "expected": 2,
+     "precision": 0.6667
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "weight-and-rabies",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The maximum weight for a dog is **250 pounds**.",
+      "A rabies vaccination is valid for **3 years**, depending on the vaccine given."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "half-day-and-sick-return",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The cost for a half day is $50.00 for up to 4 hours.",
+      "A dog who has been ill may return after 2 days or with a vet's note."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "three-topics",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 7,
+    "fact_ranks": [
+     2,
+     1,
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "3": 0.6666666666666666,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The full-day price is $100.00 for over 4 hours.",
+      "The boarding deposit is $25.00.",
+      "Each staff member supervises 5 dogs."
+     ]
+    },
+    "evidence": {
+     "facts": 3,
+     "cited": 3,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 3,
+     "expected": 3,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unknown-grooming",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-transport",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-webcam",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-cats",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "followup-half-day",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "A half day (up to 4 hours) costs $50.00."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-second-dog",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The cost for a second dog sharing the room is $50.00 per night.",
+      "This applies in addition to the standard overnight stay rate of $125.00 per night.",
+      "There is no mention of exceptions or conditions affecting this rate in the context."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-bordetella",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Bordetella (kennel cough) must be given within the last 12 months.",
+      "If a dog's Bordetella vaccination expires, a grace period of 5 days is allowed before the dog cannot attend."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-cancel-fee",
+   "repeat": 1,
+   "split": "tuned",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "If you miss the 12-hour cancellation deadline (i.e., cancel late or do not show), a fee of **$50.00** applies.",
+      "Additionally, a package day is used.",
+      "There are no exceptions or grace periods mentioned for this rule."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "holiday-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, there is an extra charge for boarding on holidays.",
+      "The context states a **Holiday surcharge of $25.00 per night** applies on listed holidays.",
+      "The surcharge is added to the standard overnight rate and applies specifically to the listed holidays (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day).",
+      "Note that holiday boarding may also require reservations 30 days in advance."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 3,
+     "expected": 1,
+     "precision": 0.3333
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "training-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The training session costs $100.00."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "bounced-payment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, if your payment bounces, you are charged a fee of $10.00.",
+      "Dogs may not attend until the balance is paid."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "accident-cleanup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 2,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 0.5,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, you will be charged a cleanup fee of $10.00 if your dog has an accident indoors.",
+      "This fee applies to accidents or illness occurring during the stay."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "fleas",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "If your dog is found to have fleas, the dog will be sent home, and the owner will be notified."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "heat-cycle",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Female dogs in heat cannot attend Barks n Woofs, as stated in the Spay and Neuter Requirements."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sick-pickup-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, if your dog shows signs of illness during the day, the owner will be called for pickup within 1 hour.",
+      "The dog will be separated until the owner arrives."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "midday-pickup",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The midday pick-up window for half-day dogs is between 11:00am and 1:00pm.",
+      "This is specified in the \"Drop-Off and Pick-Up Windows\" section."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "holidays-closed",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The holidays when Barks n Woofs is closed are: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, and Christmas Day."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "memorial-day",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Barks n Woofs is closed on Memorial Day, so drop-off is not allowed on that day."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "snow-closure",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "If Barks n Woofs closes due to a snowstorm, owners with confirmed reservations will be notified by text, email, social media, or phone as soon as possible.",
+      "You will be refunded or given a credit for the days the facility is closed.",
+      "This applies regardless of reservation type (daycare, boarding, etc.), as the policy explicitly covers closures from weather or emergencies.",
+      "Refunds are issued to the original payment method within 5 business days, per the general refund policy."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "how-to-reserve",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "To make a reservation, you must reserve by phone, website, or email.",
+      "Daycare and Boarding reservations are required, with Boarding needing at least 3 days' advance notice.",
+      "No other conditions or exceptions are specified for the reservation process itself."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     4
+    ],
+    "found": true,
+    "first_hit_rank": 4,
+    "worst_hit_rank": 4,
+    "reciprocal_rank": 0.25,
+    "recall_at": {
+     "1": 0.0,
+     "3": 0.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.0,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "To book boarding over a holiday, you must reserve **at least 30 days prior to boarding**, as stated in the \"Holidays\" section under Hours and Schedule.",
+      "This applies to holiday boarding and daycare."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "lunch-time",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The dogs have lunch and a water break from 11:30 AM to 12:00 PM.",
+      "During this time, dogs who need a meal are fed in separate spaces."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "treats",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "The context states that \"Treats are only given with owner permission.\" Therefore, the answer depends on whether the owner has given permission.",
+      "If the owner has given permission, then treats can be given.",
+      "If not, treats are not given."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "collar-id",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 2,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.5,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, your dog needs a collar with an ID tag when attending.",
+      "The context explicitly states that a collar with an ID tag is required under \"What to Bring.\" Other items like a leash, toys, or a blanket are allowed (optional), but the collar and ID tag are mandatory."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "enrichment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The dogs get enrichment through puzzle toys, sniff games, water play, and training practice."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "membership-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "To cancel a monthly membership and avoid the next charge, you must cancel at least **5 days before the renewal date** (the 1st of each month).",
+      "This is specified in the \"Packages and Memberships\" policy.",
+      "There are no exceptions or additional conditions mentioned for this rule."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "membership-renewal",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The monthly membership renews automatically on the 1st of each month.",
+      "To avoid the next charge, cancel at least 5 days before the renewal date."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "refund-window",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The refund request must be made within 5 days of the charge."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "holiday-boarding-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "To cancel holiday boarding, you must provide cancellation at least **10 days ahead**.",
+      "Late cancellations (less than 10 days before arrival) are charged $10.00."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "meal-packing",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The context does not specify how to send your dog's food, only that meals must be brought in a labeled container with the dog's name, portion, and instructions.",
+      "The term \"send\" is not addressed in the provided rules."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 0,
+     "all_cited": false,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 0,
+     "expected": 0,
+     "precision": null
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "report-contents",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The daily report includes notes on meals, bathroom breaks, and behavior.",
+      "Photos are shared daily but are not part of the report itself."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "medication-how",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "To send your dog's medication, you must provide it in its original container with written instructions.",
+      "The staff can administer it, but you are charged $10 per dose.",
+      "Photos of paper records are not accepted for vaccination proof, but medication must be in the original container."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "first-visit",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 5,
+     "cited_sentences": 0,
+     "uncited": [
+      "Every new dog must complete a temperament evaluation before their first full day.",
+      "The evaluation occurs on the first day, but the dog cannot stay for a full day until after the evaluation is completed.",
+      "The evaluation itself takes about 1 hour, so the dog can stay for the remainder of the day once the evaluation is done.",
+      "However, the policy explicitly states the evaluation must be completed *before* the first full day, implying the full day is only allowed after the evaluation.",
+      "Thus, the dog can stay for a full day on the first visit **only after** completing the temperament evaluation."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "play-groups",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "Play groups are formed by grouping dogs based on **size, age, energy level, play style, and temperament**.",
+      "Each group is supervised by a staff member at a ratio of **1 staff member for every 5 dogs**.",
+      "New dogs must complete a temperament evaluation before their first full day, which may result in conditions like small-group placement.",
+      "The evaluation assesses comfort, play style, and reactions to handling, noise, and other dogs, influencing group assignments."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "removal-reasons",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 9,
+     "cited_sentences": 0,
+     "uncited": [
+      "Your dog could be removed from daycare for the following reasons:",
+      "**Aggression** toward people or dogs, including biting or attempted biting.",
+      "**Resource guarding** that cannot be managed (food, toys, or people).",
+      "**Extreme fear or anxiety** that does not improve after 10 visits.",
+      "**Excessive barking, destructiveness, or inability to settle** despite staff help.",
+      "**Illness** (e.g., vomiting, diarrhea, coughing, sneezing, eye/nose discharge, fever, or open wounds within 48 hours) or **lack of current vaccinations**.",
+      "**Repeated incidents** (3 incidents within 5 days), leading to a 1-day suspension and potential removal.",
+      "**Fleas or ticks** (the dog will be sent home, and the owner notified).",
+      "Staff have the final decision based on safety considerations."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 5,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "flu-only-recommended",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The Canine influenza vaccine is only recommended and not required."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "military-discount",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, Barks n Woofs provides a 10% discount for military customers."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "package-20",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.3333333333333333
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The 20-day package costs $1,500 and is valid for 90 days."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "dispute-charge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, you should contact Nathan at 111-111-1111 or email@address.com within 5 days of identifying the issue."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-3-nights",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The cost for three nights of boarding for one dog is calculated as follows: $125.00 per night × 3 nights = $375.00.",
+      "There are no additional charges mentioned for this scenario (no second dog, no holiday surcharge, and no unused days transfer)."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [
+     "$375.00"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-two-dogs",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The nightly price for two dogs sharing a boarding room is $125.00 (standard overnight rate) plus $50.00 (second dog sharing a room), totaling **$175.00 per night**.",
+      "This applies when two dogs are staying together in one room."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [
+     "$175.00"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "late-7pm",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     null
+    ],
+    "found": false,
+    "first_hit_rank": 1,
+    "worst_hit_rank": null,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 0.5,
+     "5": 0.5
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The late fee for picking up after closing time is $5.00 for every 30 minutes past the closing time.",
+      "Since pickup after closing time (6:00pm) incurs a late fee, and the pickup occurred at 7:00pm (60 minutes late), the fee is calculated as $5.00 × 2 (for two 30-minute intervals) = **$10.00**."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 9,
+    "ungrounded": [
+     "60",
+     "2"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "ten-day-savings",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 5,
+     "cited_sentences": 0,
+     "uncited": [
+      "The 10-day package costs $800 for 10 days of service.",
+      "Paying for single full days at $100 per day would cost $1,000 for 10 days.",
+      "The savings are $200 over 10 days, which equals **$20 per day**.",
+      "This calculation assumes no discounts apply (e.g., multi-dog, military, etc.), as the question does not mention such eligibility.",
+      "Unused days in the package can be transferred to another dog, but this does not affect the per-day savings calculation."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 9,
+    "ungrounded": [
+     "$1,000",
+     "$200"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "late-cancel-package",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "No charge is not applied because canceling two hours before drop-off is late cancellation.",
+      "You are charged a fee of $50.00, and a package day is used.",
+      "Package days are non-refundable after purchase, except if the dog is permanently removed by us."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "expired-8-days",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The DHPP vaccination expired 8 days ago, and the grace period for expired vaccinations is only 5 days.",
+      "Since 8 days have passed, the grace period has expired, and the dog cannot attend until updated proof of vaccination is received."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "puppy-5-months",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old.",
+      "Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date.",
+      "Neutering is not required for puppies under 6 months."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "sunday-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "The context does not state that Barks n Woofs is closed on Sundays.",
+      "Regular hours are listed as Monday to Sunday: 8:00am to 6:00pm.",
+      "There is no mention of Sundays being closed.",
+      "If the question refers to a different scenario (e.g., holidays or weather closures), the context does not apply."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unlimited-false-premise",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "No, the unlimited monthly membership is $2,500 per month, not $250.",
+      "The context explicitly states this price under the \"Packages\" section."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "phone-and-sunday",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The phone number is 111-111-1111.",
+      "Yes, we are open on Sundays from 8:00am to 6:00pm."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 1,
+     "precision": 0.5
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 5,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "training-and-cards",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     2,
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The training session costs $100.00."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "lunch-late-weight",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 3,
+    "n_chunks": 6,
+    "fact_ranks": [
+     6,
+     1,
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 6,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.3333333333333333,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    },
+    "found_at": {
+     "1": false,
+     "3": false,
+     "5": false
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.4
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Lunch is served between 11:30 AM and 12:00 PM.",
+      "The late fee is $5.00 per 30 minutes after closing time.",
+      "The maximum dog weight is 250 pounds."
+     ]
+    },
+    "evidence": {
+     "facts": 3,
+     "cited": 3,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 5,
+     "expected": 3,
+     "precision": 0.6
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 5,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "bath-and-surcharge",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.5
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Boarding on a holiday has an extra surcharge of $25.00 per night."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unknown-tour",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-insurance",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-vet",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-indoor",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-senior",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "bath-price",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 0,
+     "cited_sentences": 0,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-nail",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "The nail trim costs $30.00."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "boarding-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "The standard overnight boarding rate is $125.00 per night for one dog.",
+      "If a second dog shares the room, the cost is $50.00 per night.",
+      "Additionally, a holiday surcharge of $25.00 per night applies on listed holidays.",
+      "Check-in is between 8:00am and 9:00am, and check-out is by 6:00pm."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 6,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-holiday-night",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 4,
+     "cited_sentences": 0,
+     "uncited": [
+      "On a holiday, the standard overnight boarding rate of $125.00 per night includes a **holiday surcharge of $25.00 per night** (totaling $150.00 per night).",
+      "Boarding on listed holidays **requires reservations 30 days prior** to arrival.",
+      "Check-in remains between 8:00am and 9:00am, and check-out is by 6:00pm.",
+      "The surcharge applies only to the holidays listed in the \"Hours and Schedule > Holidays\" section (New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Day)."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 7,
+    "ungrounded": [
+     "$150.00"
+    ],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-late-holiday-cancel",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "If you cancel late for holiday boarding (less than 10 days ahead of arrival), you are charged **$10.00**.",
+      "This applies specifically to holiday boarding cancellations.",
+      "For other services (e.g., daycare), late cancellations may incur different fees (e.g., $50.00), but those rules do not apply here."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-sick-return",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The dog may return after 2 days or with a vet's note.",
+      "If the dog was separated due to illness, the owner must pick up the dog within 1 hour, but the dog can return after 2 days or with a vet's note."
+     ]
+    },
+    "evidence": null,
+    "precision": null,
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-parking-spaces",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "There are 12 parking spaces in total."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-drop-off-door",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The side door is used for dropping off your dog.",
+      "The context states, \"Dogs being dropped off or picked up use the side door.\" The front door is designated for visitors, not for dog drop-offs."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-lobby-wait",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 0,
+     "uncited": [
+      "Wait at the lobby counter when picking up your dog.",
+      "Staff bring your dog out to you with the daily report.",
+      "Do not go into the play areas yourself, even if you can see your dog through the gate."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-ramp",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "Yes, there is a ramp leading up from the parking lot."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-lost-items",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "factual",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "The facility keeps items your dog leaves behind for 30 days.",
+      "After this period, unclaimed items are given to a local rescue."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-social-media",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     1
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 1,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 1.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": true,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 0,
+     "uncited": [
+      "We never post a dog's photo on social media without written permission from the owner."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-two-topics",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": {
+    "n_facts": 2,
+    "n_chunks": 3,
+    "fact_ranks": [
+     1,
+     2
+    ],
+    "found": true,
+    "first_hit_rank": 1,
+    "worst_hit_rank": 2,
+    "reciprocal_rank": 1.0,
+    "recall_at": {
+     "1": 0.5,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 1.0,
+     "3": 0.6666666666666666,
+     "5": 0.6666666666666666
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "At pick-up, wait at the lobby counter.",
+      "There are 12 parking spaces in total, including 2 close to the side door for drop-off."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-nap-time-across-documents",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": {
+    "n_facts": 1,
+    "n_chunks": 4,
+    "fact_ranks": [
+     3
+    ],
+    "found": true,
+    "first_hit_rank": 3,
+    "worst_hit_rank": 3,
+    "reciprocal_rank": 0.3333333333333333,
+    "recall_at": {
+     "1": 0.0,
+     "3": 1.0,
+     "5": 1.0
+    },
+    "found_at": {
+     "1": false,
+     "3": true,
+     "5": true
+    },
+    "precision_at": {
+     "1": 0.0,
+     "3": 0.3333333333333333,
+     "5": 0.25
+    }
+   },
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [],
+     "listed": [],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 0,
+     "uncited": [
+      "It is not a good idea to drop by at 1pm because during quiet hours (12:00pm to 2:30pm), the play yards are closed to visitors so that dogs can rest.",
+      "If you visit during this time, you should wait at the lobby counter and avoid accessing the play areas."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 0,
+     "all_cited": false,
+     "text_checked": false
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 0,
+     "precision": 0.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "pdf-unanswerable",
+   "repeat": 1,
+   "split": "unlabeled",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  }
+ ]
+}

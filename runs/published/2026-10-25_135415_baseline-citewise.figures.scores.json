@@ -1,0 +1,2205 @@
+{
+ "scores_version": 4,
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "golden_version": "citewise-filings-1.0.0",
+ "config": {
+  "ks": [
+   1,
+   3,
+   5
+  ],
+  "require_doc": true,
+  "judge": null
+ },
+ "summary": {
+  "overall": {
+   "asked": 44,
+   "errors": 0,
+   "retrieval": {
+    "n": 0
+   },
+   "citations": {
+    "answers": 38,
+    "declined": {
+     "n": 6,
+     "with_markers": 5,
+     "with_listed_sources": 5
+    },
+    "with_markers": 38,
+    "with_dangling_marker": 0,
+    "with_unused_source": 0,
+    "cited_sentence_share": 0.9254,
+    "evidence": {
+     "n": 38,
+     "all_cited": 36,
+     "mean_share_cited": 0.9737,
+     "text_checked": 38
+    },
+    "source_precision": {
+     "n": 38,
+     "mean": 1.0
+    },
+    "support": {
+     "sentences": 0,
+     "judged": 0,
+     "errors": 0,
+     "supported": 0,
+     "partly_supported": 0,
+     "unsupported": 0,
+     "score": null
+    }
+   },
+   "figures": {
+    "answers": 38,
+    "with_figures": 23,
+    "all_grounded": 23,
+    "all_derivable": 23,
+    "figures": 58,
+    "ungrounded": 0,
+    "underived": 0
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 44,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 38,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 38,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9254,
+     "evidence": {
+      "n": 38,
+      "all_cited": 36,
+      "mean_share_cited": 0.9737,
+      "text_checked": 38
+     },
+     "source_precision": {
+      "n": 38,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 38,
+     "with_figures": 23,
+     "all_grounded": 23,
+     "all_derivable": 23,
+     "figures": 58,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_category": {
+   "edge_case": {
+    "asked": 3,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 3,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 3,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 1.0,
+     "evidence": {
+      "n": 3,
+      "all_cited": 3,
+      "mean_share_cited": 1.0,
+      "text_checked": 3
+     },
+     "source_precision": {
+      "n": 3,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 3,
+     "with_figures": 3,
+     "all_grounded": 3,
+     "all_derivable": 3,
+     "figures": 10,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "factual": {
+    "asked": 23,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 23,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 23,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9565,
+     "evidence": {
+      "n": 23,
+      "all_cited": 23,
+      "mean_share_cited": 1.0,
+      "text_checked": 23
+     },
+     "source_precision": {
+      "n": 23,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 23,
+     "with_figures": 14,
+     "all_grounded": 14,
+     "all_derivable": 14,
+     "figures": 31,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "follow_up": {
+    "asked": 4,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 4,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 4,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 1.0,
+     "evidence": {
+      "n": 4,
+      "all_cited": 4,
+      "mean_share_cited": 1.0,
+      "text_checked": 4
+     },
+     "source_precision": {
+      "n": 4,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 4,
+     "with_figures": 3,
+     "all_grounded": 3,
+     "all_derivable": 3,
+     "figures": 7,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "multi_topic": {
+    "asked": 5,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 5,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 5,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.8333,
+     "evidence": {
+      "n": 5,
+      "all_cited": 3,
+      "mean_share_cited": 0.8,
+      "text_checked": 5
+     },
+     "source_precision": {
+      "n": 5,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 5,
+     "with_figures": 2,
+     "all_grounded": 2,
+     "all_derivable": 2,
+     "figures": 7,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "unanswerable": {
+    "asked": 6,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 0,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": null,
+     "evidence": {
+      "n": 0,
+      "all_cited": 0,
+      "mean_share_cited": null,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 0,
+      "mean": null
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 0,
+     "with_figures": 0,
+     "all_grounded": 0,
+     "all_derivable": 0,
+     "figures": 0,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "yes_no": {
+    "asked": 3,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 3,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 3,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.6667,
+     "evidence": {
+      "n": 3,
+      "all_cited": 3,
+      "mean_share_cited": 1.0,
+      "text_checked": 3
+     },
+     "source_precision": {
+      "n": 3,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 3,
+     "with_figures": 1,
+     "all_grounded": 1,
+     "all_derivable": 1,
+     "figures": 3,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 44,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "citations": {
+     "answers": 38,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 38,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9254,
+     "evidence": {
+      "n": 38,
+      "all_cited": 36,
+      "mean_share_cited": 0.9737,
+      "text_checked": 38
+     },
+     "source_precision": {
+      "n": 38,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 38,
+     "with_figures": 23,
+     "all_grounded": 23,
+     "all_derivable": 23,
+     "figures": 58,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "amd-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amzn-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "googl-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-segments",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-segments",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-buyback",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      2,
+      4
+     ],
+     "listed": [
+      1,
+      2,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 3,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 7,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "AMD has approximately 6.8 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-competition",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-dividend",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-founded",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      2
+     ],
+     "listed": [
+      2
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-acres",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "googl-work-councils",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      2
+     ],
+     "listed": [
+      2
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      3
+     ],
+     "listed": [
+      3
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "apple-japan-segment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Apple reports Japan as its own segment."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-over-200k",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Microsoft employs more than 200,000 people."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-hq-and-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "The sources provided do not state the number of employees NVIDIA has."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 1,
+     "all_cited": false,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-us-vs-international",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      2,
+      5
+     ],
+     "listed": [
+      2,
+      5
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 2,
+     "uncited": [
+      "Therefore, NVIDIA has more employees than AMD."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 1,
+     "all_cited": false,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-googl-total",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      3,
+      4
+     ],
+     "listed": [
+      3,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unknown-tsla-chargers",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 6,
+    "listed": 6
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-amd-cafeteria",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 4,
+    "listed": 4
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-nvda-acres",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 1,
+    "listed": 1
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-aapl-floors",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 1,
+    "listed": 1
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-msft-parking",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-googl-dog",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": null,
+   "citations": null,
+   "declined": {
+    "markers": 6,
+    "listed": 6
+   },
+   "figures": null
+  },
+  {
+   "item_id": "followup-nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-msft-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-amzn-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": null,
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": null
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  }
+ ]
+}
