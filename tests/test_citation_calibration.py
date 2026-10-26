@@ -90,10 +90,11 @@ def candidates():
 def test_each_sentence_gets_the_damage_that_applies_to_it():
     cases = known_bad_citations.build_cases(candidates())
     kinds = {(c["key"], c["kind"]) for c in cases}
-    assert ("a#1", "claim_changed") in kinds and ("b#1", "claim_changed") not in kinds  # no number to change
+    assert ("a#1", "figure_changed") in kinds and ("b#1", "figure_changed") not in kinds  # no figure to change
+    assert ("a#1", "date_changed") not in kinds  # no date to change
     swapped = next(c for c in cases if c["key"] == "a#1" and c["kind"] == "source_swapped")
     assert swapped["statement"] == "AMD had 31,000 employees." and swapped["sources"] == candidates()[1]["sources"]
-    changed = next(c for c in cases if c["key"] == "a#1" and c["kind"] == "claim_changed")
+    changed = next(c for c in cases if c["key"] == "a#1" and c["kind"] == "figure_changed")
     assert "31,000" not in changed["statement"] and changed["sources"] == candidates()[0]["sources"]
     added = next(c for c in cases if c["key"] == "b#1" and c["kind"] == "claim_added")
     assert added["statement"].startswith("NVIDIA is based in Santa Clara, California. ")
@@ -139,3 +140,19 @@ def test_the_citation_sheet_and_calibrate_commands_work_end_to_end(tmp_path, cap
     code = cli.main(["calibrate", str(labels_path), "--scores", paths[0], "--scores", paths[1]])
     out = capsys.readouterr().out
     assert code == 0 and "citation_support" in out and "1.000" in out
+
+
+def test_a_figure_is_changed_but_never_the_day_or_year_of_a_date():
+    changed = known_bad_citations.change_figure("As of December 31, 2025, Alphabet had 190,820 employees.", ["190,820"])
+    assert changed.startswith("As of December 31, 2025, Alphabet had 190,8") and "190,820" not in changed
+    assert known_bad_citations.change_figure("On June 30, 2026 it was in 2025.", ["x"]) is None
+    assert known_bad_citations.change_figure("Up to $60.0 billion remained.", ["$60.0 billion"]) == "Up to $77.0 billion remained."
+    assert known_bad_citations.change_figure("It is based in Santa Clara.", []) is None
+
+
+def test_a_date_changes_to_another_valid_day_and_only_when_there_is_one():
+    for day in range(1, 32):
+        changed = known_bad_citations.change_date(f"As of December {day}, 2025, it had 5 people.")
+        new_day = int(changed.split("December ")[1].split(",")[0])
+        assert 1 <= new_day <= 28 and new_day != day or day > 28
+    assert known_bad_citations.change_date("It had 5 people in fiscal year 2026.") is None
