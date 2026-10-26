@@ -31,18 +31,26 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from citecheck.reference_review import review_clause  # noqa: E402
 from citecheck.text import contains  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / "golden" / "citewise_questions_v1.json"
-NOTES = (
+NOTES_HEAD = (
     "Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py "
     "from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were "
     "written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, "
-    "because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and have not yet been reviewed by a person. "
-    "A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its "
+    "because prices, headlines and the P/E change every night. Reference answers were drafted from the same text "
+)
+NOTES_TAIL = (
+    " A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its "
     "text. Unanswerable items are things the stored filings do not state, as far as searched."
 )
+
+
+def notes(review: dict | None) -> str:
+    """The header notes; the sentence about reference answers follows the review state in the questions file."""
+    return NOTES_HEAD + review_clause(review) + NOTES_TAIL
 
 
 def get(base: str, path: str, **params):
@@ -92,7 +100,7 @@ def main() -> None:
     parser.add_argument("--citewise-repo", required=True, type=Path, help="the Citewise for Markets checkout (for its git commit)")
     parser.add_argument("--url", default="http://127.0.0.1:8000")
     parser.add_argument("--out", type=Path, default=ROOT / "golden" / "citewise_filings_v1.json")
-    parser.add_argument("--version", default="citewise-filings-1.0.0")
+    parser.add_argument("--version", help="default: the version in the questions file, else citewise-filings-1.0.0")
     parser.add_argument("--check", action="store_true", help="print what every anchor matched and write nothing")
     args = parser.parse_args()
 
@@ -143,7 +151,8 @@ def main() -> None:
         item["origin"] = {"file": SPEC.name, "id": entry["id"]}
         items.append(item)
     golden = {
-        "schema_version": 1, "golden_version": args.version, "target": "citewise", "notes": NOTES,
+        "schema_version": 1, "golden_version": args.version or spec.get("golden_version") or "citewise-filings-1.0.0",
+        "target": "citewise", "notes": notes(spec.get("reference_review")),
         "corpus": {"name": "citewise-stored-filings", "source": "https://github.com/Nbhaskell/citewise-markets",
                    "commit": commit, "fingerprint": "filing-identifier",
                    "documents": corpus_documents(args.url, symbols)},

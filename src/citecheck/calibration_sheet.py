@@ -6,9 +6,11 @@ The page knows nothing about what is being labelled. Its data is:
     title, intro        the heading and a short line under it
     rules               the how-to paragraphs, as HTML
     cards               one per item: `blocks` (label, text, optional css class), optional `details` (a collapsed list of
-                        passages), and `groups` (the questions: dim, title, hint, options, and an optional hide_when
-                        {dim, value} that hides a question once another is answered that way)
-The downloaded file holds, per card, one label per visible question, an optional note and the card's stratum."""
+                        passages), an optional `edit` ({dim, label, text}: a text box that starts with `text`), and
+                        `groups` (the questions: dim, title, hint, options, and an optional hide_when {dim, value} that
+                        hides a question once another is answered that way)
+The downloaded file holds, per card, one label per visible question, the text of the edit box under its `dim`, an optional
+note and the card's stratum."""
 import html
 import json
 
@@ -40,6 +42,7 @@ details summary { cursor:pointer; color:var(--accent); }
 .hint { font-size:.9rem; color:var(--muted); margin:2px 0 6px; }
 label.opt { display:block; padding:6px 8px; border-radius:6px; cursor:pointer; }
 label.opt:hover { background:var(--bg); }
+textarea.editbox { min-height:96px; border-color:var(--ok); }
 textarea { width:100%; min-height:48px; background:var(--bg); color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:6px; font:inherit; }
 .bar { position:sticky; top:0; background:var(--bg); padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:center; flex-wrap:wrap; z-index:2; }
 button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:8px 14px; font:inherit; cursor:pointer; }
@@ -82,6 +85,12 @@ function groupHtml(card, g, number) {
     `<label class="opt"><input type="radio" name="${esc(card.id)}${SEP}${g.dim}" value="${v}" ${entry[g.dim] === v ? 'checked' : ''}> ${esc(text)}</label>`).join('');
   return `<div class="group ${visible(g, entry) ? '' : 'hidden'}"><strong>${number}. ${esc(g.title)}</strong><div class="hint">${esc(g.hint)}</div>${radios}</div>`;
 }
+function editText(card, entry) { return entry[card.edit.dim] !== undefined ? entry[card.edit.dim] : card.edit.text; }
+function editHtml(card, entry) {
+  if (!card.edit) return '';
+  return `<div class="label">${esc(card.edit.label)}</div><textarea class="editbox" data-edit="${esc(card.id)}">${esc(editText(card, entry))}</textarea>
+    <button class="secondary" data-reset="${esc(card.id)}">Put the original text back</button>`;
+}
 function cardHtml(card, i) {
   const entry = state[card.id] || {};
   const blocks = card.blocks.map(b => `<div class="label">${esc(b.label)}</div><div class="box ${b.css || ''}">${esc(b.text)}</div>`).join('');
@@ -89,7 +98,7 @@ function cardHtml(card, i) {
     card.details.items.map(p => `<div class="passage"><span class="muted">${esc(p.head)}</span><br>${esc(p.text)}</div>`).join('')}</details>` : '';
   return `<section class="card ${complete(card) ? 'done' : ''}" data-id="${esc(card.id)}">
     <div class="muted">Item ${i + 1} of ${data.cards.length}</div>
-    ${blocks}${details}
+    ${blocks}${editHtml(card, entry)}${details}
     ${card.groups.map((g, k) => groupHtml(card, g, k + 1)).join('')}
     <div class="group"><strong>Note (optional)</strong><textarea data-note="${esc(card.id)}" placeholder="Anything you were unsure about">${esc(entry.note || '')}</textarea></div>
   </section>`;
@@ -115,11 +124,29 @@ document.addEventListener('change', e => {
   window.scrollTo(0, top);
 });
 document.addEventListener('input', e => {
+  if (e.target.dataset.edit) {
+    const id = e.target.dataset.edit, card = data.cards.find(c => c.id === id);
+    state[id] = state[id] || {};
+    state[id][card.edit.dim] = e.target.value;
+    save();
+    return;
+  }
   if (!e.target.dataset.note) return;
   const id = e.target.dataset.note;
   state[id] = state[id] || {};
   state[id].note = e.target.value;
   save();
+});
+document.addEventListener('click', e => {
+  const id = e.target.dataset && e.target.dataset.reset;
+  if (!id) return;
+  const card = data.cards.find(c => c.id === id);
+  state[id] = state[id] || {};
+  delete state[id][card.edit.dim];
+  save();
+  const top = window.scrollY;
+  render();
+  window.scrollTo(0, top);
 });
 document.getElementById('download').addEventListener('click', () => {
   const items = {};
@@ -128,6 +155,7 @@ document.getElementById('download').addEventListener('click', () => {
     const need = needs(card, entry);
     const labels = {};
     for (const g of card.groups) labels[g.dim] = need.includes(g.dim) ? (entry[g.dim] || null) : null;
+    if (card.edit) labels[card.edit.dim] = editText(card, entry);
     items[card.id] = { ...labels, note: entry.note || '', stratum: card.stratum };
   }
   const out = { labels_version: data.labels_version, kind: data.kind, run_id: data.run_id, golden_version: data.golden_version,
@@ -151,6 +179,6 @@ render();
 def render(data: dict) -> str:
     """The sheet as HTML. The data is embedded as JSON with '<' escaped, so no text can close the script tag."""
     embedded = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
-    intro = f"Run {data['run_id']} · question set {data['golden_version']}"
+    intro = data.get("intro") or f"Run {data['run_id']} · question set {data['golden_version']}"
     return (PAGE.replace("__TITLE__", html.escape(data["title"])).replace("__INTRO__", html.escape(intro))
             .replace("__DATA__", embedded))
