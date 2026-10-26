@@ -3,7 +3,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import calibration, calibration_sheet, citation_calibration, golden, known_bad, known_bad_citations, report, runner, scoring
+from . import calibration, calibration_sheet, citation_calibration, compare, golden, known_bad, known_bad_citations, report, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -248,6 +248,35 @@ def cmd_report_index(args) -> int:
     return 0
 
 
+def cmd_compare(args) -> int:
+    arms = []
+    for spec in args.arm:
+        label, sep, files = spec.rpartition("=")  # a label may hold "=", as in RAG_TOP_K=4; the file paths may not
+        if not sep or not label or not files:
+            print(f"--arm expects LABEL=SCORES_FILE[,SCORES_FILE...], got {spec!r}")
+            return 2
+        arms.append((label, files.split(",")))
+    try:
+        built = compare.build_comparison([compare.load_arm(label, files) for label, files in arms], title=args.title,
+                                         seed=args.seed, resamples=args.resamples)
+    except compare.CompareError as e:
+        print(f"cannot compare: {e}")
+        return 1
+    out, sidecar = compare.save_comparison(built, args.out)
+    for comparison in built["comparisons"]:
+        print(f"{comparison['other']} against {comparison['base']}")
+        for name in compare.HEADLINE:
+            r = comparison["results"].get(name)
+            if r:
+                print(f"  {compare.LABELS[name].split(' (')[0]:<30}{compare.fmt(r['base_mean'])} -> {compare.fmt(r['other_mean'])}  "
+                      f"({compare.signed(r['difference'])})  {r['verdict']}")
+    for note in built["limits"]:
+        if note.startswith("Arm "):
+            print(f"warning: {note}")
+    print(f"\nwrote {out} and {sidecar}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="citecheck", description="Score a RAG system's retrieval, answers and citations.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -317,6 +346,16 @@ def main(argv=None) -> int:
     p = sub.add_parser("report-index", help="list the reports in a folder on an index page")
     p.add_argument("folder", help="a folder holding *.report.json files")
     p.set_defaults(func=cmd_report_index)
+
+    p = sub.add_parser("compare", help="compare settings of one target over repeated judged passes")
+    p.add_argument("--arm", action="append", required=True, metavar="LABEL=SCORES[,SCORES...]",
+                   help="one setting and the judged scores files of its passes, e.g. RAG_TOP_K=4=runs/a.scores.json; "
+                        "the first arm is the baseline (repeatable)")
+    p.add_argument("--title", default="Comparison of settings")
+    p.add_argument("--seed", type=int, default=0, help="seed of the bootstrap over questions (default %(default)s)")
+    p.add_argument("--resamples", type=int, default=10000, help="bootstrap resamples (default %(default)s)")
+    p.add_argument("--out", required=True, help="the page, e.g. reports/name.md; a name.compare.json copy is saved beside it")
+    p.set_defaults(func=cmd_compare)
 
     p = sub.add_parser("known-bad", help="check that the judge flags answers that were damaged on purpose")
     p.add_argument("run", help="a *.run.json file")
