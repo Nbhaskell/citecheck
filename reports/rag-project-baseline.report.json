@@ -1,0 +1,427 @@
+{
+ "report_version": 1,
+ "title": "rag-project on rag-demo-1.1.0",
+ "run": {
+  "run_id": "2026-10-24_145034_baseline-1-1",
+  "label": "baseline-1-1",
+  "created": "2026-10-24T14:50:34",
+  "citecheck": {
+   "version": "0.0.1",
+   "commit": "79534adc8dfd2fc658e801997f6bb5c71cbeded0",
+   "dirty": false
+  },
+  "python": "3.13.15"
+ },
+ "target": {
+  "name": "rag-project",
+  "describe": {
+   "url": "http://127.0.0.1:8000",
+   "server": {
+    "chat_model": "qwen3:8b",
+    "embed_model": "embeddinggemma",
+    "thinking": true,
+    "split_search": true,
+    "files": 7,
+    "chunks": 50,
+    "documents": [
+     "01-vaccination-and-health-requirements.md",
+     "02-temperament-and-admission-policy.md",
+     "03-pricing-and-packages.md",
+     "04-hours-and-schedule.md",
+     "05-daily-routine.md",
+     "06-cancellation-payment-and-refund-policy.md",
+     "07-visitor-guide.pdf"
+    ]
+   },
+   "declared": {
+    "RAG_TOP_K": "4",
+    "RAG_SPLIT": "1"
+   }
+  }
+ },
+ "golden": {
+  "version": "rag-demo-1.1.0",
+  "hash": "b6dde77c7f12f41928bf0a746ddf7e7c0fb96303e9f318a0f035f41d16a2446a",
+  "items": 131,
+  "splits": {
+   "tuned": 67,
+   "heldout": 55,
+   "unlabeled": 9
+  },
+  "categories": {
+   "factual": 66,
+   "yes_no": 10,
+   "edge_case": 15,
+   "multi_topic": 22,
+   "unanswerable": 10,
+   "follow_up": 8
+  }
+ },
+ "judge": {
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "prompt_version": "1",
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 8192,
+  "think": true
+ },
+ "calibrated": {
+  "answers": true,
+  "citations": false
+ },
+ "rows": [
+  {
+   "section": "Retrieval",
+   "metric": "Every fact retrieved (found)",
+   "result": "112/113 (99%)",
+   "n": 113,
+   "caveats": [
+    "Deterministic. It follows the target's own ranking and says nothing about whether retrieval is good."
+   ]
+  },
+  {
+   "section": "Retrieval",
+   "metric": "Mean recall at the first 1 / 3 / 5 chunks",
+   "result": "0.847 / 0.972 / 0.993",
+   "n": 113,
+   "caveats": []
+  },
+  {
+   "section": "Retrieval",
+   "metric": "Mean reciprocal rank",
+   "result": "0.956",
+   "n": 113,
+   "caveats": []
+  },
+  {
+   "section": "Answers",
+   "metric": "Unanswerable questions declined (right)",
+   "result": "10/10 (100%)",
+   "n": 10,
+   "caveats": [
+    "An off-topic answer is usually read as a refusal, so it skips the faithfulness check; correctness still flags it.",
+    "Matched 35/36 (97%) of hand labels, from a sample chosen to be hard.",
+    "Flagged 30/30 (100%) of answers damaged on purpose."
+   ]
+  },
+  {
+   "section": "Answers",
+   "metric": "Answerable questions declined (false refusals)",
+   "result": "2/121 (2%)",
+   "n": 121,
+   "caveats": []
+  },
+  {
+   "section": "Answers",
+   "metric": "Faithfulness (supported = 1, partly = 0.5)",
+   "result": "0.937: 104 supported, 15 partly, 0 unsupported",
+   "n": 119,
+   "caveats": [
+    "The judge leans strict: it can call a claim that a passage states outright partly supported.",
+    "Matched 24/30 (80%) of hand labels, from a sample chosen to be hard; every hand label was `supported`, so the labels cannot show whether the judge catches a bad one.",
+    "Flagged 60/67 (90%) of answers damaged on purpose and 6/30 (20%) of unchanged good ones (false alarms)."
+   ]
+  },
+  {
+   "section": "Answers",
+   "metric": "Correctness against the reference answer",
+   "result": "0.984: 118 correct, 2 partly, 1 incorrect",
+   "n": 121,
+   "caveats": [
+    "The judge can penalise extra detail that the reference does not contain, and can miss a contradicted opening.",
+    "Matched 28/30 (93%) of hand labels, from a sample chosen to be hard; every hand label was `correct`, so the labels cannot show whether the judge catches a bad one.",
+    "Flagged 85/95 (89%) of answers damaged on purpose and 2/30 (7%) of unchanged good ones (false alarms)."
+   ]
+  },
+  {
+   "section": "Citations",
+   "metric": "Citation style",
+   "result": "Lists whole files; no inline markers",
+   "n": 119,
+   "caveats": [
+    "Marker, dangling-marker, unused-source and claim-support checks need inline markers, so they do not apply."
+   ]
+  },
+  {
+   "section": "Citations",
+   "metric": "Every fact's passage among the cited sources",
+   "result": "110/111 (99%)",
+   "n": 111,
+   "caveats": [
+    "Strict: an answer that cites another passage stating the same fact counts as missing it unless that wording is listed in the golden set as an alternate.",
+    "No excerpts were available, so this was matched on the document alone."
+   ]
+  },
+  {
+   "section": "Citations",
+   "metric": "Mean share of cited documents that are expected",
+   "result": "0.924",
+   "n": 111,
+   "caveats": [
+    "Expected documents are the golden set's evidence documents and any listed alternates."
+   ]
+  },
+  {
+   "section": "Citations",
+   "metric": "Declined answers that still list a source",
+   "result": "1/12 (8%)",
+   "n": 12,
+   "caveats": []
+  }
+ ],
+ "by_split": [
+  {
+   "group": "heldout",
+   "asked": 55,
+   "errors": 0,
+   "found": "45/46 (98%)",
+   "faithfulness": "0.92 (n=48)",
+   "correctness": "0.99 (n=50)",
+   "evidence_cited": "44/44 (100%)",
+   "support": null
+  },
+  {
+   "group": "tuned",
+   "asked": 67,
+   "errors": 0,
+   "found": "59/59 (100%)",
+   "faithfulness": "0.95 (n=63)",
+   "correctness": "0.98 (n=63)",
+   "evidence_cited": "59/59 (100%)",
+   "support": null
+  },
+  {
+   "group": "unlabeled",
+   "asked": 9,
+   "errors": 0,
+   "found": "8/8 (100%)",
+   "faithfulness": "0.94 (n=8)",
+   "correctness": "1.00 (n=8)",
+   "evidence_cited": "7/8 (88%)",
+   "support": null
+  }
+ ],
+ "by_category": [
+  {
+   "group": "edge_case",
+   "asked": 15,
+   "errors": 0,
+   "found": "14/15 (93%)",
+   "faithfulness": "0.93 (n=14)",
+   "correctness": "0.97 (n=15)",
+   "evidence_cited": "13/14 (93%)",
+   "support": null
+  },
+  {
+   "group": "factual",
+   "asked": 66,
+   "errors": 0,
+   "found": "66/66 (100%)",
+   "faithfulness": "0.95 (n=65)",
+   "correctness": "0.98 (n=66)",
+   "evidence_cited": "65/65 (100%)",
+   "support": null
+  },
+  {
+   "group": "follow_up",
+   "asked": 8,
+   "errors": 0,
+   "faithfulness": "0.81 (n=8)",
+   "correctness": "1.00 (n=8)",
+   "evidence_cited": null,
+   "support": null
+  },
+  {
+   "group": "multi_topic",
+   "asked": 22,
+   "errors": 0,
+   "found": "22/22 (100%)",
+   "faithfulness": "1.00 (n=22)",
+   "correctness": "0.98 (n=22)",
+   "evidence_cited": "22/22 (100%)",
+   "support": null
+  },
+  {
+   "group": "unanswerable",
+   "asked": 10,
+   "errors": 0,
+   "faithfulness": null,
+   "correctness": null
+  },
+  {
+   "group": "yes_no",
+   "asked": 10,
+   "errors": 0,
+   "found": "10/10 (100%)",
+   "faithfulness": "0.85 (n=10)",
+   "correctness": "1.00 (n=10)",
+   "evidence_cited": "10/10 (100%)",
+   "support": null
+  }
+ ],
+ "items_to_look_at": [
+  {
+   "item_id": "discounts",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "bring-blanket",
+   "category": "yes_no",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "late-cancel-fee",
+   "category": "factual",
+   "reasons": [
+    "correctness judged incorrect"
+   ]
+  },
+  {
+   "item_id": "cancel-boarding-3-days",
+   "category": "edge_case",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "package-refund",
+   "category": "yes_no",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "ratio-and-eval-length",
+   "category": "multi_topic",
+   "reasons": [
+    "correctness judged partly correct"
+   ]
+  },
+  {
+   "item_id": "followup-bordetella",
+   "category": "follow_up",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "followup-cancel-fee",
+   "category": "follow_up",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "snow-closure",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "how-to-reserve",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "holiday-boarding-notice",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "meal-packing",
+   "category": "factual",
+   "reasons": [
+    "declined a question the documents answer"
+   ]
+  },
+  {
+   "item_id": "report-contents",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "medication-how",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "first-visit",
+   "category": "yes_no",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "late-7pm",
+   "category": "edge_case",
+   "reasons": [
+    "a fact the question depends on was not retrieved"
+   ]
+  },
+  {
+   "item_id": "late-cancel-package",
+   "category": "edge_case",
+   "reasons": [
+    "correctness judged partly correct"
+   ]
+  },
+  {
+   "item_id": "sunday-false-premise",
+   "category": "edge_case",
+   "reasons": [
+    "declined a question the documents answer"
+   ]
+  },
+  {
+   "item_id": "boarding-night",
+   "category": "factual",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "followup-late-holiday-cancel",
+   "category": "follow_up",
+   "reasons": [
+    "faithfulness judged partly supported"
+   ]
+  },
+  {
+   "item_id": "pdf-nap-time-across-documents",
+   "category": "edge_case",
+   "reasons": [
+    "faithfulness judged partly supported",
+    "the passage stating a fact is not among the cited sources"
+   ]
+  }
+ ],
+ "limits": [
+  "About the question set: Converted from the question files in https://github.com/Nbhaskell/rag-project by tools/convert_ragproject.py. 'tuned' items were used while the prompt and thresholds were adjusted, so scores on them flatter the system. 'heldout' items were written afterwards and not used to tune, but were written by Claude from the documents (per that project's README), so they are unseen by the prompt, not blind to the corpus. Every item has a reference_answer, drafted by Claude from the corpus documents and checked by hand before merging (unanswerable items say the documents do not cover the question). No item is 'ambiguous' or 'conflicting' yet.",
+  "This is one pass over the question set. Answers vary from run to run, and a model target gives no seed, so a difference of a few answers is not evidence of a real change.",
+  "The judge (qwen3:8b) and the target answer with the same model family (qwen3:8b), so the judge may favour its own kind of answer. The calibration checks measure agreement with a person and with known damage; they do not rule that out.",
+  "Where the tables show hand-label agreement, read it as an estimate for hard cases from a small sample, not a measured error rate."
+ ],
+ "sources": {
+  "Run": "runs/published/2026-10-24_145034_baseline-1-1.run.json",
+  "Scores": "runs/published/2026-10-24_145034_baseline-1-1.citations.scores.json",
+  "Question set": "golden/rag_demo_v1.json",
+  "Agreement with hand labels 1": "runs/published/2026-10-24_145034_baseline-1-1.agreement-with-hand-labels.json",
+  "Known-bad check 1": "runs/published/2026-10-24_145034_baseline-1-1.known-bad-think-on.json",
+  "Known-bad check 2": "runs/published/2026-10-24_145034_baseline-1-1.known-bad-think-off.json"
+ }
+}
