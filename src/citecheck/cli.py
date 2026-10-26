@@ -3,7 +3,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import calibration, calibration_sheet, golden, known_bad, runner, scoring
+from . import calibration, calibration_sheet, citation_calibration, golden, known_bad, known_bad_citations, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -111,16 +111,22 @@ def cmd_sheet(args) -> int:
     if any(s["run_id"] != run["run_id"] for s in scores_list):
         print("every --scores file must come from this run")
         return 2
-    items = {i["id"]: i for i in data["items"]}
-    sample = calibration.select_sample(scores_list, items, n=args.n, seed=args.seed)
+    if args.citations:
+        sample = citation_calibration.select_units(scores_list, n=args.n, seed=args.seed)
+        sheet = citation_calibration.sheet_data(run, data, sample)
+        noun = "cited sentences"
+    else:
+        sample = calibration.select_sample(scores_list, {i["id"]: i for i in data["items"]}, n=args.n, seed=args.seed)
+        sheet = calibration.sheet_data(run, data, sample)
+        noun = "answers"
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(calibration_sheet.render(calibration.sheet_data(run, data, sample)), encoding="utf-8", newline="\n")
+    out.write_text(calibration_sheet.render(sheet), encoding="utf-8", newline="\n")
     population = sample["population"]
-    print(f"wrote {out}: {len(sample['picks'])} answers "
+    print(f"wrote {out}: {len(sample['picks'])} {noun} "
           f"({sum(s == calibration.DISAGREE for s in sample['strata'].values())} where the judge settings disagreed; "
-          f"{population.get(calibration.DISAGREE, 0)} such answers in the run, {population.get(calibration.AGREE, 0)} where they agreed)")
-    print("open it in a browser, label every answer, then press Download labels")
+          f"{population.get(calibration.DISAGREE, 0)} such {noun} in the run, {population.get(calibration.AGREE, 0)} where they agreed)")
+    print("open it in a browser, label every item, then press Download labels")
     return 0
 
 
@@ -177,14 +183,18 @@ def cmd_known_bad(args) -> int:
     judge = build_judge(args)
     if judge is None:
         return 1
-    candidates, responses, histories = known_bad.candidates_from(run, labels)
-    cases = known_bad.build_cases(candidates)
-    items = {i["id"]: i for i in data["items"]}
-    results = known_bad.judge_cases(judge, items, responses, histories, cases,
-                                    progress=lambda message: print(message, flush=True))
-    summary = known_bad.summarize(results)
+    progress = lambda message: print(message, flush=True)
+    if labels.get("kind") == "citations":
+        candidates = known_bad_citations.candidates_from(run, data, labels)
+        results = known_bad_citations.judge_cases(judge, candidates, known_bad_citations.build_cases(candidates), progress)
+        summary, report = known_bad_citations.summarize(results), known_bad_citations.format_report
+    else:
+        candidates, responses, histories = known_bad.candidates_from(run, labels)
+        cases = known_bad.build_cases(candidates)
+        results = known_bad.judge_cases(judge, {i["id"]: i for i in data["items"]}, responses, histories, cases, progress)
+        summary, report = known_bad.summarize(results), known_bad.format_report
     print(f"\njudge calls: {judge.calls} asked the model, {judge.cache_hits} from the cache\n")
-    print(known_bad.format_report(summary, judge.config()))
+    print(report(summary, judge.config()))
     if args.out:
         Path(args.out).write_text(json.dumps({"judge": judge.config(), "summary": summary, "cases": results}, indent=1,
                                              ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
@@ -234,7 +244,9 @@ def main(argv=None) -> int:
     p.add_argument("--scores", action="append", required=True, metavar="SCORES_FILE",
                    help="scores files from different judge settings; answers they disagree on are sampled first (repeatable)")
     p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
-    p.add_argument("--n", type=int, default=36, help="answers to label (default %(default)s)")
+    p.add_argument("--citations", action="store_true",
+                   help="label cited sentences (are they supported by their sources?) instead of whole answers")
+    p.add_argument("--n", type=int, default=36, help="items to label (default %(default)s)")
     p.add_argument("--seed", type=int, default=0, help="sampling seed (default %(default)s)")
     p.add_argument("--out", required=True, help="where to write the sheet, e.g. labels/sheet.html")
     p.set_defaults(func=cmd_sheet)
@@ -248,7 +260,7 @@ def main(argv=None) -> int:
 
     p = sub.add_parser("known-bad", help="check that the judge flags answers that were damaged on purpose")
     p.add_argument("run", help="a *.run.json file")
-    p.add_argument("--labels", required=True, help="hand labels; answers labelled supported and correct are damaged")
+    p.add_argument("--labels", required=True, help="hand labels; items labelled supported (and correct, for answers) are damaged")
     p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
     p.add_argument("--out", help="also save every case and verdict as JSON")
     add_judge_options(p)

@@ -86,20 +86,27 @@ def test_the_sheet_shows_the_answer_and_passages_but_no_judge_verdicts():
     sample = calibration.select_sample(scores, {i["id"]: i for i in golden["items"]}, n=3)
     data = calibration.sheet_data(run, golden, sample)
     assert {c["id"] for c in data["cards"]} == {"bath", "and-nails", "cats"}
-    bath = next(c for c in data["cards"] if c["id"] == "bath")
-    assert bath["answer"] == "A bath is $50." and len(bath["passages"]) == 4 and bath["answerable"]
-    follow_up = next(c for c in data["cards"] if c["id"] == "and-nails")
-    assert follow_up["history"][0]["content"] == "How much is a bath?"
-    assert not next(c for c in data["cards"] if c["id"] == "cats")["answerable"]
-    assert "verdict" not in json.dumps(data) and "judge" not in json.dumps(data)
+    card = {c["id"]: c for c in data["cards"]}
+
+    def block(item_id, label):
+        return next((b["text"] for b in card[item_id]["blocks"] if b["label"] == label), None)
+
+    assert block("bath", "The system's answer") == "A bath is $50." and len(card["bath"]["details"]["items"]) == 4
+    assert block("bath", "Reference answer (known correct)") == "reference for bath"
+    assert block("and-nails", "Earlier in the conversation").startswith("user: How much is a bath?")
+    assert [g["dim"] for g in card["bath"]["groups"]] == ["abstention", "faithfulness", "correctness"]
+    assert [g["dim"] for g in card["cats"]["groups"]] == ["abstention", "faithfulness"]  # unanswerable: no correctness
+    assert block("cats", "Reference answer (known correct)") is None
+    assert card["bath"]["groups"][1]["hide_when"] == {"dim": "abstention", "value": "abstained"}
+    assert "verdict" not in json.dumps(data["cards"]) and "judge" not in json.dumps(data["cards"])
 
 
 def test_the_sheet_html_embeds_its_data_without_closing_the_script_tag():
-    data = {"run_id": "r", "golden_version": "g", "labels_version": 1, "population": {}, "cards": [
-        {"id": "x", "question": "q", "history": [], "reference_answer": "", "answerable": True,
-         "answer": "</script><b>", "passages": [], "stratum": AGREE}]}
+    data = {"run_id": "r", "golden_version": "g", "labels_version": 1, "kind": "answers", "title": "T", "rules": [],
+            "population": {}, "cards": [{"id": "x", "stratum": AGREE, "groups": [], "details": None,
+                                         "blocks": [{"label": "Answer", "text": "</script><b>"}]}]}
     html = calibration_sheet.render(data)
-    assert "</script><b>" not in html and "\\u003c/script>" in html
+    assert "</script><b>" not in html and "\u003c/script>" in html
 
 
 # --- agreement ---------------------------------------------------------------------------------------------------

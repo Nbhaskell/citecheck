@@ -1,0 +1,163 @@
+{
+ "labels_version": 1,
+ "kind": "citations",
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "golden_version": "citewise-filings-1.0.0",
+ "golden_hash": "bb0103a66617a6b731839411e27fa7e960295a75f36e37d0e00eb1dfc181bd01",
+ "population": {
+  "agree": 39,
+  "disagree": 5
+ },
+ "items": {
+  "googl-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-vs-nvda-employees#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amd-vs-nvda-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-segments#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-hq-and-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-buyback#3": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "apple-japan-segment#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "apple-and-msft-hq#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-rd-share#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-amd-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "googl-work-councils#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-sqft#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-buyback#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-googl-total#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-us-vs-international#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-googl-total#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-acres#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-msft-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-in-texas#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-amzn-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-competition#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-nvda-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-sqft#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-nvda-hq#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  }
+ }
+}

@@ -1,0 +1,871 @@
+{
+ "judge": {
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "prompt_version": "1",
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 8192,
+  "think": true
+ },
+ "summary": {
+  "control": {
+   "n": 30,
+   "judge_errors": 0,
+   "flagged": 3,
+   "flagged_for_certain": 2
+  },
+  "figure_changed": {
+   "n": 18,
+   "judge_errors": 0,
+   "flagged": 12,
+   "flagged_for_certain": 9
+  },
+  "date_changed": {
+   "n": 10,
+   "judge_errors": 0,
+   "flagged": 2,
+   "flagged_for_certain": 2
+  },
+  "source_swapped": {
+   "n": 30,
+   "judge_errors": 0,
+   "flagged": 28,
+   "flagged_for_certain": 27
+  },
+  "claim_added": {
+   "n": 30,
+   "judge_errors": 0,
+   "flagged": 23,
+   "flagged_for_certain": 3
+  }
+ },
+ "cases": [
+  {
+   "key": "googl-employees#1",
+   "kind": "control",
+   "statement": "Alphabet's total headcount as of December 31, 2025, was 190,820 employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#2",
+   "kind": "control",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#1",
+   "kind": "control",
+   "statement": "As of December 27, 2025, AMD had approximately 31,000 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-segments#1",
+   "kind": "control",
+   "statement": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq-and-employees#1",
+   "kind": "control",
+   "statement": "NVIDIA is headquartered in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "tsla-hq#1",
+   "kind": "control",
+   "statement": "Tesla is headquartered in Austin, Texas.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#3",
+   "kind": "control",
+   "statement": "As of June 30, 2026, $40.6 billion remained of this $60.0 billion program.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "apple-japan-segment#1",
+   "kind": "control",
+   "statement": "Japan is listed as one of the reportable segments, alongside the Americas, Europe, Greater China, and Rest of Asia Pacific.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "apple-and-msft-hq#2",
+   "kind": "control",
+   "statement": "Microsoft is headquartered in Redmond, Washington.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-rd-share#1",
+   "kind": "control",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amd-hq#1",
+   "kind": "control",
+   "statement": "AMD is headquartered in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "googl-work-councils#1",
+   "kind": "control",
+   "statement": "This is stated in source.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq#1",
+   "kind": "control",
+   "statement": "NVIDIA's headquarters is in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-employees#1",
+   "kind": "control",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-hq#1",
+   "kind": "control",
+   "statement": "AMD's headquarters are located in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-sqft#1",
+   "kind": "control",
+   "statement": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#1",
+   "kind": "control",
+   "statement": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#1",
+   "kind": "control",
+   "statement": "As of December 31, 2025, Alphabet had 190,820 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-us-vs-international#1",
+   "kind": "control",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 121,000 people in the U.S. and 102,000 internationally.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#2",
+   "kind": "control",
+   "statement": "As of June 30, 2026, Microsoft had approximately 223,000 full-time employees.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-acres#1",
+   "kind": "control",
+   "statement": "Microsoft owns approximately 520 acres of land at its corporate headquarters.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-msft-employees#1",
+   "kind": "control",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "tsla-in-texas#1",
+   "kind": "control",
+   "statement": "Yes, Tesla is headquartered in Austin, Texas.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-employees#1",
+   "kind": "control",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amzn-employees#1",
+   "kind": "control",
+   "statement": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-competition#1",
+   "kind": "control",
+   "statement": "NVIDIA identifies the principal competitive factors in its market as performance, breadth of product offerings, access to customers and partners, distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-nvda-employees#1",
+   "kind": "control",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-sqft#1",
+   "kind": "control",
+   "statement": "Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-nvda-hq#2",
+   "kind": "control",
+   "statement": "NVIDIA is also headquartered in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "tsla-employees#1",
+   "kind": "control",
+   "statement": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "googl-employees#1",
+   "kind": "figure_changed",
+   "statement": "Alphabet's total headcount as of December 31, 2025, was 190,837 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "googl-employees#1",
+   "kind": "date_changed",
+   "statement": "Alphabet's total headcount as of December 13, 2025, was 190,820 employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "googl-employees#1",
+   "kind": "source_swapped",
+   "statement": "Alphabet's total headcount as of December 31, 2025, was 190,820 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "googl-employees#1",
+   "kind": "claim_added",
+   "statement": "Alphabet's total headcount as of December 31, 2025, was 190,820 employees. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#2",
+   "kind": "figure_changed",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,017 employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#2",
+   "kind": "source_swapped",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#2",
+   "kind": "claim_added",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of December 27, 2025, AMD had approximately 31,017 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#1",
+   "kind": "date_changed",
+   "statement": "As of December 9, 2025, AMD had approximately 31,000 employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of December 27, 2025, AMD had approximately 31,000 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-vs-nvda-employees#1",
+   "kind": "claim_added",
+   "statement": "As of December 27, 2025, AMD had approximately 31,000 employees. A veterinarian is on site during all opening hours.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-segments#1",
+   "kind": "source_swapped",
+   "statement": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-segments#1",
+   "kind": "claim_added",
+   "statement": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq-and-employees#1",
+   "kind": "source_swapped",
+   "statement": "NVIDIA is headquartered in Santa Clara, California.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq-and-employees#1",
+   "kind": "claim_added",
+   "statement": "NVIDIA is headquartered in Santa Clara, California. Webcams in every play area let owners watch live.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "tsla-hq#1",
+   "kind": "source_swapped",
+   "statement": "Tesla is headquartered in Austin, Texas.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "tsla-hq#1",
+   "kind": "claim_added",
+   "statement": "Tesla is headquartered in Austin, Texas. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#3",
+   "kind": "figure_changed",
+   "statement": "As of June 30, 2026, $57.6 billion remained of this $60.0 billion program.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#3",
+   "kind": "date_changed",
+   "statement": "As of June 12, 2026, $40.6 billion remained of this $60.0 billion program.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#3",
+   "kind": "source_swapped",
+   "statement": "As of June 30, 2026, $40.6 billion remained of this $60.0 billion program.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#3",
+   "kind": "claim_added",
+   "statement": "As of June 30, 2026, $40.6 billion remained of this $60.0 billion program. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "apple-japan-segment#1",
+   "kind": "source_swapped",
+   "statement": "Japan is listed as one of the reportable segments, alongside the Americas, Europe, Greater China, and Rest of Asia Pacific.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "apple-japan-segment#1",
+   "kind": "claim_added",
+   "statement": "Japan is listed as one of the reportable segments, alongside the Americas, Europe, Greater China, and Rest of Asia Pacific. A veterinarian is on site during all opening hours.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "apple-and-msft-hq#2",
+   "kind": "source_swapped",
+   "statement": "Microsoft is headquartered in Redmond, Washington.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "apple-and-msft-hq#2",
+   "kind": "claim_added",
+   "statement": "Microsoft is headquartered in Redmond, Washington. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-rd-share#1",
+   "kind": "figure_changed",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,017 employees in total, with 31,000 engaged in research and development.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-rd-share#1",
+   "kind": "source_swapped",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-rd-share#1",
+   "kind": "claim_added",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development. Webcams in every play area let owners watch live.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amd-hq#1",
+   "kind": "source_swapped",
+   "statement": "AMD is headquartered in Santa Clara, California.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "followup-amd-hq#1",
+   "kind": "claim_added",
+   "statement": "AMD is headquartered in Santa Clara, California. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "googl-work-councils#1",
+   "kind": "source_swapped",
+   "statement": "This is stated in source.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "googl-work-councils#1",
+   "kind": "claim_added",
+   "statement": "This is stated in source. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq#1",
+   "kind": "source_swapped",
+   "statement": "NVIDIA's headquarters is in Santa Clara, California.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-hq#1",
+   "kind": "claim_added",
+   "statement": "NVIDIA's headquarters is in Santa Clara, California. A veterinarian is on site during all opening hours.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,017 people on a full-time basis.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-employees#1",
+   "kind": "date_changed",
+   "statement": "As of June 12, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-employees#1",
+   "kind": "claim_added",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-hq#1",
+   "kind": "source_swapped",
+   "statement": "AMD's headquarters are located in Santa Clara, California.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-hq#1",
+   "kind": "claim_added",
+   "statement": "AMD's headquarters are located in Santa Clara, California. Webcams in every play area let owners watch live.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-sqft#1",
+   "kind": "figure_changed",
+   "statement": "NVIDIA owns and leases approximately 20 million square feet of office and building space for its corporate headquarters.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-sqft#1",
+   "kind": "source_swapped",
+   "statement": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-sqft#1",
+   "kind": "claim_added",
+   "statement": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#1",
+   "kind": "figure_changed",
+   "statement": "Microsoft's current share repurchase program authorizes up to $77.0 billion in share repurchases.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#1",
+   "kind": "source_swapped",
+   "statement": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-buyback#1",
+   "kind": "claim_added",
+   "statement": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#1",
+   "kind": "figure_changed",
+   "statement": "As of December 31, 2025, Alphabet had 190,837 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#1",
+   "kind": "date_changed",
+   "statement": "As of December 13, 2025, Alphabet had 190,820 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#1",
+   "kind": "source_swapped",
+   "statement": "As of December 31, 2025, Alphabet had 190,820 employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#1",
+   "kind": "claim_added",
+   "statement": "As of December 31, 2025, Alphabet had 190,820 employees. A veterinarian is on site during all opening hours.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-us-vs-international#1",
+   "kind": "figure_changed",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 121,017 people in the U.S. and 102,000 internationally.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-us-vs-international#1",
+   "kind": "date_changed",
+   "statement": "As of June 12, 2026, Microsoft employed approximately 121,000 people in the U.S. and 102,000 internationally.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-us-vs-international#1",
+   "kind": "source_swapped",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 121,000 people in the U.S. and 102,000 internationally.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "msft-us-vs-international#1",
+   "kind": "claim_added",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 121,000 people in the U.S. and 102,000 internationally. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#2",
+   "kind": "figure_changed",
+   "statement": "As of June 30, 2026, Microsoft had approximately 223,017 full-time employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#2",
+   "kind": "date_changed",
+   "statement": "As of June 12, 2026, Microsoft had approximately 223,000 full-time employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#2",
+   "kind": "source_swapped",
+   "statement": "As of June 30, 2026, Microsoft had approximately 223,000 full-time employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-googl-total#2",
+   "kind": "claim_added",
+   "statement": "As of June 30, 2026, Microsoft had approximately 223,000 full-time employees. Webcams in every play area let owners watch live.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-acres#1",
+   "kind": "figure_changed",
+   "statement": "Microsoft owns approximately 537 acres of land at its corporate headquarters.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-acres#1",
+   "kind": "source_swapped",
+   "statement": "Microsoft owns approximately 520 acres of land at its corporate headquarters.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "msft-acres#1",
+   "kind": "claim_added",
+   "statement": "Microsoft owns approximately 520 acres of land at its corporate headquarters. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-msft-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,017 people on a full-time basis.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-msft-employees#1",
+   "kind": "date_changed",
+   "statement": "As of June 12, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-msft-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "followup-msft-employees#1",
+   "kind": "claim_added",
+   "statement": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "tsla-in-texas#1",
+   "kind": "source_swapped",
+   "statement": "Yes, Tesla is headquartered in Austin, Texas.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "tsla-in-texas#1",
+   "kind": "claim_added",
+   "statement": "Yes, Tesla is headquartered in Austin, Texas. A veterinarian is on site during all opening hours.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,017 employees in 38 countries.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "nvda-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-employees#1",
+   "kind": "claim_added",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amzn-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of December 31, 2025, Amazon employed approximately 1,576,017 full-time and part-time employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amzn-employees#1",
+   "kind": "date_changed",
+   "statement": "As of December 13, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-amzn-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "followup-amzn-employees#1",
+   "kind": "claim_added",
+   "statement": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees. Webcams in every play area let owners watch live.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "nvda-competition#1",
+   "kind": "source_swapped",
+   "statement": "NVIDIA identifies the principal competitive factors in its market as performance, breadth of product offerings, access to customers and partners, distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "nvda-competition#1",
+   "kind": "claim_added",
+   "statement": "NVIDIA identifies the principal competitive factors in its market as performance, breadth of product offerings, access to customers and partners, distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs. Walk-ins without a reservation are always welcome on weekends.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "followup-nvda-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,017 employees in 38 countries.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "followup-nvda-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "followup-nvda-employees#1",
+   "kind": "claim_added",
+   "statement": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries. Every dog receives a free birthday treat on its birthday.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "amd-sqft#1",
+   "kind": "figure_changed",
+   "statement": "Of this, approximately 18.4 million square feet is owned, with the remaining 5.4 million square feet being leased.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-sqft#1",
+   "kind": "source_swapped",
+   "statement": "Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "amd-sqft#1",
+   "kind": "claim_added",
+   "statement": "Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased. A veterinarian is on site during all opening hours.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "amd-nvda-hq#2",
+   "kind": "source_swapped",
+   "statement": "NVIDIA is also headquartered in Santa Clara, California.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "amd-nvda-hq#2",
+   "kind": "claim_added",
+   "statement": "NVIDIA is also headquartered in Santa Clara, California. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdict": "partly_supported",
+   "error": null
+  },
+  {
+   "key": "tsla-employees#1",
+   "kind": "figure_changed",
+   "statement": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,802.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "tsla-employees#1",
+   "kind": "date_changed",
+   "statement": "As of December 13, 2025, Tesla's worldwide employee headcount was 134,785.",
+   "verdict": "supported",
+   "error": null
+  },
+  {
+   "key": "tsla-employees#1",
+   "kind": "source_swapped",
+   "statement": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785.",
+   "verdict": "unsupported",
+   "error": null
+  },
+  {
+   "key": "tsla-employees#1",
+   "kind": "claim_added",
+   "statement": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785. Webcams in every play area let owners watch live.",
+   "verdict": "partly_supported",
+   "error": null
+  }
+ ]
+}

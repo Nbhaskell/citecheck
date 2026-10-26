@@ -1,10 +1,11 @@
 """The judge's prompts and the shape of its replies.
 
-Three questions are put to the judge, each as a separate call so a verdict rests on one thing:
+Four questions are put to the judge, each as a separate call so a verdict rests on one thing:
 
     abstention    did the answer decline to answer (say it does not know, or that the documents do not cover it)?
     faithfulness  is every claim in the answer supported by the passages the target retrieved?
     correctness   does the answer give the facts of the reference answer?
+    citation      do the sources cited for one sentence of the answer support that sentence?
 
 Every reply is JSON that matches the schema below, with the explanation (or the list of unsupported claims) before the
 verdict so the model writes its reason first. PROMPT_VERSION is part of the cache key and is saved with every score:
@@ -33,6 +34,7 @@ SCHEMAS = {
     "abstention": _schema(_REASONING, "reasoning", ABSTENTION),
     "faithfulness": _schema({"type": "array", "items": {"type": "string"}}, "unsupported_claims", FAITHFULNESS),
     "correctness": _schema(_REASONING, "reasoning", CORRECTNESS),
+    "citation": _schema(_REASONING, "reasoning", FAITHFULNESS),
 }
 
 _SYSTEM = {
@@ -61,6 +63,20 @@ _SYSTEM = {
         "- unsupported: the main claims are not supported by the passages.\n"
         "Reply as JSON: the list of unsupported claims (empty when there are none), each quoted or paraphrased "
         "briefly, then the verdict."),
+    "citation": (
+        "You check whether the sources cited for one statement support that statement. " + _DATA_NOTE + "\n\n"
+        "You are given a STATEMENT taken from an answer, and the CITED SOURCES: the passages the answer pointed to with "
+        "the numbers at the end of the statement. Judge the statement against those sources only, taken together; ignore "
+        "anything you know from elsewhere and any source not shown. A statement is supported when the cited sources say "
+        "it or it follows directly from them (for example arithmetic on figures they give). Ignore the bracketed numbers "
+        "themselves. Judge only whether the sources back what the statement says: do not judge whether the statement answers "
+        "the question, is complete, or leaves something out.\n"
+        "Verdict:\n"
+        "- supported: the cited sources back everything the statement claims.\n"
+        "- partly_supported: they back its main point but not a detail, or back only part of a statement with several "
+        "parts.\n"
+        "- unsupported: they do not back its main point, or they say something different.\n"
+        "Reply as JSON: a short reasoning (one or two sentences), then the verdict."),
     "correctness": (
         "You compare an assistant's answer with a reference answer that is known to be correct. " + _DATA_NOTE + "\n\n"
         "Judge only whether the ANSWER states the same facts as the REFERENCE ANSWER for what the question asks: same "
@@ -83,13 +99,18 @@ def _history_lines(history: Sequence[dict]) -> str:
     return "\n".join(f"{turn['role']}: {turn['content']}" for turn in history)
 
 
-def messages(kind: str, *, question: str, answer: str, history: Sequence[dict] = (), reference: str = "",
-             passages: Sequence[str] = ()) -> list[dict]:
-    """The chat messages for one judge call."""
+def messages(kind: str, *, question: str, answer: str = "", history: Sequence[dict] = (), reference: str = "",
+             passages: Sequence[str] = (), statement: str = "", cited: Sequence[tuple[int, str]] = ()) -> list[dict]:
+    """The chat messages for one judge call. A citation call takes the statement and its cited (number, excerpt) pairs
+    in place of an answer."""
     parts = []
     if history:
         parts.append(_block("earlier_conversation", _history_lines(history)))
     parts.append(_block("question", question))
+    if kind == "citation":
+        parts.append(_block("statement", statement))
+        parts.append(_block("cited_sources", "\n\n".join(f"[{n}] {text.strip()}" for n, text in cited)))
+        return [{"role": "system", "content": _SYSTEM[kind]}, {"role": "user", "content": "\n\n".join(parts)}]
     if kind == "faithfulness":
         numbered = "\n\n".join(f"[{n}] {text.strip()}" for n, text in enumerate(passages, 1)) or "(no passages)"
         parts.append(_block("passages", numbered))

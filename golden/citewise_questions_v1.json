@@ -1,0 +1,805 @@
+{
+ "notes": "Questions written from the stored SEC filing text of Citewise for Markets, for tools/build_citewise_golden.py. Each fact names a company and an anchor phrase; the builder finds the stored passages that contain the phrase.",
+ "items": [
+  {
+   "id": "amd-employees",
+   "category": "factual",
+   "question": "How many employees does AMD have?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "we had approximately 31,000 employees in our global workforce"
+    }
+   ],
+   "reference_answer": "As of December 27, 2025, AMD had approximately 31,000 employees in its global workforce.",
+   "answer_contains": [
+    [
+     "31,000"
+    ]
+   ]
+  },
+  {
+   "id": "amzn-employees",
+   "category": "factual",
+   "question": "How many people does Amazon employ?",
+   "facts": [
+    {
+     "symbol": "AMZN",
+     "anchor": "we employed approximately 1,576,000 full-time and part-time employees"
+    }
+   ],
+   "reference_answer": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees, and also used independent contractors and temporary personnel.",
+   "answer_contains": [
+    [
+     "1,576,000"
+    ]
+   ]
+  },
+  {
+   "id": "googl-employees",
+   "category": "factual",
+   "question": "What is Alphabet's total headcount?",
+   "facts": [
+    {
+     "symbol": "GOOGL",
+     "anchor": "Alphabet had 190,820 employees"
+    }
+   ],
+   "reference_answer": "As of December 31, 2025, Alphabet had 190,820 employees.",
+   "answer_contains": [
+    [
+     "190,820"
+    ]
+   ]
+  },
+  {
+   "id": "nvda-employees",
+   "category": "factual",
+   "question": "How many employees does NVIDIA have, and in how many countries?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "we had approximately 42,000 employees in 38 countries"
+    }
+   ],
+   "reference_answer": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+   "answer_contains": [
+    [
+     "42,000"
+    ],
+    [
+     "38"
+    ]
+   ]
+  },
+  {
+   "id": "tsla-employees",
+   "category": "factual",
+   "question": "What was Tesla's worldwide employee headcount?",
+   "facts": [
+    {
+     "symbol": "TSLA",
+     "anchor": "our employee headcount worldwide was 134,785"
+    }
+   ],
+   "reference_answer": "As of December 31, 2025, Tesla's employee headcount worldwide was 134,785.",
+   "answer_contains": [
+    [
+     "134,785"
+    ]
+   ]
+  },
+  {
+   "id": "msft-employees",
+   "category": "factual",
+   "question": "How many full-time employees does Microsoft have?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "we employed approximately 223,000 people on a full-time basis"
+    }
+   ],
+   "reference_answer": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "answer_contains": [
+    [
+     "223,000"
+    ]
+   ]
+  },
+  {
+   "id": "aapl-employees",
+   "category": "factual",
+   "question": "How many full-time equivalent employees does Apple have?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "the Company had approximately 166,000 full-time equivalent employees"
+    }
+   ],
+   "reference_answer": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees.",
+   "answer_contains": [
+    [
+     "166,000"
+    ]
+   ]
+  },
+  {
+   "id": "aapl-hq",
+   "category": "factual",
+   "question": "Where is Apple headquartered?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "headquarters is located in Cupertino, California"
+    }
+   ],
+   "reference_answer": "Apple's headquarters is located in Cupertino, California.",
+   "answer_contains": [
+    [
+     "cupertino"
+    ]
+   ]
+  },
+  {
+   "id": "amd-hq",
+   "category": "factual",
+   "question": "Where are AMD's headquarters?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "Our headquarters are located in Santa Clara, California"
+    }
+   ],
+   "reference_answer": "AMD's headquarters are located in Santa Clara, California.",
+   "answer_contains": [
+    [
+     "santa clara"
+    ]
+   ]
+  },
+  {
+   "id": "nvda-hq",
+   "category": "factual",
+   "question": "Where is NVIDIA's headquarters?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "Our headquarters is in Santa Clara, California",
+     "alternates": [
+      {
+       "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated",
+       "query": "NVIDIA organization headquartered in Santa Clara California incorporated"
+      }
+     ]
+    }
+   ],
+   "reference_answer": "NVIDIA's headquarters is in Santa Clara, California.",
+   "answer_contains": [
+    [
+     "santa clara"
+    ]
+   ]
+  },
+  {
+   "id": "tsla-hq",
+   "category": "factual",
+   "question": "In which city is Tesla headquartered?",
+   "facts": [
+    {
+     "symbol": "TSLA",
+     "anchor": "We are headquartered in Austin, Texas"
+    }
+   ],
+   "reference_answer": "Tesla is headquartered in Austin, Texas.",
+   "answer_contains": [
+    [
+     "austin"
+    ]
+   ]
+  },
+  {
+   "id": "msft-hq",
+   "category": "factual",
+   "question": "Where are Microsoft's corporate headquarters?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "corporate headquarters are located in Redmond, Washington"
+    }
+   ],
+   "reference_answer": "Microsoft's corporate headquarters are located in Redmond, Washington.",
+   "answer_contains": [
+    [
+     "redmond"
+    ]
+   ]
+  },
+  {
+   "id": "aapl-segments",
+   "category": "factual",
+   "question": "What are Apple's reportable segments?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific"
+    }
+   ],
+   "reference_answer": "Apple's reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. The company manages its business primarily on a geographic basis.",
+   "answer_contains": [
+    [
+     "americas"
+    ],
+    [
+     "europe"
+    ],
+    [
+     "greater china"
+    ],
+    [
+     "japan"
+    ],
+    [
+     "asia pacific"
+    ]
+   ]
+  },
+  {
+   "id": "msft-segments",
+   "category": "factual",
+   "question": "Which segments does Microsoft report its financial performance in?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing"
+    }
+   ],
+   "reference_answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+   "answer_contains": [
+    [
+     "productivity and business processes"
+    ],
+    [
+     "intelligent cloud"
+    ],
+    [
+     "more personal computing"
+    ]
+   ]
+  },
+  {
+   "id": "msft-buyback",
+   "category": "factual",
+   "question": "How large is Microsoft's current share repurchase program and how much of it remains?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "On September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $ 60.0 billion"
+    },
+    {
+     "symbol": "MSFT",
+     "anchor": "$ 40.6 billion remained of this $ 60.0 billion share repurchase program"
+    }
+   ],
+   "reference_answer": "Microsoft's current program, approved by the Board on September 16, 2024, authorizes up to $60.0 billion in share repurchases. As of June 30, 2026, $40.6 billion of it remained.",
+   "answer_contains": [
+    [
+     "$60.0 billion",
+     "$60 billion"
+    ],
+    [
+     "$40.6 billion"
+    ]
+   ]
+  },
+  {
+   "id": "msft-sqft",
+   "category": "factual",
+   "question": "How much office space does Microsoft have in King County, Washington?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "approximately 14 million square feet of space located in King County, Washington"
+    }
+   ],
+   "reference_answer": "Microsoft has approximately 14 million square feet of space in King County, Washington, including about 12 million square feet of owned space and about 2 million square feet it leases.",
+   "answer_contains": [
+    [
+     "14 million"
+    ]
+   ]
+  },
+  {
+   "id": "amd-sqft",
+   "category": "factual",
+   "question": "How many square feet of space does AMD have worldwide, and how much of it is owned?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "approximately 6.8 million square feet of space"
+    }
+   ],
+   "reference_answer": "As of December 27, 2025, AMD had approximately 6.8 million square feet of space worldwide, of which about 5.4 million square feet is leased and about 1.4 million square feet is owned.",
+   "answer_contains": [
+    [
+     "6.8 million"
+    ],
+    [
+     "1.4 million"
+    ]
+   ]
+  },
+  {
+   "id": "nvda-sqft",
+   "category": "factual",
+   "question": "How much space does NVIDIA own and lease for its corporate headquarters?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "approximately 3 million square feet of office and building space"
+    }
+   ],
+   "reference_answer": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters in Santa Clara, California.",
+   "answer_contains": [
+    [
+     "3 million"
+    ]
+   ]
+  },
+  {
+   "id": "nvda-competition",
+   "category": "factual",
+   "question": "What does NVIDIA say are the principal competitive factors in its market?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels"
+    }
+   ],
+   "reference_answer": "NVIDIA says the principal competitive factors are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs.",
+   "answer_contains": [
+    [
+     "performance"
+    ],
+    [
+     "breadth of product offerings"
+    ]
+   ]
+  },
+  {
+   "id": "aapl-dividend",
+   "category": "factual",
+   "question": "What was Apple's quarterly cash dividend per share in its latest annual report?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "quarterly cash dividend was $0.26 per share"
+    }
+   ],
+   "reference_answer": "As of September 27, 2025, Apple's quarterly cash dividend was $0.26 per share.",
+   "answer_contains": [
+    [
+     "$0.26"
+    ]
+   ]
+  },
+  {
+   "id": "amd-founded",
+   "category": "factual",
+   "question": "When was AMD founded?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "Founded in 1969 as a Silicon Valley start-up",
+     "query": "AMD history founded in 1969 Silicon Valley start-up"
+    }
+   ],
+   "reference_answer": "AMD was founded in 1969 as a Silicon Valley start-up.",
+   "answer_contains": [
+    [
+     "1969"
+    ]
+   ]
+  },
+  {
+   "id": "msft-acres",
+   "category": "factual",
+   "question": "How many acres of land does Microsoft own at its corporate headquarters?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "approximately 520 acres of land we own"
+    }
+   ],
+   "reference_answer": "Microsoft owns approximately 520 acres of land at its corporate headquarters, where it has about 12 million square feet of owned space.",
+   "answer_contains": [
+    [
+     "520"
+    ]
+   ]
+  },
+  {
+   "id": "googl-work-councils",
+   "category": "factual",
+   "question": "Does Alphabet mention work councils or employee representation?",
+   "facts": [
+    {
+     "symbol": "GOOGL",
+     "anchor": "work councils and statutory employee representation obligations in certain countries"
+    }
+   ],
+   "reference_answer": "Yes. Alphabet says it has work councils and statutory employee representation obligations in certain countries.",
+   "answer_contains": [
+    [
+     "work councils"
+    ]
+   ]
+  },
+  {
+   "id": "tsla-in-texas",
+   "category": "yes_no",
+   "question": "Is Tesla headquartered in Texas?",
+   "facts": [
+    {
+     "symbol": "TSLA",
+     "anchor": "We are headquartered in Austin, Texas"
+    }
+   ],
+   "reference_answer": "Yes. Tesla is headquartered in Austin, Texas.",
+   "answer_contains": [
+    [
+     "yes"
+    ]
+   ]
+  },
+  {
+   "id": "apple-japan-segment",
+   "category": "yes_no",
+   "question": "Does Apple report Japan as its own segment?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific"
+    }
+   ],
+   "reference_answer": "Yes. Japan is one of Apple's five reportable segments, alongside the Americas, Europe, Greater China and Rest of Asia Pacific.",
+   "answer_contains": [
+    [
+     "yes"
+    ]
+   ]
+  },
+  {
+   "id": "msft-over-200k",
+   "category": "yes_no",
+   "question": "Does Microsoft employ more than 200,000 people?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "we employed approximately 223,000 people on a full-time basis"
+    }
+   ],
+   "reference_answer": "Yes. As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+   "answer_contains": [
+    [
+     "yes"
+    ]
+   ]
+  },
+  {
+   "id": "nvda-hq-and-employees",
+   "category": "multi_topic",
+   "question": "Where is NVIDIA headquartered and how many employees does it have?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "Our headquarters is in Santa Clara, California",
+     "alternates": [
+      {
+       "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated",
+       "query": "NVIDIA organization headquartered in Santa Clara California incorporated"
+      }
+     ]
+    },
+    {
+     "symbol": "NVDA",
+     "anchor": "we had approximately 42,000 employees in 38 countries"
+    }
+   ],
+   "reference_answer": "NVIDIA is headquartered in Santa Clara, California, and had approximately 42,000 employees in 38 countries at the end of fiscal year 2026.",
+   "answer_contains": [
+    [
+     "santa clara"
+    ],
+    [
+     "42,000"
+    ]
+   ]
+  },
+  {
+   "id": "msft-us-vs-international",
+   "category": "multi_topic",
+   "question": "How many of Microsoft's employees are in the U.S. and how many are international?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "121,000 in the U.S. and 102,000 internationally"
+    }
+   ],
+   "reference_answer": "Of Microsoft's approximately 223,000 full-time employees, 121,000 are in the U.S. and 102,000 are international.",
+   "answer_contains": [
+    [
+     "121,000"
+    ],
+    [
+     "102,000"
+    ]
+   ]
+  },
+  {
+   "id": "amd-vs-nvda-employees",
+   "category": "multi_topic",
+   "question": "Which has more employees, AMD or NVIDIA?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "we had approximately 31,000 employees in our global workforce"
+    },
+    {
+     "symbol": "NVDA",
+     "anchor": "we had approximately 42,000 employees in 38 countries"
+    }
+   ],
+   "reference_answer": "NVIDIA has more employees: approximately 42,000, compared with approximately 31,000 at AMD.",
+   "answer_contains": [
+    [
+     "nvidia"
+    ],
+    [
+     "42,000"
+    ],
+    [
+     "31,000"
+    ]
+   ]
+  },
+  {
+   "id": "apple-and-msft-hq",
+   "category": "multi_topic",
+   "question": "Where are Apple and Microsoft headquartered?",
+   "facts": [
+    {
+     "symbol": "AAPL",
+     "anchor": "headquarters is located in Cupertino, California"
+    },
+    {
+     "symbol": "MSFT",
+     "anchor": "corporate headquarters are located in Redmond, Washington"
+    }
+   ],
+   "reference_answer": "Apple's headquarters is located in Cupertino, California, and Microsoft's corporate headquarters are located in Redmond, Washington.",
+   "answer_contains": [
+    [
+     "cupertino"
+    ],
+    [
+     "redmond"
+    ]
+   ]
+  },
+  {
+   "id": "amd-nvda-hq",
+   "category": "multi_topic",
+   "question": "Where are AMD and NVIDIA each headquartered?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "Our headquarters are located in Santa Clara, California"
+    },
+    {
+     "symbol": "NVDA",
+     "anchor": "Our headquarters is in Santa Clara, California",
+     "alternates": [
+      {
+       "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated",
+       "query": "NVIDIA organization headquartered in Santa Clara California incorporated"
+      }
+     ]
+    }
+   ],
+   "reference_answer": "Both are headquartered in Santa Clara, California.",
+   "answer_contains": [
+    [
+     "santa clara"
+    ]
+   ]
+  },
+  {
+   "id": "msft-googl-total",
+   "category": "edge_case",
+   "question": "What is the combined headcount of Microsoft and Alphabet?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "we employed approximately 223,000 people on a full-time basis"
+    },
+    {
+     "symbol": "GOOGL",
+     "anchor": "Alphabet had 190,820 employees"
+    }
+   ],
+   "reference_answer": "Microsoft employs approximately 223,000 people and Alphabet has 190,820 employees, about 413,820 together.",
+   "answer_contains": [
+    [
+     "413,820",
+     "413,000",
+     "414,000"
+    ]
+   ],
+   "notes": "Needs adding two figures from two filings."
+  },
+  {
+   "id": "nvda-rd-share",
+   "category": "edge_case",
+   "question": "Roughly what share of NVIDIA's employees work in research and development?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "31,000 were engaged in research and development"
+    }
+   ],
+   "reference_answer": "About 74 percent: 31,000 of approximately 42,000 employees were engaged in research and development.",
+   "answer_contains": [
+    [
+     "74",
+     "three quarters",
+     "three-quarters"
+    ]
+   ],
+   "notes": "31,000 / 42,000 is about 73.8 percent."
+  },
+  {
+   "id": "amzn-tsla-gap",
+   "category": "edge_case",
+   "question": "How many more employees does Amazon have than Tesla?",
+   "facts": [
+    {
+     "symbol": "AMZN",
+     "anchor": "we employed approximately 1,576,000 full-time and part-time employees"
+    },
+    {
+     "symbol": "TSLA",
+     "anchor": "our employee headcount worldwide was 134,785"
+    }
+   ],
+   "reference_answer": "Amazon has about 1,441,000 more employees: approximately 1,576,000 compared with Tesla's 134,785.",
+   "answer_contains": [
+    [
+     "1,441",
+     "1.44 million"
+    ]
+   ],
+   "notes": "1,576,000 minus 134,785 is 1,441,215; Amazon's figure is itself approximate."
+  },
+  {
+   "id": "unknown-tsla-chargers",
+   "category": "unanswerable",
+   "question": "How many electric vehicle chargers are at Tesla's headquarters?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings do not say how many chargers are at Tesla's headquarters."
+  },
+  {
+   "id": "unknown-amd-cafeteria",
+   "category": "unanswerable",
+   "question": "What is AMD's cafeteria policy for employees?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings do not describe a cafeteria policy for AMD employees."
+  },
+  {
+   "id": "unknown-nvda-acres",
+   "category": "unanswerable",
+   "question": "How many acres is NVIDIA's headquarters campus?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings give NVIDIA's space in square feet (about 3 million square feet) but do not say how many acres its headquarters campus covers.",
+   "notes": "Near miss: the filings state an acreage for Microsoft's campus, not NVIDIA's."
+  },
+  {
+   "id": "unknown-aapl-floors",
+   "category": "unanswerable",
+   "question": "How many floors does Apple's headquarters building have?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings do not say how many floors Apple's headquarters building has."
+  },
+  {
+   "id": "unknown-msft-parking",
+   "category": "unanswerable",
+   "question": "How many parking spaces does Microsoft's Redmond campus have?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings do not give a parking space count for Microsoft's Redmond campus."
+  },
+  {
+   "id": "unknown-googl-dog",
+   "category": "unanswerable",
+   "question": "Does Alphabet allow dogs in its offices?",
+   "facts": [],
+   "expected_abstain": true,
+   "reference_answer": "The filings do not say whether Alphabet allows dogs in its offices."
+  },
+  {
+   "id": "followup-nvda-employees",
+   "category": "follow_up",
+   "follow_up_to": "nvda-hq",
+   "question": "And how many employees does it have?",
+   "facts": [
+    {
+     "symbol": "NVDA",
+     "anchor": "we had approximately 42,000 employees in 38 countries"
+    }
+   ],
+   "reference_answer": "NVIDIA had approximately 42,000 employees in 38 countries at the end of fiscal year 2026.",
+   "answer_contains": [
+    [
+     "42,000"
+    ]
+   ]
+  },
+  {
+   "id": "followup-amd-hq",
+   "category": "follow_up",
+   "follow_up_to": "amd-employees",
+   "question": "And where is it headquartered?",
+   "facts": [
+    {
+     "symbol": "AMD",
+     "anchor": "Our headquarters are located in Santa Clara, California"
+    }
+   ],
+   "reference_answer": "AMD's headquarters are located in Santa Clara, California.",
+   "answer_contains": [
+    [
+     "santa clara"
+    ]
+   ]
+  },
+  {
+   "id": "followup-msft-employees",
+   "category": "follow_up",
+   "follow_up_to": "msft-segments",
+   "question": "How many people does the company employ?",
+   "facts": [
+    {
+     "symbol": "MSFT",
+     "anchor": "we employed approximately 223,000 people on a full-time basis"
+    }
+   ],
+   "reference_answer": "Microsoft employed approximately 223,000 people on a full-time basis as of June 30, 2026.",
+   "answer_contains": [
+    [
+     "223,000"
+    ]
+   ]
+  },
+  {
+   "id": "followup-amzn-employees",
+   "category": "follow_up",
+   "follow_up_to": "tsla-employees",
+   "question": "What about Amazon?",
+   "facts": [
+    {
+     "symbol": "AMZN",
+     "anchor": "we employed approximately 1,576,000 full-time and part-time employees"
+    }
+   ],
+   "reference_answer": "Amazon employed approximately 1,576,000 full-time and part-time employees as of December 31, 2025.",
+   "answer_contains": [
+    [
+     "1,576,000"
+    ]
+   ]
+  }
+ ]
+}

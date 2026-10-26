@@ -23,7 +23,9 @@ from .models import TargetResponse
 
 LABELS_VERSION = 1
 DIMENSIONS = ("abstention", "faithfulness", "correctness")
-VOCAB = {"abstention": prompts.ABSTENTION, "faithfulness": prompts.FAITHFULNESS, "correctness": prompts.CORRECTNESS}
+VOCAB = {"abstention": prompts.ABSTENTION, "faithfulness": prompts.FAITHFULNESS, "correctness": prompts.CORRECTNESS,
+         "citation_support": prompts.FAITHFULNESS}
+CITATION_DIMENSIONS = ("citation_support",)
 AGREE, DISAGREE = "agree", "disagree"
 
 
@@ -70,6 +72,52 @@ def select_sample(scores_list: list[dict], items: dict, n: int = 36, seed: int =
     return {"picks": picks, "strata": {i: strata[i] for i in picks}, "population": dict(population)}
 
 
+ANSWER_RULES = [
+    "You are judging the <b>answer</b> the system gave. The system's own verdicts are not shown, on purpose.",
+    "<b>Did it decline?</b> Choose <i>abstained</i> if the answer says it does not know, or that the documents do not mention "
+    "or cover the question, and gives no real answer. \"No, the context does not mention X\" counts as abstained. Choose "
+    "<i>answered</i> if it gives a real answer, even with a caveat. Choose <i>partly answered</i> if it answers some parts of a "
+    "multi-part question and says it does not know the rest.",
+    "<b>Is it backed by the passages?</b> Use only the passages shown (the text the system was given), not what you know. A "
+    "statement is <i>supported</i> if a passage says it, or it follows directly (for example adding two prices). Choose "
+    "<i>supported</i> if everything is backed, <i>partly supported</i> if the main points are backed but something smaller is "
+    "not, <i>unsupported</i> if the main points are not. Saying \"the documents do not mention X\" is fine when true. Do not "
+    "judge whether the answer is right or complete here.",
+    "<b>Is it correct?</b> Compare with the reference answer. <i>Correct</i>: it agrees on everything the question asks (extra "
+    "harmless detail is fine). <i>Partly correct</i>: it gets some right but misses a part or hedges where the reference is "
+    "definite. <i>Incorrect</i>: it contradicts the reference, answers differently, or declines.",
+    "Your answers are saved in this browser as you go. When all are done, press <b>Download labels</b> and send or place the "
+    "file where asked. A note is optional but helpful when you were unsure.",
+]
+OPTION_TEXT = {
+    "abstained": "Abstained (declined to answer)", "answered": "Answered", "partly_answered": "Partly answered",
+    "supported": "Supported", "partly_supported": "Partly supported", "unsupported": "Unsupported",
+    "correct": "Correct", "partly_correct": "Partly correct", "incorrect": "Incorrect",
+}
+
+
+def options_for(dim: str) -> list[list[str]]:
+    return [[label, OPTION_TEXT[label]] for label in VOCAB[dim]]
+
+
+def answer_groups(answerable: bool) -> list[dict]:
+    groups = [
+        {"dim": "abstention", "title": "Did the answer decline to answer?",
+         "hint": "Says it does not know, or that the documents do not cover it.", "options": options_for("abstention")},
+        {"dim": "faithfulness", "title": "Is every statement backed by the passages?", "hint": "Use only the passages above.",
+         "options": options_for("faithfulness"), "hide_when": {"dim": "abstention", "value": "abstained"}}]
+    if answerable:
+        groups.append({"dim": "correctness", "title": "Does it match the reference answer?",
+                       "hint": "Same facts for what the question asks.", "options": options_for("correctness")})
+    return groups
+
+
+def history_block(history: list) -> list[dict]:
+    if not history:
+        return []
+    return [{"label": "Earlier in the conversation", "text": "\n".join(f"{t['role']}: {t['content']}" for t in history)}]
+
+
 def sheet_data(run: dict, golden: dict, sample: dict) -> dict:
     """Everything a labeller needs to see about each picked answer, and nothing from the judge."""
     items = {i["id"]: i for i in golden["items"]}
@@ -78,14 +126,17 @@ def sheet_data(run: dict, golden: dict, sample: dict) -> dict:
     for item_id in sample["picks"]:
         item, record = items[item_id], records[item_id]
         response = TargetResponse.from_dict(record["response"])
+        answerable = not item["expected_abstain"]
+        blocks = history_block(record.get("history", [])) + [
+            {"label": "Question", "text": item["question"]}, {"label": "The system's answer", "text": response.answer, "css": "answer"}]
+        if answerable:
+            blocks.append({"label": "Reference answer (known correct)", "text": item.get("reference_answer", ""), "css": "reference"})
         cards.append({
-            "id": item_id, "question": item["question"], "history": record.get("history", []),
-            "reference_answer": item.get("reference_answer", ""), "answerable": not item["expected_abstain"],
-            "answer": response.answer,
-            "passages": [{"rank": c.rank, "doc": c.doc_id, "section": c.section, "text": c.text} for c in response.retrieved],
-            "stratum": sample["strata"][item_id]})
-    return {"labels_version": LABELS_VERSION, "run_id": run["run_id"],
-            "golden_version": run["golden"]["golden_version"], "golden_hash": run["golden"]["hash"],
+            "id": item_id, "stratum": sample["strata"][item_id], "blocks": blocks, "groups": answer_groups(answerable),
+            "details": {"summary": "Passages the system was given",
+                        "items": [{"head": f"[{c.rank}] {c.doc_id}", "text": c.text} for c in response.retrieved]}})
+    return {"labels_version": LABELS_VERSION, "kind": "answers", "title": "Label the answers", "rules": ANSWER_RULES,
+            "run_id": run["run_id"], "golden_version": run["golden"]["golden_version"], "golden_hash": run["golden"]["hash"],
             "population": sample["population"], "cards": cards}
 
 
@@ -94,8 +145,9 @@ def load_labels(path) -> dict:
     problems = []
     if data.get("labels_version") != LABELS_VERSION:
         problems.append(f"labels_version is {data.get('labels_version')!r}, expected {LABELS_VERSION}")
+    dimensions = CITATION_DIMENSIONS if data.get("kind") == "citations" else DIMENSIONS
     for item_id, entry in data.get("items", {}).items():
-        for dim in DIMENSIONS:
+        for dim in dimensions:
             value = entry.get(dim)
             if value is not None and value not in VOCAB[dim]:
                 problems.append(f"{item_id}: {dim} label {value!r} is not one of {list(VOCAB[dim])}")
@@ -118,8 +170,15 @@ def cohens_kappa(pairs: list[tuple[str, str]]) -> float | None:
 
 
 def agreement(labels: dict, scores: dict) -> dict:
-    """Judge vs human, per dimension, for one scores file."""
-    verdicts = verdicts_by_item(scores)
+    """Judge vs human, per dimension, for one scores file. Labels of kind "citations" are compared with the judge's verdicts
+    on cited sentences; any other labels with its verdicts on whole answers."""
+    citation_kind = labels.get("kind") == "citations"
+    if citation_kind:
+        from .citation_calibration import unit_verdicts
+        verdicts = {key: {"citation_support": v} for key, v in unit_verdicts(scores).items()}
+        dimensions = CITATION_DIMENSIONS
+    else:
+        verdicts, dimensions = verdicts_by_item(scores), DIMENSIONS
     if scores["run_id"] != labels["run_id"]:
         raise LabelsError(f"labels are for run {labels['run_id']}, scores are for run {scores['run_id']}")
     entries = labels["items"]
@@ -127,7 +186,7 @@ def agreement(labels: dict, scores: dict) -> dict:
     weight = {s: labels["population"].get(s, 0) / sampled[s] for s in sampled}
 
     result = {"judge": scores["config"]["judge"], "dimensions": {}}
-    for dim in DIMENSIONS:
+    for dim in dimensions:
         rows = [(item_id, e[dim], verdicts.get(item_id, {}).get(dim), weight[e["stratum"]])
                 for item_id, e in entries.items() if e.get(dim) is not None]
         both = [(i, human, judge, w) for i, human, judge, w in rows if judge is not None]
@@ -151,7 +210,7 @@ def agreement(labels: dict, scores: dict) -> dict:
 def format_agreement(label_data: dict, results: list[dict]) -> str:
     sampled = Counter(e["stratum"] for e in label_data["items"].values())
     lines = [f"run {label_data['run_id']}  |  golden {label_data['golden_version']}  |  {len(label_data['items'])} labelled "
-             f"answers ({sampled.get(DISAGREE, 0)} where judge settings disagreed, {sampled.get(AGREE, 0)} where they agreed)",
+             f"items ({sampled.get(DISAGREE, 0)} where judge settings disagreed, {sampled.get(AGREE, 0)} where they agreed)",
              "The sample leans toward hard cases. 'weighted' re-weights the two groups to their size in the full run; "
              "it is an estimate from a small sample."]
     for result in results:

@@ -1,0 +1,100 @@
+[
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1",
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": false
+  },
+  "dimensions": {
+   "citation_support": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 26,
+    "agreement": 0.867,
+    "weighted_agreement": 0.909,
+    "kappa": 0.0,
+    "top_label_agreement": 0.867,
+    "confusion": {
+     "supported -> partly_supported": 1,
+     "supported -> supported": 26,
+     "supported -> unsupported": 3
+    },
+    "disagreements": [
+     {
+      "item_id": "amd-vs-nvda-employees#2",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "amd-vs-nvda-employees#1",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "msft-googl-total#1",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "msft-googl-total#2",
+      "human": "supported",
+      "judge": "unsupported"
+     }
+    ]
+   }
+  }
+ },
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1",
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": true
+  },
+  "dimensions": {
+   "citation_support": {
+    "n": 30,
+    "missing_judge_verdict": 0,
+    "agree": 26,
+    "agreement": 0.867,
+    "weighted_agreement": 0.909,
+    "kappa": 0.0,
+    "top_label_agreement": 0.867,
+    "confusion": {
+     "supported -> partly_supported": 3,
+     "supported -> supported": 26,
+     "supported -> unsupported": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "amd-vs-nvda-employees#1",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "msft-buyback#1",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "msft-googl-total#1",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "msft-googl-total#2",
+      "human": "supported",
+      "judge": "partly_supported"
+     }
+    ]
+   }
+  }
+ }
+]

@@ -210,7 +210,7 @@ def test_score_run_without_a_judge_has_no_answer_section():
     run = runner.run_golden(make_golden(), mock())
     scores = scoring.score_run(run, make_golden())
     assert scores["config"]["judge"] is None and "answer" not in scores["summary"]["overall"]
-    assert scores["scores_version"] == 2
+    assert scores["scores_version"] == 3
 
 
 def test_score_run_with_a_judge_reports_answer_quality_by_split_and_category():
@@ -286,3 +286,14 @@ def test_score_cli_stops_early_when_the_judge_model_is_missing(tmp_path, monkeyp
     code = cli.main(["score", str(run_path), "--golden", str(golden_path), "--judge", "--no-cache"])
     assert code == 1 and "cannot use the judge" in capsys.readouterr().out
     assert not list(tmp_path.glob("*.scores.json"))
+
+
+def test_a_target_that_reports_no_passages_is_judged_against_the_sources_it_cited():
+    from citecheck.models import Citation
+    judge, client = judge_with()
+    response = TargetResponse(answer="A bath is $50.", citations=[Citation("doc", marker="1", text="- Bath: $50.00"),
+                                                                  Citation("doc", marker="2", text=None)])
+    judge.judge_item(ITEM, response)
+    faithfulness_call = next(c for c in client.calls if c["kind"] == "faithfulness")
+    assert "[1] - Bath: $50.00" in faithfulness_call["messages"][1]["content"]
+    assert "(no passages)" not in faithfulness_call["messages"][1]["content"]
