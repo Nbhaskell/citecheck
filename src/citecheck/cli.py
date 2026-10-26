@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from . import (calibration, calibration_sheet, citation_calibration, compare, golden, known_bad, known_bad_citations,
-               known_bad_figures, reference_review, report, runner, scoring)
+               known_bad_figures, reference_review, report, report_html, runner, scoring)
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -200,6 +200,25 @@ def cmd_known_bad(args) -> int:
         Path(args.out).write_text(json.dumps({"judge": judge.config(), "run_id": run["run_id"], "summary": summary, "cases": results}, indent=1,
                                              ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
         print(f"\nsaved {args.out}")
+    return 0
+
+
+def cmd_html(args) -> int:
+    written = []
+    try:
+        for target in args.paths:
+            path = Path(target)
+            if path.is_dir():
+                written += report_html.render_folder(path)
+            else:
+                out, text = report_html.render_file(path, back=args.back)
+                out.write_text(text, encoding="utf-8", newline="\n")
+                written.append(out)
+    except (ValueError, KeyError, OSError, json.JSONDecodeError) as e:
+        print(f"cannot write the page: {e}")
+        return 1
+    for path in written:
+        print(f"wrote {path}")
     return 0
 
 
@@ -436,6 +455,12 @@ def main(argv=None) -> int:
     p.add_argument("--resamples", type=int, default=10000, help="bootstrap resamples (default %(default)s)")
     p.add_argument("--out", required=True, help="the page, e.g. reports/name.md; a name.compare.json copy is saved beside it")
     p.set_defaults(func=cmd_compare)
+
+    p = sub.add_parser("html", help="write self-contained HTML pages from the JSON copies of reports and comparisons")
+    p.add_argument("paths", nargs="+", metavar="FILE_OR_FOLDER",
+                   help="a *.report.json or *.compare.json file (its page is written beside it), or a folder of them (every page and an index.html)")
+    p.add_argument("--back", metavar="ADDRESS", help="for a single file: link to this index page at the top, e.g. index.html")
+    p.set_defaults(func=cmd_html)
 
     p = sub.add_parser("review-sheet", help="make the HTML sheet for reviewing a golden set's reference answers by hand")
     p.add_argument("--golden", required=True, help="golden set file whose items all have reference answers")

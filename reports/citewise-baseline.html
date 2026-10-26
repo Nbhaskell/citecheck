@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>citewise on citewise-filings-1.0.0 · CiteCheck</title>
+<meta name="description" content="Run 2026-10-25_135415_baseline-citewise, made 2026-10-25T13:54:15 with citecheck 1ef79f69fb (uncommitted changes). Question set citewise-filings-1.0.0 (44 items), hash bb0103a66617.">
+<style>
+:root { --bg:#fbfaf8; --fg:#1d1d1b; --muted:#625f59; --card:#ffffff; --line:#dedbd4; --accent:#2f5d8a; --code:#f0eee8;
+  --info-bg:#e1ecf7; --info-fg:#1f4568; --warn-bg:#fff0d4; --warn-fg:#704400; --calm-bg:#ecebe7; --calm-fg:#4a4944; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161615; --fg:#ecebe8; --muted:#a8a69f; --card:#1f1f1d; --line:#3a3932;
+  --accent:#86b6e6; --code:#2a2a27; --info-bg:#1e3447; --info-fg:#b6d6f4; --warn-bg:#40300f; --warn-fg:#f0cf8a;
+  --calm-bg:#2c2c29; --calm-fg:#c9c7c0; } }
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width:70rem; margin:0 auto; padding:16px; }
+h1 { font-size:1.7rem; line-height:1.25; margin:.4em 0 .3em; overflow-wrap:anywhere; }
+h2 { font-size:1.3rem; margin:2em 0 .5em; padding-top:.6em; border-top:1px solid var(--line); }
+h3 { font-size:1.05rem; margin:1.5em 0 .4em; }
+p, li { max-width:65ch; overflow-wrap:anywhere; }
+a { color:var(--accent); }
+code { background:var(--code); padding:.05em .35em; border-radius:4px; font-size:.9em; overflow-wrap:anywhere; }
+.crumb, .toc { font-size:.92rem; color:var(--muted); }
+.toc { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.8rem 0 0; padding:.5rem 0; border-top:1px solid var(--line); }
+.scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--card); margin:.6rem 0 1rem; }
+table { border-collapse:collapse; width:100%; font-size:.92rem; }
+th, td { padding:.45rem .7rem; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+th { font-weight:600; background:var(--card); }
+tr:last-child td { border-bottom:0; }
+td ul { margin:0; padding-left:1.1rem; color:var(--muted); font-size:.88rem; }
+td ul li { margin:.2rem 0; max-width:none; }
+.badge { display:inline-block; padding:.1em .6em; border-radius:999px; font-weight:600; font-size:.85rem; white-space:nowrap; }
+.badge.larger { background:var(--info-bg); color:var(--info-fg); }
+.badge.unclear { background:var(--warn-bg); color:var(--warn-fg); }
+.badge.within { background:var(--calm-bg); color:var(--calm-fg); }
+details { margin:.6rem 0 1rem; }
+summary { cursor:pointer; color:var(--accent); font-weight:600; }
+@media (max-width: 40rem) { main { padding:12px; } h1 { font-size:1.4rem; } th, td { padding:.4rem .5rem; } }
+</style>
+</head>
+<body>
+<main>
+<p class="crumb"><a href="index.html">All reports</a></p>
+<h1>citewise on citewise-filings-1.0.0</h1>
+<p>Run <code>2026-10-25_135415_baseline-citewise</code>, made 2026-10-25T13:54:15 with citecheck 1ef79f69fb (uncommitted changes). Question set <code>citewise-filings-1.0.0</code> (44 items), hash <code>bb0103a66617</code>.</p>
+<nav class="toc" aria-label="Sections"><a href="#how-to-read-this">How to read this</a><a href="#answers">Answers</a><a href="#citations">Citations</a><a href="#by-split-and-category">By split and category</a><a href="#what-this-cannot-tell-you">What this cannot tell you</a><a href="#items-to-look-at-13">Items to look at (13)</a><a href="#files">Files</a></nav>
+<p>Target: status ok, database True, ai_model ollama:qwen3:latest, ai_model_available True.</p>
+<p>Settings the target does not report, recorded by hand: COPILOT_ROUTER=default, COPILOT_LOG=off.</p>
+<p>Judge: qwen3:8b, reasoning on, prompt v1, model digest <code>500a1f067a9f</code>.</p>
+<h2 id="how-to-read-this">How to read this</h2>
+<p>Each score sits beside what is known about how far to trust it. Retrieval and the structure of the citations are counted from the target&#x27;s own output. Faithfulness, correctness, abstention and claim support are a model&#x27;s verdicts and are only as good as the calibration shown next to them. Nothing here compares this target with another: the question sets, corpora and checks differ.</p>
+<h2 id="answers">Answers</h2>
+<div class="scroll"><table><thead><tr><th scope="col">Metric</th><th scope="col">Result</th><th scope="col">n</th><th scope="col">Evidence and caveats</th></tr></thead><tbody><tr><td>Unanswerable questions declined (right)</td><td>6/6 (100%)</td><td>6</td><td><ul><li>An off-topic answer is usually read as a refusal, so it skips the faithfulness check; correctness still flags it.</li></ul></td></tr><tr><td>Answerable questions declined (false refusals)</td><td>0/38 (0%)</td><td>38</td><td>-</td></tr><tr><td>Faithfulness (supported = 1, partly = 0.5)</td><td>0.908: 34 supported, 1 partly, 3 unsupported</td><td>38</td><td><ul><li>The judge leans strict: it can call a claim that a passage states outright partly supported.</li></ul></td></tr><tr><td>Correctness against the reference answer</td><td>0.947: 35 correct, 2 partly, 1 incorrect</td><td>38</td><td><ul><li>The judge can penalise extra detail that the reference does not contain, and can miss a contradicted opening.</li></ul></td></tr></tbody></table></div>
+<h2 id="citations">Citations</h2>
+<div class="scroll"><table><thead><tr><th scope="col">Metric</th><th scope="col">Result</th><th scope="col">n</th><th scope="col">Evidence and caveats</th></tr></thead><tbody><tr><td>Answers with inline markers</td><td>38/38 (100%)</td><td>38</td><td><ul><li>Applies to targets that cite inline. A target that lists only files has no markers.</li></ul></td></tr><tr><td>Answers with a dangling marker / an unused source</td><td>0 / 0</td><td>38</td><td>-</td></tr><tr><td>Mean share of sentences that carry a marker</td><td>0.925</td><td>38</td><td>-</td></tr><tr><td>Every fact&#x27;s passage among the cited sources</td><td>36/38 (95%)</td><td>38</td><td><ul><li>Strict: an answer that cites another passage stating the same fact counts as missing it unless that wording is listed in the golden set as an alternate.</li></ul></td></tr><tr><td>Mean share of cited documents that are expected</td><td>1.000</td><td>38</td><td><ul><li>Expected documents are the golden set&#x27;s evidence documents and any listed alternates.</li></ul></td></tr><tr><td>Cited sentences supported by their sources (supported = 1, partly = 0.5)</td><td>0.943: 40 supported, 3 partly, 1 unsupported</td><td>44</td><td><ul><li>The judge saw each excerpt without the title of the filing it came from, and can judge a sentence on whether it answers the question, which it is told not to do. Small figure changes and changed dates are often missed.</li><li>Matched 26/30 (87%) of hand labels, from a sample chosen to be hard; every hand label was <code>supported</code>, so the labels cannot show whether the judge catches a bad one.</li><li>Flagged 65/88 (74%) of cited sentences damaged on purpose and 3/30 (10%) of unchanged good ones (false alarms).</li></ul></td></tr><tr><td>Declined answers that still carry citation markers</td><td>5/6 (83%)</td><td>6</td><td>-</td></tr></tbody></table></div>
+<h2 id="by-split-and-category">By split and category</h2>
+<h3>By split</h3>
+<div class="scroll"><table><thead><tr><th scope="col">group</th><th scope="col">asked</th><th scope="col">errors</th><th scope="col">faithful</th><th scope="col">correct</th><th scope="col">evidence cited</th><th scope="col">claim support</th></tr></thead><tbody><tr><td>heldout</td><td>44</td><td>0</td><td>0.91 (n=38)</td><td>0.95 (n=38)</td><td>36/38 (95%)</td><td>0.94 (n=44)</td></tr></tbody></table></div>
+<h3>By category</h3>
+<div class="scroll"><table><thead><tr><th scope="col">group</th><th scope="col">asked</th><th scope="col">errors</th><th scope="col">faithful</th><th scope="col">correct</th><th scope="col">evidence cited</th><th scope="col">claim support</th></tr></thead><tbody><tr><td>edge_case</td><td>3</td><td>0</td><td>0.67 (n=3)</td><td>0.67 (n=3)</td><td>3/3 (100%)</td><td>0.62 (n=4)</td></tr><tr><td>factual</td><td>23</td><td>0</td><td>1.00 (n=23)</td><td>0.98 (n=23)</td><td>23/23 (100%)</td><td>0.98 (n=25)</td></tr><tr><td>follow_up</td><td>4</td><td>0</td><td>1.00 (n=4)</td><td>1.00 (n=4)</td><td>4/4 (100%)</td><td>1.00 (n=4)</td></tr><tr><td>multi_topic</td><td>5</td><td>0</td><td>0.50 (n=5)</td><td>0.90 (n=5)</td><td>3/5 (60%)</td><td>0.94 (n=8)</td></tr><tr><td>unanswerable</td><td>6</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>yes_no</td><td>3</td><td>0</td><td>1.00 (n=3)</td><td>1.00 (n=3)</td><td>3/3 (100%)</td><td>1.00 (n=3)</td></tr></tbody></table></div>
+<h2 id="what-this-cannot-tell-you">What this cannot tell you</h2>
+<ul><li>About the question set: Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split &#x27;heldout&#x27;: the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and have not yet been reviewed by a person. A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.</li><li>The run was made from an uncommitted working tree, so the recorded commit is the previous one, not the exact code.</li><li>This is one pass over the question set. Answers vary from run to run, and a model target gives no seed, so a difference of a few answers is not evidence of a real change.</li><li>This target does not report what it retrieved, so retrieval is not scored; faithfulness is checked against the sources it cited, which is weaker than checking against everything the model read.</li><li>The judge (qwen3:8b) and the target answer with the same model family (ollama:qwen3:latest), so the judge may favour its own kind of answer. The calibration checks measure agreement with a person and with known damage; they do not rule that out.</li><li>No calibration evidence was supplied for the answer verdicts (abstention, faithfulness, correctness) with this judge configuration (qwen3:8b, reasoning on, prompt v1), so they are unvalidated here.</li><li>Where the tables show hand-label agreement, read it as an estimate for hard cases from a small sample, not a measured error rate.</li><li>In the hand labels for citations, every label in each dimension was the same, so they cannot show whether the judge catches a bad one; the known-bad check, where shown, covers that.</li></ul>
+<h2 id="items-to-look-at-13">Items to look at (13)</h2>
+<p>Every question with something unusual in its result. This is a reading list, not a failure count: a flag from the judge may be the judge&#x27;s mistake.</p>
+<details open><summary>Show the 13 items</summary><div class="scroll"><table><thead><tr><th scope="col">Item</th><th scope="col">Category</th><th scope="col">Why</th></tr></thead><tbody><tr><td><code>amzn-employees</code></td><td>factual</td><td><ul><li>correctness judged partly correct</li></ul></td></tr><tr><td><code>msft-buyback</code></td><td>factual</td><td><ul><li>1 cited sentence(s) judged less than supported</li></ul></td></tr><tr><td><code>nvda-hq-and-employees</code></td><td>multi_topic</td><td><ul><li>correctness judged partly correct</li><li>the passage stating a fact is not among the cited sources</li></ul></td></tr><tr><td><code>amd-vs-nvda-employees</code></td><td>multi_topic</td><td><ul><li>faithfulness judged unsupported</li><li>1 cited sentence(s) judged less than supported</li></ul></td></tr><tr><td><code>apple-and-msft-hq</code></td><td>multi_topic</td><td><ul><li>faithfulness judged partly supported</li></ul></td></tr><tr><td><code>amd-nvda-hq</code></td><td>multi_topic</td><td><ul><li>faithfulness judged unsupported</li><li>the passage stating a fact is not among the cited sources</li></ul></td></tr><tr><td><code>msft-googl-total</code></td><td>edge_case</td><td><ul><li>faithfulness judged unsupported</li><li>2 cited sentence(s) judged less than supported</li></ul></td></tr><tr><td><code>amzn-tsla-gap</code></td><td>edge_case</td><td><ul><li>correctness judged incorrect</li></ul></td></tr><tr><td><code>unknown-tsla-chargers</code></td><td>unanswerable</td><td><ul><li>a declined answer still carries citation markers</li></ul></td></tr><tr><td><code>unknown-amd-cafeteria</code></td><td>unanswerable</td><td><ul><li>a declined answer still carries citation markers</li></ul></td></tr><tr><td><code>unknown-nvda-acres</code></td><td>unanswerable</td><td><ul><li>a declined answer still carries citation markers</li></ul></td></tr><tr><td><code>unknown-aapl-floors</code></td><td>unanswerable</td><td><ul><li>a declined answer still carries citation markers</li></ul></td></tr><tr><td><code>unknown-googl-dog</code></td><td>unanswerable</td><td><ul><li>a declined answer still carries citation markers</li></ul></td></tr></tbody></table></div></details>
+<h2 id="files">Files</h2>
+<ul><li>Run: <code>runs/published/2026-10-25_135415_baseline-citewise.run.json</code></li><li>Scores: <code>runs/published/2026-10-25_135415_baseline-citewise.judge-think-on.scores.json</code></li><li>Question set: <code>golden/citewise_filings_v1.json</code></li><li>Agreement with hand labels 1: <code>runs/published/2026-10-25_135415_baseline-citewise.citation-agreement.json</code></li><li>Known-bad check 1: <code>runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-on.json</code></li><li>Known-bad check 2: <code>runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-off.json</code></li></ul>
+</main>
+</body>
+</html>

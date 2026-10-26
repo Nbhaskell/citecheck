@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reports · CiteCheck</title>
+<meta name="description" content="One report per scored run. They are not ranked and not comparable with each other: each uses its own question set, corpus and target, and some checks apply to one target and not another. Read each report&#x27;s own caveats.">
+<style>
+:root { --bg:#fbfaf8; --fg:#1d1d1b; --muted:#625f59; --card:#ffffff; --line:#dedbd4; --accent:#2f5d8a; --code:#f0eee8;
+  --info-bg:#e1ecf7; --info-fg:#1f4568; --warn-bg:#fff0d4; --warn-fg:#704400; --calm-bg:#ecebe7; --calm-fg:#4a4944; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161615; --fg:#ecebe8; --muted:#a8a69f; --card:#1f1f1d; --line:#3a3932;
+  --accent:#86b6e6; --code:#2a2a27; --info-bg:#1e3447; --info-fg:#b6d6f4; --warn-bg:#40300f; --warn-fg:#f0cf8a;
+  --calm-bg:#2c2c29; --calm-fg:#c9c7c0; } }
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width:70rem; margin:0 auto; padding:16px; }
+h1 { font-size:1.7rem; line-height:1.25; margin:.4em 0 .3em; overflow-wrap:anywhere; }
+h2 { font-size:1.3rem; margin:2em 0 .5em; padding-top:.6em; border-top:1px solid var(--line); }
+h3 { font-size:1.05rem; margin:1.5em 0 .4em; }
+p, li { max-width:65ch; overflow-wrap:anywhere; }
+a { color:var(--accent); }
+code { background:var(--code); padding:.05em .35em; border-radius:4px; font-size:.9em; overflow-wrap:anywhere; }
+.crumb, .toc { font-size:.92rem; color:var(--muted); }
+.toc { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.8rem 0 0; padding:.5rem 0; border-top:1px solid var(--line); }
+.scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--card); margin:.6rem 0 1rem; }
+table { border-collapse:collapse; width:100%; font-size:.92rem; }
+th, td { padding:.45rem .7rem; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+th { font-weight:600; background:var(--card); }
+tr:last-child td { border-bottom:0; }
+td ul { margin:0; padding-left:1.1rem; color:var(--muted); font-size:.88rem; }
+td ul li { margin:.2rem 0; max-width:none; }
+.badge { display:inline-block; padding:.1em .6em; border-radius:999px; font-weight:600; font-size:.85rem; white-space:nowrap; }
+.badge.larger { background:var(--info-bg); color:var(--info-fg); }
+.badge.unclear { background:var(--warn-bg); color:var(--warn-fg); }
+.badge.within { background:var(--calm-bg); color:var(--calm-fg); }
+details { margin:.6rem 0 1rem; }
+summary { cursor:pointer; color:var(--accent); font-weight:600; }
+@media (max-width: 40rem) { main { padding:12px; } h1 { font-size:1.4rem; } th, td { padding:.4rem .5rem; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Reports</h1>
+<p>One report per scored run. They are not ranked and not comparable with each other: each uses its own question set, corpus and target, and some checks apply to one target and not another. Read each report&#x27;s own caveats.</p>
+
+<div class="scroll"><table><thead><tr><th scope="col">Report</th><th scope="col">Run date</th><th scope="col">Target</th><th scope="col">Question set (items)</th><th scope="col">Judge</th></tr></thead><tbody><tr><td><a href="rag-project-baseline.html">rag-project on rag-demo-1.1.0</a></td><td>2026-10-24</td><td>rag-project</td><td>rag-demo-1.1.0 (131)</td><td>judge calibrated for answers</td></tr><tr><td><a href="citewise-baseline.html">citewise on citewise-filings-1.0.0</a></td><td>2026-10-25</td><td>citewise</td><td>citewise-filings-1.0.0 (44)</td><td>judge calibrated for citations</td></tr></tbody></table></div>
+</main>
+</body>
+</html>

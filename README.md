@@ -7,10 +7,11 @@ citations are valid. Output is a CLI and a readable report.
 The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
 adapter, so one harness can score different projects.
 
-> **Status: steps 0 to 6 done.** Retrieval, answer quality and citations are scored, against two targets (rag-project and
-> CiteWise), with the local judge model checked against hand labels and known-bad answers, each scored run has a report, one
-> change to a target (`RAG_TOP_K`) has been measured against run-to-run variation, and a check that needs no model reads
-> answers for figures and dates the judge tends to miss.
+> **Status: every planned step is built; one hand review is outstanding.** Retrieval, answer quality and citations are scored,
+> against two targets (rag-project and CiteWise), with the local judge model checked against hand labels and known-bad answers,
+> each scored run has a Markdown and an HTML report, one change to a target (`RAG_TOP_K`) has been measured against run-to-run
+> variation, and a check that needs no model reads answers for figures and dates the judge tends to miss. The reference answers
+> for CiteWise have not yet been reviewed by a person (step 7).
 > Sections marked *planned* describe the intended design.
 
 | Step | What | State |
@@ -19,10 +20,11 @@ adapter, so one harness can score different projects.
 | 1 | Adapter interface, `run`/`score`, retrieval metrics, rag-project adapter | done |
 | 2 | LLM judge (faithfulness, correctness, abstention; `qwen3:8b` through Ollama) and its calibration against hand labels | done |
 | 3 | Citation checks, second target (CiteWise) | done |
-| 4 | Markdown report per run (no HTML), tests-only CI | done |
+| 4 | Markdown report per run, tests-only CI | done |
 | 5 | A measured change to a target: repeated passes at different settings, and `compare` | done |
 | 6 | Figure and date check that needs no model, measured against the judge's gaps | done |
 | 7 | Sheet and command for reviewing reference answers by hand | tooling done; the review itself is not done |
+| 8 | HTML pages for reports and comparisons, rendered from their saved JSON | done |
 
 ## Quick start
 
@@ -386,9 +388,31 @@ version) and, when the file records it, on the same run; otherwise the page says
 side-by-side comparison of targets: their question sets, corpora and checks differ, and the index page says so.
 
 Committed reports, from the published baselines: [`reports/rag-project-baseline.md`](reports/rag-project-baseline.md),
-[`reports/citewise-baseline.md`](reports/citewise-baseline.md) and their [index](reports/index.md). An HTML version is not built.
+[`reports/citewise-baseline.md`](reports/citewise-baseline.md) and their [index](reports/index.md).
 The `RAG_TOP_K` comparison page, [`reports/rag-project-top-k.md`](reports/rag-project-top-k.md), is made by `compare` (see
 [Comparing settings](#comparing-settings)) and is not part of the index.
+
+### HTML pages
+
+```
+python -m citecheck html reports                                  # every page and an index.html for a folder
+python -m citecheck html reports/rag-project-baseline.report.json   # one page, beside its JSON
+```
+
+Each Markdown report and comparison has an HTML page: [`reports/index.html`](reports/index.html),
+[`reports/rag-project-baseline.html`](reports/rag-project-baseline.html), [`reports/citewise-baseline.html`](reports/citewise-baseline.html)
+and [`reports/rag-project-top-k.html`](reports/rag-project-top-k.html). They are built by
+[`src/citecheck/report_html.py`](src/citecheck/report_html.py) from the JSON copies saved beside the Markdown pages
+(`*.report.json`, `*.compare.json`), not from a new scoring, so a page holds the numbers its Markdown page holds. Each page is one
+self-contained file: no script, no outside resources, and every text escaped. It follows the reader's light or dark setting and
+fits a phone's width; a wide table scrolls inside its own box. What the HTML adds over the Markdown is a contents line, each
+metric's caveats as a list beside it, a collapsible reading list when it is long, and the comparison verdicts as labelled badges
+(the words are always shown; colour is never the only signal).
+
+The Markdown pages stay the record. A test rebuilds every committed HTML page from its JSON and requires an exact match, so a page
+cannot drift from its data, and another checks the text and background colours of both themes against a 4.5:1 contrast ratio.
+Limits: the dark theme was checked by that contrast test and not by eye, the pages were looked at in one browser at desktop and
+phone widths, and the index lists the reports only, as the Markdown index does.
 
 ## Comparing settings
 
@@ -634,7 +658,7 @@ What running the harness against two targets showed, including where the harness
 - **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
   alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: an HTML report, a person's review of the CiteWise reference answers (the sheet and the command that applies it exist,
+Not done: a person's review of the CiteWise reference answers (the sheet and the command that applies it exist,
 see [Reviewing the reference answers by hand](#reviewing-the-reference-answers-by-hand)), and a fix for the judge's own weak spots. The
 judge still misses small figure and date changes; the separate figure check now catches those where the new figure is in no
 source, and the completeness mistake in the citation verdict is unchanged. See [`reports/`](reports/) for the two baselines and
@@ -658,6 +682,7 @@ src/citecheck/
   scoring.py     `score`: metrics from a saved run
   golden.py      load and validate a golden set
   report.py      the Markdown report: scores beside their calibration evidence and caveats
+  report_html.py the HTML pages for reports and comparisons, rendered from their saved JSON
   compare.py     `compare`: settings of one target over repeated judged passes, against the spread between passes
   cli.py
 tools/           one-off scripts: the golden-set converter and the CiteWise golden-set builder, a check against rag-project's published runs

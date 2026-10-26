@@ -366,82 +366,114 @@ def table(header, rows) -> list[str]:
            ["| " + " | ".join(str(c) for c in row) + " |" for row in rows]
 
 
-def render_markdown(built: dict) -> str:
-    judge = built["judge"]
-    lines = [f"# {built['title']}", "",
-             "Settings of one target compared over repeated passes of the same question set. Every number is arranged from "
-             "saved scores files; no model is called to make this page.", "", "## Provenance", ""]
-    def passages(a):
-        check = a["setting_check"]
-        common = "" if check["most_common"] is None else f" (most common {check['most_common']}, {check['times']} of {check['answers']})"
-        return fmt(a["mean_passages"], 2) + common
+INTRO = ("Settings of one target compared over repeated passes of the same question set. Every number is arranged from "
+         "saved scores files; no model is called to make this page.")
+PROVENANCE_HEADER = ["Arm", "Declared settings", "Passes", "Runs", "Passages per answer", "Seconds per answer"]
+RULE_LEAD = "A difference between an arm and the first arm counts as **larger than noise** only when both tests hold:"
+RULE_TAIL = ("Meeting one test gives **unclear**, neither gives **within noise**. Where the passes agree exactly there is no "
+             "spread to measure and the question test alone decides. The four headline measures were chosen before any result "
+             "was seen; the others are descriptive.")
+INTERVAL_NOTE = ("The interval is for the question-by-question difference (each question's mean over passes), so its centre can "
+                 "differ slightly from the difference of the pass means when the passes cover different numbers of answers.")
 
-    lines += table(["Arm", "Declared settings", "Passes", "Runs", "Passages per answer", "Seconds per answer"], [
-        [a["label"], ", ".join(f"{k}={v}" for k, v in sorted(a["declared"].items())) or "-", len(a["passes"]),
-         ", ".join(f"`{r}`" for r in a["run_ids"]), passages(a), fmt(a["mean_latency"], 1)]
-        for a in built["arms"]])
-    lines += ["", f"Question set `{built['golden']['golden_version']}` (hash `{built['golden']['golden_hash'][:10]}`). Judge "
-              f"`{judge['model']}` (digest `{judge['model_digest'][:12]}`, prompt version {judge['prompt_version']}), identical "
-              "for every pass. Seconds per answer depend on the machine and are descriptive only.", "",
-              "## How a difference is judged", "",
-              "A difference between an arm and the first arm counts as **larger than noise** only when both tests hold:", "",
-              "1. **Spread test.** The difference of the arm means is larger than the 95% t value times its standard error, "
-              "where the standard error comes from the spread between passes (the two arms pooled).",
-              f"2. **Question test.** The 95% interval of a paired bootstrap over questions ({built['resamples']} resamples, seed "
-              f"{built['seed']}) excludes zero. Each question's value is its mean over an arm's passes.", "",
-              "Meeting one test gives **unclear**, neither gives **within noise**. Where the passes agree exactly there is no "
-              "spread to measure and the question test alone decides. The four headline measures were chosen before any result "
-              "was seen; the others are descriptive.", ""]
-    for comparison in built["comparisons"]:
-        lines += [f"## {comparison['other']} against {comparison['base']}", ""]
-        if comparison["other_differences"]:
-            lines += ["Differences recorded between the two targets: " + "; ".join(comparison["other_differences"]) + ".", ""]
-        base = next(a for a in built["arms"] if a["label"] == comparison["base"])
-        other = next(a for a in built["arms"] if a["label"] == comparison["other"])
-        lines += ["### Every pass", ""]
-        lines += table(["Measure", f"{comparison['base']}, per pass", f"{comparison['other']}, per pass"], [
-            [LABELS[n], ", ".join(cell(p, n) for p in base["passes"]), ", ".join(cell(p, n) for p in other["passes"])]
-            for n in MEASURES if n in comparison["results"]])
-        lines += ["", "### Result", ""]
-        rows = []
-        for name in MEASURES:
-            r = comparison["results"].get(name)
-            if not r:
-                continue
-            interval = "-" if r["question_interval"] is None else f"{signed(r['question_interval'][0])} to {signed(r['question_interval'][1])}"
-            threshold = "no spread to measure" if r["spread_threshold"] is None else f"±{fmt(r['spread_threshold'])}"
-            if name in HEADLINE:
-                rows.append([LABELS[name], f"{fmt(r['base_mean'])} ({fmt(r['base_sd'])})", f"{fmt(r['other_mean'])} ({fmt(r['other_sd'])})",
-                             signed(r["difference"]), interval, threshold, f"**{r['verdict']}**"])
-            else:
-                rows.append([LABELS[name] + " (descriptive)", f"{fmt(r['base_mean'])} ({fmt(r['base_sd'])})",
-                             f"{fmt(r['other_mean'])} ({fmt(r['other_sd'])})", signed(r["difference"]), interval, threshold, "-"])
-        lines += table(["Measure", f"{comparison['base']} mean (SD)", f"{comparison['other']} mean (SD)", "Difference",
-                        "95% interval over questions", "Spread test needs more than", "Verdict"], rows)
-        lines += ["", "The interval is for the question-by-question difference (each question's mean over passes), so its centre can "
-                      "differ slightly from the difference of the pass means when the passes cover different numbers of answers.", ""]
-        for title, key in (("By split (descriptive)", "by_split"), ("By category (descriptive)", "by_category")):
-            lines += [f"### {title}", ""]
-            lines += table(["Group", "Questions"] + [f"{LABELS[n].split(' (')[0]}: {comparison['base']} / {comparison['other']} / difference"
-                                                      for n in HEADLINE],
-                           [[g["group"], g["questions"]] + [
-                               f"{fmt(g[n]['base'])} / {fmt(g[n]['other'])} / {signed(g[n]['difference'])}" for n in HEADLINE]
-                            for g in comparison[key]])
-            lines.append("")
-        changed = comparison["changed_questions"]
-        lines += ["### Questions that changed", "",
-                  f"Questions whose mean for a headline measure differs by {CHANGED_BY} or more between the arms. A reading list, "
-                  "not a count of failures."]
-        if changed:
-            lines += ["", f"{len(changed)} listed" + (f", the first {LIST_LIMIT} shown" if len(changed) > LIST_LIMIT else ""), ""]
-            lines += table(["Question", "Measure", comparison["base"], comparison["other"]],
-                           [[f"`{c['item_id']}`", LABELS[c["measure"]].split(" (")[0], fmt(c["base"], 2), fmt(c["other"], 2)]
-                            for c in changed[:LIST_LIMIT]])
+
+def passages_text(a: dict) -> str:
+    check = a["setting_check"]
+    common = "" if check["most_common"] is None else f" (most common {check['most_common']}, {check['times']} of {check['answers']})"
+    return fmt(a["mean_passages"], 2) + common
+
+
+def provenance_note(built: dict) -> str:
+    judge = built["judge"]
+    return (f"Question set `{built['golden']['golden_version']}` (hash `{built['golden']['golden_hash'][:10]}`). Judge "
+            f"`{judge['model']}` (digest `{judge['model_digest'][:12]}`, prompt version {judge['prompt_version']}), identical "
+            "for every pass. Seconds per answer depend on the machine and are descriptive only.")
+
+
+def rule_tests(built: dict) -> list[str]:
+    return ["**Spread test.** The difference of the arm means is larger than the 95% t value times its standard error, "
+            "where the standard error comes from the spread between passes (the two arms pooled).",
+            f"**Question test.** The 95% interval of a paired bootstrap over questions ({built['resamples']} resamples, seed "
+            f"{built['seed']}) excludes zero. Each question's value is its mean over an arm's passes."]
+
+
+def comparison_blocks(built: dict, comparison: dict) -> list[tuple]:
+    base = next(a for a in built["arms"] if a["label"] == comparison["base"])
+    other = next(a for a in built["arms"] if a["label"] == comparison["other"])
+    blocks = [("h2", f"{comparison['other']} against {comparison['base']}")]
+    if comparison["other_differences"]:
+        blocks.append(("p", "Differences recorded between the two targets: " + "; ".join(comparison["other_differences"]) + "."))
+    blocks += [("h3", "Every pass"), ("table", ["Measure", f"{comparison['base']}, per pass", f"{comparison['other']}, per pass"], [
+        [LABELS[n], ", ".join(cell(p, n) for p in base["passes"]), ", ".join(cell(p, n) for p in other["passes"])]
+        for n in MEASURES if n in comparison["results"]])]
+    rows = []
+    for name in MEASURES:
+        r = comparison["results"].get(name)
+        if not r:
+            continue
+        interval = "-" if r["question_interval"] is None else f"{signed(r['question_interval'][0])} to {signed(r['question_interval'][1])}"
+        threshold = "no spread to measure" if r["spread_threshold"] is None else f"±{fmt(r['spread_threshold'])}"
+        if name in HEADLINE:
+            rows.append([LABELS[name], f"{fmt(r['base_mean'])} ({fmt(r['base_sd'])})", f"{fmt(r['other_mean'])} ({fmt(r['other_sd'])})",
+                         signed(r["difference"]), interval, threshold, f"**{r['verdict']}**"])
         else:
-            lines += ["", "None."]
-        lines.append("")
-    lines += ["## What this cannot tell you", ""] + [f"- {note}" for note in built["limits"]]
-    return "\n".join(lines) + "\n"
+            rows.append([LABELS[name] + " (descriptive)", f"{fmt(r['base_mean'])} ({fmt(r['base_sd'])})",
+                         f"{fmt(r['other_mean'])} ({fmt(r['other_sd'])})", signed(r["difference"]), interval, threshold, "-"])
+    blocks += [("h3", "Result"), ("table", ["Measure", f"{comparison['base']} mean (SD)", f"{comparison['other']} mean (SD)",
+                                            "Difference", "95% interval over questions", "Spread test needs more than", "Verdict"], rows),
+               ("p", INTERVAL_NOTE)]
+    for title, key in (("By split (descriptive)", "by_split"), ("By category (descriptive)", "by_category")):
+        blocks += [("h3", title), ("table", ["Group", "Questions"] + [
+            f"{LABELS[n].split(' (')[0]}: {comparison['base']} / {comparison['other']} / difference" for n in HEADLINE],
+            [[g["group"], g["questions"]] + [f"{fmt(g[n]['base'])} / {fmt(g[n]['other'])} / {signed(g[n]['difference'])}"
+                                             for n in HEADLINE] for g in comparison[key]])]
+    changed = comparison["changed_questions"]
+    blocks += [("h3", "Questions that changed"),
+               ("p", f"Questions whose mean for a headline measure differs by {CHANGED_BY} or more between the arms. A reading list, "
+                     "not a count of failures.")]
+    if changed:
+        blocks += [("p", f"{len(changed)} listed" + (f", the first {LIST_LIMIT} shown" if len(changed) > LIST_LIMIT else "")),
+                   ("table", ["Question", "Measure", comparison["base"], comparison["other"]],
+                    [[f"`{c['item_id']}`", LABELS[c["measure"]].split(" (")[0], fmt(c["base"], 2), fmt(c["other"], 2)]
+                     for c in changed[:LIST_LIMIT]])]
+    else:
+        blocks.append(("p", "None."))
+    return blocks
+
+
+def document(built: dict) -> list[tuple]:
+    """The page as blocks, which both renderers turn into text: ("h1" | "h2" | "h3" | "p", text), ("ol" | "ul", [text]) and
+    ("table", header, rows). Text may use `code` and **bold**."""
+    blocks = [("h1", built["title"]), ("p", INTRO), ("h2", "Provenance"), ("table", PROVENANCE_HEADER, [
+        [a["label"], ", ".join(f"{k}={v}" for k, v in sorted(a["declared"].items())) or "-", len(a["passes"]),
+         ", ".join(f"`{r}`" for r in a["run_ids"]), passages_text(a), fmt(a["mean_latency"], 1)]
+        for a in built["arms"]]),
+        ("p", provenance_note(built)), ("h2", "How a difference is judged"), ("p", RULE_LEAD),
+        ("ol", rule_tests(built)), ("p", RULE_TAIL)]
+    for comparison in built["comparisons"]:
+        blocks += comparison_blocks(built, comparison)
+    return blocks + [("h2", "What this cannot tell you"), ("ul", list(built["limits"]))]
+
+
+def to_markdown(blocks: list[tuple]) -> str:
+    out = []
+    for block in blocks:
+        kind = block[0]
+        if kind in ("h1", "h2", "h3"):
+            out.append("#" * int(kind[1]) + " " + block[1])
+        elif kind == "ol":
+            out.append("\n".join(f"{i}. {text}" for i, text in enumerate(block[1], 1)))
+        elif kind == "ul":
+            out.append("\n".join(f"- {text}" for text in block[1]))
+        elif kind == "table":
+            out.append("\n".join(table(block[1], block[2])))
+        else:
+            out.append(block[1])
+    return "\n\n".join(out) + "\n"
+
+
+def render_markdown(built: dict) -> str:
+    return to_markdown(document(built))
 
 
 def save_comparison(built: dict, out) -> tuple[Path, Path]:
