@@ -1,0 +1,1702 @@
+{
+  "schema_version": 1,
+  "golden_version": "citewise-filings-1.0.0",
+  "target": "citewise",
+  "notes": "Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and have not yet been reviewed by a person. A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.",
+  "corpus": {
+    "name": "citewise-stored-filings",
+    "source": "https://github.com/Nbhaskell/citewise-markets",
+    "commit": "a10ef5c758ba5c4ea28b132af29bd49d7e152c5b",
+    "fingerprint": "filing-identifier",
+    "documents": {
+      "AAPL 10-K filed 2024-11-01": "c21c332f9d9bce9d57deb44ced48957a63843b82e3d00134f30e329f7834375d",
+      "AAPL 10-K filed 2025-10-31": "50cbb6e3b0ad06f5fcbde951183e99b9b2f6f96e88b57b40516c7192b6348eba",
+      "AAPL 10-Q filed 2026-05-01": "e7572965f0faadd6d289d33931d57b5f437127da91b87819d4308e6c6d66c8f1",
+      "AAPL 10-Q filed 2026-07-31": "8a519d637b1fcf72f3d31704ccb3fd86eed60e7e926b9fe2ef9151d252935bdd",
+      "AMD 10-K filed 2025-02-05": "17fb0745da315c986798f456901955a9a7cc8c6239fac13f222ada2509db1834",
+      "AMD 10-K filed 2026-02-04": "41006b93b8f0a76067806d7cd386dde6706640e2906ed5a7d8ecf09371afb2bc",
+      "AMD 10-Q filed 2026-05-06": "52290db6f87d9c8630fc65e5bb362c8cd5aa14106984f238955ac940dc7089c5",
+      "AMD 10-Q filed 2026-08-05": "4b783180078e0eed06192cfefe044f04fa930457bc8f15ff1a92924871f51604",
+      "AMZN 10-K filed 2025-02-07": "f6fd8b66a6e004067a3a56e9e33b5d10584edc887396b7c7188fd0cbc090e9d1",
+      "AMZN 10-K filed 2026-02-06": "c069c100e6c091231dfa524e711a8f78e16fc5c85d01dc24d3ee78b6a09fb4eb",
+      "AMZN 10-Q filed 2026-04-30": "bbcd6e37888e97933b7d7bca8d5264e1d5ae8350c8dae8a7744a142071ebd3e3",
+      "AMZN 10-Q filed 2026-07-31": "e6fd4f29ed64423451b52d843b721c8d05dc38665362601ecf984049511f1726",
+      "GOOGL 10-K filed 2025-02-05": "fb5ee41610c546692f63468c003eb446c72af65fd5e1310f395c0a67fa3d4e60",
+      "GOOGL 10-K filed 2026-02-05": "8820397b6cc85c3ee7a15a92122832282c974801a30063ef917667c647bff36a",
+      "GOOGL 10-Q filed 2026-04-30": "0b014f7aa4fec3c02bf695a7e13d56ff4a25f31669485013aee2122900872afd",
+      "GOOGL 10-Q filed 2026-07-23": "b4ea74a49f81a5c98ed9b493642462489af35f7446b9dec9e0cc585a51ad3fc2",
+      "MSFT 10-K filed 2025-07-30": "3fd6ef42eff1938f1ff128431056ed797adee425b3b68595c93a5ec7c1ec8a32",
+      "MSFT 10-K filed 2026-07-29": "7871fd7a7fb538879296e36f98b0f3e6a31ca45c497e2d5fb7de4adaf16c10c7",
+      "MSFT 10-Q filed 2026-01-28": "b050aa2183a80ed8f895cf5924dc9bee88a0c058218537f15e85104e37f851da",
+      "MSFT 10-Q filed 2026-04-29": "608340d00d0c1b24dd19d4ae1cc7c8a3f4a807cb56a3facd4fe73ecfa68a9465",
+      "NVDA 10-K filed 2025-02-26": "68854cd4680f647923070c3e6b6d2879f6238ba98cfbc9f427f7f3687427e22a",
+      "NVDA 10-K filed 2026-02-25": "c33e3d29428002348be18b8eb0c8a19b24c04d60bb1c1dd956e39dfcab636df7",
+      "NVDA 10-Q filed 2026-05-20": "555136a2e53ebcf559f6d54fc6e5ba052a28d38a3740c4ec12efae05791c8712",
+      "NVDA 10-Q filed 2026-08-26": "c177c3b7028c7f33d48d70ca3be6aafe63ba9f44140f467214f813cb9acef50d",
+      "TSLA 10-K filed 2025-01-30": "71d3a5bf445a2a22d1e3d6581b7f3e027fb90e46909972b1ce4890d8a6d663ea",
+      "TSLA 10-K filed 2026-01-29": "c43ce6a15b9226d9312afb0efe86fb4cd2166ea47d4a6a328c6f79c61267bfe7",
+      "TSLA 10-Q filed 2026-04-23": "352a67e57a66dd81dc3e31ea2ddd76d7272f8ec78ea6cf3f597b6a98b72a5e6a",
+      "TSLA 10-Q filed 2026-07-23": "ae980e3081e6b3b77094d6c057c338d98793726829e1d5aaa2c08b577714e0c8",
+      "TSLA 10-Q filed 2026-10-22": "cf6bb8c83efe5766efb6498d0a6de01d08cc899a2638cdecc6e5ca96ff0ec5e6"
+    }
+  },
+  "items": [
+    {
+      "id": "amd-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many employees does AMD have?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we had approximately 31,000 employees in our global workforce",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of December 27, 2025, AMD had approximately 31,000 employees in its global workforce.",
+      "answer_contains": [
+        [
+          "31,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-employees"
+      }
+    },
+    {
+      "id": "amzn-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many people does Amazon employ?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 1,576,000 full-time and part-time employees",
+          "passages": [
+            {
+              "doc_id": "AMZN 10-K filed 2026-02-06",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nOur employees are critical to our mission of being Earth’s most customer-centric company. As of December 31, 2025, we employed approximately 1,576,000 full-time and part-time employees. Additionally, we use independent contractors and temporary personnel to supplement our workforce. Competition for qualified personnel is intense, particularly for software engineers, computer scientists, and other technical staff (including for artificial intelligence and machine learning technologies), and constrained labor markets have increased competition for personnel across other parts of our business."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees, and also used independent contractors and temporary personnel.",
+      "answer_contains": [
+        [
+          "1,576,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amzn-employees"
+      }
+    },
+    {
+      "id": "googl-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What is Alphabet's total headcount?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Alphabet had 190,820 employees",
+          "passages": [
+            {
+              "doc_id": "GOOGL 10-K filed 2026-02-05",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "As of December 31, 2025, Alphabet had\n190,820\nemployees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of December 31, 2025, Alphabet had 190,820 employees.",
+      "answer_contains": [
+        [
+          "190,820"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "googl-employees"
+      }
+    },
+    {
+      "id": "nvda-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many employees does NVIDIA have, and in how many countries?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we had approximately 42,000 employees in 38 countries",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries.",
+      "answer_contains": [
+        [
+          "42,000"
+        ],
+        [
+          "38"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-employees"
+      }
+    },
+    {
+      "id": "tsla-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What was Tesla's worldwide employee headcount?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "our employee headcount worldwide was 134,785",
+          "passages": [
+            {
+              "doc_id": "TSLA 10-K filed 2026-01-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "companies making electric vehicles and the world.\nHuman Capital Resources\nTesla’s ability to attract, develop and retain a talented workforce is a competitive advantage. As of December 31, 2025, our employee headcount worldwide was 134,785.\nWe emphasize stock ownership opportunities, with 92% of employees included in total rewards packages, alongside industry-leading benefits like free counseling, paid parental leave, and comprehensive healthcare options available from day one. Hiring, evaluation, and promotion decisions are based on skills and performance, with over 29,000 employees globally advancing their careers in 2025, and 69% of managers promoted internally."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of December 31, 2025, Tesla's employee headcount worldwide was 134,785.",
+      "answer_contains": [
+        [
+          "134,785"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "tsla-employees"
+      }
+    },
+    {
+      "id": "msft-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many full-time employees does Microsoft have?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 223,000 people on a full-time basis",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+      "answer_contains": [
+        [
+          "223,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-employees"
+      }
+    },
+    {
+      "id": "aapl-employees",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many full-time equivalent employees does Apple have?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "the Company had approximately 166,000 full-time equivalent employees",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nThe Company believes that its people play an important role in its success, and strives to attract, develop and retain the best talent. The Company works to create a culture of collaboration, one where people with a broad range of backgrounds and perspectives can come together to innovate and do the best work of their lives. The Company is an equal opportunity employer committed to inclusion and to providing a workplace free of harassment or discrimination. As of September 27, 2025, the Company had approximately 166,000 full-time equivalent employees.\nThe Company believes that compensation should be competitive and equitable, and offers discretionary cash and equity awards to enable employees to share in the Company’s success. The Company recognizes its people are most likely to thrive when they have the resources to meet their needs and the time and support to succeed in their professional and personal lives. In support of this, the Company offers a wide variety of benefits for employees around the world, including health, wellness and time away."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees.",
+      "answer_contains": [
+        [
+          "166,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "aapl-employees"
+      }
+    },
+    {
+      "id": "aapl-hq",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Where is Apple headquartered?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "headquarters is located in Cupertino, California",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Apple Inc. | 2024 Form 10-K | 17\nItem 2. Properties\nThe Company’s headquarters is located in Cupertino, California. As of September 28, 2024, the Company owned or leased facilities and land for corporate functions, R&D, data centers, retail and other purposes at locations throughout the U.S. and in various places outside the U.S. The Company believes its existing facilities and equipment, which are used by all reportable segments, are in good operating condition and are suitable for the conduct of its business.\nItem 3. Legal Proceedings\nDigital Markets Act Investigations"
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "For a discussion of the Company’s cybersecurity-related risks, see Item 1A of this Form 10-K under the heading “Risk Factors.”\nItem 2. Properties\nThe Company’s headquarters is located in Cupertino, California. As of September 27, 2025, the Company owned or leased facilities and land for corporate functions, R&D, data centers, retail and other purposes at locations throughout the U.S. and in various places outside the U.S. The Company believes its existing facilities and equipment, which are used by all reportable segments, are in good operating condition and are suitable for the conduct of its business.\nApple Inc. | 2025 Form 10-K | 17\nItem 3. Legal Proceedings\nDigital Markets Act Investigations"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Apple's headquarters is located in Cupertino, California.",
+      "answer_contains": [
+        [
+          "cupertino"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "aapl-hq"
+      }
+    },
+    {
+      "id": "amd-hq",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Where are AMD's headquarters?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Our headquarters are located in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2025-02-05",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 28, 2024, we have approximately 6 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5 million square feet of leased space and approximately 1 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            },
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "AMD's headquarters are located in Santa Clara, California.",
+      "answer_contains": [
+        [
+          "santa clara"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-hq"
+      }
+    },
+    {
+      "id": "nvda-hq",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Where is NVIDIA's headquarters?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Our headquarters is in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the burgeoning population of live streamers, broadcasters, artists, and creators. With the advent of generative AI, we expect a broader set of PC users to choose NVIDIA GPUs for running generative AI applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Our Chief Security Officer’s cybersecurity expertise includes over 17 years of combined government and private sector assignments.\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Our two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges\nDemand and Supply\nRevenue growth in fiscal year 2025 was driven by data center compute and networking platforms for accelerated computing and AI solutions. Demand for our Hopper architecture drove our significant growth for the full year. We began shipping production systems of the Blackwell architecture in the fourth quarter of fiscal year 2025.\nDemand estimates for our products, applications, and services can be incorrect and create volatility in our revenue or supply levels. We may not be able to generate significant revenue from them. Advancements in accelerated computing and generative AI models, along with the growth in model complexity and scale, have driven increased demand for our Data Center systems.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part IV, Item 15",
+              "page": null,
+              "text": ")\nOther\n(\n9\n)\n—\n(\n1\n)\nNet cash used in financing activities\n(\n48,474\n)\n(\n42,359\n)\n(\n13,633\n)\nChange in cash and cash equivalents\n2,016\n1,309\n3,891\nCash and cash equivalents at beginning of period\n8,589\n7,280\n3,389\nCash and cash equivalents at end of period\n$\n10,605\n$\n8,589\n$\n7,280\nSupplemental disclosures of cash flow information:\nCash paid for income taxes, net\n$\n20,288\n$\n15,118\n$\n6,549\nSee accompanying Notes to the Consolidated Financial Statements.\n55\nTable of Contents\nNVIDIA Corporation and Subsidiaries\nNotes to the Consolidated Financial Statements\nNote 1 -\nOrganization and Summary of Significant Accounting Policies\nOur Company\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nAll references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the growing population of live streamers, broadcasters, artists, and creators. With the advent of generative and agentic AI, we expect a broader set of PC users to choose NVIDIA GPUs for running these applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative, engineering, and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative and agentic AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center scale AI infrastructure company reshaping all industries.\nOur two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-05-20",
+              "section": "Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-08-26",
+              "section": "Part II, Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA's headquarters is in Santa Clara, California.",
+      "answer_contains": [
+        [
+          "santa clara"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-hq"
+      }
+    },
+    {
+      "id": "tsla-hq",
+      "split": "heldout",
+      "category": "factual",
+      "question": "In which city is Tesla headquartered?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "We are headquartered in Austin, Texas",
+          "passages": [
+            {
+              "doc_id": "TSLA 10-K filed 2025-01-30",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "These individuals are informed about, and monitor the prevention, mitigation, detection and remediation of cybersecurity incidents through their management of, and participation in, the cybersecurity risk management and strategy processes described above, including the operation of our incident response plan, and report to the Audit Committee on any appropriate items.\nITEM 2. PROPERTIES\nWe are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.\nPrimary Manufacturing Facilities\nLocation\nOwned or Leased\nGigafactory Texas\nAustin, Texas\nOwned\nFremont Factory\nFremont, California\nOwned\nGigafactory Nevada\nSparks, Nevada\nOwned"
+            },
+            {
+              "doc_id": "TSLA 10-K filed 2026-01-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "These individuals are informed about, and monitor the prevention, mitigation, detection and remediation of cybersecurity incidents through their management of, and participation in, the cybersecurity risk management and strategy processes described above, including the operation of our incident response plan, and report to the Audit Committee on any appropriate items.\nITEM 2. PROPERTIES\nWe are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.\nPrimary Manufacturing Facilities\nLocation\nOwned or Leased\nGigafactory Texas\nAustin, Texas\nOwned\nFremont Factory\nFremont, California\nOwned\nGigafactory Nevada\nSparks, Nevada\nOwned"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Tesla is headquartered in Austin, Texas.",
+      "answer_contains": [
+        [
+          "austin"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "tsla-hq"
+      }
+    },
+    {
+      "id": "msft-hq",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Where are Microsoft's corporate headquarters?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "corporate headquarters are located in Redmond, Washington",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2025-07-30",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "31\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 15 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 530 acres of land we own at our corporate headquarters, and approximately 3 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, and the Netherlands. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Israel, Japan, the Netherlands, and the United Kingdom. Refer to Research and Development (Part I, Item 1 of this Form 10-K) for further discussion of our research and development facilities."
+            },
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft's corporate headquarters are located in Redmond, Washington.",
+      "answer_contains": [
+        [
+          "redmond"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-hq"
+      }
+    },
+    {
+      "id": "aapl-segments",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What are Apple's reportable segments?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "Note 13 –\nSegment Information and Geographic Data\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region."
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "The Company offers payment services, including Apple Card\n®\n, a co-branded credit card, and Apple Pay\n®\n, a cashless payment service.\nSegments\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.\nMarkets and Distribution"
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "Substantially all of the Company’s hardware products are manufactured by outsourcing partners that are located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam.\nApple Inc. | 2025 Form 10-K | 46\nNote 13 –\nSegment Information and Geographic Data\nThe Company manages its business primarily on a geographic basis. The Company’s CEO is its CODM.\nThe Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region."
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "The Company offers payment services, including Apple Card\n®\n, a co-branded credit card, and Apple Pay\n®\n, a cashless payment service.\nSegments\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.\nMarkets and Distribution"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Apple's reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. The company manages its business primarily on a geographic basis.",
+      "answer_contains": [
+        [
+          "americas"
+        ],
+        [
+          "europe"
+        ],
+        [
+          "greater china"
+        ],
+        [
+          "japan"
+        ],
+        [
+          "asia pacific"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "aapl-segments"
+      }
+    },
+    {
+      "id": "msft-segments",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Which segments does Microsoft report its financial performance in?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2025-07-30",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "4\nPART I\nItem 1\nOPERATING SEGMENTS\nWe operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. Our segments provide management with a comprehensive financial view of our key businesses. The segments enable the alignment of strategies and objectives across the development, sales, marketing, and services organizations, and they provide a framework for timely and rational allocation of resources within businesses.\nIn August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes."
+            },
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "The CODM uses operating income to allocate resources during our annual planning process and throughout the year, as well as to assess the performance of our segments, primarily by monitoring actual results compared to prior periods and expected results.\nDuring the periods presented, we reported our financial performance based on the following\nthree\nsegments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity, communication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n•"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "answer_contains": [
+        [
+          "productivity and business processes"
+        ],
+        [
+          "intelligent cloud"
+        ],
+        [
+          "more personal computing"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-segments"
+      }
+    },
+    {
+      "id": "msft-buyback",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How large is Microsoft's current share repurchase program and how much of it remains?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "On September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $ 60.0 billion",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2025-07-30",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "On September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program commenced in April 2025, following completion of the program approved on September 14, 2021, has no expiration date, and may be terminated at any time. As of June 30, 2025, $\n57.3\nbillion remained of this $\n60.0\nbillion share repurchase program.\nWe repurchased the following shares of common stock under the share repurchase programs:\n(In millions)\nShares\nAmount\nShares\nAmount\nShares\nAmount\nYear Ended June 30,\n2025\n2024\n2023\nFirst Quarter\n7\n$\n2,800\n11\n$\n3,560\n17\n$\n4,600\nSecond Quarter\n8\n3,500\n7\n2,800\n20\n4,600\nThird Quarter\n8\n3,500\n7\n2,800\n18\n4,600\nFourth Quarter\n8\n3,200\n7\n2,800\n14\n4,600\nTotal\n31\n$\n13,000\n32\n$\n11,960\n69\n$\n18,400"
+            },
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "On September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program commenced in April 2025, following completion of the program approved on September 14, 2021, has no expiration date, and may be terminated at any time. As of June 30, 2026, $\n40.6\nbillion remained of this $\n60.0\nbillion share repurchase program.\nWe repurchased the following shares of common stock under the share repurchase programs:\n(In millions)\nShares\nAmount\nShares\nAmount\nShares\nAmount\nYear Ended June 30,\n2026\n2025\n2024\nFirst Quarter\n8\n$\n3,955\n7\n$\n2,800\n11\n$\n3,560\nSecond Quarter\n12\n5,964\n8\n3,500\n7\n2,800\nThird Quarter\n7\n3,400\n8\n3,500\n7\n2,800\nFourth Quarter\n9\n3,400\n8\n3,200\n7\n2,800\nTotal\n36\n$\n16,719\n31\n$\n13,000\n32\n$\n11,960\n79\nPART II\nItem 8"
+            },
+            {
+              "doc_id": "MSFT 10-Q filed 2026-01-28",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "60.0\nbillion in share repurchases. This share repurchase program commenced in November 2021\nand was completed in April 2025.\nOn September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program\ncommenced in April 2025, following completion of the program approved on September 14, 2021, has no expiration date, and may be terminated at any time.\nAs of December 31, 2025, $\n47.4\nbillion remained of this $\n60.0\nbillion share repurchase program.\nWe repurchased the following shares of common stock under the share repurchase programs:\n(In millions)\nShares\nAmount\nShares\nAmount\nFiscal Year\n2026\n2025\nFirst Quarter\n8\n$\n3,955\n7\n$\n2,800\nSecond Quarter\n12\n5,964\n8\n3,500\nTotal\n20\n$\n9,919\n15\n$\n6,300\nAll repurchases were made using cash resources. Shares repurchased during fiscal year 2026 were under the share repurchase program approved on September 16, 2024. Shares repurchased during fiscal year 2025\nwere under the share repurchase program approved on September 14, 2021. The above table excludes shares repurchased to settle employee tax withholding related to the vesting of stock awards of $\n1.5"
+            },
+            {
+              "doc_id": "MSFT 10-Q filed 2026-04-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "As of March 31, 2026, we accrued aggregate legal liabilities of $\n647\nmillion. While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $\n400\nmillion in aggregate beyond recorded amounts are reasonably possible. Were unfavorable final outcomes to occur, there exists the possibility of a material adverse impact in our consolidated financial statements for the period in which the effects become reasonably estimable.\nNOTE 14 — STOCKHOLDERS’ EQUITY\nShare Repurchases\nOn September 14, 2021, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program commenced in November 2021\nand was completed in April 2025.\nOn September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program\ncommenced in April 2025, following completion of the program approved on September 14, 2021, has no expiration date, and may be terminated at any time.\nAs of March 31, 2026, $\n44.0\nbillion remained of this $\n60.0\nbillion share repurchase program."
+            }
+          ]
+        },
+        {
+          "anchor": "$ 40.6 billion remained of this $ 60.0 billion share repurchase program",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "On September 16, 2024, our Board of Directors approved a share repurchase program authorizing up to $\n60.0\nbillion in share repurchases. This share repurchase program commenced in April 2025, following completion of the program approved on September 14, 2021, has no expiration date, and may be terminated at any time. As of June 30, 2026, $\n40.6\nbillion remained of this $\n60.0\nbillion share repurchase program.\nWe repurchased the following shares of common stock under the share repurchase programs:\n(In millions)\nShares\nAmount\nShares\nAmount\nShares\nAmount\nYear Ended June 30,\n2026\n2025\n2024\nFirst Quarter\n8\n$\n3,955\n7\n$\n2,800\n11\n$\n3,560\nSecond Quarter\n12\n5,964\n8\n3,500\n7\n2,800\nThird Quarter\n7\n3,400\n8\n3,500\n7\n2,800\nFourth Quarter\n9\n3,400\n8\n3,200\n7\n2,800\nTotal\n36\n$\n16,719\n31\n$\n13,000\n32\n$\n11,960\n79\nPART II\nItem 8"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft's current program, approved by the Board on September 16, 2024, authorizes up to $60.0 billion in share repurchases. As of June 30, 2026, $40.6 billion of it remained.",
+      "answer_contains": [
+        [
+          "$60.0 billion",
+          "$60 billion"
+        ],
+        [
+          "$40.6 billion"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-buyback"
+      }
+    },
+    {
+      "id": "msft-sqft",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How much office space does Microsoft have in King County, Washington?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "approximately 14 million square feet of space located in King County, Washington",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft has approximately 14 million square feet of space in King County, Washington, including about 12 million square feet of owned space and about 2 million square feet it leases.",
+      "answer_contains": [
+        [
+          "14 million"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-sqft"
+      }
+    },
+    {
+      "id": "amd-sqft",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many square feet of space does AMD have worldwide, and how much of it is owned?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "approximately 6.8 million square feet of space",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of December 27, 2025, AMD had approximately 6.8 million square feet of space worldwide, of which about 5.4 million square feet is leased and about 1.4 million square feet is owned.",
+      "answer_contains": [
+        [
+          "6.8 million"
+        ],
+        [
+          "1.4 million"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-sqft"
+      }
+    },
+    {
+      "id": "nvda-sqft",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How much space does NVIDIA own and lease for its corporate headquarters?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "approximately 3 million square feet of office and building space",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Our Chief Security Officer’s cybersecurity expertise includes over 17 years of combined government and private sector assignments.\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters in Santa Clara, California.",
+      "answer_contains": [
+        [
+          "3 million"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-sqft"
+      }
+    },
+    {
+      "id": "nvda-competition",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What does NVIDIA say are the principal competitive factors in its market?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Competition\nThe market for our products is intensely competitive and is characterized by rapid technological change and evolving industry standards. We believe that the principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs. We believe that our ability to remain competitive will depend on how well we are able to anticipate the features and functions that customers and partners will demand and whether we are able to deliver consistent volumes of our products at acceptable levels of quality and at competitive prices. We expect competition to increase from both existing competitors and new market entrants with products that may be lower priced than ours or may provide better performance or additional features not provided by our products. In addition, it is possible that new competitors or alliances among competitors could emerge and acquire significant market share."
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Competition\nThe market for our products is intensely competitive and is characterized by rapid technological change and evolving industry standards. We believe that the principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs. We believe that our ability to remain competitive will depend on how well we are able to anticipate the features and functions that customers and partners will\n8\nTable of Contents\ndemand and whether we are able to deliver consistent volumes of our products at acceptable levels of quality and at competitive prices. We expect competition to increase from both existing competitors and new market entrants with products that may be lower priced than ours or may provide better performance or additional features not provided by our products. In addition, it is possible that new competitors or alliances among competitors could emerge and acquire significant market share."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA says the principal competitive factors are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs.",
+      "answer_contains": [
+        [
+          "performance"
+        ],
+        [
+          "breadth of product offerings"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-competition"
+      }
+    },
+    {
+      "id": "aapl-dividend",
+      "split": "heldout",
+      "category": "factual",
+      "question": "What was Apple's quarterly cash dividend per share in its latest annual report?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "quarterly cash dividend was $0.26 per share",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Apple Inc. | 2025 Form 10-K | 25\nCapital Return Program\nIn addition to its contractual cash requirements, the Company has an authorized share repurchase program. The program does not obligate the Company to acquire a minimum amount of shares. As of September 27, 2025, the Company’s quarterly cash dividend was $0.26 per share. The Company intends to increase its dividend on an annual basis, subject to declaration by the Board.\nIn May 2025, the Company announced a new share repurchase program of up to $100 billion and raised its quarterly dividend from $0.25 to $0.26 per share beginning in May 2025. During 2025, the Company repurchased $89.3 billion of its common stock and paid dividends and dividend equivalents of $15.4 billion.\nRecent Accounting Pronouncements\nInternal-Use Software\nIn September 2025, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) No. 2025-06,\nIntangibles—Goodwill and Other—Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "As of September 27, 2025, Apple's quarterly cash dividend was $0.26 per share.",
+      "answer_contains": [
+        [
+          "$0.26"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "aapl-dividend"
+      }
+    },
+    {
+      "id": "amd-founded",
+      "split": "heldout",
+      "category": "factual",
+      "question": "When was AMD founded?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Founded in 1969 as a Silicon Valley start-up",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2025-02-05",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nAs of December 28, 2024, we had approximately 28,000 employees in our global workforce. We believe we are at our best when our culture of innovation, creative minds and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include the following:\nMission, Culture, and Engagement\nOur History - Founded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global\n10\nTable of Contents\ncompany achieving many important industry firsts along the way. Today, we develop high-performance and adaptive computing to solve some of the world’s toughest and most interesting challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences."
+            },
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "AMD was founded in 1969 as a Silicon Valley start-up.",
+      "answer_contains": [
+        [
+          "1969"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-founded"
+      }
+    },
+    {
+      "id": "msft-acres",
+      "split": "heldout",
+      "category": "factual",
+      "question": "How many acres of land does Microsoft own at its corporate headquarters?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "approximately 520 acres of land we own",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft owns approximately 520 acres of land at its corporate headquarters, where it has about 12 million square feet of owned space.",
+      "answer_contains": [
+        [
+          "520"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-acres"
+      }
+    },
+    {
+      "id": "googl-work-councils",
+      "split": "heldout",
+      "category": "factual",
+      "question": "Does Alphabet mention work councils or employee representation?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "work councils and statutory employee representation obligations in certain countries",
+          "passages": [
+            {
+              "doc_id": "GOOGL 10-K filed 2025-02-05",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "As of December 31, 2024, Alphabet had 183,323 employees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to all employees. Supporting healthy and open dialogue is central to how we work, and we communicate information about the company through multiple internal channels to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation"
+            },
+            {
+              "doc_id": "GOOGL 10-K filed 2026-02-05",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "As of December 31, 2025, Alphabet had\n190,820\nemployees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Yes. Alphabet says it has work councils and statutory employee representation obligations in certain countries.",
+      "answer_contains": [
+        [
+          "work councils"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "googl-work-councils"
+      }
+    },
+    {
+      "id": "tsla-in-texas",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Is Tesla headquartered in Texas?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "We are headquartered in Austin, Texas",
+          "passages": [
+            {
+              "doc_id": "TSLA 10-K filed 2025-01-30",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "These individuals are informed about, and monitor the prevention, mitigation, detection and remediation of cybersecurity incidents through their management of, and participation in, the cybersecurity risk management and strategy processes described above, including the operation of our incident response plan, and report to the Audit Committee on any appropriate items.\nITEM 2. PROPERTIES\nWe are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.\nPrimary Manufacturing Facilities\nLocation\nOwned or Leased\nGigafactory Texas\nAustin, Texas\nOwned\nFremont Factory\nFremont, California\nOwned\nGigafactory Nevada\nSparks, Nevada\nOwned"
+            },
+            {
+              "doc_id": "TSLA 10-K filed 2026-01-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "These individuals are informed about, and monitor the prevention, mitigation, detection and remediation of cybersecurity incidents through their management of, and participation in, the cybersecurity risk management and strategy processes described above, including the operation of our incident response plan, and report to the Audit Committee on any appropriate items.\nITEM 2. PROPERTIES\nWe are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.\nPrimary Manufacturing Facilities\nLocation\nOwned or Leased\nGigafactory Texas\nAustin, Texas\nOwned\nFremont Factory\nFremont, California\nOwned\nGigafactory Nevada\nSparks, Nevada\nOwned"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Yes. Tesla is headquartered in Austin, Texas.",
+      "answer_contains": [
+        [
+          "yes"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "tsla-in-texas"
+      }
+    },
+    {
+      "id": "apple-japan-segment",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Does Apple report Japan as its own segment?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "Note 13 –\nSegment Information and Geographic Data\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region."
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "The Company offers payment services, including Apple Card\n®\n, a co-branded credit card, and Apple Pay\n®\n, a cashless payment service.\nSegments\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.\nMarkets and Distribution"
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part II, Item 8",
+              "page": null,
+              "text": "Substantially all of the Company’s hardware products are manufactured by outsourcing partners that are located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam.\nApple Inc. | 2025 Form 10-K | 46\nNote 13 –\nSegment Information and Geographic Data\nThe Company manages its business primarily on a geographic basis. The Company’s CEO is its CODM.\nThe Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region."
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "The Company offers payment services, including Apple Card\n®\n, a co-branded credit card, and Apple Pay\n®\n, a cashless payment service.\nSegments\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.\nMarkets and Distribution"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Yes. Japan is one of Apple's five reportable segments, alongside the Americas, Europe, Greater China and Rest of Asia Pacific.",
+      "answer_contains": [
+        [
+          "yes"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "apple-japan-segment"
+      }
+    },
+    {
+      "id": "msft-over-200k",
+      "split": "heldout",
+      "category": "yes_no",
+      "question": "Does Microsoft employ more than 200,000 people?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 223,000 people on a full-time basis",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Yes. As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis.",
+      "answer_contains": [
+        [
+          "yes"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-over-200k"
+      }
+    },
+    {
+      "id": "nvda-hq-and-employees",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "Where is NVIDIA headquartered and how many employees does it have?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Our headquarters is in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the burgeoning population of live streamers, broadcasters, artists, and creators. With the advent of generative AI, we expect a broader set of PC users to choose NVIDIA GPUs for running generative AI applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Our Chief Security Officer’s cybersecurity expertise includes over 17 years of combined government and private sector assignments.\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Our two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges\nDemand and Supply\nRevenue growth in fiscal year 2025 was driven by data center compute and networking platforms for accelerated computing and AI solutions. Demand for our Hopper architecture drove our significant growth for the full year. We began shipping production systems of the Blackwell architecture in the fourth quarter of fiscal year 2025.\nDemand estimates for our products, applications, and services can be incorrect and create volatility in our revenue or supply levels. We may not be able to generate significant revenue from them. Advancements in accelerated computing and generative AI models, along with the growth in model complexity and scale, have driven increased demand for our Data Center systems.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part IV, Item 15",
+              "page": null,
+              "text": ")\nOther\n(\n9\n)\n—\n(\n1\n)\nNet cash used in financing activities\n(\n48,474\n)\n(\n42,359\n)\n(\n13,633\n)\nChange in cash and cash equivalents\n2,016\n1,309\n3,891\nCash and cash equivalents at beginning of period\n8,589\n7,280\n3,389\nCash and cash equivalents at end of period\n$\n10,605\n$\n8,589\n$\n7,280\nSupplemental disclosures of cash flow information:\nCash paid for income taxes, net\n$\n20,288\n$\n15,118\n$\n6,549\nSee accompanying Notes to the Consolidated Financial Statements.\n55\nTable of Contents\nNVIDIA Corporation and Subsidiaries\nNotes to the Consolidated Financial Statements\nNote 1 -\nOrganization and Summary of Significant Accounting Policies\nOur Company\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nAll references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the growing population of live streamers, broadcasters, artists, and creators. With the advent of generative and agentic AI, we expect a broader set of PC users to choose NVIDIA GPUs for running these applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative, engineering, and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative and agentic AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center scale AI infrastructure company reshaping all industries.\nOur two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-05-20",
+              "section": "Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-08-26",
+              "section": "Part II, Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            }
+          ]
+        },
+        {
+          "anchor": "we had approximately 42,000 employees in 38 countries",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA is headquartered in Santa Clara, California, and had approximately 42,000 employees in 38 countries at the end of fiscal year 2026.",
+      "answer_contains": [
+        [
+          "santa clara"
+        ],
+        [
+          "42,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-hq-and-employees"
+      }
+    },
+    {
+      "id": "msft-us-vs-international",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "How many of Microsoft's employees are in the U.S. and how many are international?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "121,000 in the U.S. and 102,000 internationally",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Of Microsoft's approximately 223,000 full-time employees, 121,000 are in the U.S. and 102,000 are international.",
+      "answer_contains": [
+        [
+          "121,000"
+        ],
+        [
+          "102,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-us-vs-international"
+      }
+    },
+    {
+      "id": "amd-vs-nvda-employees",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "Which has more employees, AMD or NVIDIA?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we had approximately 31,000 employees in our global workforce",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry."
+            }
+          ]
+        },
+        {
+          "anchor": "we had approximately 42,000 employees in 38 countries",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA has more employees: approximately 42,000, compared with approximately 31,000 at AMD.",
+      "answer_contains": [
+        [
+          "nvidia"
+        ],
+        [
+          "42,000"
+        ],
+        [
+          "31,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-vs-nvda-employees"
+      }
+    },
+    {
+      "id": "apple-and-msft-hq",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "Where are Apple and Microsoft headquartered?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "headquarters is located in Cupertino, California",
+          "passages": [
+            {
+              "doc_id": "AAPL 10-K filed 2024-11-01",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Apple Inc. | 2024 Form 10-K | 17\nItem 2. Properties\nThe Company’s headquarters is located in Cupertino, California. As of September 28, 2024, the Company owned or leased facilities and land for corporate functions, R&D, data centers, retail and other purposes at locations throughout the U.S. and in various places outside the U.S. The Company believes its existing facilities and equipment, which are used by all reportable segments, are in good operating condition and are suitable for the conduct of its business.\nItem 3. Legal Proceedings\nDigital Markets Act Investigations"
+            },
+            {
+              "doc_id": "AAPL 10-K filed 2025-10-31",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "For a discussion of the Company’s cybersecurity-related risks, see Item 1A of this Form 10-K under the heading “Risk Factors.”\nItem 2. Properties\nThe Company’s headquarters is located in Cupertino, California. As of September 27, 2025, the Company owned or leased facilities and land for corporate functions, R&D, data centers, retail and other purposes at locations throughout the U.S. and in various places outside the U.S. The Company believes its existing facilities and equipment, which are used by all reportable segments, are in good operating condition and are suitable for the conduct of its business.\nApple Inc. | 2025 Form 10-K | 17\nItem 3. Legal Proceedings\nDigital Markets Act Investigations"
+            }
+          ]
+        },
+        {
+          "anchor": "corporate headquarters are located in Redmond, Washington",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2025-07-30",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "31\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 15 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 530 acres of land we own at our corporate headquarters, and approximately 3 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, and the Netherlands. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Israel, Japan, the Netherlands, and the United Kingdom. Refer to Research and Development (Part I, Item 1 of this Form 10-K) for further discussion of our research and development facilities."
+            },
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Apple's headquarters is located in Cupertino, California, and Microsoft's corporate headquarters are located in Redmond, Washington.",
+      "answer_contains": [
+        [
+          "cupertino"
+        ],
+        [
+          "redmond"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "apple-and-msft-hq"
+      }
+    },
+    {
+      "id": "amd-nvda-hq",
+      "split": "heldout",
+      "category": "multi_topic",
+      "question": "Where are AMD and NVIDIA each headquartered?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Our headquarters are located in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2025-02-05",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 28, 2024, we have approximately 6 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5 million square feet of leased space and approximately 1 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            },
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            }
+          ]
+        },
+        {
+          "anchor": "Our headquarters is in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the burgeoning population of live streamers, broadcasters, artists, and creators. With the advent of generative AI, we expect a broader set of PC users to choose NVIDIA GPUs for running generative AI applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "Our Chief Security Officer’s cybersecurity expertise includes over 17 years of combined government and private sector assignments.\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2025-02-26",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Our two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges\nDemand and Supply\nRevenue growth in fiscal year 2025 was driven by data center compute and networking platforms for accelerated computing and AI solutions. Demand for our Hopper architecture drove our significant growth for the full year. We began shipping production systems of the Blackwell architecture in the fourth quarter of fiscal year 2025.\nDemand estimates for our products, applications, and services can be incorrect and create volatility in our revenue or supply levels. We may not be able to generate significant revenue from them. Advancements in accelerated computing and generative AI models, along with the growth in model complexity and scale, have driven increased demand for our Data Center systems.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part IV, Item 15",
+              "page": null,
+              "text": ")\nOther\n(\n9\n)\n—\n(\n1\n)\nNet cash used in financing activities\n(\n48,474\n)\n(\n42,359\n)\n(\n13,633\n)\nChange in cash and cash equivalents\n2,016\n1,309\n3,891\nCash and cash equivalents at beginning of period\n8,589\n7,280\n3,389\nCash and cash equivalents at end of period\n$\n10,605\n$\n8,589\n$\n7,280\nSupplemental disclosures of cash flow information:\nCash paid for income taxes, net\n$\n20,288\n$\n15,118\n$\n6,549\nSee accompanying Notes to the Consolidated Financial Statements.\n55\nTable of Contents\nNVIDIA Corporation and Subsidiaries\nNotes to the Consolidated Financial Statements\nNote 1 -\nOrganization and Summary of Significant Accounting Policies\nOur Company\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nAll references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds. In addition to serving the growing number of gamers, the market for PC GPUs is expanding because of the growing population of live streamers, broadcasters, artists, and creators. With the advent of generative and agentic AI, we expect a broader set of PC users to choose NVIDIA GPUs for running these applications locally on their PC, which is critical for privacy, latency, and cost-sensitive AI applications.\nProfessional artists, architects and designers use NVIDIA partner products accelerated with our GPUs and software platform for a range of creative, engineering, and design use cases, such as creating visual effects in movies or designing buildings and products. In addition, generative and agentic AI is expanding the market for our workstation-class GPUs, as more enterprise customers develop and deploy AI applications with their data on-premises.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nOur Businesses\nWe report our business results in two segments.",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part II, Item 7",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center scale AI infrastructure company reshaping all industries.\nOur two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-05-20",
+              "section": "Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            },
+            {
+              "doc_id": "NVDA 10-Q filed 2026-08-26",
+              "section": "Part II, Item 2",
+              "page": null,
+              "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+              "anchor": "Headquartered in Santa Clara, California, NVIDIA was incorporated"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Both are headquartered in Santa Clara, California.",
+      "answer_contains": [
+        [
+          "santa clara"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amd-nvda-hq"
+      }
+    },
+    {
+      "id": "msft-googl-total",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "What is the combined headcount of Microsoft and Alphabet?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 223,000 people on a full-time basis",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements."
+            }
+          ]
+        },
+        {
+          "anchor": "Alphabet had 190,820 employees",
+          "passages": [
+            {
+              "doc_id": "GOOGL 10-K filed 2026-02-05",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "As of December 31, 2025, Alphabet had\n190,820\nemployees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft employs approximately 223,000 people and Alphabet has 190,820 employees, about 413,820 together.",
+      "answer_contains": [
+        [
+          "413,820",
+          "413,000",
+          "414,000"
+        ]
+      ],
+      "notes": "Needs adding two figures from two filings.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "msft-googl-total"
+      }
+    },
+    {
+      "id": "nvda-rd-share",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "Roughly what share of NVIDIA's employees work in research and development?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "31,000 were engaged in research and development",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "About 74 percent: 31,000 of approximately 42,000 employees were engaged in research and development.",
+      "answer_contains": [
+        [
+          "74",
+          "three quarters",
+          "three-quarters"
+        ]
+      ],
+      "notes": "31,000 / 42,000 is about 73.8 percent.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "nvda-rd-share"
+      }
+    },
+    {
+      "id": "amzn-tsla-gap",
+      "split": "heldout",
+      "category": "edge_case",
+      "question": "How many more employees does Amazon have than Tesla?",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 1,576,000 full-time and part-time employees",
+          "passages": [
+            {
+              "doc_id": "AMZN 10-K filed 2026-02-06",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nOur employees are critical to our mission of being Earth’s most customer-centric company. As of December 31, 2025, we employed approximately 1,576,000 full-time and part-time employees. Additionally, we use independent contractors and temporary personnel to supplement our workforce. Competition for qualified personnel is intense, particularly for software engineers, computer scientists, and other technical staff (including for artificial intelligence and machine learning technologies), and constrained labor markets have increased competition for personnel across other parts of our business."
+            }
+          ]
+        },
+        {
+          "anchor": "our employee headcount worldwide was 134,785",
+          "passages": [
+            {
+              "doc_id": "TSLA 10-K filed 2026-01-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "companies making electric vehicles and the world.\nHuman Capital Resources\nTesla’s ability to attract, develop and retain a talented workforce is a competitive advantage. As of December 31, 2025, our employee headcount worldwide was 134,785.\nWe emphasize stock ownership opportunities, with 92% of employees included in total rewards packages, alongside industry-leading benefits like free counseling, paid parental leave, and comprehensive healthcare options available from day one. Hiring, evaluation, and promotion decisions are based on skills and performance, with over 29,000 employees globally advancing their careers in 2025, and 69% of managers promoted internally."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Amazon has about 1,441,000 more employees: approximately 1,576,000 compared with Tesla's 134,785.",
+      "answer_contains": [
+        [
+          "1,441",
+          "1.44 million"
+        ]
+      ],
+      "notes": "1,576,000 minus 134,785 is 1,441,215; Amazon's figure is itself approximate.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "amzn-tsla-gap"
+      }
+    },
+    {
+      "id": "unknown-tsla-chargers",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many electric vehicle chargers are at Tesla's headquarters?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings do not say how many chargers are at Tesla's headquarters.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-tsla-chargers"
+      }
+    },
+    {
+      "id": "unknown-amd-cafeteria",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What is AMD's cafeteria policy for employees?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings do not describe a cafeteria policy for AMD employees.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-amd-cafeteria"
+      }
+    },
+    {
+      "id": "unknown-nvda-acres",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many acres is NVIDIA's headquarters campus?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings give NVIDIA's space in square feet (about 3 million square feet) but do not say how many acres its headquarters campus covers.",
+      "notes": "Near miss: the filings state an acreage for Microsoft's campus, not NVIDIA's.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-nvda-acres"
+      }
+    },
+    {
+      "id": "unknown-aapl-floors",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many floors does Apple's headquarters building have?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings do not say how many floors Apple's headquarters building has.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-aapl-floors"
+      }
+    },
+    {
+      "id": "unknown-msft-parking",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many parking spaces does Microsoft's Redmond campus have?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings do not give a parking space count for Microsoft's Redmond campus.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-msft-parking"
+      }
+    },
+    {
+      "id": "unknown-googl-dog",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Does Alphabet allow dogs in its offices?",
+      "expected_abstain": true,
+      "evidence": [],
+      "reference_answer": "The filings do not say whether Alphabet allows dogs in its offices.",
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "unknown-googl-dog"
+      }
+    },
+    {
+      "id": "followup-nvda-employees",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "And how many employees does it have?",
+      "follow_up_to": "nvda-hq",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we had approximately 42,000 employees in 38 countries",
+          "passages": [
+            {
+              "doc_id": "NVDA 10-K filed 2026-02-25",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers"
+            }
+          ]
+        }
+      ],
+      "reference_answer": "NVIDIA had approximately 42,000 employees in 38 countries at the end of fiscal year 2026.",
+      "answer_contains": [
+        [
+          "42,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "followup-nvda-employees"
+      }
+    },
+    {
+      "id": "followup-amd-hq",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "And where is it headquartered?",
+      "follow_up_to": "amd-employees",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "Our headquarters are located in Santa Clara, California",
+          "passages": [
+            {
+              "doc_id": "AMD 10-K filed 2025-02-05",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 28, 2024, we have approximately 6 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5 million square feet of leased space and approximately 1 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            },
+            {
+              "doc_id": "AMD 10-K filed 2026-02-04",
+              "section": "Part I, Item 2",
+              "page": null,
+              "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "AMD's headquarters are located in Santa Clara, California.",
+      "answer_contains": [
+        [
+          "santa clara"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "followup-amd-hq"
+      }
+    },
+    {
+      "id": "followup-msft-employees",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "How many people does the company employ?",
+      "follow_up_to": "msft-segments",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 223,000 people on a full-time basis",
+          "passages": [
+            {
+              "doc_id": "MSFT 10-K filed 2026-07-29",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Microsoft employed approximately 223,000 people on a full-time basis as of June 30, 2026.",
+      "answer_contains": [
+        [
+          "223,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "followup-msft-employees"
+      }
+    },
+    {
+      "id": "followup-amzn-employees",
+      "split": "heldout",
+      "category": "follow_up",
+      "question": "What about Amazon?",
+      "follow_up_to": "tsla-employees",
+      "expected_abstain": false,
+      "evidence": [
+        {
+          "anchor": "we employed approximately 1,576,000 full-time and part-time employees",
+          "passages": [
+            {
+              "doc_id": "AMZN 10-K filed 2026-02-06",
+              "section": "Part I, Item 1",
+              "page": null,
+              "text": "Human Capital\nOur employees are critical to our mission of being Earth’s most customer-centric company. As of December 31, 2025, we employed approximately 1,576,000 full-time and part-time employees. Additionally, we use independent contractors and temporary personnel to supplement our workforce. Competition for qualified personnel is intense, particularly for software engineers, computer scientists, and other technical staff (including for artificial intelligence and machine learning technologies), and constrained labor markets have increased competition for personnel across other parts of our business."
+            }
+          ]
+        }
+      ],
+      "reference_answer": "Amazon employed approximately 1,576,000 full-time and part-time employees as of December 31, 2025.",
+      "answer_contains": [
+        [
+          "1,576,000"
+        ]
+      ],
+      "origin": {
+        "file": "citewise_questions_v1.json",
+        "id": "followup-amzn-employees"
+      }
+    }
+  ]
+}
