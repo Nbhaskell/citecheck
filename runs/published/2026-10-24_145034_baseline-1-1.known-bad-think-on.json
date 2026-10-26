@@ -8,6 +8,7 @@
   "num_ctx": 8192,
   "think": true
  },
+ "run_id": "2026-10-24_145034_baseline-1-1",
  "summary": {
   "control": {
    "n": 30,
@@ -59,18 +60,18 @@
   },
   "claim_added": {
    "n": 30,
-   "judge_errors": 1,
+   "judge_errors": 0,
    "dimensions": {
     "faithfulness": {
-     "n": 29,
-     "flagged": 29,
+     "n": 30,
+     "flagged": 30,
      "flagged_for_certain": 1
     }
    }
   },
   "wrong_answer": {
    "n": 30,
-   "judge_errors": 1,
+   "judge_errors": 0,
    "dimensions": {
     "faithfulness": {
      "n": 3,
@@ -78,9 +79,9 @@
      "flagged_for_certain": 1
     },
     "correctness": {
-     "n": 29,
-     "flagged": 28,
-     "flagged_for_certain": 28
+     "n": 30,
+     "flagged": 29,
+     "flagged_for_certain": 29
     }
    }
   },
@@ -1260,13 +1261,10 @@
    "kind": "wrong_answer",
    "answer": "At pick-up, wait at the lobby counter. There are 12 parking spaces in total, including 2 close to the side door for drop-off.",
    "verdicts": {
-    "abstention": null,
-    "faithfulness": "unsupported",
+    "abstention": "abstained",
     "correctness": "incorrect"
    },
-   "errors": [
-    "TimeoutError calling http://127.0.0.1:11434/api/chat: timed out"
-   ]
+   "errors": []
   },
   {
    "item_id": "military-discount",
@@ -1390,12 +1388,10 @@
    "answer": "Yes, your puppy is allowed because dogs over 6 months old must be spayed or neutered, but your puppy is only 5 months old. Puppies must be at least 4 months old and have completed their vaccination series to attend, which your puppy meets if vaccinations are up to date. Neutering is not required for puppies under 6 months. Every dog receives a free birthday treat on its birthday.",
    "verdicts": {
     "abstention": "answered",
-    "faithfulness": null,
+    "faithfulness": "partly_supported",
     "correctness": "correct"
    },
-   "errors": [
-    "TimeoutError calling http://127.0.0.1:11434/api/chat: timed out"
-   ]
+   "errors": []
   },
   {
    "item_id": "puppy-5-months",

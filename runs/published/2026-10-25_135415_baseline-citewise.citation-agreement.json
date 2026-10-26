@@ -9,6 +9,7 @@
    "num_ctx": 8192,
    "think": false
   },
+  "labels_run_id": "2026-10-25_135415_baseline-citewise",
   "dimensions": {
    "citation_support": {
     "n": 30,
@@ -58,6 +59,7 @@
    "num_ctx": 8192,
    "think": true
   },
+  "labels_run_id": "2026-10-25_135415_baseline-citewise",
   "dimensions": {
    "citation_support": {
     "n": 30,

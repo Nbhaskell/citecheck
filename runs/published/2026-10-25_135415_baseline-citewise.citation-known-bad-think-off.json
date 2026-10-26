@@ -8,6 +8,7 @@
   "num_ctx": 8192,
   "think": false
  },
+ "run_id": "2026-10-25_135415_baseline-citewise",
  "summary": {
   "control": {
    "n": 30,
