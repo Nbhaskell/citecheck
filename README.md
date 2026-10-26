@@ -22,6 +22,7 @@ adapter, so one harness can score different projects.
 | 4 | Markdown report per run (no HTML), tests-only CI | done |
 | 5 | A measured change to a target: repeated passes at different settings, and `compare` | done |
 | 6 | Figure and date check that needs no model, measured against the judge's gaps | done |
+| 7 | Sheet and command for reviewing reference answers by hand | tooling done; the review itself is not done |
 
 ## Quick start
 
@@ -549,7 +550,8 @@ as an alternate, and the passage carries its own anchor.
 All items are split `heldout`. Known limits:
 
 - **Written by Claude from the stored text**, so unseen by the target but not blind to the corpus. The reference answers were
-  drafted from the same text and have not been reviewed by a person.
+  drafted from the same text and have not been reviewed by a person. The correctness score for this target rests on them, so
+  it is a score against drafts until that review is done (see below).
 - **Filing text only.** The 29 filings (10-K and 10-Q of seven companies) are identified by title and by a fingerprint of the
   accession number and URL, which identifies an immutable document but does not hash its text. A new filing adds documents, and a
   changed passage changes the golden set's hash, so saved runs then refuse to be scored against it.
@@ -557,6 +559,30 @@ All items are split `heldout`. Known limits:
   Microsoft's campus but not for NVIDIA's.
 - **Mostly headcounts, headquarters, segments and buybacks.** Facts of this kind keep the evidence checkable, and say little about
   harder filing questions.
+
+#### Reviewing the reference answers by hand
+
+```
+python -m citecheck review-sheet --golden golden/citewise_filings_v1.json --out labels/reference-review-sheet.html
+python -m citecheck apply-review <downloaded file> --golden golden/citewise_filings_v1.json --questions golden/citewise_questions_v1.json
+```
+
+`review-sheet` writes one HTML page (not tracked, like the labelling sheets) with a card per item: the question, the draft reference
+answer in an editable box, the key phrases and the passages it was built from, and the keywords the answer must contain. Each
+item is marked *right as written*, *corrected in the box*, or *unclear*. Nothing is sent anywhere; progress stays in the browser
+until the file is downloaded.
+
+`apply-review` refuses, and writes nothing, when an item is unreviewed, marked unclear, inconsistent (marked right but changed, or
+marked corrected but unchanged), or was reviewed against another version of the golden set. Otherwise it rewrites the golden set
+and the questions file with the corrected answers, moves the version to `citewise-filings-1.1.0`, changes the notes to say the
+answers were checked by hand, and writes a record of every decision (with the draft text of each corrected answer) beside the
+golden set. `tools/build_citewise_golden.py` reads the review state from the questions file, so rebuilding gives the same notes
+and version.
+
+The golden set's hash changes with that, so the published CiteWise run, asked from `citewise-filings-1.0.0`, refuses to be scored
+against `1.1.0`. Its answers are unchanged, so `score --ignore-golden-mismatch` re-judges correctness against the reviewed
+references; the judge's cache keeps every unchanged reference free. **The review itself has not been done**, so the golden set,
+its notes and the published CiteWise scores are still those of the drafts.
 
 ## Design
 
@@ -608,7 +634,8 @@ What running the harness against two targets showed, including where the harness
 - **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
   alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: an HTML report, a person's review of the CiteWise reference answers, and a fix for the judge's own weak spots. The
+Not done: an HTML report, a person's review of the CiteWise reference answers (the sheet and the command that applies it exist,
+see [Reviewing the reference answers by hand](#reviewing-the-reference-answers-by-hand)), and a fix for the judge's own weak spots. The
 judge still misses small figure and date changes; the separate figure check now catches those where the new figure is in no
 source, and the completeness mistake in the citation verdict is unchanged. See [`reports/`](reports/) for the two baselines and
 the `RAG_TOP_K` comparison.
@@ -626,6 +653,7 @@ src/citecheck/
   calibration.py, citation_calibration.py, calibration_sheet.py   hand-label sampling, the labelling sheet, judge-vs-human agreement
   known_bad.py, known_bad_citations.py   damage known-good answers or cited sentences on purpose and check the judge flags it
   known_bad_figures.py   the same damage, checked against the figure and date check, with the judge's results beside it
+  reference_review.py    the reference-answer review: the sheet's data, checking a downloaded review, applying it to the golden set
   runner.py      `run`: ask the target, save raw responses
   scoring.py     `score`: metrics from a saved run
   golden.py      load and validate a golden set

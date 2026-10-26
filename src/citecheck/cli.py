@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from . import (calibration, calibration_sheet, citation_calibration, compare, golden, known_bad, known_bad_citations,
-               known_bad_figures, report, runner, scoring)
+               known_bad_figures, reference_review, report, runner, scoring)
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -203,6 +203,46 @@ def cmd_known_bad(args) -> int:
     return 0
 
 
+def cmd_review_sheet(args) -> int:
+    data = golden.load_json(args.golden)
+    problems = golden.validate(data)
+    if problems:
+        print(f"{args.golden} is not a valid golden set ({len(problems)} problem(s)); run `citecheck validate` first")
+        return 1
+    try:
+        sheet = reference_review.sheet_data(data)
+    except reference_review.ReviewError as e:
+        print(e)
+        return 1
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(calibration_sheet.render(sheet), encoding="utf-8", newline="\n")
+    print(f"wrote {out}: {len(sheet['cards'])} reference answers to review in {data['golden_version']}")
+    print("open it in a browser, go through every item, then use Download at the top and run `citecheck apply-review` on the file")
+    return 0
+
+
+def cmd_apply_review(args) -> int:
+    golden_path, questions_path = Path(args.golden), Path(args.questions)
+    data = golden.load_json(golden_path)
+    questions = json.loads(questions_path.read_text(encoding="utf-8"))
+    result = json.loads(Path(args.result).read_text(encoding="utf-8"))
+    record_path = Path(args.record) if args.record else golden_path.with_name(f"{golden_path.stem}.reference-review.json")
+    try:
+        new_golden, new_questions, record = reference_review.apply_review(result, data, questions, shown_path(record_path))
+    except reference_review.ReviewError as e:
+        print(e)
+        return 1
+    golden_path.write_text(reference_review.dumps(new_golden, 2), encoding="utf-8", newline="\n")
+    questions_path.write_text(reference_review.dumps(new_questions, 1), encoding="utf-8", newline="\n")
+    record_path.write_text(reference_review.dumps(record, 1), encoding="utf-8", newline="\n")
+    print(f"applied: {len(record['items'])} reference answers checked, {record['corrected']} corrected")
+    print(f"question set {record['golden_version_before']} -> {record['golden_version_after']}; wrote {golden_path}, {questions_path} and {record_path}")
+    print("runs asked from the earlier version now refuse to be scored against it; their answers are unchanged, so "
+          "`score --ignore-golden-mismatch` re-judges correctness against the reviewed references")
+    return 0
+
+
 def cmd_figure_check(args) -> int:
     run = json.loads(Path(args.run).read_text(encoding="utf-8"))
     data = golden.load_json(args.golden or run["golden"]["path"])
@@ -396,6 +436,18 @@ def main(argv=None) -> int:
     p.add_argument("--resamples", type=int, default=10000, help="bootstrap resamples (default %(default)s)")
     p.add_argument("--out", required=True, help="the page, e.g. reports/name.md; a name.compare.json copy is saved beside it")
     p.set_defaults(func=cmd_compare)
+
+    p = sub.add_parser("review-sheet", help="make the HTML sheet for reviewing a golden set's reference answers by hand")
+    p.add_argument("--golden", required=True, help="golden set file whose items all have reference answers")
+    p.add_argument("--out", required=True, help="where to write the sheet, e.g. labels/reference-review-sheet.html")
+    p.set_defaults(func=cmd_review_sheet)
+
+    p = sub.add_parser("apply-review", help="apply a downloaded reference-answer review to the golden set and its questions file")
+    p.add_argument("result", help="the review file downloaded from the sheet")
+    p.add_argument("--golden", required=True, help="the golden set the sheet was made from; rewritten in place")
+    p.add_argument("--questions", required=True, help="the questions file it is built from; rewritten in place")
+    p.add_argument("--record", help="where to write the review record (default: next to the golden set)")
+    p.set_defaults(func=cmd_apply_review)
 
     p = sub.add_parser("figure-check", help="check that the figure-grounding check notices figures and dates changed on purpose")
     p.add_argument("run", help="a *.run.json file")
