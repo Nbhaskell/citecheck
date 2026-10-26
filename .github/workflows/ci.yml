@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Actions are pinned to a full commit, with the release it is noted beside it.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.lock
+
+      - name: Install the pinned packages
+        run: |
+          pip install -r requirements-dev.lock
+          pip install -e . --no-deps
+
+      # This runs the code's tests only: no Ollama, no target, no judge. A green check says the code and the published
+      # report data hang together; it does not re-measure any score.
+      - name: Run the tests
+        run: python -m pytest -q

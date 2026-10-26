@@ -3,7 +3,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import calibration, calibration_sheet, citation_calibration, golden, known_bad, known_bad_citations, runner, scoring
+from . import calibration, calibration_sheet, citation_calibration, golden, known_bad, known_bad_citations, report, runner, scoring
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -196,9 +196,55 @@ def cmd_known_bad(args) -> int:
     print(f"\njudge calls: {judge.calls} asked the model, {judge.cache_hits} from the cache\n")
     print(report(summary, judge.config()))
     if args.out:
-        Path(args.out).write_text(json.dumps({"judge": judge.config(), "summary": summary, "cases": results}, indent=1,
+        Path(args.out).write_text(json.dumps({"judge": judge.config(), "run_id": run["run_id"], "summary": summary, "cases": results}, indent=1,
                                              ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
         print(f"\nsaved {args.out}")
+    return 0
+
+
+def shown_path(path) -> str:
+    """A file as it should appear in a report: relative paths as given, absolute ones by name only."""
+    p = Path(path)
+    return p.name if p.is_absolute() else p.as_posix()
+
+
+def cmd_report(args) -> int:
+    run = json.loads(Path(args.run).read_text(encoding="utf-8"))
+    scores = json.loads(Path(args.scores).read_text(encoding="utf-8"))
+    data = golden.load_json(args.golden or run["golden"]["path"])
+    try:
+        scoring.check_golden(run, data)
+    except scoring.GoldenMismatch as e:
+        print(e)
+        return 2
+    if scores["run_id"] != run["run_id"]:
+        print(f"the scores are for run {scores['run_id']}, not {run['run_id']}")
+        return 2
+    agreements = [r for path in args.agreement for r in json.loads(Path(path).read_text(encoding="utf-8"))]
+    known_bad_files = [json.loads(Path(path).read_text(encoding="utf-8")) for path in args.known_bad]
+    sources = {"Run": shown_path(args.run), "Scores": shown_path(args.scores), "Question set": shown_path(args.golden or run["golden"]["path"])}
+    sources.update({f"Agreement with hand labels {n}": shown_path(p) for n, p in enumerate(args.agreement, 1)})
+    sources.update({f"Known-bad check {n}": shown_path(p) for n, p in enumerate(args.known_bad, 1)})
+    built = report.build_report(run, scores, data, agreements, known_bad_files, sources)
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(report.render_markdown(built), encoding="utf-8", newline="\n")
+    sidecar = out.with_name(out.stem + ".report.json")
+    sidecar.write_text(json.dumps(built, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote {out} and {sidecar.name} ({len(built['rows'])} metrics, {len(built['items_to_look_at'])} items to look at)")
+    return 0
+
+
+def cmd_report_index(args) -> int:
+    folder = Path(args.folder)
+    sidecars = sorted(folder.glob("*.report.json"))
+    if not sidecars:
+        print(f"no *.report.json files in {folder}")
+        return 1
+    reports = [json.loads(p.read_text(encoding="utf-8")) for p in sidecars]
+    names = {r["run"]["run_id"]: p.name.removesuffix(".report.json") + ".md" for r, p in zip(reports, sidecars)}
+    (folder / "index.md").write_text(report.render_index(reports, names), encoding="utf-8", newline="\n")
+    print(f"wrote {folder / 'index.md'} listing {len(reports)} report(s)")
     return 0
 
 
@@ -257,6 +303,20 @@ def main(argv=None) -> int:
                    help="a judged scores file to compare with the labels (repeatable)")
     p.add_argument("--save", help="also save the agreement numbers as JSON")
     p.set_defaults(func=cmd_calibrate)
+
+    p = sub.add_parser("report", help="write a Markdown report for one scored run")
+    p.add_argument("run", help="a *.run.json file")
+    p.add_argument("--scores", required=True, help="the run's *.scores.json (judged, for answer and citation sections)")
+    p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
+    p.add_argument("--agreement", action="append", default=[], metavar="FILE",
+                   help="agreement-with-hand-labels JSON from `calibrate --save` (repeatable)")
+    p.add_argument("--known-bad", action="append", default=[], metavar="FILE", help="known-bad check JSON from `known-bad --out` (repeatable)")
+    p.add_argument("--out", required=True, help="the report page, e.g. reports/name.md; a name.report.json copy is saved beside it")
+    p.set_defaults(func=cmd_report)
+
+    p = sub.add_parser("report-index", help="list the reports in a folder on an index page")
+    p.add_argument("folder", help="a folder holding *.report.json files")
+    p.set_defaults(func=cmd_report_index)
 
     p = sub.add_parser("known-bad", help="check that the judge flags answers that were damaged on purpose")
     p.add_argument("run", help="a *.run.json file")

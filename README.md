@@ -7,9 +7,9 @@ citations are valid. Output is a CLI and a readable report.
 The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
 adapter, so one harness can score different projects.
 
-> **Status: step 3 of 5.** Retrieval, answer quality and citations are scored, against two targets (rag-project and CiteWise),
-> with the local judge model checked against hand labels and known-bad answers. Sections marked *planned* describe the
-> intended design.
+> **Status: all five steps done.** Retrieval, answer quality and citations are scored, against two targets (rag-project and
+> CiteWise), with the local judge model checked against hand labels and known-bad answers, and each scored run has a report.
+> Sections marked *planned* describe the intended design.
 
 | Step | What | State |
 |---|---|---|
@@ -17,7 +17,7 @@ adapter, so one harness can score different projects.
 | 1 | Adapter interface, `run`/`score`, retrieval metrics, rag-project adapter | done |
 | 2 | LLM judge (faithfulness, correctness, abstention; `qwen3:8b` through Ollama) and its calibration against hand labels | done |
 | 3 | Citation checks, second target (CiteWise) | done |
-| 4 | Markdown/HTML report, optional CI | planned |
+| 4 | Markdown report per run (no HTML), tests-only CI | done |
 
 ## Quick start
 
@@ -159,12 +159,13 @@ the judge flags it (any verdict other than the best one). The unchanged answers 
 |---|---|---|---|
 | none (control): good answers flagged for faithfulness / correctness | 30 | 21 / 8 | 6 / 2 |
 | first price or number changed (usually the day of an "As of" date): flagged for faithfulness / correctness | 26 | 26 / 23 | 24 / 23 |
-| a sentence the documents never state added: flagged for faithfulness | 30 | 30 | 29 |
-| answer replaced by another question's answer: flagged for correctness | 30 | 29 | 28 |
+| a sentence the documents never state added: flagged for faithfulness | 30 | 30 | 30 |
+| answer replaced by another question's answer: flagged for correctness | 30 | 29 | 29 |
 | answer replaced by a bare refusal: flagged as declined / as incorrect | 30 | 30 / 30 | 30 / 30 |
 | leading Yes/No flipped: flagged for correctness | 9 | 4 | 3 |
 
-Counts exclude calls that failed (2 timeouts with reasoning on, which now has a longer default wait). With reasoning off the
+Two reasoning-on calls timed out in the first pass and were asked again with the longer default wait, so every case is
+counted. With reasoning off the
 judge flags nearly everything, good or bad, so its faithfulness verdicts carry little information. With reasoning on it
 flags 88% or more of the damaged answers in four of the five kinds of damage, and 20% of the good ones for faithfulness
 (7% for correctness). The flagged good answers are borderline inferences, such as a dog's owner being called responsible for
@@ -277,6 +278,43 @@ the check changed the first number in each sentence, which was usually the day o
 (`citation-known-bad-first-number-*` in [`runs/published/`](runs/published/)) were kept, and the check was split into figures and
 dates. The step 2 "first price or number changed" row for whole answers has the same property.
 
+## Reports
+
+```
+python -m citecheck report runs/published/<run id>.run.json --scores runs/published/<judged scores>.json --agreement <agreement>.json --known-bad <known-bad>.json --out reports/<name>.md
+python -m citecheck report-index reports
+```
+
+A report is one Markdown page per scored run, built by [`src/citecheck/report.py`](src/citecheck/report.py) from the run file, a
+scores file and, when they exist, the calibration evidence for the judge that produced the scores. Nothing in it is computed by a
+model: it arranges numbers already saved in those files, so the same inputs give the same page, and a JSON copy of the data is
+saved beside it. Each page has:
+
+- the run's provenance: target settings, question set and its hash, citecheck commit (and whether the tree was uncommitted),
+  judge model, digest and settings;
+- one table per area (retrieval, answers, citations) with every score beside the evidence and known weaknesses that bear on it:
+  agreement with hand labels, the known-bad check, and the method's own limits;
+- the same numbers by split and by category;
+- a block, **What this cannot tell you**, drawn from the question set's own notes and the run: one pass only, the judge sharing
+  the target's model family, a target that reports no retrieval, judged numbers with no calibration, and labels that were all the
+  same category;
+- **Items to look at**: every question with something unusual in its result, as a reading list and not a failure count, because
+  a flag from the judge may be the judge's mistake.
+
+Calibration evidence is used only when it was measured with the same judge configuration (model, reasoning on or off, prompt
+version) and, when the file records it, on the same run; otherwise the page says it was not applied and why. There is no
+side-by-side comparison of targets: their question sets, corpora and checks differ, and the index page says so.
+
+Committed reports, from the published baselines: [`reports/rag-project-baseline.md`](reports/rag-project-baseline.md),
+[`reports/citewise-baseline.md`](reports/citewise-baseline.md) and their [index](reports/index.md). An HTML version is not built.
+
+### Continuous integration
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs the tests on every push to `main` and every pull request: Python 3.13 on
+Linux, the pinned packages from `requirements-dev.lock`, and actions pinned to full commits. It runs the code's tests only, with no
+Ollama, no target and no judge, so a green check says the code and the published report data hang together. It does not re-measure
+any score.
+
 ## The golden set
 
 A golden set is one JSON file per target and corpus, checked by [`golden/schema.json`](golden/schema.json) and by the
@@ -371,7 +409,27 @@ All items are split `heldout`. Known limits:
 
 ## Findings
 
-*Not written yet. The plan is a baseline, one measured change, and at least one case where a metric or the judge was wrong.*
+What running the harness against two targets showed, including where the harness itself was wrong:
+
+- **The judge needs reasoning on.** With it off, `qwen3:8b` called most good answers partly or fully unsupported, even when a
+  passage states the claim word for word (21 of 30 labelled-good answers flagged, against 6 with it on). For judging whether a
+  cited sentence matches its sources the two settings were about equal.
+- **A second target found a harness bug.** CiteWise reports only the passages an answer cited, so faithfulness, checked against
+  "retrieved passages", scored 0.00 for every answer. It is now checked against the cited sources for such a target.
+- **A prompt told the judge one thing and it did another.** The citation prompt says not to judge completeness, and the model
+  still marked half of a two-part answer as less than supported. The hand labels showed this, and the instruction was tightened,
+  but the mistake did not go away.
+- **A damage test was measuring the wrong thing.** "Change the first number" mostly changed the day in an "As of" date. Splitting
+  it into figure changes and date changes showed that with reasoning on the judge catches about two thirds of small figure changes (12 of 18)
+  and misses most changed dates (2 of 10).
+- **Hand labels of good answers cannot test a judge by themselves.** Every answer and citation labelled by hand was labelled
+  supported and correct, so agreement was high and said little. The known-bad checks added what the labels could not.
+- **Targets, as measured.** rag-project retrieves the fact for 112 of 113 questions and declines all 10 unanswerable ones; CiteWise
+  cites the right passage for 36 of 38 and declines all 6, but 5 of those 6 declines still carry citations, and it once said the
+  filings did not state a headcount that they do. These come from one pass each, with the judge calibrated as shown above.
+
+Not done: a measured change to a target (for example `RAG_TOP_K`), which would use repeated runs to separate a real difference
+from run-to-run variation. See [`reports/`](reports/) for the two baselines.
 
 ## Layout
 
@@ -388,8 +446,11 @@ src/citecheck/
   runner.py      `run`: ask the target, save raw responses
   scoring.py     `score`: metrics from a saved run
   golden.py      load and validate a golden set
+  report.py      the Markdown report: scores beside their calibration evidence and caveats
   cli.py
 tools/           one-off scripts: the golden-set converter and the CiteWise golden-set builder, a check against rag-project's published runs
 tests/
 runs/            saved runs (not in git except runs/published/)
+reports/         generated report pages and their index
+.github/         the CI workflow (tests only)
 ```

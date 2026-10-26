@@ -8,6 +8,7 @@
   "num_ctx": 8192,
   "think": false
  },
+ "run_id": "2026-10-24_145034_baseline-1-1",
  "summary": {
   "control": {
    "n": 30,

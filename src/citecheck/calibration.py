@@ -185,7 +185,7 @@ def agreement(labels: dict, scores: dict) -> dict:
     sampled = Counter(e["stratum"] for e in entries.values())
     weight = {s: labels["population"].get(s, 0) / sampled[s] for s in sampled}
 
-    result = {"judge": scores["config"]["judge"], "dimensions": {}}
+    result = {"judge": scores["config"]["judge"], "labels_run_id": labels["run_id"], "dimensions": {}}
     for dim in dimensions:
         rows = [(item_id, e[dim], verdicts.get(item_id, {}).get(dim), weight[e["stratum"]])
                 for item_id, e in entries.items() if e.get(dim) is not None]
