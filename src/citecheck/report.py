@@ -326,11 +326,19 @@ def table(headers: list[str], rows: list[list]) -> list[str]:
            ["| " + " | ".join(cell(v) for v in r) + " |" for r in rows]
 
 
+GROUP_COLUMNS = [("asked", "asked"), ("errors", "errors"), ("found", "found"), ("faithfulness", "faithful"), ("correctness", "correct"),
+                 ("evidence_cited", "evidence cited"), ("support", "claim support")]
+
+
+def group_table(rows: list[dict]) -> tuple[list[str], list[list]]:
+    """The header and rows of a by-split or by-category table; a column appears only when some group has a value for it."""
+    present = [(k, h) for k, h in GROUP_COLUMNS if any(k in r for r in rows)]
+    return ["group"] + [h for _, h in present], [[r["group"]] + [r.get(k) for k, _ in present] for r in rows]
+
+
 def render_group(title: str, rows: list[dict]) -> list[str]:
-    columns = [("asked", "asked"), ("errors", "errors"), ("found", "found"), ("faithfulness", "faithful"), ("correctness", "correct"),
-               ("evidence_cited", "evidence cited"), ("support", "claim support")]
-    present = [(k, h) for k, h in columns if any(k in r for r in rows)]
-    return [f"### {title}", ""] + table(["group"] + [h for _, h in present], [[r["group"]] + [r.get(k) for k, _ in present] for r in rows]) + [""]
+    header, body = group_table(rows)
+    return [f"### {title}", ""] + table(header, body) + [""]
 
 
 def render_markdown(report: dict) -> str:
