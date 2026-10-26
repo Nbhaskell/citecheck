@@ -7,15 +7,16 @@ citations are valid. Output is a CLI and a readable report.
 The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
 adapter, so one harness can score different projects.
 
-> **Status: step 2 of 5.** Retrieval and answer quality (a local judge model, checked against hand labels and known-bad
-> answers) are scored; citations are not yet. Sections marked *planned* describe the intended design.
+> **Status: step 3 of 5.** Retrieval, answer quality and citations are scored, against two targets (rag-project and CiteWise),
+> with the local judge model checked against hand labels and known-bad answers. Sections marked *planned* describe the
+> intended design.
 
 | Step | What | State |
 |---|---|---|
 | 0 | Golden set schema, converted question set, `validate` | done |
 | 1 | Adapter interface, `run`/`score`, retrieval metrics, rag-project adapter | done |
 | 2 | LLM judge (faithfulness, correctness, abstention; `qwen3:8b` through Ollama) and its calibration against hand labels | done |
-| 3 | Citation checks, second target (CiteWise) | planned |
+| 3 | Citation checks, second target (CiteWise) | done |
 | 4 | Markdown/HTML report, optional CI | planned |
 
 ## Quick start
@@ -157,7 +158,7 @@ the judge flags it (any verdict other than the best one). The unchanged answers 
 | Damage | n | Reasoning off | Reasoning on |
 |---|---|---|---|
 | none (control): good answers flagged for faithfulness / correctness | 30 | 21 / 8 | 6 / 2 |
-| first price or number changed: flagged for faithfulness / correctness | 26 | 26 / 23 | 24 / 23 |
+| first price or number changed (usually the day of an "As of" date): flagged for faithfulness / correctness | 26 | 26 / 23 | 24 / 23 |
 | a sentence the documents never state added: flagged for faithfulness | 30 | 30 | 29 |
 | answer replaced by another question's answer: flagged for correctness | 30 | 29 | 28 |
 | answer replaced by a bare refusal: flagged as declined / as incorrect | 30 | 30 / 30 | 30 / 30 |
@@ -182,6 +183,99 @@ Known weaknesses, all measured on a small sample:
   known damage; they do not rule out that it favours its own style.
 - **One labeller, one pass, 36 answers, prompt version 1 untouched.** The prompts were not tuned against these labels, so
   the numbers are a fair read of version 1, and a changed prompt needs the calibration repeated.
+
+### Citation metrics
+
+A target cites in one of two ways. Inline: the answer text carries markers such as `[2]` or `[3][6]`, each naming a listed
+source with its excerpt (CiteWise). File level: the answer carries no markers and the target only lists the documents it
+used (rag-project). The checks in [`src/citecheck/metrics/citations.py`](src/citecheck/metrics/citations.py) apply to the
+answers that should carry citations, meaning answerable questions the target did not decline, and need no judge unless
+noted.
+
+| Check | Meaning |
+|---|---|
+| dangling marker | a marker in the answer that matches no listed source (inline targets) |
+| unused source | a listed source whose marker the answer never uses (inline targets) |
+| cited sentence share | the share of an answer's sentences that carry a marker (inline targets) |
+| evidence cited | a fact the question depends on counts as cited when a listed source comes from a document that states it and, when the target gives the excerpt, the excerpt contains the fact's anchor phrase; a fact may list passages that word it differently, each with its own anchor |
+| source precision | the share of distinct cited documents that are expected (the evidence documents plus any `expected_sources` and `acceptable_sources`) |
+| claim support | the judge's verdict on whether the sources cited for one sentence support that sentence (`--judge`), counted per sentence |
+| declined, with markers | declined answers that still carry citations |
+
+**rag-project** (file level, 119 answers): the document that states every fact was listed for 110 of 111 answers with
+evidence, and 92% of the documents it listed were expected. It has no markers, so the marker and claim checks do not apply.
+Only 1 of its 12 declined answers lists a source.
+
+**CiteWise** (inline, 38 answerable questions): every answer carries markers, none dangles, and 92.5% of sentences are
+cited. The passage that states every fact is among the cited sources for 36 of 38 answers, and every cited document is an
+expected one. The judge calls 40 of 44 cited sentences supported, 3 partly and 1 unsupported (mean 0.94), and 5 of the 6
+declined answers still carry markers, such as "the sources do not mention parking [1][2][3]". "Unused source" cannot occur
+here, because CiteWise's API returns only the sources an answer cited. The two answers without the key passage are
+`nvda-hq-and-employees`, where CiteWise says the filings do not give NVIDIA's headcount although they do, and `amd-nvda-hq`,
+where the AMD source cited is a different passage of the right filing that may also name Santa Clara. The evidence check is
+strict, so an answer that cites another passage stating the same fact is counted as missing it unless that wording was added
+to the golden set as an alternate (as was done for NVIDIA's headquarters).
+
+### CiteWise as a second target
+
+[Citewise for Markets](https://github.com/Nbhaskell/citewise-markets) answers from SEC filings, prices, figures and headlines
+with inline numbered citations. Start its API (`python -m api` in that project; it uses port 8000 like rag-project, so run
+one at a time), then:
+
+```
+python -m citecheck run --golden golden/citewise_filings_v1.json --target citewise --label baseline-citewise
+python -m citecheck score runs/<run id>.run.json --judge
+```
+
+What differs from rag-project, all handled by [`src/citecheck/adapters/citewise.py`](src/citecheck/adapters/citewise.py):
+
+- The API returns only the passages an answer cited, not everything the model was shown, so retrieval cannot be scored for it
+  (the run records `reports_retrieved: false`). Faithfulness is then judged against the cited sources, which checks an answer
+  against what it points to and is weaker than checking it against everything the model read.
+- Prices, headlines and the P/E change every night, so its golden set rests on filing text only.
+- A source's title (for example `NVDA 10-K filed 2026-02-25`) is its document id.
+
+**Result on the 44-question baseline**, judge as above: faithfulness 0.91 against cited sources (34 of 38 supported), correctness
+0.95, all 6 unanswerable questions declined and no answerable one. Saved in [`runs/published/`](runs/published/).
+
+### Calibration of citation support
+
+The citation verdict is a new use of the judge, so it was calibrated on its own, in the same two ways.
+
+**1. Agreement with hand labels.** 30 cited sentences were labelled by hand: 5 that either judge setting flagged, and 25
+that both called supported, shown without any verdict. Each card shows the question, the whole answer, the one statement and
+only the sources cited for it. The labels are in
+[`labels/citewise_filings_v1.citation-labels.json`](labels/citewise_filings_v1.citation-labels.json).
+All 30 were labelled supported, and the judge matched 26 (87%) with reasoning on and 26 with it off. Every disagreement is
+the judge being too strict, mostly on a sentence that gives only half of a two-part question (the combined headcount of two
+companies, answered in two sentences): it judged the sentence on whether it answered the question, which the prompt tells it
+not to do. Kappa comes out as 0 because every label is the same, which is undefined agreement, not no agreement.
+
+**2. A known-bad check.** Because every label is "supported", the labels cannot show whether the judge notices a bad citation.
+`citecheck known-bad` damages the 30 sentences in four ways and counts how often the judge flags them (any verdict but
+supported), with the unchanged sentences as a control.
+
+| Damage | n | Reasoning off | Reasoning on |
+|---|---|---|---|
+| none (control): good sentences flagged | 30 | 1 | 3 |
+| a figure changed by 17 to 59 (not part of a date) | 18 | 8 | 12 |
+| the day of a date changed to another valid day | 10 | 2 | 2 |
+| shown the sources cited for a different sentence | 30 | 28 | 28 |
+| a clause the sources never state added | 30 | 27 | 23 |
+
+- Swapped sources are caught almost every time, so a citation that points at the wrong place is noticed.
+- Small changes to a figure are caught about half to two thirds of the time, and a changed date day is mostly missed: the
+  judge treats it as a minor detail of a statement whose main point is backed.
+- An added claim is flagged but usually as `partly_supported` (3 and 4 of 30 as `unsupported`), the intended reading of a minor
+  unsupported claim.
+- Unlike faithfulness on whole answers, neither setting is clearly better here: reasoning off has fewer false alarms and
+  catches more added claims, and reasoning on catches more changed figures. The default stays on.
+
+Known limits: the judge and the labeller saw each excerpt without the title of the filing it came from, so a statement that
+names a company cannot be checked against the excerpt's own text; the labels contain no bad citation; and a first version of
+the check changed the first number in each sentence, which was usually the day of an "As of" date. Its results
+(`citation-known-bad-first-number-*` in [`runs/published/`](runs/published/)) were kept, and the check was split into figures and
+dates. The step 2 "first price or number changed" row for whole answers has the same property.
 
 ## The golden set
 
@@ -233,6 +327,35 @@ Known limits:
 - One phrase was tightened (`full-day-price`: `$100.00` also matched the training-session price) and one fact has two
   valid locations (`address`: the hours document and the PDF). Both are recorded in the converter.
 
+### `golden/citewise_filings_v1.json`
+
+44 questions for CiteWise, built by [`tools/build_citewise_golden.py`](tools/build_citewise_golden.py) from
+[`golden/citewise_questions_v1.json`](golden/citewise_questions_v1.json) and the filings that project has stored. Each fact in the
+question file is an anchor phrase and a company; the builder searches the stored filings through the API, keeps every passage
+that contains the phrase, and stops if one matches nothing. A fact worded differently in another passage lists that wording
+as an alternate, and the passage carries its own anchor.
+
+| Category | Items |
+|---|---|
+| factual | 23 |
+| multi_topic | 5 |
+| edge_case (arithmetic over two filings) | 3 |
+| yes_no | 3 |
+| unanswerable | 6 |
+| follow_up | 4 |
+
+All items are split `heldout`. Known limits:
+
+- **Written by Claude from the stored text**, so unseen by the target but not blind to the corpus. The reference answers were
+  drafted from the same text and have not been reviewed by a person.
+- **Filing text only.** The 29 filings (10-K and 10-Q of seven companies) are identified by title and by a fingerprint of the
+  accession number and URL, which identifies an immutable document but does not hash its text. A new filing adds documents, and a
+  changed passage changes the golden set's hash, so saved runs then refuse to be scored against it.
+- **Unanswerable means not stated in the filings as far as searched.** One is a near miss: the filings give an acreage for
+  Microsoft's campus but not for NVIDIA's.
+- **Mostly headcounts, headquarters, segments and buybacks.** Facts of this kind keep the evidence checkable, and say little about
+  harder filing questions.
+
 ## Design
 
 - **`run` and `score` are separate.** `run` calls the target and saves raw responses to `runs/`; `score` computes metrics from
@@ -257,16 +380,16 @@ golden/          schema and golden sets
 labels/          hand labels for calibrating the judge (the generated sheet is not tracked)
 src/citecheck/
   models.py      what an adapter returns (chunks, citations, response)
-  adapters/      the adapter interface, a mock for tests, and rag-project's
-  metrics/       retrieval.py, answer.py (counts the judge's verdicts); citations to come
+  adapters/      the adapter interface, a mock for tests, and the rag-project and CiteWise adapters
+  metrics/       retrieval.py, answer.py (counts the judge's verdicts), citations.py
   judge/         the judge: prompts, Ollama client, disk cache, per-answer verdicts
-  calibration.py, calibration_sheet.py   hand-label sampling, the labelling sheet, judge-vs-human agreement
-  known_bad.py   damage known-good answers on purpose and check the judge flags it
+  calibration.py, citation_calibration.py, calibration_sheet.py   hand-label sampling, the labelling sheet, judge-vs-human agreement
+  known_bad.py, known_bad_citations.py   damage known-good answers or cited sentences on purpose and check the judge flags it
   runner.py      `run`: ask the target, save raw responses
   scoring.py     `score`: metrics from a saved run
   golden.py      load and validate a golden set
   cli.py
-tools/           one-off scripts: the golden-set converter, a check against rag-project's published runs
+tools/           one-off scripts: the golden-set converter and the CiteWise golden-set builder, a check against rag-project's published runs
 tests/
 runs/            saved runs (not in git except runs/published/)
 ```
