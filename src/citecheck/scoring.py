@@ -2,11 +2,11 @@
 import json
 from pathlib import Path
 
-from .metrics import answer, citations, retrieval
+from .metrics import answer, citations, figures, retrieval
 from .models import TargetResponse
 from .runner import golden_hash
 
-SCORES_VERSION = 3
+SCORES_VERSION = 4  # 4: rows and groups carry the figure-grounding check
 DEFAULT_KS = (1, 3, 5)
 
 
@@ -38,6 +38,14 @@ def is_declined(item: dict, response: TargetResponse, judged: dict | None) -> bo
     return bool(item["expected_abstain"] or response.abstained or (judged and judged["abstention"]["verdict"] == "abstained"))
 
 
+def figure_sources(response: TargetResponse, reports_retrieved: bool) -> list[str]:
+    """What an answer's figures are checked against: the passages the target returned, or for a target that reports only
+    what an answer cited, the cited excerpts."""
+    if reports_retrieved:
+        return [c.text for c in response.retrieved]
+    return [c.text for c in response.citations if c.text]
+
+
 def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, judge=None, progress=None) -> dict:
     """Retrieval and citation metrics for every answer; with a judge, also abstention, faithfulness, correctness and
     whether each cited sentence is supported by its sources. A target that does not report what it retrieved
@@ -52,7 +60,8 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, 
         response = TargetResponse.from_dict(record["response"])
         row = {"item_id": item["id"], "repeat": record["repeat"], "split": item["split"],
                "category": item["category"], "error": response.error, "retrieval": None,
-               "expected_abstain": item["expected_abstain"], "judged": None, "citations": None, "declined": None}
+               "expected_abstain": item["expected_abstain"], "judged": None, "citations": None, "declined": None,
+               "figures": None}
         if reports_retrieved and not response.error and item["evidence"]:
             row["retrieval"] = retrieval.score_item(response.retrieved, item["evidence"], ks, require_doc)
         if judge is not None and not response.error:
@@ -65,6 +74,9 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, 
                 "support": judge.judge_citations(item["question"], response, history=history) if judge is not None else None}
         if is_declined(item, response, row["judged"]):
             row["declined"] = {"markers": len(set(citations.markers_in(response.answer))), "listed": len(response.citations)}
+        elif not response.error:
+            context = [item["question"]] + [turn["content"] for turn in history]
+            row["figures"] = figures.check(response.answer, figure_sources(response, reports_retrieved), context)
         if progress and judge is not None:
             progress(f"judged {len(rows) + 1}/{len(run['records'])} {item['id']}")
         rows.append(row)
@@ -77,6 +89,7 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, 
             out["answer"] = answer.summarize([r for r in selected if r["judged"] is not None])
         out["citations"] = citations.summarize([r["citations"] for r in selected if r["citations"] is not None],
                                                [r["declined"] for r in selected if r["declined"] is not None])
+        out["figures"] = figures.summarize([r["figures"] for r in selected if r["figures"] is not None])
         return out
 
     def by(key):
@@ -136,7 +149,28 @@ def format_report(scores: dict) -> str:
         lines += format_answer_report(scores)
     if scores["summary"]["overall"].get("citations", {}).get("answers"):
         lines += format_citation_report(scores)
+    if scores["summary"]["overall"].get("figures", {}).get("with_figures"):
+        lines += format_figure_report(scores)
     return "\n".join(lines)
+
+
+def format_figure_report(scores: dict) -> list[str]:
+    lines = ["", "figure grounding (answers that were not declined and state a figure, date or time)", "",
+             f"{'':<14}{'answers':>8}{'figures':>9}{'all found':>11}{'not found':>11}{'all derivable':>15}{'underived':>11}"]
+
+    def row(name, g):
+        f = g["figures"]
+        return (f"{name:<14}{f['with_figures']:>8}{f['figures']:>9}{str(f['all_grounded']) + '/' + str(f['with_figures']):>11}"
+                f"{f['ungrounded']:>11}{str(f['all_derivable']) + '/' + str(f['with_figures']):>15}{f['underived']:>11}")
+
+    summary = scores["summary"]
+    lines.append(row("overall", summary["overall"]))
+    for name, g in summary["by_split"].items():
+        lines.append(row(name, g))
+    lines += ["", "all found = answers whose every figure appears in the sources, the question or the earlier turns; not found = "
+                  "figures that appear in none of them. derivable also accepts a number that is the sum, difference, product or "
+                  "quotient of two numbers that appear; underived = figures left after that. No model is involved."]
+    return lines
 
 
 def format_citation_report(scores: dict) -> list[str]:

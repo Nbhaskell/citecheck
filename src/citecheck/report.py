@@ -26,6 +26,9 @@ WEAKNESS = {
     "precision": "Expected documents are the golden set's evidence documents and any listed alternates.",
     "support": "The judge saw each excerpt without the title of the filing it came from, and can judge a sentence on "
                "whether it answers the question, which it is told not to do. Small figure changes and changed dates are often missed.",
+    "figures": "Deterministic and about figures, dates and times only. A wrong figure that the sources also state passes, and an "
+               "answer that cites nothing has every figure unfound. The count that allows arithmetic can explain a changed "
+               "figure by coincidence.",
 }
 
 
@@ -158,6 +161,13 @@ def build_rows(scores: dict, evidence: dict, reports_retrieved: bool, run_id: st
                 f"{number(correctness['score'])}: {correctness['correct']} correct, {correctness['partly_correct']} partly, "
                 f"{correctness['incorrect']} incorrect", correctness["n"],
                 [WEAKNESS["correctness"], agreement_caveat(evidence["answers"], "correctness", run_id), known_bad_caveat(evidence["answers"], "correctness", run_id)])]
+    grounding = overall.get("figures")
+    if grounding and grounding["with_figures"]:
+        rows += [
+            row("Answers", "Answers whose every figure, date and time is in the sources, the question or the earlier turns",
+                fraction(grounding["all_grounded"], grounding["with_figures"]), grounding["with_figures"], [WEAKNESS["figures"]]),
+            row("Answers", "The same, also accepting a sum, difference, product or quotient of two numbers that appear",
+                fraction(grounding["all_derivable"], grounding["with_figures"]), grounding["with_figures"], [])]
     c = overall.get("citations")
     if c and c["answers"]:
         support = c["support"]

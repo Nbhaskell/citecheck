@@ -210,7 +210,7 @@ def test_score_run_without_a_judge_has_no_answer_section():
     run = runner.run_golden(make_golden(), mock())
     scores = scoring.score_run(run, make_golden())
     assert scores["config"]["judge"] is None and "answer" not in scores["summary"]["overall"]
-    assert scores["scores_version"] == 3
+    assert scores["scores_version"] == 4
 
 
 def test_score_run_with_a_judge_reports_answer_quality_by_split_and_category():

@@ -3,7 +3,8 @@ import json
 import sys
 from pathlib import Path
 
-from . import calibration, calibration_sheet, citation_calibration, compare, golden, known_bad, known_bad_citations, report, runner, scoring
+from . import (calibration, calibration_sheet, citation_calibration, compare, golden, known_bad, known_bad_citations,
+               known_bad_figures, report, runner, scoring)
 from .adapters import TARGETS
 from .adapters.base import AdapterError
 from .judge import DEFAULT_MODEL, DEFAULT_THINK, Judge, JudgeCache, JudgeError, NoCache, OllamaClient
@@ -202,6 +203,45 @@ def cmd_known_bad(args) -> int:
     return 0
 
 
+def cmd_figure_check(args) -> int:
+    run = json.loads(Path(args.run).read_text(encoding="utf-8"))
+    data = golden.load_json(args.golden or run["golden"]["path"])
+    try:
+        scoring.check_golden(run, data)
+        labels = calibration.load_labels(args.labels)
+    except (scoring.GoldenMismatch, calibration.LabelsError) as e:
+        print(e)
+        return 2
+    flags = {}
+    if args.judge_results:
+        flags.update(known_bad_figures.judge_flags(json.loads(Path(args.judge_results).read_text(encoding="utf-8"))))
+    judge = None
+    if args.judge:
+        judge = build_judge(args)
+        if judge is None:
+            return 1
+    progress = lambda message: print(message, flush=True)
+    if labels.get("kind") == "citations":
+        scope, kinds = "cited sentences", known_bad_figures.SENTENCE_KINDS
+        results = known_bad_figures.evaluate_sentences(run, data, labels)
+        if judge:
+            flags.update(known_bad_figures.judge_swapped_sentences(judge, run, data, labels, progress))
+    else:
+        scope, kinds = "whole answers", known_bad_figures.ANSWER_KINDS
+        results = known_bad_figures.evaluate_answers(run, data, labels)
+        if judge:
+            flags.update(known_bad_figures.judge_swapped_answers(judge, run, data, labels, progress))
+    if judge:
+        print(f"\njudge calls: {judge.calls} asked the model, {judge.cache_hits} from the cache\n")
+    summary = known_bad_figures.summarize(results, kinds, flags)
+    print(known_bad_figures.format_report(summary, f"{scope} of run {run['run_id']}"))
+    if args.out:
+        known_bad_figures.save(args.out, results, summary, run["run_id"], scope, args.judge_results and Path(args.judge_results).name,
+                               judge.config() if judge else None)
+        print(f"\nsaved {args.out}")
+    return 0
+
+
 def shown_path(path) -> str:
     """A file as it should appear in a report: relative paths as given, absolute ones by name only."""
     p = Path(path)
@@ -356,6 +396,16 @@ def main(argv=None) -> int:
     p.add_argument("--resamples", type=int, default=10000, help="bootstrap resamples (default %(default)s)")
     p.add_argument("--out", required=True, help="the page, e.g. reports/name.md; a name.compare.json copy is saved beside it")
     p.set_defaults(func=cmd_compare)
+
+    p = sub.add_parser("figure-check", help="check that the figure-grounding check notices figures and dates changed on purpose")
+    p.add_argument("run", help="a *.run.json file")
+    p.add_argument("--labels", required=True, help="hand labels; items labelled supported (and correct, for answers) are damaged")
+    p.add_argument("--golden", help="golden set file (default: the one the run recorded)")
+    p.add_argument("--judge-results", metavar="FILE",
+                   help="the judge's results for the same cases, from `known-bad --out`, to show what each catches")
+    p.add_argument("--out", help="also save every case and the summary as JSON")
+    add_judge_options(p, with_switch=True)
+    p.set_defaults(func=cmd_figure_check)
 
     p = sub.add_parser("known-bad", help="check that the judge flags answers that were damaged on purpose")
     p.add_argument("run", help="a *.run.json file")
