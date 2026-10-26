@@ -2,7 +2,8 @@
 
 For each answer the judge decides, in order:
   1. abstention: always.
-  2. faithfulness: unless the answer abstained (it has no claims to check).
+  2. faithfulness: unless the answer abstained (it has no claims to check), against the retrieved passages or, when the
+     target does not report them, the sources the answer cited.
   3. correctness: only for questions the corpus answers and that have a reference answer, including when the answer
      abstained (a refusal is then incorrect).
 A call that fails (model unreachable, reply not matching the schema) gives a verdict of None and an error message; it
@@ -10,14 +11,24 @@ never stops a scoring pass, and failures are never cached.
 """
 import json
 
+from ..metrics import citations
 from ..models import TargetResponse
 from . import prompts
 from .cache import JudgeCache, NoCache, cache_key
 from .client import JudgeError, OllamaClient
 
 DEFAULT_MODEL = "qwen3:8b"
-VERDICTS = {"abstention": prompts.ABSTENTION, "faithfulness": prompts.FAITHFULNESS, "correctness": prompts.CORRECTNESS}
-DETAIL_FIELD = {"abstention": "reasoning", "faithfulness": "unsupported_claims", "correctness": "reasoning"}
+VERDICTS = {"abstention": prompts.ABSTENTION, "faithfulness": prompts.FAITHFULNESS, "correctness": prompts.CORRECTNESS,
+            "citation": prompts.FAITHFULNESS}
+DETAIL_FIELD = {"abstention": "reasoning", "faithfulness": "unsupported_claims", "correctness": "reasoning",
+                "citation": "reasoning"}
+
+
+def passages_for(response: TargetResponse) -> list[str]:
+    """What an answer is checked against for faithfulness: the passages the target retrieved, or, for a target that does
+    not report them, the excerpts of the sources it cited."""
+    retrieved = [c.text for c in response.retrieved]
+    return retrieved or [c.text for c in response.citations if c.text]
 
 
 class Judge:
@@ -83,9 +94,24 @@ class Judge:
         abstained = out["abstention"]["verdict"] == "abstained"
         if not abstained:
             out["faithfulness"] = self.verdict("faithfulness", question=question, answer=answer, history=history,
-                                               passages=[c.text for c in response.retrieved])
+                                               passages=passages_for(response))
         # a refusal to answer an answerable question must count against correctness, so it is judged too
         if not item["expected_abstain"] and item.get("reference_answer"):
             out["correctness"] = self.verdict("correctness", question=question, answer=answer, history=history,
                                               reference=item["reference_answer"])
+        return out
+
+    def judge_citations(self, question: str, response: TargetResponse, history=()) -> list[dict]:
+        """One verdict per sentence of the answer that carries markers, on whether the sources cited for it support it.
+        A sentence whose markers match no listed source with an excerpt cannot be judged on those; it is reported with
+        verdict None and the markers that were missing, and is judged on the sources that are there when any are."""
+        out = []
+        for unit in citations.claim_units(response.answer, response.citations):
+            result = {"sentence": unit["sentence"], "markers": unit["markers"], "missing": unit["missing"]}
+            if unit["sources"]:
+                result.update(self.verdict("citation", question=question, statement=unit["sentence"],
+                                           cited=unit["sources"], history=history))
+            else:
+                result.update({"verdict": None, "reasoning": None, "cached": False, "error": "no cited source to judge against"})
+            out.append(result)
         return out
