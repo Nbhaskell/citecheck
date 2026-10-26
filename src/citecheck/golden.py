@@ -58,8 +58,9 @@ def cross_item_problems(golden: dict) -> list[str]:
             for passage in ev["passages"]:
                 if passage["doc_id"] not in docs:
                     problems.append(f"{name}: passage doc_id {passage['doc_id']!r} is not in corpus.documents")
-                if not contains(passage["text"], ev["anchor"]):
-                    problems.append(f"{name}: anchor {ev['anchor']!r} does not occur in its passage {passage['text'][:50]!r}")
+                anchor = passage.get("anchor", ev["anchor"])
+                if not contains(passage["text"], anchor):
+                    problems.append(f"{name}: anchor {anchor!r} does not occur in its passage {passage['text'][:50]!r}")
     return problems
 
 

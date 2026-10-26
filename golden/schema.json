@@ -33,10 +33,14 @@
         "name": {"type": "string"},
         "source": {"type": "string", "description": "Where the corpus comes from, e.g. a repository URL."},
         "commit": {"type": "string", "description": "Revision of the source that the hashes below were taken at."},
+        "fingerprint": {
+          "type": "string",
+          "description": "What each hash in `documents` is taken of: 'bytes' (the default: the file's bytes) or 'filing-identifier' (an SEC filing's accession number and URL, which identifies an immutable document without hashing its text)."
+        },
         "documents": {
           "type": "object",
           "minProperties": 1,
-          "description": "doc_id -> sha256 of the file's bytes. doc_id is the name the target reports for the document.",
+          "description": "doc_id -> sha256 fingerprint (see `fingerprint`; by default of the file's bytes). doc_id is the name the target reports for the document.",
           "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
         }
       }
@@ -60,6 +64,7 @@
         "doc_id": {"type": "string"},
         "section": {"type": "string", "description": "Heading path inside the document, for the human reader."},
         "page": {"type": ["integer", "null"], "minimum": 1, "description": "Page number for paged formats (PDF), else null."},
+        "anchor": {"type": "string", "minLength": 1, "description": "Only when this passage states the fact in other words than the fact's anchor: the phrase that identifies the fact here. It must occur in `text`."},
         "text": {"type": "string", "minLength": 1, "description": "The passage copied verbatim from the document."}
       }
     },
@@ -102,7 +107,7 @@
         "evidence": {
           "type": "array",
           "items": {"$ref": "#/$defs/evidence"},
-          "description": "Facts that must be retrievable. Empty when there is nothing to retrieve (unanswerable) or retrieval is not scored (follow-ups)."
+          "description": "Facts that must be retrievable. Empty when there is nothing to retrieve (unanswerable). A follow-up may list the facts its answer depends on, or leave this empty."
         },
         "reference_answer": {"type": "string", "description": "A correct answer in full sentences, once someone has written and checked one."},
         "answer_contains": {

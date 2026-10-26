@@ -22,10 +22,14 @@ from ..models import RetrievedChunk
 from ..text import contains
 
 
+def passage_anchor(fact: dict, passage: dict) -> str:
+    """A passage normally shares its fact's anchor; one that states the fact in other words carries its own."""
+    return passage.get("anchor", fact["anchor"])
+
+
 def chunk_matches(chunk: RetrievedChunk, fact: dict, require_doc: bool = True) -> bool:
-    if not contains(chunk.text, fact["anchor"]):
-        return False
-    return not require_doc or chunk.doc_id in {p["doc_id"] for p in fact["passages"]}
+    return any(contains(chunk.text, passage_anchor(fact, p)) and (not require_doc or chunk.doc_id == p["doc_id"])
+               for p in fact["passages"])
 
 
 def fact_ranks(chunks: Sequence[RetrievedChunk], evidence: Sequence[dict], require_doc: bool = True) -> list[int | None]:
