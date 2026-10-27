@@ -16,10 +16,10 @@ Each score sits beside what is known about how far to trust it. Retrieval and th
 
 | Metric | Result | n | Evidence and caveats |
 |---|---|---|---|
-| Unanswerable questions declined (right) | 6/6 (100%) | 6 | An off-topic answer is usually read as a refusal, so it skips the faithfulness check; correctness still flags it. |
+| Unanswerable questions declined (right) | 6/6 (100%) | 6 | An off-topic answer is usually read as a refusal, so it skips the faithfulness check; correctness still flags it. Matched 21/23 (91%) of hand labels, from a sample chosen to be hard. Flagged 19/19 (100%) of answers damaged on purpose. |
 | Answerable questions declined (false refusals) | 0/38 (0%) | 38 | - |
-| Faithfulness (supported = 1, partly = 0.5) | 0.908: 34 supported, 1 partly, 3 unsupported | 38 | The judge leans strict: it can call a claim that a passage states outright partly supported. |
-| Correctness against the reference answer | 0.947: 35 correct, 2 partly, 1 incorrect | 38 | The judge can penalise extra detail that the reference does not contain, and can miss a contradicted opening. |
+| Faithfulness (supported = 1, partly = 0.5) | 0.908: 34 supported, 1 partly, 3 unsupported | 38 | The judge leans strict: it can call a claim that a passage states outright partly supported. Matched 15/20 (75%) of hand labels, from a sample chosen to be hard. Flagged 32/41 (78%) of answers damaged on purpose and 4/19 (21%) of unchanged good ones (false alarms). |
+| Correctness against the reference answer | 0.947: 35 correct, 2 partly, 1 incorrect | 38 | The judge can penalise extra detail that the reference does not contain, and can miss a contradicted opening. Matched 18/20 (90%) of hand labels, from a sample chosen to be hard. Flagged 47/58 (81%) of answers damaged on purpose and 2/19 (11%) of unchanged good ones (false alarms). |
 | Answers whose every figure, date and time is in the sources, the question or the earlier turns | 23/23 (100%) | 23 | Deterministic and about figures, dates and times only. A wrong figure that the sources also state passes, and an answer that cites nothing has every figure unfound. The count that allows arithmetic can explain a changed figure by coincidence. |
 | The same, also accepting a sum, difference, product or quotient of two numbers that appear | 23/23 (100%) | 23 | - |
 
@@ -62,7 +62,6 @@ Each score sits beside what is known about how far to trust it. Retrieval and th
 - This is one pass over the question set. Answers vary from run to run, and a model target gives no seed, so a difference of a few answers is not evidence of a real change.
 - This target does not report what it retrieved, so retrieval is not scored; faithfulness is checked against the sources it cited, which is weaker than checking against everything the model read.
 - The judge (qwen3:8b) and the target answer with the same model family (ollama:qwen3:latest), so the judge may favour its own kind of answer. The calibration checks measure agreement with a person and with known damage; they do not rule that out.
-- No calibration evidence was supplied for the answer verdicts (abstention, faithfulness, correctness) with this judge configuration (qwen3:8b, reasoning on, prompt v1, citation 2), so they are unvalidated here.
 - Where the tables show hand-label agreement, read it as an estimate for hard cases from a small sample, not a measured error rate.
 
 ## Items to look at (12)
@@ -90,5 +89,8 @@ Every question with something unusual in its result. This is a reading list, not
 - Scores: `runs/published/2026-10-25_135415_baseline-citewise.judge-think-on.prompt2.scores.json`
 - Question set: `golden/citewise_filings_v1.json`
 - Agreement with hand labels 1: `runs/published/2026-10-27_121007_holdout-citewise.citation-agreement.json`
+- Agreement with hand labels 2: `runs/published/2026-10-25_135415_baseline-citewise.answer-agreement.json`
 - Known-bad check 1: `runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-on.prompt2.json`
 - Known-bad check 2: `runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-off.prompt2.json`
+- Known-bad check 3: `runs/published/2026-10-25_135415_baseline-citewise.known-bad-think-on.json`
+- Known-bad check 4: `runs/published/2026-10-25_135415_baseline-citewise.known-bad-think-off.json`
