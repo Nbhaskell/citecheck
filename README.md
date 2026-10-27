@@ -893,3 +893,8 @@ reports/         generated report pages and their index
 docs/            a one-page account of how the citation judge was fixed
 .github/         the CI workflow (tests only)
 ```
+
+## License
+
+MIT. See the `LICENSE` file. The CiteWise golden set quotes short excerpts of public SEC filings, and the rag-project golden set
+quotes that project's made-up demo documents, which are included under the same license there.
