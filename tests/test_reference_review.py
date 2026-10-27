@@ -21,13 +21,13 @@ def builder():
 
 
 @pytest.fixture
-def data():
-    return golden.load_json(GOLDEN)
+def data(unreviewed):
+    return golden.load_json(unreviewed[0])
 
 
 @pytest.fixture
-def questions():
-    return json.loads(QUESTIONS.read_text(encoding="utf-8"))
+def questions(unreviewed):
+    return json.loads(unreviewed[1].read_text(encoding="utf-8"))
 
 
 def result_for(data, edits=None, unclear=None, skip=None, notes=None):
@@ -174,23 +174,23 @@ def test_nothing_is_applied_when_the_review_has_a_problem_or_was_already_applied
 
 # --- the commands ------------------------------------------------------------------------------------------------
 
-def copies(tmp_path):
+def copies(tmp_path, unreviewed):
     folder = tmp_path / "golden"
     folder.mkdir()
-    for source in (GOLDEN, QUESTIONS):
+    for source in unreviewed:
         shutil.copy(source, folder / source.name)
     return folder / GOLDEN.name, folder / QUESTIONS.name
 
 
-def test_the_sheet_command_writes_a_page(tmp_path, capsys):
+def test_the_sheet_command_writes_a_page(tmp_path, capsys, unreviewed):
     out = tmp_path / "sheet.html"
-    assert cli.main(["review-sheet", "--golden", str(GOLDEN), "--out", str(out)]) == 0
+    assert cli.main(["review-sheet", "--golden", str(unreviewed[0]), "--out", str(out)]) == 0
     assert "44 reference answers to review" in capsys.readouterr().out
     assert "Review the reference answers" in out.read_text(encoding="utf-8")
 
 
-def test_the_apply_command_rewrites_the_files_in_their_own_format_and_refuses_to_apply_twice(tmp_path, capsys):
-    golden_path, questions_path = copies(tmp_path)
+def test_the_apply_command_rewrites_the_files_in_their_own_format_and_refuses_to_apply_twice(tmp_path, capsys, unreviewed):
+    golden_path, questions_path = copies(tmp_path, unreviewed)
     data = golden.load_json(golden_path)
     result_path = tmp_path / "labels.json"
     result_path.write_text(json.dumps(result_for(data, edits={"amd-hq": "AMD is headquartered in Santa Clara, California."})), encoding="utf-8")
@@ -207,8 +207,8 @@ def test_the_apply_command_rewrites_the_files_in_their_own_format_and_refuses_to
     assert "made against" in capsys.readouterr().out
 
 
-def test_the_apply_command_writes_nothing_when_the_review_is_incomplete(tmp_path, capsys):
-    golden_path, questions_path = copies(tmp_path)
+def test_the_apply_command_writes_nothing_when_the_review_is_incomplete(tmp_path, capsys, unreviewed):
+    golden_path, questions_path = copies(tmp_path, unreviewed)
     before = (golden_path.read_bytes(), questions_path.read_bytes())
     data = golden.load_json(golden_path)
     result_path = tmp_path / "labels.json"

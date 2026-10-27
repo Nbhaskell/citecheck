@@ -801,5 +801,11 @@
     ]
    ]
   }
- ]
+ ],
+ "golden_version": "citewise-filings-1.1.0",
+ "reference_review": {
+  "reviewed": true,
+  "corrected": 0,
+  "record": "golden/citewise_filings_v1.reference-review.json"
+ }
 }

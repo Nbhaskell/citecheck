@@ -183,10 +183,11 @@ def test_judge_flags_are_read_from_both_kinds_of_saved_result():
     assert known_bad_figures.judge_flags(sentences) == {("x#1", "date_changed"): False, ("x#2", "date_changed"): True}
 
 
-def test_the_command_prints_the_table_and_saves_the_cases(tmp_path, capsys):
+def test_the_command_prints_the_table_and_saves_the_cases(tmp_path, capsys, unreviewed):
     out = tmp_path / "figure-check.json"
     code = cli.main(["figure-check", str(PUBLISHED / "2026-10-25_135415_baseline-citewise.run.json"),
                      "--labels", str(ROOT / "labels" / "citewise_filings_v1.citation-labels.json"),
+                     "--golden", str(unreviewed[0]),
                      "--judge-results", str(PUBLISHED / "2026-10-25_135415_baseline-citewise.citation-known-bad-think-on.json"),
                      "--out", str(out)])
     assert code == 0

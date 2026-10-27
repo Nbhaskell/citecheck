@@ -160,23 +160,39 @@ def test_the_index_lists_reports_without_ranking_them(rag, citewise):
 
 # --- command line ------------------------------------------------------------------------------------------------
 
-def test_report_and_index_commands_write_the_page_a_json_copy_and_the_index(tmp_path, capsys):
+def test_report_and_index_commands_write_the_page_a_json_copy_and_the_index(tmp_path, capsys, unreviewed):
     out = tmp_path / "out" / "citewise.md"
     args = ["report", str(PUBLISHED / f"{CITEWISE}.run.json"), "--scores", str(PUBLISHED / f"{CITEWISE}.judge-think-on.scores.json"),
             "--agreement", str(PUBLISHED / f"{CITEWISE}.citation-agreement.json"),
-            "--known-bad", str(PUBLISHED / f"{CITEWISE}.citation-known-bad-think-on.json"), "--out", str(out)]
+            "--known-bad", str(PUBLISHED / f"{CITEWISE}.citation-known-bad-think-on.json"), "--golden", str(unreviewed[0]),
+            "--out", str(out)]
     assert cli.main(args) == 0 and "wrote" in capsys.readouterr().out
     page = out.read_text(encoding="utf-8")
     assert page.startswith("# citewise on citewise-filings-1.0.0") and str(tmp_path) not in page  # no absolute paths
     sidecar = json.loads((tmp_path / "out" / "citewise.report.json").read_text(encoding="utf-8"))
     assert sidecar["run"]["run_id"] == CITEWISE and sidecar["report_version"] == report.REPORT_VERSION
+    assert not any("was asked from" in limit for limit in sidecar["limits"])  # the run's own question set: nothing to explain
     assert cli.main(["report-index", str(tmp_path / "out")]) == 0
     assert "[citewise on citewise-filings-1.0.0](citewise.md)" in (tmp_path / "out" / "index.md").read_text(encoding="utf-8")
 
 
-def test_the_report_command_refuses_scores_from_another_run(tmp_path, capsys):
+def test_a_report_against_a_later_question_set_needs_the_flag_and_says_which_set_it_used(tmp_path, capsys):
+    out = tmp_path / "later.md"
+    args = ["report", str(PUBLISHED / f"{CITEWISE}.run.json"), "--scores", str(PUBLISHED / f"{CITEWISE}.judge-think-on.scores.json"),
+            "--out", str(out)]  # the golden set the run recorded is now the reviewed version
+    assert cli.main(args) == 2 and "--ignore-golden-mismatch" in capsys.readouterr().out and not out.exists()
+    assert cli.main(args + ["--ignore-golden-mismatch"]) == 0
+    built = json.loads((tmp_path / "later.report.json").read_text(encoding="utf-8"))
+    current = golden.load_json(ROOT / "golden" / "citewise_filings_v1.json")
+    assert built["title"] == "citewise on " + current["golden_version"] and built["golden"]["version"] == current["golden_version"]
+    assert built["golden"]["hash"] == report.golden_hash(current)
+    assert any("asked from citewise-filings-1.0.0" in limit and f"reported against {current['golden_version']}" in limit
+               for limit in built["limits"])
+
+
+def test_the_report_command_refuses_scores_from_another_run(tmp_path, capsys, unreviewed):
     code = cli.main(["report", str(PUBLISHED / f"{CITEWISE}.run.json"), "--scores", str(PUBLISHED / f"{RAG}.citations.scores.json"),
-                     "--out", str(tmp_path / "x.md")])
+                     "--golden", str(unreviewed[0]), "--out", str(tmp_path / "x.md")])
     assert code == 2 and "not" in capsys.readouterr().out
     assert not (tmp_path / "x.md").exists()
 

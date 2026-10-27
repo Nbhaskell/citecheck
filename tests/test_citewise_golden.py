@@ -56,3 +56,13 @@ def test_the_set_mixes_categories_and_every_follow_up_has_its_parent_first(data)
     for item in data["items"]:
         if item.get("follow_up_to"):
             assert ids.index(item["follow_up_to"]) < ids.index(item["id"])
+
+
+def test_the_committed_golden_set_records_the_hand_review_and_the_record_matches_it(data):
+    questions = json.loads(QUESTIONS.read_text(encoding="utf-8"))
+    review = questions["reference_review"]
+    assert review["reviewed"] and questions["golden_version"] == data["golden_version"]
+    assert "checked one by one by hand" in data["notes"] and "not yet been reviewed" not in data["notes"]
+    record = json.loads((GOLDEN.parents[1] / review["record"]).read_text(encoding="utf-8"))
+    assert record["golden_version_after"] == data["golden_version"] and record["corrected"] == review["corrected"]
+    assert {e["id"]: e["reference_answer"] for e in record["items"]} == {i["id"]: i["reference_answer"] for i in data["items"]}
