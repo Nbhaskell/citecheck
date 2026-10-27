@@ -1,6 +1,6 @@
-# citewise on citewise-filings-1.0.0
+# citewise on citewise-filings-1.1.0
 
-Run `2026-10-25_135415_baseline-citewise`, made 2026-10-25T13:54:15 with citecheck 1ef79f69fb (uncommitted changes). Question set `citewise-filings-1.0.0` (44 items), hash `bb0103a66617`.
+Run `2026-10-25_135415_baseline-citewise`, made 2026-10-25T13:54:15 with citecheck 1ef79f69fb (uncommitted changes). Question set `citewise-filings-1.1.0` (44 items), hash `99d88263da4c`.
 
 Target: status ok, database True, ai_model ollama:qwen3:latest, ai_model_available True.
 
@@ -54,7 +54,8 @@ Each score sits beside what is known about how far to trust it. Retrieval and th
 
 ## What this cannot tell you
 
-- About the question set: Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and have not yet been reviewed by a person. A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.
+- About the question set: Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and then checked one by one by hand against the passages (none needed a change). A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.
+- The run was asked from citewise-filings-1.0.0 (hash bb0103a66617) and is reported against citewise-filings-1.1.0 (hash 99d88263da4c), so the answers are the ones given then and the reference answers are those of the later version.
 - The run was made from an uncommitted working tree, so the recorded commit is the previous one, not the exact code.
 - This is one pass over the question set. Answers vary from run to run, and a model target gives no seed, so a difference of a few answers is not evidence of a real change.
 - This target does not report what it retrieved, so retrieval is not scored; faithfulness is checked against the sources it cited, which is weaker than checking against everything the model read.

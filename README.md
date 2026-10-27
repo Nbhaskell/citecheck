@@ -7,11 +7,11 @@ citations are valid. Output is a CLI and a readable report.
 The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
 adapter, so one harness can score different projects.
 
-> **Status: every planned step is built; one hand review is outstanding.** Retrieval, answer quality and citations are scored,
+> **Status: every planned step is built.** Retrieval, answer quality and citations are scored,
 > against two targets (rag-project and CiteWise), with the local judge model checked against hand labels and known-bad answers,
 > each scored run has a Markdown and an HTML report, one change to a target (`RAG_TOP_K`) has been measured against run-to-run
-> variation, and a check that needs no model reads answers for figures and dates the judge tends to miss. The reference answers
-> for CiteWise have not yet been reviewed by a person (step 7).
+> variation, and a check that needs no model reads answers for figures and dates the judge tends to miss. The 44 reference
+> answers for CiteWise were checked one by one by hand against the passages, and none needed a change (step 7).
 > Sections marked *planned* describe the intended design.
 
 | Step | What | State |
@@ -23,7 +23,7 @@ adapter, so one harness can score different projects.
 | 4 | Markdown report per run, tests-only CI | done |
 | 5 | A measured change to a target: repeated passes at different settings, and `compare` | done |
 | 6 | Figure and date check that needs no model, measured against the judge's gaps | done |
-| 7 | Sheet and command for reviewing reference answers by hand | tooling done; the review itself is not done |
+| 7 | Sheet and command for reviewing reference answers by hand | done; all 44 CiteWise references checked by hand, none corrected |
 | 8 | HTML pages for reports and comparisons, rendered from their saved JSON | done |
 
 ## Quick start
@@ -574,8 +574,8 @@ as an alternate, and the passage carries its own anchor.
 All items are split `heldout`. Known limits:
 
 - **Written by Claude from the stored text**, so unseen by the target but not blind to the corpus. The reference answers were
-  drafted from the same text and have not been reviewed by a person. The correctness score for this target rests on them, so
-  it is a score against drafts until that review is done (see below).
+  drafted from the same text and then checked by hand against the passages (see below); a check against the same
+  passages the drafts came from confirms that the answers match the text, not that the text was the right place to look.
 - **Filing text only.** The 29 filings (10-K and 10-Q of seven companies) are identified by title and by a fingerprint of the
   accession number and URL, which identifies an immutable document but does not hash its text. A new filing adds documents, and a
   changed passage changes the golden set's hash, so saved runs then refuse to be scored against it.
@@ -605,8 +605,20 @@ and version.
 
 The golden set's hash changes with that, so the published CiteWise run, asked from `citewise-filings-1.0.0`, refuses to be scored
 against `1.1.0`. Its answers are unchanged, so `score --ignore-golden-mismatch` re-judges correctness against the reviewed
-references; the judge's cache keeps every unchanged reference free. **The review itself has not been done**, so the golden set,
-its notes and the published CiteWise scores are still those of the drafts.
+references; the judge's cache keeps every unchanged reference free. `report` takes the same flag, shows the question set it was
+given, and adds a line to the report's limits naming the version the run was asked from.
+
+**Result for CiteWise.** All 44 items were marked *right as written*, so no reference answer changed and the golden set moved
+from `citewise-filings-1.0.0` to `1.1.0` with new notes, a `reference_review` entry in the questions file and the record
+[`golden/citewise_filings_v1.reference-review.json`](golden/citewise_filings_v1.reference-review.json). Re-scoring the published run
+against `1.1.0` gave the same judged value for every one of the 44 answers, so the published scores file is kept and the
+[CiteWise report](reports/citewise-baseline.md) was regenerated against `1.1.0`; its numbers are unchanged.
+
+The six unanswerable items have no passages to read, so their premise was checked another way: five differently worded searches
+of the stored filings for each company, filtered for the terms of the question (chargers, cafeteria, acres, floors, parking, dogs).
+None of the stored passages seen states a figure or policy the question asks for. Tesla's filings discuss Superchargers throughout
+but give no count at headquarters, and Apple's give only the address "One Apple Park Way". The search returns the nearest 20
+passages per query and is not a scan of every stored passage.
 
 ## Design
 
@@ -658,8 +670,7 @@ What running the harness against two targets showed, including where the harness
 - **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
   alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: a person's review of the CiteWise reference answers (the sheet and the command that applies it exist,
-see [Reviewing the reference answers by hand](#reviewing-the-reference-answers-by-hand)), and a fix for the judge's own weak spots. The
+Not done: a fix for the judge's own weak spots. The
 judge still misses small figure and date changes; the separate figure check now catches those where the new figure is in no
 source, and the completeness mistake in the citation verdict is unchanged. See [`reports/`](reports/) for the two baselines and
 the `RAG_TOP_K` comparison.

@@ -314,8 +314,10 @@ def cmd_report(args) -> int:
     try:
         scoring.check_golden(run, data)
     except scoring.GoldenMismatch as e:
-        print(e)
-        return 2
+        if not args.ignore_golden_mismatch:
+            print(f"{e}\nUse --ignore-golden-mismatch to report against this question set anyway.")
+            return 2
+        print(f"warning: {e}")
     if scores["run_id"] != run["run_id"]:
         print(f"the scores are for run {scores['run_id']}, not {run['run_id']}")
         return 2
@@ -439,6 +441,8 @@ def main(argv=None) -> int:
     p.add_argument("--agreement", action="append", default=[], metavar="FILE",
                    help="agreement-with-hand-labels JSON from `calibrate --save` (repeatable)")
     p.add_argument("--known-bad", action="append", default=[], metavar="FILE", help="known-bad check JSON from `known-bad --out` (repeatable)")
+    p.add_argument("--ignore-golden-mismatch", action="store_true",
+                   help="report against a question set other than the one the run was asked from; the report says so")
     p.add_argument("--out", required=True, help="the report page, e.g. reports/name.md; a name.report.json copy is saved beside it")
     p.set_defaults(func=cmd_report)
 

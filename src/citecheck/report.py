@@ -11,6 +11,8 @@ version). A report for a different configuration says so instead of borrowing it
 """
 from collections import Counter
 
+from .runner import golden_hash
+
 REPORT_VERSION = 1
 JUDGE_KEYS = ("model", "think", "prompt_version")
 
@@ -258,6 +260,10 @@ def build_limits(run: dict, scores: dict, golden: dict, evidence: dict, reports_
     limits = []
     if golden.get("notes"):
         limits.append(f"About the question set: {golden['notes']}")
+    if golden_hash(golden) != run["golden"]["hash"]:
+        limits.append(f"The run was asked from {run['golden']['golden_version']} (hash {run['golden']['hash'][:12]}) and is reported against "
+                      f"{golden['golden_version']} (hash {golden_hash(golden)[:12]}), so the answers are the ones given then and the reference "
+                      "answers are those of the later version.")
     if run["citecheck"].get("dirty"):
         limits.append("The run was made from an uncommitted working tree, so the recorded commit is the previous one, not the exact code.")
     repeats = len({r["repeat"] for r in run["records"]})
@@ -302,11 +308,11 @@ def build_report(run: dict, scores: dict, golden: dict, agreements=(), known_bad
     evidence = calibration_evidence(judge, list(agreements), list(known_bad))
     return {
         "report_version": REPORT_VERSION,
-        "title": f"{run['target']['name']} on {run['golden']['golden_version']}",
+        "title": f"{run['target']['name']} on {golden['golden_version']}",
         "run": {"run_id": run["run_id"], "label": run.get("label"), "created": run["created"], "citecheck": run["citecheck"],
                 "python": run.get("python")},
         "target": {"name": run["target"]["name"], "describe": run["target"]["describe"]},
-        "golden": {"version": run["golden"]["golden_version"], "hash": run["golden"]["hash"], "items": len(golden["items"]),
+        "golden": {"version": golden["golden_version"], "hash": golden_hash(golden), "items": len(golden["items"]),
                    "splits": dict(Counter(i["split"] for i in golden["items"])),
                    "categories": dict(Counter(i["category"] for i in golden["items"]))},
         "judge": judge,

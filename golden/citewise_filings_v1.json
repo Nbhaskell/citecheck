@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "golden_version": "citewise-filings-1.0.0",
+  "golden_version": "citewise-filings-1.1.0",
   "target": "citewise",
-  "notes": "Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and have not yet been reviewed by a person. A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.",
+  "notes": "Questions written by Claude from the SEC filings stored by Citewise for Markets, built by tools/build_citewise_golden.py from golden/citewise_questions_v1.json. Every item is split 'heldout': the target was not tuned on them, but they were written from the stored text, so they are unseen by the target, not blind to the corpus. Only filing text is used, because prices, headlines and the P/E change every night. Reference answers were drafted from the same text and then checked one by one by hand against the passages (none needed a change). A document id is the title Citewise gives its sources; its fingerprint identifies the filing, not its text. Unanswerable items are things the stored filings do not state, as far as searched.",
   "corpus": {
     "name": "citewise-stored-filings",
     "source": "https://github.com/Nbhaskell/citewise-markets",
