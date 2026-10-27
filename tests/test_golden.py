@@ -70,3 +70,21 @@ def test_passage_document_must_be_in_the_corpus(data):
 def test_unknown_field_is_rejected(data):
     item(data, "full-day-price")["answer_keywords"] = ["typo"]
     assert golden.validate(data)
+
+
+def test_a_probe_needs_no_evidence_but_cannot_claim_any_or_expect_a_refusal(data):
+    probe = item(data, "full-day-price")
+    probe["category"], probe["evidence"] = "probe", []
+    assert golden.validate(data) == []
+    probe["evidence"] = next(i["evidence"] for i in data["items"] if i is not probe and i["evidence"])
+    assert golden.validate(data)
+    probe["evidence"], probe["expected_abstain"] = [], True
+    assert golden.validate(data)
+
+
+def test_a_question_that_is_not_a_probe_still_needs_evidence_when_it_is_answerable(data):
+    answerable = item(data, "full-day-price")
+    answerable["evidence"] = []
+    assert golden.validate(data)
+    answerable["category"] = "probe"
+    assert golden.validate(data) == []

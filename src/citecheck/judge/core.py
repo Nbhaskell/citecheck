@@ -48,15 +48,15 @@ class Judge:
 
     def config(self) -> dict:
         """What identifies this judge; saved with every score that uses it."""
-        return {"model": self.model, "model_digest": self.digest, "prompt_version": prompts.PROMPT_VERSION,
-                **self.client.options()}
+        return {"model": self.model, "model_digest": self.digest, "prompt_version": prompts.version_label(),
+                "prompt_versions": dict(prompts.PROMPT_VERSIONS), **self.client.options()}
 
     def verdict(self, kind: str, **fields) -> dict:
         """One judge call. Returns {"verdict", <detail field>, "cached", "error"}; verdict is None on failure."""
         detail = DETAIL_FIELD[kind]
         failed = {"verdict": None, detail: None, "cached": False}
         messages = prompts.messages(kind, **fields)
-        key = cache_key(kind=kind, model=self.model, digest=self.digest, prompt_version=prompts.PROMPT_VERSION,
+        key = cache_key(kind=kind, model=self.model, digest=self.digest, prompt_version=prompts.PROMPT_VERSIONS[kind],
                         options=self.client.options(), messages=messages, schema=prompts.SCHEMAS[kind])
         reply = self.cache.get(key)
         cached = reply is not None
@@ -101,7 +101,7 @@ class Judge:
                                               reference=item["reference_answer"])
         return out
 
-    def judge_citations(self, question: str, response: TargetResponse, history=()) -> list[dict]:
+    def judge_citations(self, response: TargetResponse, history=()) -> list[dict]:
         """One verdict per sentence of the answer that carries markers, on whether the sources cited for it support it.
         A sentence whose markers match no listed source with an excerpt cannot be judged on those; it is reported with
         verdict None and the markers that were missing, and is judged on the sources that are there when any are."""
@@ -109,7 +109,7 @@ class Judge:
         for unit in citations.claim_units(response.answer, response.citations):
             result = {"sentence": unit["sentence"], "markers": unit["markers"], "missing": unit["missing"]}
             if unit["sources"]:
-                result.update(self.verdict("citation", question=question, statement=unit["sentence"],
+                result.update(self.verdict("citation", statement=unit["sentence"], previous=unit["previous"],
                                            cited=unit["sources"], history=history))
             else:
                 result.update({"verdict": None, "reasoning": None, "cached": False, "error": "no cited source to judge against"})

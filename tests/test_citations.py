@@ -76,6 +76,12 @@ def test_claim_units_pair_each_cited_sentence_with_its_source_excerpts():
     assert units[1]["sources"] == [(2, "Santa Clara text")] and units[1]["missing"] == [5]
 
 
+def test_a_claim_unit_carries_the_sentence_before_it_for_context():
+    answer = "AMD had 31,000 employees [1]. Of this, 9,000 work in sales [2]. A closing sentence with no marker."
+    units = citations.claim_units(answer, [cite(1, text="a"), cite(2, text="b")])
+    assert units[0]["previous"] == "" and units[1]["previous"] == "AMD had 31,000 employees [1]."
+
+
 def test_a_source_without_an_excerpt_is_reported_missing():
     units = citations.claim_units("AMD had 31,000 employees [1].", [Citation("d", marker="1", text=None)])
     assert units[0]["sources"] == [] and units[0]["missing"] == [1]
@@ -123,16 +129,27 @@ def test_the_judge_checks_each_cited_sentence_against_only_its_own_sources():
     judge = Judge(client, model="m", cache=NoCache())
     answer = TargetResponse(answer="AMD had 31,000 employees [1]. The wrong claim is made here [2].",
                             citations=[cite(1, text="we had 31,000 employees"), cite(2, text="we make chips")])
-    out = judge.judge_citations("How many employees?", answer)
+    out = judge.judge_citations(answer)
     assert [u["verdict"] for u in out] == ["supported", "unsupported"]
     first, second = [c["messages"][1]["content"] for c in client.calls]
     assert "[1] we had 31,000 employees" in first and "we make chips" not in first
     assert "[2] we make chips" in second and "we had 31,000" not in second
 
 
+def test_the_citation_judge_is_not_shown_the_question_but_is_shown_the_sentence_before():
+    client = FakeClient(citation_script)
+    judge = Judge(client, model="m", cache=NoCache())
+    answer = TargetResponse(answer="AMD had 31,000 employees [1]. Of this, 9,000 work in sales [2].",
+                            citations=[cite(1, text="we had 31,000 employees"), cite(2, text="9,000 in sales")])
+    judge.judge_citations(answer)
+    first, second = [c["messages"][1]["content"] for c in client.calls]
+    assert "<question>" not in first and "<question>" not in second and "<previous_sentence>" not in first
+    assert "<previous_sentence>\nAMD had 31,000 employees [1].\n</previous_sentence>\n\n<statement>" in second
+
+
 def test_a_sentence_whose_sources_are_all_missing_is_reported_not_judged():
     judge = Judge(FakeClient(citation_script), model="m", cache=NoCache())
-    out = judge.judge_citations("q", TargetResponse(answer="AMD had 31,000 employees [3].", citations=[cite(1)]))
+    out = judge.judge_citations(TargetResponse(answer="AMD had 31,000 employees [3].", citations=[cite(1)]))
     assert out[0]["verdict"] is None and out[0]["missing"] == [3] and out[0]["error"]
 
 

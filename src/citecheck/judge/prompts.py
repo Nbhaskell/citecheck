@@ -5,15 +5,29 @@ Four questions are put to the judge, each as a separate call so a verdict rests 
     abstention    did the answer decline to answer (say it does not know, or that the documents do not cover it)?
     faithfulness  is every claim in the answer supported by the passages the target retrieved?
     correctness   does the answer give the facts of the reference answer?
-    citation      do the sources cited for one sentence of the answer support that sentence?
+    citation      do the sources cited for one sentence of the answer support that sentence? (version 2 does not show the
+                  question, and shows the sentence before as context)
 
 Every reply is JSON that matches the schema below, with the explanation (or the list of unsupported claims) before the
-verdict so the model writes its reason first. PROMPT_VERSION is part of the cache key and is saved with every score:
-change a prompt or a schema, bump it.
+verdict so the model writes its reason first. Each verdict has its own prompt version, which is part of that verdict's cache
+key and is saved with every score: change a prompt or a schema, bump the version of that verdict only. The answer verdicts
+(abstention, faithfulness, correctness) and the citation verdict are calibrated separately, so a change to one leaves the
+calibration and the cached replies of the others valid.
 """
 from collections.abc import Sequence
 
-PROMPT_VERSION = "1"
+PROMPT_VERSIONS = {"abstention": "1", "faithfulness": "1", "correctness": "1", "citation": "2"}
+ANSWER_VERDICTS = ("abstention", "faithfulness", "correctness")
+CITATION_VERDICTS = ("citation",)
+
+
+def version_label() -> str:
+    """The versions as one string for display after "prompt v": the version most verdicts are at, then any verdict at another
+    one named, e.g. "1, citation 2"."""
+    versions = list(PROMPT_VERSIONS.values())
+    base = max(dict.fromkeys(versions), key=versions.count)
+    others = [f"{kind} {version}" for kind, version in PROMPT_VERSIONS.items() if version != base]
+    return ", ".join([base] + others)
 
 ABSTENTION = ("abstained", "answered", "partly_answered")
 FAITHFULNESS = ("supported", "partly_supported", "unsupported")
@@ -65,18 +79,25 @@ _SYSTEM = {
         "briefly, then the verdict."),
     "citation": (
         "You check whether the sources cited for one statement support that statement. " + _DATA_NOTE + "\n\n"
-        "You are given a STATEMENT taken from an answer, and the CITED SOURCES: the passages the answer pointed to with "
-        "the numbers at the end of the statement. Judge the statement against those sources only, taken together; ignore "
-        "anything you know from elsewhere and any source not shown. A statement is supported when the cited sources say "
-        "it or it follows directly from them (for example arithmetic on figures they give). Ignore the bracketed numbers "
-        "themselves. Judge only whether the sources back what the statement says: do not judge whether the statement answers "
-        "the question, is complete, or leaves something out.\n"
+        "You are given a STATEMENT, which is one sentence taken from a longer answer, and the CITED SOURCES: the passages the "
+        "answer pointed to with the numbers at the end of the statement. When the statement follows another sentence of the "
+        "answer, that PREVIOUS SENTENCE is shown only so that you can tell what words such as 'this' or 'it' refer to; it is "
+        "not evidence and is not what you are judging.\n"
+        "Check one thing: is what the statement itself says backed by the cited sources, either stated in them or following "
+        "directly from them (for example arithmetic on figures they give)? Use those sources only; ignore anything you know "
+        "from elsewhere and any source not shown. Ignore the bracketed numbers themselves.\n"
+        "A statement is one sentence and is not expected to be the whole answer: other sentences of the answer may give the "
+        "other parts. Never lower the verdict because the statement leaves out part of what could be said, makes no "
+        "comparison, gives no total, or says nothing about something else. Example: the statement says the first bakery has "
+        "12 ovens; a source says the first bakery has 12 ovens. The statement is supported, because it says only that and the "
+        "source says that.\n"
         "Verdict:\n"
-        "- supported: the cited sources back everything the statement claims.\n"
-        "- partly_supported: they back its main point but not a detail, or back only part of a statement with several "
-        "parts.\n"
+        "- supported: the cited sources back everything the statement says.\n"
+        "- partly_supported: they back its main point but not a detail the statement gives, such as a number or date they do "
+        "not state.\n"
         "- unsupported: they do not back its main point, or they say something different.\n"
-        "Reply as JSON: a short reasoning (one or two sentences), then the verdict."),
+        "Reply as JSON: a short reasoning (one or two sentences) that says what the statement claims and where the sources "
+        "state it, then the verdict."),
     "correctness": (
         "You compare an assistant's answer with a reference answer that is known to be correct. " + _DATA_NOTE + "\n\n"
         "Judge only whether the ANSWER states the same facts as the REFERENCE ANSWER for what the question asks: same "
@@ -99,15 +120,20 @@ def _history_lines(history: Sequence[dict]) -> str:
     return "\n".join(f"{turn['role']}: {turn['content']}" for turn in history)
 
 
-def messages(kind: str, *, question: str, answer: str = "", history: Sequence[dict] = (), reference: str = "",
-             passages: Sequence[str] = (), statement: str = "", cited: Sequence[tuple[int, str]] = ()) -> list[dict]:
-    """The chat messages for one judge call. A citation call takes the statement and its cited (number, excerpt) pairs
-    in place of an answer."""
+def messages(kind: str, *, question: str = "", answer: str = "", history: Sequence[dict] = (), reference: str = "",
+             passages: Sequence[str] = (), statement: str = "", cited: Sequence[tuple[int, str]] = (),
+             previous: str = "") -> list[dict]:
+    """The chat messages for one judge call. A citation call takes the statement, its cited (number, excerpt) pairs and the
+    sentence before it, in place of an answer, and is not shown the question: with it the judge marked down correctly
+    sourced sentences because they did not answer all of it (see the README's calibration of citation support)."""
     parts = []
     if history:
         parts.append(_block("earlier_conversation", _history_lines(history)))
-    parts.append(_block("question", question))
+    if kind != "citation":
+        parts.append(_block("question", question))
     if kind == "citation":
+        if previous.strip():
+            parts.append(_block("previous_sentence", previous))
         parts.append(_block("statement", statement))
         parts.append(_block("cited_sources", "\n\n".join(f"[{n}] {text.strip()}" for n, text in cited)))
         return [{"role": "system", "content": _SYSTEM[kind]}, {"role": "user", "content": "\n\n".join(parts)}]

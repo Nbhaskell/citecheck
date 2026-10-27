@@ -93,7 +93,8 @@
           "description": "tuned: the system's prompt or settings were adjusted while looking at these. heldout: written after tuning and not used to tune. unlabeled: no record either way."
         },
         "category": {
-          "enum": ["factual", "yes_no", "multi_topic", "edge_case", "follow_up", "unanswerable", "ambiguous", "conflicting"]
+          "enum": ["factual", "yes_no", "multi_topic", "edge_case", "follow_up", "unanswerable", "ambiguous", "conflicting", "probe"],
+          "description": "probe: a question asked only to collect answers for hand labelling or for checking a judge. It has no evidence or reference answer and is not scored for retrieval or correctness."
         },
         "question": {"type": "string", "minLength": 3},
         "follow_up_to": {
@@ -143,7 +144,11 @@
           "then": {"required": ["follow_up_to"], "properties": {"follow_up_to": {"type": "string"}}}
         },
         {
-          "if": {"properties": {"expected_abstain": {"const": false}, "category": {"not": {"const": "follow_up"}}}, "required": ["expected_abstain", "category"]},
+          "if": {"properties": {"category": {"const": "probe"}}, "required": ["category"]},
+          "then": {"properties": {"expected_abstain": {"const": false}, "evidence": {"maxItems": 0}}}
+        },
+        {
+          "if": {"properties": {"expected_abstain": {"const": false}, "category": {"not": {"enum": ["follow_up", "probe"]}}}, "required": ["expected_abstain", "category"]},
           "then": {"properties": {"evidence": {"minItems": 1}}}
         }
       ]

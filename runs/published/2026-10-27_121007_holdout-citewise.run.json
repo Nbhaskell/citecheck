@@ -1,0 +1,1481 @@
+{
+ "run_version": 1,
+ "run_id": "2026-10-27_121007_holdout-citewise",
+ "label": "holdout-citewise",
+ "created": "2026-10-27T12:10:07",
+ "citecheck": {
+  "version": "0.0.1",
+  "commit": "69841cd17f90dc6558cf54f1e300c392a2af7743",
+  "dirty": true
+ },
+ "python": "3.13.15",
+ "golden": {
+  "path": "golden/citewise_citation_holdout_v1.json",
+  "golden_version": "citewise-citation-holdout-1.0.0",
+  "hash": "6e675c19c6dd71cc8bf5f13f9b45e1aed06112f22a33512d18ac521cf5dd0f60"
+ },
+ "target": {
+  "name": "citewise",
+  "describe": {
+   "url": "http://127.0.0.1:8000",
+   "server": {
+    "status": "ok",
+    "database": true,
+    "ai_model": "ollama:qwen3:latest",
+    "ai_model_available": true
+   },
+   "companies": [
+    "AAPL",
+    "AMD",
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "NVDA",
+    "SIG",
+    "TSLA",
+    "XOM"
+   ],
+   "reports_retrieved": false,
+   "declared": {
+    "COPILOT_ROUTER": "default",
+    "COPILOT_LOG": "off"
+   }
+  }
+ },
+ "config": {
+  "k": null,
+  "repeats": 1,
+  "ids": null,
+  "splits": null
+ },
+ "records": [
+  {
+   "item_id": "amzn-nvda-employees-total",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "As of December 31, 2025, Amazon had approximately 1,576,000 full-time and part-time employees [2]. As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "2",
+      "text": "Human Capital\nOur employees are critical to our mission of being Earth’s most customer-centric company. As of December 31, 2025, we employed approximately 1,576,000 full-time and part-time employees. Additionally, we use independent contractors and temporary personnel to supplement our workforce. Competition for qualified personnel is intense, particularly for software engineers, computer scientists, and other technical staff (including for artificial intelligence and machine learning technologies), and constrained labor markets have increased competition for personnel across other parts of our business.",
+      "page": null
+     },
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "5",
+      "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 4.696,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN",
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many employees do Amazon and NVIDIA have in total?",
+      "human capital management employees headcount",
+      "legal proceedings litigation contingencies"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "2": "filing",
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "tsla-vs-aapl-employees",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "As of December 31, 2025, Tesla had 134,785 employees worldwide [4], while Apple had approximately 166,000 full-time equivalent employees as of September 27, 2025 [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "1",
+      "text": "Human Capital\nThe Company believes that its people play an important role in its success, and strives to attract, develop and retain the best talent. The Company works to create a culture of collaboration, one where people with a broad range of backgrounds and perspectives can come together to innovate and do the best work of their lives. The Company is an equal opportunity employer committed to inclusion and to providing a workplace free of harassment or discrimination. As of September 27, 2025, the Company had approximately 166,000 full-time equivalent employees.\nThe Company believes that compensation should be competitive and equitable, and offers discretionary cash and equity awards to enable employees to share in the Company’s success. The Company recognizes its people are most likely to thrive when they have the resources to meet their needs and the time and support to succeed in their professional and personal lives. In support of this, the Company offers a wide variety of benefits for employees around the world, including health, wellness and time away.",
+      "page": null
+     },
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "4",
+      "text": "companies making electric vehicles and the world.\nHuman Capital Resources\nTesla’s ability to attract, develop and retain a talented workforce is a competitive advantage. As of December 31, 2025, our employee headcount worldwide was 134,785.\nWe emphasize stock ownership opportunities, with 92% of employees included in total rewards packages, alongside industry-leading benefits like free counseling, paid parental leave, and comprehensive healthcare options available from day one. Hiring, evaluation, and promotion decisions are based on skills and performance, with over 29,000 employees globally advancing their careers in 2025, and 69% of managers promoted internally.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 3.828,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL",
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Which has more employees, Tesla or Apple, and by how many?",
+      "employee headcount comparison",
+      "human capital management employees headcount"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "tsla-googl-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Tesla is headquartered in Austin, Texas [4], and Alphabet is headquartered in Mountain View, California [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "GOOGL 10-K filed 2026-02-05",
+      "marker": "1",
+      "text": "Board\nfor consideration.\nSenior management regularly discusses cybersecurity risks and trends and, should they arise, any material incidents with the Risk and Compliance Committee. Internal Audit maintains a dedicated cybersecurity auditing team that independently tests our cybersecurity controls.\nOur business strategy, results of operations and financial condition have not been materially affected by risks from cybersecurity threats, including as a result of previously identified cybersecurity incidents, but we cannot provide assurance that they will not be materially affected in the future by such risks or any future material incidents\n. For more information on our cybersecurity related risks, see Item 1A Risk Factors of this Annual Report on Form 10-K.\nITEM 2.\nPROPERTIES\nOur headquarters are located in Mountain View, California. We own and lease office facilities and data centers around the world, primarily in Asia, Europe, and North America. We believe our existing facilities are in good condition and suitable for the conduct of our business.\nITEM 3.\nLEGAL PROCEEDINGS",
+      "page": null
+     },
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "4",
+      "text": "These individuals are informed about, and monitor the prevention, mitigation, detection and remediation of cybersecurity incidents through their management of, and participation in, the cybersecurity risk management and strategy processes described above, including the operation of our incident response plan, and report to the Audit Committee on any appropriate items.\nITEM 2. PROPERTIES\nWe are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.\nPrimary Manufacturing Facilities\nLocation\nOwned or Leased\nGigafactory Texas\nAustin, Texas\nOwned\nFremont Factory\nFremont, California\nOwned\nGigafactory Nevada\nSparks, Nevada\nOwned",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.231,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "GOOGL",
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where are Tesla and Alphabet each headquartered?",
+      "headquarters location",
+      "principal place of business"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amd-tsla-employees-total",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "As of December 27, 2025, AMD had approximately 31,000 employees [1], and as of December 31, 2025, Tesla had 134,785 employees [4]. Combined, AMD and Tesla had approximately 31,000 + 134,785 employees.",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "1",
+      "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry.",
+      "page": null
+     },
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "4",
+      "text": "companies making electric vehicles and the world.\nHuman Capital Resources\nTesla’s ability to attract, develop and retain a talented workforce is a competitive advantage. As of December 31, 2025, our employee headcount worldwide was 134,785.\nWe emphasize stock ownership opportunities, with 92% of employees included in total rewards packages, alongside industry-leading benefits like free counseling, paid parental leave, and comprehensive healthcare options available from day one. Hiring, evaluation, and promotion decisions are based on skills and performance, with over 29,000 employees globally advancing their careers in 2025, and 69% of managers promoted internally.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 3.988,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMD",
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many employees do AMD and Tesla have combined?",
+      "human capital management employees headcount",
+      "legal proceedings litigation contingencies"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "msft-amzn-employees-gap",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "The sources provided do not contain information about the number of employees for either Microsoft or Amazon. Therefore, the difference in their employee counts is not available [4][5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "4",
+      "text": "https://aka.ms/FinanceCodeProfessionalConduct\n. If we make any substantive amendments to the finance code of ethics or grant any waiver, including any implicit waiver, from a provision of the code to our Chief Executive Officer, Chief Financial Officer, or Chief Accounting Officer, we will disclose the nature of the amendment or waiver on that website or in a report on Form 8-K.\nWe will provide disclosure of delinquent Section 16(a) reports, if any, in our Proxy Statement under the caption “Delinquent Section 16(a) Reports,” and such disclosure, if any, is incorporated herein by reference.\nITEM 11. EXECUTI\nVE COMPENSATION\nThe information in the Proxy Statement set forth under the captions “Director Compensation,” “Named Executive Officer Compensation,” “Compensation Committee Report,” and, if required, “Compensation Committee Interlocks and Insider Participation,” is incorporated herein by reference.\n91\nPART III\nItem 12, 13, 14\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWN\nERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "5",
+      "text": "12\nItem 1A.\nRisk Factors\n14\nItem 1B.\nUnresolved Staff Comments\n29\nItem 1C.\nCybersecurity\n29\nItem 2.\nProperties\n31\nItem 3.\nLegal Proceedings\n31\nItem 4.\nMine Safety Disclosures\n31\nPART II\nItem 5.\nMarket for Registrant’s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities\n32\nItem 6.\n[Reserved]\n33\nItem 7.\nManagement’s Discussion and Analysis of Financial Condition and Results of Operations\n34\nItem 7A.\nQuantitative and Qualitative Disclosures About Market Risk\n49\nItem 8.\nFinancial Statements and Supplementary Data\n50\nItem 9.\nChanges in and Disagreements with Accountants on Accounting and Financial Disclosure\n89\nItem 9A.\nControls and Procedures\n89\nReport of Management on Internal Control over Financial Reporting\n89\nReport of Independent Registered Public Accounting Firm\n90\nItem 9B.\nOther Information\n91\nItem 9C.\nDisclosure Regarding Foreign Jurisdictions that Prevent Inspections\n91\nPART III\nItem 10.\nDirectors, Executive Officers, and Corporate Governance\n91\nItem 11.\nExecutive Compensation\n91\nItem 12.\nSecurity Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\n92\nItem 13.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.35,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN",
+      "MSFT"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What is the difference between Microsoft's and Amazon's number of employees?",
+      "employee headcount disclosure in 10-k",
+      "human capital management employees headcount disclosure"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "4": "filing",
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "googl-aapl-segments",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Alphabet's reportable segments are Google Services, Google Cloud, and Other Bets [6]. Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [1][3].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "1",
+      "text": "The Company offers payment services, including Apple Card\n®\n, a co-branded credit card, and Apple Pay\n®\n, a cashless payment service.\nSegments\nThe Company manages its business primarily on a geographic basis. The Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.\nMarkets and Distribution",
+      "page": null
+     },
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "3",
+      "text": "Substantially all of the Company’s hardware products are manufactured by outsourcing partners that are located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam.\nApple Inc. | 2025 Form 10-K | 46\nNote 13 –\nSegment Information and Geographic Data\nThe Company manages its business primarily on a geographic basis. The Company’s CEO is its CODM.\nThe Company’s reportable segments consist of the Americas, Europe, Greater China, Japan and Rest of Asia Pacific. Americas includes both North and South America. Europe includes European countries, as well as India, the Middle East and Africa. Greater China includes China mainland, Hong Kong and Taiwan. Rest of Asia Pacific includes Australia, New Zealand and those Asian countries not included in the Company’s other reportable segments. Although the reportable segments provide similar hardware and software products and similar services, each one is managed separately to better align with the location of the Company’s customers and distribution partners and the unique market dynamics of each geographic region.",
+      "page": null
+     },
+     {
+      "doc_id": "GOOGL 10-K filed 2026-02-05",
+      "marker": "6",
+      "text": "Understanding Alphabet’s Financial Results\nAlphabet is a collection of businesses — the largest of which is Google. We report Google in two segments, Google Services and Google Cloud, and all non-Google businesses collectively as Other Bets. Supporting these businesses, we have centralized certain AI-related research and development focused on advanced research in AI and developing the frontier models that serve our businesses, which is reported in Alphabet-level activities. For further details on our segments, see Part I, Item 1 Business and\nNote 15\nof the Notes to Consolidated Financial Statements included in Item 8 of this Annual Report on Form 10-K.\nTrends in Our Business and Financial Effect\nThe following long-term trends have contributed to the results of our consolidated operations, and we anticipate that they will continue to affect our future results:\n•\nAs we continue to grow our business and meet the evolving behaviors and needs of our users and customers, our revenue growth and mix along with our cost and margin profiles are being influenced by a number of factors, including:\nExpanded AI Offerings in our Products and Services:",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.675,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL",
+      "GOOGL"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Name Alphabet's reportable segments and Apple's reportable segments.",
+      "reportable segments disclosure",
+      "reportable segments and segment information"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "3": "filing",
+      "6": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "most-employees-amd-nvda-msft",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "The source information indicates that AMD had approximately 31,000 employees as of December 27, 2025 [1]. There is no specific figure provided for the number of employees at NVIDIA or Microsoft in the given sources. Therefore, based on the available data, AMD is stated to have the most employees with a count of approximately 31,000 [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "1",
+      "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.787,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMD",
+      "MSFT",
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Which of AMD, NVIDIA and Microsoft has the most employees, and how many does it have?",
+      "employee count section in 10-k or 10-q",
+      "human capital management employees headcount"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "nvda-segments-and-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "NVIDIA reports two segments: Compute & Networking and Graphics [1][5]. NVIDIA is headquartered in Santa Clara, California [3].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "NVDA 10-Q filed 2026-08-26",
+      "marker": "1",
+      "text": "Note 13 -\nSegment Information\nOur Chief Executive Officer is our chief operating decision maker, or CODM, and reviews financial information presented on an operating segment basis for purposes of making decisions and assessing financial performance. Our CODM assesses operating performance of each segment based on regularly provided segment revenue and segment operating income. Operating results by segment include costs or expenses directly attributable to each segment, and costs or expenses that are leveraged across our unified architecture and therefore allocated between our\ntwo\nsegments. Our CODM reviews expenses on a consolidated basis, and expenses attributable to each segment are not regularly provided to our CODM.\nThe Compute & Networking segment includes our Data Center accelerated computing and networking platforms and AI solutions and software, and automotive platforms and autonomous and electric vehicle solutions including software.\n21\nNVIDIA Corporation and Subsidiaries\nNotes to Condensed Consolidated Financial Statements (Continued)\n(Unaudited)\nThe Graphics segment includes GeForce GPUs for gaming and PCs, and Quadro/NVIDIA RTX GPUs for enterprise workstation graphics.",
+      "page": null
+     },
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "3",
+      "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II",
+      "page": null
+     },
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "5",
+      "text": "Our Businesses\nWe report our business results in two segments.\nThe Compute & Networking segment includes our Data Center accelerated computing and networking platforms and AI solutions and software, and Automotive platforms and autonomous and electric vehicle solutions including software.\nThe Graphics segment includes GeForce GPUs for gaming and PCs, and Quadro/NVIDIA RTX GPUs for enterprise workstation graphics.\nOur Markets\nWe specialize in markets where our computing and AI infrastructure platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnects, software, algorithms, systems, and services to deliver unique value. Our platforms address four large markets where our expertise is critical: Data Center, Gaming, Professional Visualization, and Automotive.\nData Center",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.499,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What are the two segments NVIDIA reports and where is NVIDIA headquartered?",
+      "What are the reportable operating segments of the company?",
+      "Where is the company's principal executive office located?"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "3": "filing",
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "googl-employees-and-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Alphabet had 190,820 employees as of December 31, 2025 [1]. The sources do not provide information about Alphabet's headquarters location.",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "GOOGL 10-K filed 2026-02-05",
+      "marker": "1",
+      "text": "As of December 31, 2025, Alphabet had\n190,820\nemployees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.691,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "GOOGL"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many employees does Alphabet have and where is it headquartered?",
+      "employee headcount and headquarters location",
+      "human capital management employees headcount and corporate headquarters location"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amzn-msft-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Amazon's corporate headquarters are located in Washington’s Puget Sound region [1], while Microsoft's corporate headquarters are located in Redmond, Washington [4].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "1",
+      "text": "4\nTable of Contents\nAvailable Information\nOur investor relations website is amazon.com/ir and we encourage investors to use it as a way of easily finding information about us. We promptly make available on this website, free of charge, the reports that we file or furnish with the Securities and Exchange Commission (“SEC”), corporate governance information (including our Code of Business Conduct and Ethics), and select press releases.\nExecutive Officers and Directors\nThe following tables set forth certain information regarding our Executive Officers and Directors as of January 28, 2026:\nInformation About Our Executive Officers\nName\nAge\nPosition\nJeffrey P. Bezos\n62\nExecutive Chair\nAndrew R. Jassy\n58\nPresident and Chief Executive Officer\nMatthew S. Garman\n49\nCEO Amazon Web Services\nDouglas J. Herrington\n59\nCEO Worldwide Amazon Stores\nBrian T. Olsavsky\n62\nSenior Vice President and Chief Financial Officer\nShelley L. Reynolds\n61\nVice President, Worldwide Controller, and Principal Accounting Officer\nDavid A. Zapolsky\n62\nSenior Vice President, Chief Global Affairs & Legal Officer\nJeffrey P. Bezos.",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "4",
+      "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.157,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN",
+      "MSFT"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where are Amazon and Microsoft headquartered?",
+      "headquarters location",
+      "corporate office address"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amzn-segments-and-employees",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Amazon's segments are North America, International, and Amazon Web Services (AWS) [1][2][5]. As of December 31, 2025, Amazon had approximately 1,576,000 full-time and part-time employees [6].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-Q filed 2026-07-31",
+      "marker": "1",
+      "text": "segments: North America, International, and AWS. We allocate to segment results the operating expenses “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” and “General and administrative” based on usage, which is generally reflected in the segment in which the costs are incurred. The majority of technology costs recorded in “Technology and infrastructure” are incurred in the U.S. and are included in our North America and AWS segments. The majority of infrastructure costs recorded in “Technology and infrastructure” are allocated to the AWS segment based on usage. There are no internal revenue transactions between our reportable segments. Our chief operating decision maker (“CODM”) is our President and Chief Executive Officer. Our CODM regularly reviews consolidated net sales, consolidated operating expenses, and consolidated operating income (loss) by segment. Amounts included in consolidated operating expenses include “Cost of sales,” “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” “General and administrative,” and “Other operating expense (income), net.” Our CODM manages our business primarily by reviewing consolidated results by segment",
+      "page": null
+     },
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "2",
+      "text": "We have organized our operations into three segments: North America, International, and Amazon Web Services (“AWS”). These segments reflect the way the Company evaluates its business performance and manages its operations. Information on our net sales is contained in Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.”\nConsumers",
+      "page": null
+     },
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "5",
+      "text": "We seek to be Earth’s most customer-centric company. In each of our segments, we serve our primary customer sets, consisting of consumers, sellers, developers, enterprises, content creators, advertisers, and employees. We serve consumers through our online and physical stores and focus on selection, price, and convenience. We offer programs that enable sellers to grow their businesses, sell their products in our stores, and fulfill orders using our services, and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. We serve developers and enterprises of all sizes through AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, artificial intelligence and machine learning, and other services. We also manufacture and sell electronic devices. In addition, we provide advertising services to sellers, vendors, publishers, authors, and others, through programs such as sponsored ads, display, and video advertising.\nWe have organized our operations into\nthree\nsegments: North America, International, and AWS.",
+      "page": null
+     },
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "6",
+      "text": "Human Capital\nOur employees are critical to our mission of being Earth’s most customer-centric company. As of December 31, 2025, we employed approximately 1,576,000 full-time and part-time employees. Additionally, we use independent contractors and temporary personnel to supplement our workforce. Competition for qualified personnel is intense, particularly for software engineers, computer scientists, and other technical staff (including for artificial intelligence and machine learning technologies), and constrained labor markets have increased competition for personnel across other parts of our business.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.508,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What are Amazon's segments and how many employees does it have?",
+      "business segments description",
+      "human capital management employees headcount"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "2": "filing",
+      "5": "filing",
+      "6": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "msft-aapl-employees-gap",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Microsoft has approximately 223,000 full-time employees as of June 30, 2026 [4], while Apple has approximately 166,000 full-time equivalent employees as of September 27, 2025 [1]. The sources do not provide a direct comparison of the number of employees between Microsoft and Apple.",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "1",
+      "text": "Human Capital\nThe Company believes that its people play an important role in its success, and strives to attract, develop and retain the best talent. The Company works to create a culture of collaboration, one where people with a broad range of backgrounds and perspectives can come together to innovate and do the best work of their lives. The Company is an equal opportunity employer committed to inclusion and to providing a workplace free of harassment or discrimination. As of September 27, 2025, the Company had approximately 166,000 full-time equivalent employees.\nThe Company believes that compensation should be competitive and equitable, and offers discretionary cash and equity awards to enable employees to share in the Company’s success. The Company recognizes its people are most likely to thrive when they have the resources to meet their needs and the time and support to succeed in their professional and personal lives. In support of this, the Company offers a wide variety of benefits for employees around the world, including health, wellness and time away.",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "4",
+      "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 3.443,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL",
+      "MSFT"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many more employees does Microsoft have than Apple?",
+      "employee headcount comparison",
+      "human capital management employee count difference"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "aapl-amd-nvda-employees-total",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Apple has approximately 166,000 full-time equivalent employees [2], AMD has approximately 31,000 employees [3], and NVIDIA has approximately 42,000 employees [6].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "2",
+      "text": "Human Capital\nThe Company believes that its people play an important role in its success, and strives to attract, develop and retain the best talent. The Company works to create a culture of collaboration, one where people with a broad range of backgrounds and perspectives can come together to innovate and do the best work of their lives. The Company is an equal opportunity employer committed to inclusion and to providing a workplace free of harassment or discrimination. As of September 27, 2025, the Company had approximately 166,000 full-time equivalent employees.\nThe Company believes that compensation should be competitive and equitable, and offers discretionary cash and equity awards to enable employees to share in the Company’s success. The Company recognizes its people are most likely to thrive when they have the resources to meet their needs and the time and support to succeed in their professional and personal lives. In support of this, the Company offers a wide variety of benefits for employees around the world, including health, wellness and time away.",
+      "page": null
+     },
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "3",
+      "text": "Human Capital\nAs of December 27, 2025, we had approximately 31,000 employees in our global workforce. We believe we are at our best when our culture of innovation and people from all kinds of backgrounds work together in an engaging and open environment. Areas of focus for us include:\nMission, Culture, and Engagement\nFounded in 1969 as a Silicon Valley start-up, the AMD journey began with dozens of employees focused on leading-edge semiconductor products. From those modest beginnings, we have grown into a global company achieving many important industry firsts along the way. Today, we develop AI and high-performance computing to solve some of the world’s toughest challenges.\nOur Vision - High performance and adaptive computing is transforming our lives.\nOur Mission - Build great products that accelerate next-generation computing experiences.\nOur employees are driven by this vision and mission. Innovation occurs when creative minds and diverse perspectives work together. This is the foundation of our unique culture and the reason we believe our employees are among the most engaged in our industry.",
+      "page": null
+     },
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "6",
+      "text": "Human Capital Management\nAs of the end of fiscal year 2026, we had approximately 42,000 employees in 38 countries; 31,000 were engaged in research and development and 11,000 were engaged in sales, marketing, operations, and administrative positions.\nTo execute our business strategy successfully, we focus on recruiting, developing, and retaining top global talent.\nWithin our workforce, more than 80 percent have technical roles and more than half of the workforce hold an advanced degree. Our employees also help to surface top talent, with over 40 percent of our new hires in fiscal year 2026 coming from employee referrals. In fiscal year 2026, our turnover rate was 3.7 percent.\nWe invest in employee development through on-the-job trainings and tuition reimbursement programs.\nOur compensation and benefits are designed to reward performance and align employee interests with those of our shareholders through equity participation and comprehensive health and financial wellness programs. We also utilize employee listening systems to gather feedback and maintain an inclusive culture where hiring and promotions are based on merit.\nInformation About Our Executive Officers",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.94,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL",
+      "AMD",
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many employees do Apple, AMD and NVIDIA have combined?",
+      "human capital management employees headcount",
+      "legal proceedings litigation contingencies"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "2": "filing",
+      "3": "filing",
+      "6": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "tsla-segments",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Tesla's reportable segments are (i) automotive and (ii) energy generation and storage [1][2].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "1",
+      "text": "Our mission is building a world of amazing abundance. We believe that this mission, along with our engineering expertise, advancements in real-world AI, vertically integrated business model, and focus on user experience differentiate us from other companies.\nSegment Information\nWe operate as two reportable segments: (i) automotive and (ii) energy generation and storage.\nThe automotive segment includes the design, development, manufacturing, sales and leasing of high-performance fully electric vehicles as well as sales of automotive regulatory credits. Additionally, the automotive segment also includes services and other, which includes sales of used vehicles, non-warranty maintenance services and collision, paid Supercharging sessions, automotive insurance business revenue, part sales and retail merchandise sales. The energy generation and storage segment includes sales, leasing, and financing of energy generation and storage products, services related to such products and sales of energy generation incentives.\nOur Products and Services\nAutomotive",
+      "page": null
+     },
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "2",
+      "text": "Our Chief Executive Officer, as the CODM, organizes our company, manages resource allocations and measures performance among\ntwo\noperating and reportable segments: (i) automotive and (ii) energy generation and storage. The automotive segment includes the design, development, manufacturing, sales and leasing of electric vehicles as well as sales of automotive regulatory credits. Additionally, the automotive segment also includes services and other, which includes sales of used vehicles, non-warranty maintenance services and collision, paid Supercharging sessions, automotive insurance business revenue, part sales and retail merchandise sales. The energy generation and storage segment includes the design, manufacture, installation, sales and leasing of energy generation and storage products and related services and sales of energy generation incentives.\nOur CODM does not evaluate operating segments using asset or liability information. The CODM uses gross profit to allocate operating and capital resources and assesses performance of each segment by comparing actual gross profit results to historical results and previously forecasted financial information.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.185,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What are Tesla's reportable segments?",
+      "reportable segments disclosure",
+      "segments and related information"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "2": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amzn-segments",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Amazon reports three segments: North America, International, and Amazon Web Services (“AWS”) [1][2].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "1",
+      "text": "We have organized our operations into three segments: North America, International, and Amazon Web Services (“AWS”). These segments reflect the way the Company evaluates its business performance and manages its operations. Information on our net sales is contained in Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.”\nConsumers",
+      "page": null
+     },
+     {
+      "doc_id": "AMZN 10-Q filed 2026-07-31",
+      "marker": "2",
+      "text": "segments: North America, International, and AWS. We allocate to segment results the operating expenses “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” and “General and administrative” based on usage, which is generally reflected in the segment in which the costs are incurred. The majority of technology costs recorded in “Technology and infrastructure” are incurred in the U.S. and are included in our North America and AWS segments. The majority of infrastructure costs recorded in “Technology and infrastructure” are allocated to the AWS segment based on usage. There are no internal revenue transactions between our reportable segments. Our chief operating decision maker (“CODM”) is our President and Chief Executive Officer. Our CODM regularly reviews consolidated net sales, consolidated operating expenses, and consolidated operating income (loss) by segment. Amounts included in consolidated operating expenses include “Cost of sales,” “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” “General and administrative,” and “Other operating expense (income), net.” Our CODM manages our business primarily by reviewing consolidated results by segment",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.417,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What segments does Amazon report?",
+      "business segments reported in 10-k",
+      "segment disclosures under management discussion and analysis"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "2": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "googl-segments",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Alphabet's reportable segments are Google Services, Google Cloud, and Other Bets [5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "GOOGL 10-Q filed 2026-07-23",
+      "marker": "5",
+      "text": "•\ncorporate initiatives such as our philanthropic activities; and\n•\ncorporate shared costs such as certain finance, human resource, and legal costs, including certain fines and settlements.\nCharges associated with employee severance and office space reductions are also not allocated to our segments. Additionally, hedging gains (losses) related to revenue are not allocated to our segments.\nOur Chief Operating Decision Maker (CODM) is our Chief Executive Officer, Sundar Pichai. Our CODM uses segment operating income (loss) to allocate resources to our segments in our annual planning process and to assess the performance of our segments, primarily by monitoring actual results versus the annual plan. Our operating segments are not evaluated using asset information.\nThe following\ntable presents revenue, profitability, and expense information about our segments (in millions):\nThree Months Ended\nSix Months Ended\nJune 30,\nJune 30,\n2025\n2026\n2025\n2026\nRevenues:\nGoogle Services\n$\n82,543\n$\n94,540\n$\n159,807\n$\n184,177\nGoogle Cloud\n13,624\n24,768\n25,884\n44,796\nOther Bets\n373\n382\n823\n793\nHedging gains (losses)\n(\n112\n)\n106\n148\n(\n74\n)\nTotal revenues\n$\n96,428\n$\n119,796\n$\n186,662\n$\n229,692",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.356,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "GOOGL"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What are Alphabet's reportable segments?",
+      "reportable segments business segments",
+      "segments operating segments financial statement disclosures"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "nvda-incorporated",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998 [6].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "NVDA 10-Q filed 2026-08-26",
+      "marker": "6",
+      "text": "Overview\nOur Company and Our Businesses\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries.\nOur two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information.\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\nRecent Developments, Future Objectives and Challenges",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.082,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "When and where was NVIDIA incorporated?",
+      "incorporation date and state",
+      "corporate structure and jurisdiction of incorporation"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "6": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amd-fiscal-year",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "The end date of AMD's most recent fiscal year is December 27, 2025 [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "1",
+      "text": "NOTE 2 –\nBasis of Presentation and Significant Accounting Policies\nFiscal Year\n. The Company uses a 52- or 53-week fiscal year ending on the last Saturday in December. Fiscal years 2025, 2024 and 2023 ended on December 27, 2025, December 28, 2024 and December 30, 2023, respectively. Fiscal years 2025, 2024 and 2023 each consisted of 52 weeks.\nPrinciples of Consolidation.\nThe Consolidated Financial Statements include the Company’s accounts and those of its wholly-owned subsidiaries.\nReclassification and Change in Presentation.\nCertain amounts from fiscal years 2024 and 2023 were reclassified to conform to current period presentation. These include the balance sheet presentation of Receivables from related parties within Prepaid expenses and other current assets, Operating lease right-of-use assets and Investment: equity method within Other non-current assets, and Payables to related parties within Accounts payable.\nUse of Estimates.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.285,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMD"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What is the end date of AMD's most recent fiscal year?",
+      "fiscal year end date",
+      "most recent fiscal year end date"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amzn-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Amazon is headquartered in Washington’s Puget Sound region and Arlington, Virginia [2].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "2",
+      "text": "[Units stated just before this table: (in thousands)]\nDescription of Use\nLeased Square Footage (1)\nOwned Square Footage\nLocation\nOffice space\n31,028\n9,160\nNorth America\nOffice space\n26,495\n1,802\nInternational\nPhysical stores (2)\n23,932\n706\nNorth America\nPhysical stores (2)\n148\n—\nInternational\nFulfillment, data centers, and other\n474,128\n45,803\nNorth America\nFulfillment, data centers, and other\n185,814\n20,660\nInternational\nTotal\n741,545\n78,131\n___________________\n(1)\nFor leased properties, represents the total leased space excluding sub-leased space.\n(2)\nThis includes 615 North America and 8 International stores as of December 31, 2025.\nSegment\nLeased Square Footage (1)\nOwned Square Footage (1)\nNorth America\n481,153\n25,437\nInternational\n174,499\n13,263\nAWS\n28,370\n28,469\nTotal\n684,022\n67,169\n___________________\n(1)\nSegment amounts exclude corporate facilities. Shared facilities are allocated among the segments based on usage and primarily relate to facilities that hold our technology infrastructure. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.”\nWe own and lease our corporate headquarters in Washington’s Puget Sound region and Arlington, Virginia.\nItem 3.\nLegal Proceedings",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.826,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where is Amazon headquartered?",
+      "corporate headquarters location",
+      "principal place of business"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "2": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "googl-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Alphabet Inc. is headquartered in Mountain View, California [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "GOOGL 10-K filed 2026-02-05",
+      "marker": "1",
+      "text": "Board\nfor consideration.\nSenior management regularly discusses cybersecurity risks and trends and, should they arise, any material incidents with the Risk and Compliance Committee. Internal Audit maintains a dedicated cybersecurity auditing team that independently tests our cybersecurity controls.\nOur business strategy, results of operations and financial condition have not been materially affected by risks from cybersecurity threats, including as a result of previously identified cybersecurity incidents, but we cannot provide assurance that they will not be materially affected in the future by such risks or any future material incidents\n. For more information on our cybersecurity related risks, see Item 1A Risk Factors of this Annual Report on Form 10-K.\nITEM 2.\nPROPERTIES\nOur headquarters are located in Mountain View, California. We own and lease office facilities and data centers around the world, primarily in Asia, Europe, and North America. We believe our existing facilities are in good condition and suitable for the conduct of our business.\nITEM 3.\nLEGAL PROCEEDINGS",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.86,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "GOOGL"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where is Alphabet headquartered?",
+      "Corporate headquarters location",
+      "Principal place of business"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "nvda-competitors",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "NVIDIA names the following companies as its competitors: Advanced Micro Devices, Inc. (AMD), Huawei Technologies Co. Ltd. (Huawei), and Intel Corporation (Intel) [1]. These competitors provide or intend to provide GPUs, CPUs, DPUs, embedded SoCs, and other accelerated, AI computing processor products [1].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "1",
+      "text": "A significant source of competition comes from companies that provide or intend to provide GPUs, CPUs, DPUs, embedded SoCs, and other accelerated, AI computing processor products, and providers of semiconductor-based high-performance interconnect products based on InfiniBand, Ethernet, Fibre Channel, and proprietary technologies. Some of our competitors may have greater marketing, financial, distribution and manufacturing resources than we do and may be more able to adapt to customers or technological changes. We expect an increasingly competitive environment in the future.\nOur current competitors include:\n•\nsuppliers and licensors of hardware and software for discrete and integrated GPUs, custom chips and other accelerated computing solutions, including solutions offered for AI, such as Advanced Micro Devices, Inc., or AMD, Huawei Technologies Co. Ltd., or Huawei, and Intel Corporation, or Intel;\n•",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.576,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Who does NVIDIA name as its competitors?",
+      "competitors listed in human capital management employees headcount",
+      "competitors mentioned in legal proceedings litigation contingencies"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "msft-competitors",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Microsoft names several competitors in its filings, including:\n\n- Various computer, tablet, and hardware manufacturers that offer a unique combination of high-quality industrial design and innovative technologies across various price points [1].\n- Online gaming ecosystems and game streaming services that compete with Microsoft's XBOX and cloud gaming services [1].\n- Search engines and a wide array of websites, social platforms, and portals that provide content and online offerings to end users [1].\n- Competing platforms developed for new types of devices, including smartphones and tablets [6].\n- Companies that compete with Microsoft based on a growing variety of business models [4][5].\n\nThese competitors are mentioned in the context of different business areas such as devices, gaming, search advertising, and operating systems.",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "1",
+      "text": "Devices face competition from various computer, tablet, and hardware manufacturers who offer a unique combination of high-quality industrial design and innovative technologies across various price points. Many of these manufacturers are also current or potential partners and customers, including our Windows OEMs.\nXBOX and our cloud gaming services face competition from various online gaming ecosystems and game streaming services. Our gaming platform competes with other console platforms. We believe our gaming platform is effectively positioned against, and uniquely differentiated from, competitive products and services based on significant innovation in hardware architecture, user interface, developer tools, online gaming and entertainment services, and continued strong content from our own first-party game franchises as well as other digital content offerings.\nOur Search advertising business competes with search engines, and a wide array of websites, social platforms, and portals that provide content and online offerings to end users.\nHUMAN CAPITAL RESOURCES",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "4",
+      "text": "•\nCompeting platforms have content and application marketplaces with scale and significant installed bases. The variety and utility of content and applications available on a platform are important to device purchasing decisions. Users may incur costs to move data and buy new content and applications when switching platforms. To compete successfully, we must enlist developers to write applications for our platform and ensure that these applications have high quality, security, customer appeal, and value. Efforts to compete with competitors’ content and application marketplaces may increase our cost of revenue and lower our operating margins. Competitors’ rules governing their content and applications marketplaces may restrict our ability to distribute products and services through them in accordance with our technical and business model objectives.\n14\nPART I\nItem 1A\nFor all of these reasons, we may not be able to compete successfully against our current and future competitors, which could adversely affect our business, operations, financial condition, and results of operations.\nBusiness model competition\nCompanies compete with us based on a growing variety of business models.\n•",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "5",
+      "text": "Competition in the technology sector\nOur competitors range in size from diversified global companies with significant research and development resources to small, specialized firms who may be more effective in deploying technical, marketing, and financial resources. Barriers to entry in many of our businesses are low and many of the areas in which we compete evolve rapidly with changing and disruptive technologies, shifting user needs, and frequent introductions of new products and services. If we do not continue to innovate and provide products, devices, and services that appeal to businesses and consumers, we may not remain competitive, which could adversely affect our business, financial condition, and results of operations.\nCompetition among platform-based ecosystems",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "6",
+      "text": "•\nWe derive substantial revenue from licenses of Windows operating systems on PCs. We face significant competition from competing platforms developed for new types of devices, including smartphones and tablets. These devices compete on multiple bases including price and the perceived utility of the device and its platform. Users continue to turn to these devices to perform functions that in the past were performed by PCs. Even if many users view these devices as complementary to a PC, the prevalence of these devices may make it more difficult to attract application developers to our PC operating system platforms. Competing with operating systems licensed at low or no cost may decrease our PC operating system margins. Popular products or services offered on competing platforms could increase their competitive strength. In addition, some of our devices compete with products made by our OEM partners, which may affect their commitment to our platform.\n•",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.763,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "MSFT"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Which companies does Microsoft name as competitors in its filing?",
+      "competitors mentioned in the filing",
+      "competitors listed in the 10-K or 10-Q"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing",
+      "5": "filing",
+      "6": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "aapl-exchange",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Apple Inc.'s shares are listed on The Nasdaq Stock Market LLC [1][3].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "1",
+      "text": "aapl-20250927\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM\n10-K\n(Mark One)\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended\nSeptember 27\n, 2025\nor\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from\nto\n.\nCommission File Number:\n001-36743\nApple Inc.\n(Exact name of Registrant as specified in its charter)\nCalifornia\n94-2404110\n(State or other jurisdiction\nof incorporation or organization)\n(I.R.S. Employer Identification No.)\nOne Apple Park Way\nCupertino\n,\nCalifornia\n95014\n(Address of principal executive offices)\n(Zip Code)\n(\n408\n)\n996-1010\n(Registrant’s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading symbol(s)\nName of each exchange on which registered\nCommon Stock, $0.00001 par value per share\nAAPL\nThe Nasdaq Stock Market LLC\n0.000% Notes due 2025\n—\nThe Nasdaq Stock Market LLC\n1.625% Notes due 2026\n—\nThe Nasdaq Stock Market LLC\n2.000% Notes due 2027\n—\nThe Nasdaq Stock Market LLC\n1.375% Notes due 2029\n—\nThe Nasdaq Stock Market LLC",
+      "page": null
+     },
+     {
+      "doc_id": "AAPL 10-Q filed 2026-07-31",
+      "marker": "3",
+      "text": "aapl-20260627\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM\n10-Q\n(Mark One)\n☒\nQUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended\nJune 27, 2026\nor\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from\nto\n.\nCommission File Number:\n001-36743\nApple Inc.\n(Exact name of Registrant as specified in its charter)\nCalifornia\n94-2404110\n(State or other jurisdiction\nof incorporation or organization)\n(I.R.S. Employer Identification No.)\nOne Apple Park Way\nCupertino\n,\nCalifornia\n95014\n(Address of principal executive offices)\n(Zip Code)\n(\n408\n)\n996-1010\n(Registrant’s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading symbol(s)\nName of each exchange on which registered\nCommon Stock, $0.00001 par value per share\nAAPL\nThe Nasdaq Stock Market LLC\n1.625% Notes due 2026\n—\nThe Nasdaq Stock Market LLC\n2.000% Notes due 2027\n—\nThe Nasdaq Stock Market LLC\n1.375% Notes due 2029\n—\nThe Nasdaq Stock Market LLC\n3.050% Notes due 2029\n—\nThe Nasdaq Stock Market LLC",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.016,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "On which stock exchange are Apple's shares listed?",
+      "stock exchange where shares are listed",
+      "listing details and stock exchange information"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "3": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "tsla-exchange",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Tesla's common stock is listed on The NASDAQ Global Select Market [5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "5",
+      "text": "28\nPART II\nITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nMarket Information\nOur common stock has traded on The NASDAQ Global Select Market under the symbol “TSLA” since it began trading on June 29, 2010. Our initial public offering was priced at approximately $1.13 per share on June 28, 2010 as adjusted to give effect to the three-for-one stock split effected in the form of a stock dividend in August 2022 and the five-for-one stock split effected in the form of a stock dividend in August 2020.\nHolders\nAs of January 23, 2026, there were 9,797 holders of record of our common stock. A substantially greater number of holders of our common stock are “street name” or beneficial holders, whose shares are held by banks, brokers and other financial institutions.\nDividend Policy",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.043,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "On which stock exchange is Tesla's common stock listed?",
+      "stock exchange where common stock is listed",
+      "listing details for common stock"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amzn-buyback",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Amazon describes a stock repurchase authorization of up to $10.0 billion of common stock, authorized in March 2022, with no fixed expiration [1]. As of December 31, 2025, $6.1 billion remains under the repurchase program [1]. As of June 30, 2026, the remaining amount under the repurchase program is also stated as $6.1 billion [2].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMZN 10-K filed 2026-02-06",
+      "marker": "1",
+      "text": "See also “Note 9 — Income Taxes.”\n61\nTable of Contents\nNote 8 —\nSTOCKHOLDERS’ EQUITY\nPreferred Stock\nWe have authorized\n500\nmillion shares of $\n0.01\npar value preferred stock.\nNo\npreferred stock was outstanding for any year presented.\nCommon Stock\nCommon shares outstanding plus shares underlying outstanding stock awards totaled\n10.8\nbillion,\n10.9\nbillion, and\n11.0\nbillion, as of December 31, 2023, 2024, and 2025. These totals include all vested and unvested stock awards outstanding, including those awards we estimate will be forfeited.\nStock Repurchase Activity\nIn March 2022, the Board of Directors authorized a program to repurchase up to $\n10.0\nbillion of our common stock, with no fixed expiration. There were\nno\nrepurchases of our common stock in 2023, 2024, or 2025. As of December 31, 2025, we have $\n6.1\nbillion remaining under the repurchase program.\nStock Award Plans\nEmployees vest in restricted stock unit awards over the corresponding service term, generally between\ntwo\nand\nfive years",
+      "page": null
+     },
+     {
+      "doc_id": "AMZN 10-Q filed 2026-07-31",
+      "marker": "2",
+      "text": "Standby letters of credit are guarantees issued by financial institutions on our behalf, which can only be drawn in the event we fail to perform under the underlying obligation, and do not reduce the amount of borrowings available under our credit facilities. As of June 30, 2026, our total standby letter of credit facilities assigned to specific beneficiaries was $\n13.4\nbillion, primarily related to our payment-related services, and workers’ compensation and insurance programs.\nNote 6 —\nSTOCKHOLDERS’ EQUITY\nStock Repurchase Activity\nIn March 2022, the Board of Directors authorized a program to repurchase up to $\n10.0\nbillion of our common stock, with no fixed expiration. There were\nno\nrepurchases of our common stock during the six months ended June 30, 2025 or 2026. As of June 30, 2026, we have $\n6.1\nbillion remaining under the repurchase program.\nStock Award Plans\nEmployees vest in restricted stock unit awards over the corresponding service term, generally between\ntwo\nand\nfive years",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 3.103,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMZN"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "What stock repurchase authorization does Amazon describe, and how much remains?",
+      "stock repurchase program authorization details",
+      "remaining shares available for repurchase under share repurchase program"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "2": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "googl-share-classes",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "The sources provided do not specify the classes of common stock that Alphabet has. Therefore, this information is not available from the given sources.",
+    "retrieved": [],
+    "citations": [],
+    "abstained": false,
+    "latency_s": 0.611,
+    "error": null,
+    "raw": {
+     "grounded": false,
+     "companies": [
+      "GOOGL"
+     ],
+     "evidence_kinds": [
+      "price"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [],
+     "interpreted_question": null,
+     "source_kinds": {}
+    }
+   }
+  },
+  {
+   "item_id": "tsla-employees-and-segments",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "As of December 31, 2025, Tesla has 134,785 employees worldwide [3]. Tesla operates as two reportable segments: (i) automotive and (ii) energy generation and storage [2].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "2",
+      "text": "Our mission is building a world of amazing abundance. We believe that this mission, along with our engineering expertise, advancements in real-world AI, vertically integrated business model, and focus on user experience differentiate us from other companies.\nSegment Information\nWe operate as two reportable segments: (i) automotive and (ii) energy generation and storage.\nThe automotive segment includes the design, development, manufacturing, sales and leasing of high-performance fully electric vehicles as well as sales of automotive regulatory credits. Additionally, the automotive segment also includes services and other, which includes sales of used vehicles, non-warranty maintenance services and collision, paid Supercharging sessions, automotive insurance business revenue, part sales and retail merchandise sales. The energy generation and storage segment includes sales, leasing, and financing of energy generation and storage products, services related to such products and sales of energy generation incentives.\nOur Products and Services\nAutomotive",
+      "page": null
+     },
+     {
+      "doc_id": "TSLA 10-K filed 2026-01-29",
+      "marker": "3",
+      "text": "companies making electric vehicles and the world.\nHuman Capital Resources\nTesla’s ability to attract, develop and retain a talented workforce is a competitive advantage. As of December 31, 2025, our employee headcount worldwide was 134,785.\nWe emphasize stock ownership opportunities, with 92% of employees included in total rewards packages, alongside industry-leading benefits like free counseling, paid parental leave, and comprehensive healthcare options available from day one. Hiring, evaluation, and promotion decisions are based on skills and performance, with over 29,000 employees globally advancing their careers in 2025, and 69% of managers promoted internally.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.52,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "TSLA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "How many employees does Tesla have and what are its segments?",
+      "employee headcount by segment",
+      "segments and operating segments disclosure"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "2": "filing",
+      "3": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "amd-aapl-hq",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Apple Inc. is headquartered in Cupertino, California [1]. AMD is headquartered in Santa Clara, California [5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AAPL 10-K filed 2025-10-31",
+      "marker": "1",
+      "text": "For a discussion of the Company’s cybersecurity-related risks, see Item 1A of this Form 10-K under the heading “Risk Factors.”\nItem 2. Properties\nThe Company’s headquarters is located in Cupertino, California. As of September 27, 2025, the Company owned or leased facilities and land for corporate functions, R&D, data centers, retail and other purposes at locations throughout the U.S. and in various places outside the U.S. The Company believes its existing facilities and equipment, which are used by all reportable segments, are in good operating condition and are suitable for the conduct of its business.\nApple Inc. | 2025 Form 10-K | 17\nItem 3. Legal Proceedings\nDigital Markets Act Investigations",
+      "page": null
+     },
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "5",
+      "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 1.975,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AAPL",
+      "AMD"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where are AMD and Apple each headquartered?",
+      "headquarters location",
+      "principal executive office address"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "5": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "nvda-amd-sqft",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "NVIDIA reports 3 million square feet of office and building space for its corporate headquarters, as stated in its 10-K filing [4]. AMD reports approximately 6.8 million square feet of space for research and development, engineering, administrative, and warehouse use worldwide [1]. Therefore, AMD reports more square feet of space compared to NVIDIA.",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "AMD 10-K filed 2026-02-04",
+      "marker": "1",
+      "text": "ITEM 2. PROPERTIES\nAs of December 27, 2025, we have approximately 6.8 million square feet of space for research and development, engineering, administrative and warehouse use throughout the world. These facilities include approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space. Our headquarters are located in Santa Clara, California, and we have significant operations in Austin, Texas; San Jose, California; Shanghai, China; Markham, Ontario, Canada; Longmont, Colorado; Dublin, Ireland; Singapore; and Bengaluru and Hyderabad, India. We also have a number of regional sales offices located in commercial centers near customers, principally in the United States, Europe, Asia and Latin America.\nWe currently do not anticipate difficulty in either retaining occupancy of any of our facilities through lease renewals prior to expiration or through month-to-month occupancy or replacing them with equivalent facilities. We believe that our existing facilities are suitable and adequate for our present purposes and that the productive capacity of such facilities is substantially being utilized or we have plans to utilize such capacity.",
+      "page": null
+     },
+     {
+      "doc_id": "NVDA 10-K filed 2026-02-25",
+      "marker": "4",
+      "text": "32\nTable of Contents\nItem 2. Properties\nOur headquarters is in Santa Clara, California. We own and lease approximately 3 million square feet of office and building space for our corporate headquarters. In addition, we lease data center space in Santa Clara, California. We also own and lease facilities for data centers, research and development, and/or sales and administrative purposes throughout the U.S. and in various international locations, primarily in China, India, Israel, and Taiwan. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business. We do not identify or allocate assets by operating segment. For additional information regarding obligations under leases, refer to Note 17 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K, which information is hereby incorporated by reference.\nItem 3. Legal Proceedings\nPlease see Note 12 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a discussion of our legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.883,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "AMD",
+      "NVDA"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Which of NVIDIA and AMD reports more square feet of space, and how much does each report?",
+      "square feet of space reported in 10-K or 10-Q",
+      "operating lease commitments and square footage disclosure"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing"
+     }
+    }
+   }
+  },
+  {
+   "item_id": "msft-googl-hq-and-employees",
+   "repeat": 1,
+   "history": [],
+   "response": {
+    "answer": "Microsoft is headquartered in Redmond, Washington, according to source [4]. Alphabet is headquartered in the State of Delaware, as stated in source [1]. As of December 31, 2025, Alphabet had 190,820 employees [1], while Microsoft had approximately 223,000 full-time employees as of June 30, 2026 [5].",
+    "retrieved": [],
+    "citations": [
+     {
+      "doc_id": "GOOGL 10-K filed 2026-02-05",
+      "marker": "1",
+      "text": "As of December 31, 2025, Alphabet had\n190,820\nemployees. We have work councils and statutory employee representation obligations in certain countries, and we are committed to supporting protected labor rights, maintaining an open culture, and listening to our employees.\nWhen appropriate we partner with outside companies on a contractual basis to provide a specialized service or to temporarily cover a short-term need. The employees of our suppliers and staffing partners — vendors and temporary staff, respectively — and independent contractors who are self-employed, make up our extended workforce. We choose our partners and staffing agencies carefully, and review their compliance with Google’s Supplier Code of Conduct.\nGovernment Regulation",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "4",
+      "text": "30\nPART I\nItem 2, 3, 4\nITEM 2. PR\nOPERTIES\nOur corporate headquarters are located in Redmond, Washington. We have approximately 14 million square feet of space located in King County, Washington that is used for engineering, sales, marketing, and operations, among other general and administrative purposes. These facilities include approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters, and approximately 2 million square feet of space we lease.\nWe own and lease other facilities domestically and internationally, primarily for offices, datacenters, and research and development. The largest owned international properties include space in the following locations: China, India, Ireland, the Netherlands, and Sweden. The largest leased international properties include space in the following locations: Australia, Canada, China, France, Germany, India, Ireland, Japan, the Netherlands, and the United Kingdom.\nThe table below shows a summary of the square footage of our properties owned and leased domestically and internationally as of June 30, 2026:\n(Square feet in millions)\nLocation\nOwned\nLeased\nTotal\nU.S.\n41\n24",
+      "page": null
+     },
+     {
+      "doc_id": "MSFT 10-K filed 2026-07-29",
+      "marker": "5",
+      "text": "HUMAN CAPITAL RESOURCES\nAs of June 30, 2026, we employed approximately 223,000 people on a full-time basis, 121,000 in the U.S. and 102,000 internationally. Of the total employees, 89,000 were in operations, including product support and consulting services, datacenter operations, and manufacturing and distribution; 77,000 were in product research and development; 43,000 were in sales and marketing; and 14,000 were in general and administration. Certain employees are subject to collective bargaining agreements.",
+      "page": null
+     }
+    ],
+    "abstained": false,
+    "latency_s": 2.589,
+    "error": null,
+    "raw": {
+     "grounded": true,
+     "companies": [
+      "GOOGL",
+      "MSFT"
+     ],
+     "evidence_kinds": [
+      "filing"
+     ],
+     "model_route": [],
+     "unverified_numbers": [],
+     "cautions": [],
+     "searches": [
+      "Where are Microsoft and Alphabet headquartered, and how many employees does each have?",
+      "corporate headquarters location",
+      "human capital management employees headcount"
+     ],
+     "interpreted_question": null,
+     "source_kinds": {
+      "1": "filing",
+      "4": "filing",
+      "5": "filing"
+     }
+    }
+   }
+  }
+ ]
+}

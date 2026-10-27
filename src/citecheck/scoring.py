@@ -71,7 +71,7 @@ def score_run(run: dict, golden: dict, ks=DEFAULT_KS, require_doc: bool = True, 
                 "structure": citations.structure(response.answer, response.citations),
                 "evidence": citations.evidence_cited(response.citations, item["evidence"], require_doc) if item["evidence"] else None,
                 "precision": citations.source_precision(response.citations, item) if item["evidence"] else None,
-                "support": judge.judge_citations(item["question"], response, history=history) if judge is not None else None}
+                "support": judge.judge_citations(response, history=history) if judge is not None else None}
         if is_declined(item, response, row["judged"]):
             row["declined"] = {"markers": len(set(citations.markers_in(response.answer))), "listed": len(response.citations)}
         elif not response.error:
