@@ -1,11 +1,29 @@
 # CiteCheck
 
-An evaluation harness for RAG systems. It runs a golden question set against a target system and scores three things:
-whether retrieval found the right passage, whether the answer is faithful to what was retrieved, and whether the
-citations are valid. Output is a CLI and a readable report.
+**A quality check for AI question-answering systems.** Website chatbots and internal knowledge assistants answer questions from
+a set of documents. CiteCheck asks such a system a fixed list of questions with known answers, then reports how often it found
+the right source, answered correctly, quoted figures that really are in the source, and said that it did not know when the
+documents did not cover the question. Every score comes with the evidence for trusting it and its known weaknesses.
 
-The metrics are written by hand in plain Python, with no eval framework. Each target system sits behind a small
-adapter, so one harness can score different projects.
+**Read the results first:** [rag-project report](reports/rag-project-baseline.md) · [CiteWise report](reports/citewise-baseline.md) ·
+[the `RAG_TOP_K` comparison](reports/rag-project-top-k.md) (each also as an HTML page in the same folder) ·
+[how a test found why the AI judge marked correct answers wrong](docs/how-the-judge-was-fixed.md)
+
+**What it has found**
+
+- **Two real systems checked.** [rag-project](https://github.com/Nbhaskell/rag-project) (131 questions) found the right passage
+  for 99% of the questions it should answer and declined all 10 it should not. [Citewise for Markets](https://github.com/Nbhaskell/citewise-markets)
+  (44 questions about SEC filings) declined all 6 unanswerable questions, and 98% of its cited sentences are backed by their sources.
+- **The checker was checked too.** The AI judge that reads the answers was compared with a person's labels and with answers
+  damaged on purpose. It marked correct citations wrong when the question asked for more than the sentence gave; after a fix,
+  its agreement with fresh hand labels rose from 22 of 30 to 29 of 30.
+- **A change was measured fairly.** Reading 6 passages instead of 4 made no difference beyond the normal run-to-run variation.
+- **The limits are written down.** The question sets are small (131 and 44), the hand labels come from one labeller, and a single
+  local judge model does the reading. Each report says what its numbers cannot show.
+
+**How it is built:** asking a system and scoring its answers are separate steps, so a scoring rule can change without asking
+again; the judge runs locally and costs nothing per answer; every number traces to a saved file; the metrics are plain Python
+with no evaluation framework; each system sits behind a small adapter, so one harness can score different projects; 288 tests.
 
 > **Status: every planned step is built.** Retrieval, answer quality and citations are scored,
 > against two targets (rag-project and CiteWise), with the local judge model checked against hand labels and known-bad answers,
@@ -872,5 +890,6 @@ tools/           one-off scripts: the golden-set converter and the CiteWise gold
 tests/
 runs/            saved runs (not in git except runs/published/)
 reports/         generated report pages and their index
+docs/            a one-page account of how the citation judge was fixed
 .github/         the CI workflow (tests only)
 ```
