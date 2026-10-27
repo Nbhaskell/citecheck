@@ -1,0 +1,1143 @@
+{
+ "judge": {
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "prompt_version": "1, citation 2",
+  "prompt_versions": {
+   "abstention": "1",
+   "faithfulness": "1",
+   "correctness": "1",
+   "citation": "2"
+  },
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 8192,
+  "think": false
+ },
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "summary": {
+  "control": {
+   "n": 19,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 19,
+     "flagged": 9,
+     "flagged_for_certain": 6
+    },
+    "correctness": {
+     "n": 19,
+     "flagged": 3,
+     "flagged_for_certain": 0
+    }
+   }
+  },
+  "number_changed": {
+   "n": 19,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 19,
+     "flagged": 16,
+     "flagged_for_certain": 13
+    },
+    "correctness": {
+     "n": 19,
+     "flagged": 8,
+     "flagged_for_certain": 3
+    }
+   }
+  },
+  "yes_no_flipped": {
+   "n": 2,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 2,
+     "flagged": 2,
+     "flagged_for_certain": 2
+    },
+    "correctness": {
+     "n": 2,
+     "flagged": 2,
+     "flagged_for_certain": 2
+    }
+   }
+  },
+  "claim_added": {
+   "n": 19,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 19,
+     "flagged": 19,
+     "flagged_for_certain": 16
+    }
+   }
+  },
+  "wrong_answer": {
+   "n": 19,
+   "judge_errors": 0,
+   "dimensions": {
+    "faithfulness": {
+     "n": 1,
+     "flagged": 1,
+     "flagged_for_certain": 1
+    },
+    "correctness": {
+     "n": 19,
+     "flagged": 18,
+     "flagged_for_certain": 18
+    }
+   }
+  },
+  "declined": {
+   "n": 19,
+   "judge_errors": 0,
+   "dimensions": {
+    "abstention": {
+     "n": 19,
+     "flagged": 19,
+     "flagged_for_certain": 19
+    },
+    "correctness": {
+     "n": 19,
+     "flagged": 19,
+     "flagged_for_certain": 19
+    }
+   }
+  }
+ },
+ "cases": [
+  {
+   "item_id": "aapl-employees",
+   "kind": "control",
+   "answer": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-segments",
+   "kind": "control",
+   "answer": "Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [1][4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "kind": "control",
+   "answer": "AMD is headquartered in Santa Clara, California [1]. NVIDIA is also headquartered in Santa Clara, California [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-sqft",
+   "kind": "control",
+   "answer": "AMD has approximately 6.8 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use. Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "kind": "control",
+   "answer": "As of December 27, 2025, AMD had approximately 31,000 employees [2]. As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5]. Therefore, NVIDIA has more employees than AMD.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-employees",
+   "kind": "control",
+   "answer": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "kind": "control",
+   "answer": "As of December 31, 2025, Amazon had approximately 1,576,000 employees [1], while Tesla had 134,785 employees [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "kind": "control",
+   "answer": "Apple Inc. is headquartered in Cupertino, California [1]. Microsoft is headquartered in Redmond, Washington [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "kind": "control",
+   "answer": "AMD is headquartered in Santa Clara, California [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "control",
+   "answer": "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries. This is stated in source [2].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-buyback",
+   "kind": "control",
+   "answer": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases [1][2][4]. As of March 31, 2026, $44.0 billion remained of this $60.0 billion program [2][4]. As of June 30, 2026, $40.6 billion remained of this $60.0 billion program [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-googl-total",
+   "kind": "control",
+   "answer": "As of December 31, 2025, Alphabet had 190,820 employees [3]. As of June 30, 2026, Microsoft had approximately 223,000 full-time employees [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-hq",
+   "kind": "control",
+   "answer": "Microsoft's corporate headquarters are located in Redmond, Washington [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-segments",
+   "kind": "control",
+   "answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-sqft",
+   "kind": "control",
+   "answer": "Microsoft has approximately 14 million square feet of space located in King County, Washington, which is used for engineering, sales, marketing, and operations, among other general and administrative purposes [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-hq",
+   "kind": "control",
+   "answer": "NVIDIA's headquarters is in Santa Clara, California [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "kind": "control",
+   "answer": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-employees",
+   "kind": "control",
+   "answer": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785 [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "control",
+   "answer": "Yes, Tesla is headquartered in Austin, Texas [3].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-employees",
+   "kind": "number_changed",
+   "answer": "As of September 44, 2025, Apple had approximately 166,000 full-time equivalent employees [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-employees",
+   "kind": "claim_added",
+   "answer": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees [1]. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-employees",
+   "kind": "wrong_answer",
+   "answer": "Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [1][4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-employees",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-segments",
+   "kind": "number_changed",
+   "answer": "Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [18][4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-segments",
+   "kind": "claim_added",
+   "answer": "Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [1][4]. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-segments",
+   "kind": "wrong_answer",
+   "answer": "AMD is headquartered in Santa Clara, California [1]. NVIDIA is also headquartered in Santa Clara, California [4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "aapl-segments",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "kind": "number_changed",
+   "answer": "AMD is headquartered in Santa Clara, California [18]. NVIDIA is also headquartered in Santa Clara, California [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "kind": "claim_added",
+   "answer": "AMD is headquartered in Santa Clara, California [1]. NVIDIA is also headquartered in Santa Clara, California [4]. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "kind": "wrong_answer",
+   "answer": "AMD has approximately 6.8 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use. Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-sqft",
+   "kind": "number_changed",
+   "answer": "AMD has approximately 23 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use. Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-sqft",
+   "kind": "claim_added",
+   "answer": "AMD has approximately 6.8 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use. Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased [1]. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-sqft",
+   "kind": "wrong_answer",
+   "answer": "As of December 27, 2025, AMD had approximately 31,000 employees [2]. As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5]. Therefore, NVIDIA has more employees than AMD.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-sqft",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "kind": "number_changed",
+   "answer": "As of December 44, 2025, AMD had approximately 31,000 employees [2]. As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5]. Therefore, NVIDIA has more employees than AMD.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "kind": "claim_added",
+   "answer": "As of December 27, 2025, AMD had approximately 31,000 employees [2]. As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5]. Therefore, NVIDIA has more employees than AMD. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "kind": "wrong_answer",
+   "answer": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-employees",
+   "kind": "number_changed",
+   "answer": "As of December 48, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-employees",
+   "kind": "claim_added",
+   "answer": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1]. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-employees",
+   "kind": "wrong_answer",
+   "answer": "As of December 31, 2025, Amazon had approximately 1,576,000 employees [1], while Tesla had 134,785 employees [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-employees",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "kind": "number_changed",
+   "answer": "As of December 48, 2025, Amazon had approximately 1,576,000 employees [1], while Tesla had 134,785 employees [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "kind": "claim_added",
+   "answer": "As of December 31, 2025, Amazon had approximately 1,576,000 employees [1], while Tesla had 134,785 employees [4]. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "kind": "wrong_answer",
+   "answer": "Apple Inc. is headquartered in Cupertino, California [1]. Microsoft is headquartered in Redmond, Washington [4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "kind": "number_changed",
+   "answer": "Apple Inc. is headquartered in Cupertino, California [18]. Microsoft is headquartered in Redmond, Washington [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "kind": "claim_added",
+   "answer": "Apple Inc. is headquartered in Cupertino, California [1]. Microsoft is headquartered in Redmond, Washington [4]. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "kind": "wrong_answer",
+   "answer": "AMD is headquartered in Santa Clara, California [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "kind": "number_changed",
+   "answer": "AMD is headquartered in Santa Clara, California [18].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "kind": "claim_added",
+   "answer": "AMD is headquartered in Santa Clara, California [1]. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "kind": "wrong_answer",
+   "answer": "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries. This is stated in source [2].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "number_changed",
+   "answer": "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries. This is stated in source [19].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "yes_no_flipped",
+   "answer": "No, Alphabet mentions work councils and statutory employee representation obligations in certain countries. This is stated in source [2].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "claim_added",
+   "answer": "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries. This is stated in source [2]. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "wrong_answer",
+   "answer": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases [1][2][4]. As of March 31, 2026, $44.0 billion remained of this $60.0 billion program [2][4]. As of June 30, 2026, $40.6 billion remained of this $60.0 billion program [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "googl-work-councils",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-buyback",
+   "kind": "number_changed",
+   "answer": "Microsoft's current share repurchase program authorizes up to $77.00 billion in share repurchases [1][2][4]. As of March 31, 2026, $44.0 billion remained of this $60.0 billion program [2][4]. As of June 30, 2026, $40.6 billion remained of this $60.0 billion program [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-buyback",
+   "kind": "claim_added",
+   "answer": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases [1][2][4]. As of March 31, 2026, $44.0 billion remained of this $60.0 billion program [2][4]. As of June 30, 2026, $40.6 billion remained of this $60.0 billion program [1]. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-buyback",
+   "kind": "wrong_answer",
+   "answer": "As of December 31, 2025, Alphabet had 190,820 employees [3]. As of June 30, 2026, Microsoft had approximately 223,000 full-time employees [4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-buyback",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-googl-total",
+   "kind": "number_changed",
+   "answer": "As of December 48, 2025, Alphabet had 190,820 employees [3]. As of June 30, 2026, Microsoft had approximately 223,000 full-time employees [4].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-googl-total",
+   "kind": "claim_added",
+   "answer": "As of December 31, 2025, Alphabet had 190,820 employees [3]. As of June 30, 2026, Microsoft had approximately 223,000 full-time employees [4]. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-googl-total",
+   "kind": "wrong_answer",
+   "answer": "Microsoft's corporate headquarters are located in Redmond, Washington [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-googl-total",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-hq",
+   "kind": "number_changed",
+   "answer": "Microsoft's corporate headquarters are located in Redmond, Washington [18].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-hq",
+   "kind": "claim_added",
+   "answer": "Microsoft's corporate headquarters are located in Redmond, Washington [1]. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-hq",
+   "kind": "wrong_answer",
+   "answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing [4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-hq",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-segments",
+   "kind": "number_changed",
+   "answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing [21].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-segments",
+   "kind": "claim_added",
+   "answer": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing [4]. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-segments",
+   "kind": "wrong_answer",
+   "answer": "Microsoft has approximately 14 million square feet of space located in King County, Washington, which is used for engineering, sales, marketing, and operations, among other general and administrative purposes [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-segments",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-sqft",
+   "kind": "number_changed",
+   "answer": "Microsoft has approximately 31 million square feet of space located in King County, Washington, which is used for engineering, sales, marketing, and operations, among other general and administrative purposes [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-sqft",
+   "kind": "claim_added",
+   "answer": "Microsoft has approximately 14 million square feet of space located in King County, Washington, which is used for engineering, sales, marketing, and operations, among other general and administrative purposes [1]. Webcams in every play area let owners watch live.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-sqft",
+   "kind": "wrong_answer",
+   "answer": "NVIDIA's headquarters is in Santa Clara, California [4].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "msft-sqft",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-hq",
+   "kind": "number_changed",
+   "answer": "NVIDIA's headquarters is in Santa Clara, California [21].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-hq",
+   "kind": "claim_added",
+   "answer": "NVIDIA's headquarters is in Santa Clara, California [4]. Walk-ins without a reservation are always welcome on weekends.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-hq",
+   "kind": "wrong_answer",
+   "answer": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-hq",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "kind": "number_changed",
+   "answer": "As of the end of fiscal year 2043, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "kind": "claim_added",
+   "answer": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development [1]. Every dog receives a free birthday treat on its birthday.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "kind": "wrong_answer",
+   "answer": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785 [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-employees",
+   "kind": "number_changed",
+   "answer": "As of December 48, 2025, Tesla's worldwide employee headcount was 134,785 [1].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "partly_supported",
+    "correctness": "partly_correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-employees",
+   "kind": "claim_added",
+   "answer": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785 [1]. A veterinarian is on site during all opening hours.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-employees",
+   "kind": "wrong_answer",
+   "answer": "Yes, Tesla is headquartered in Austin, Texas [3].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-employees",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "number_changed",
+   "answer": "Yes, Tesla is headquartered in Austin, Texas [20].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "yes_no_flipped",
+   "answer": "No, Tesla is headquartered in Austin, Texas [3].",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "claim_added",
+   "answer": "Yes, Tesla is headquartered in Austin, Texas [3]. Dogs under 1 year old are charged a reduced rate of $40.",
+   "verdicts": {
+    "abstention": "answered",
+    "faithfulness": "unsupported",
+    "correctness": "correct"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "wrong_answer",
+   "answer": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees [1].",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "kind": "declined",
+   "answer": "I don't know.",
+   "verdicts": {
+    "abstention": "abstained",
+    "correctness": "incorrect"
+   },
+   "errors": []
+  }
+ ]
+}

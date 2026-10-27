@@ -205,3 +205,24 @@ def test_sheet_and_calibrate_commands_work_end_to_end(tmp_path, capsys):
     out = capsys.readouterr().out
     assert code == 0 and "thinking off" in out and "thinking on" in out and "1.000" in out
     assert len(json.loads(saved.read_text(encoding="utf-8"))) == 2
+
+
+def test_for_a_target_that_reports_no_retrieved_passages_the_sheet_shows_the_cited_excerpts_and_says_so():
+    run, golden = run_and_golden()
+    for record in run["records"]:
+        record["response"]["retrieved"] = []
+        record["response"]["citations"] = [{"doc_id": "bath.md", "marker": "1", "text": "A bath is $50.00.", "page": None}]
+    scores = [scores_file({"bath": {"abstention": "answered"}}, run_id=run["run_id"])]
+    sample = calibration.select_sample(scores, {i["id"]: i for i in golden["items"]}, n=1)
+    data = calibration.sheet_data(run, golden, sample)
+    details = data["cards"][0]["details"]
+    assert details["summary"] == "Sources the answer cited" and details["items"] == [{"head": "[1] bath.md", "text": "A bath is $50.00."}]
+    assert any("sources the answer cited" in rule for rule in data["rules"]) and len(data["rules"]) == len(calibration.ANSWER_RULES) + 1
+
+
+def test_for_a_target_that_reports_its_passages_the_sheet_is_unchanged():
+    run, golden = run_and_golden()
+    scores = [scores_file({"bath": {"abstention": "answered"}}, run_id=run["run_id"])]
+    sample = calibration.select_sample(scores, {i["id"]: i for i in golden["items"]}, n=1)
+    data = calibration.sheet_data(run, golden, sample)
+    assert data["cards"][0]["details"]["summary"] == "Passages the system was given" and data["rules"] == calibration.ANSWER_RULES

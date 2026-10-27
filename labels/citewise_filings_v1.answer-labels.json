@@ -1,0 +1,171 @@
+{
+ "labels_version": 1,
+ "kind": "answers",
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "golden_version": "citewise-filings-1.0.0",
+ "golden_hash": "bb0103a66617a6b731839411e27fa7e960295a75f36e37d0e00eb1dfc181bd01",
+ "population": {
+  "disagree": 13,
+  "agree": 31
+ },
+ "items": {
+  "tsla-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-segments": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-rd-share": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "nvda-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-hq-and-employees": {
+   "abstention": "answered",
+   "faithfulness": "partly_supported",
+   "correctness": "partly_correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "aapl-segments": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "googl-work-councils": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "followup-amd-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amzn-tsla-gap": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amd-vs-nvda-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-msft-parking": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "amzn-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amd-sqft": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "apple-and-msft-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-buyback": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-sqft": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "unknown-aapl-floors": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-googl-dog": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-googl-total": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amd-nvda-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "aapl-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-in-texas": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  }
+ }
+}

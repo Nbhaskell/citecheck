@@ -11,7 +11,8 @@ adapter, so one harness can score different projects.
 > against two targets (rag-project and CiteWise), with the local judge model checked against hand labels and known-bad answers,
 > each scored run has a Markdown and an HTML report, one change to a target (`RAG_TOP_K`) has been measured against run-to-run
 > variation, and a check that needs no model reads answers for figures and dates the judge tends to miss. The 44 reference
-> answers for CiteWise were checked one by one by hand against the passages, and none needed a change (step 7).
+> answers for CiteWise were checked one by one by hand against the passages, and none needed a change (step 7). The answer
+> verdicts were calibrated on CiteWise's own answers too (step 10).
 > Sections marked *planned* describe the intended design.
 
 | Step | What | State |
@@ -26,6 +27,7 @@ adapter, so one harness can score different projects.
 | 7 | Sheet and command for reviewing reference answers by hand | done; all 44 CiteWise references checked by hand, none corrected |
 | 8 | HTML pages for reports and comparisons, rendered from their saved JSON | done |
 | 9 | Citation prompt version 2 (no question shown, the previous sentence as context), calibrated again on a held-out sample | done |
+| 10 | Answer verdicts calibrated on CiteWise: model labels for all 44 answers, hand labels for 23, and a known-bad check | done |
 
 ## Quick start
 
@@ -446,6 +448,87 @@ held-out agreement and the version 2 known-bad runs; the version 1 files stay in
 - The 30 questions are of one kind (two companies, one or two facts), so the result says little about longer answers or other
   filings.
 
+### Calibration of the answer verdicts on CiteWise
+
+The answer verdicts (abstention, faithfulness, correctness) had been calibrated only on rag-project's answers, so the CiteWise
+report called them unvalidated. They were calibrated on CiteWise's own 44 answers in two steps, and **only the second step is a
+person's reading**.
+
+1. **A model labelled all 44 answers, blind.** A fresh Claude Opus session was given only the cards (the question, the answer,
+   the reference answer where there is one, the cited excerpts) and the same definitions as the hand-labelling sheet. It was told
+   to read nothing else and reported that it had not. Its labels are in
+   [`labels/citewise_filings_v1.answer-labels.model.json`](labels/citewise_filings_v1.answer-labels.model.json): 6 abstained, 1
+   partly answered, 38 supported, no partly supported or unsupported, 34 correct and 4 partly correct.
+2. **A person labelled 23 of them.** The 13 answers where the judge differed from the model labeller on any question under either
+   reasoning setting, and 10 chosen at random from the other 31, shuffled, with no verdict from the judge or the model shown
+   ([`labels/citewise_filings_v1.answer-labels.json`](labels/citewise_filings_v1.answer-labels.json)): 20 answered, 3 abstained;
+   19 supported and 1 partly supported; 19 correct and 1 partly correct.
+
+CiteWise reports no retrieved passages, so the passages a labeller sees, like the ones the judge sees, are the excerpts the answer
+cited. The labelling sheet used to show only retrieved passages, which would have left a CiteWise card with nothing to check
+against; it now shows the cited excerpts, with a rule saying so.
+
+**Judge against the hand labels** (23 answers; weighted re-weights the two groups to their size in the full run, an estimate from
+a small sample):
+
+| Question | Reasoning on: matched | weighted | Reasoning off: matched | weighted |
+|---|---|---|---|---|
+| Abstention | 21 / 23 | 0.955 | 22 / 23 | 0.977 |
+| Faithfulness | 15 / 20 | 0.856 | 11 / 20 | 0.741 |
+| Correctness | 18 / 20 | 0.942 | 17 / 20 | 0.914 |
+
+**Judge against the model's labels** (all 44): reasoning on matched 43 / 44 abstention, 34 / 38 faithfulness and 34 / 38
+correctness; reasoning off matched 44 / 44, 28 / 38 and 34 / 38.
+
+**The model's labels against the hand labels:** 22 / 23 abstention, 19 / 20 faithfulness and 17 / 20 correctness, and all of the
+10 random cards (24 of 24 labels). The three correctness differences are the same kind: the model marked partly correct an
+answer that gives the right figures but never states the final total, difference or percentage the question asks for, where the
+hand label was correct. As a stand-in for a person the model's labels are close on abstention and faithfulness and stricter on
+correctness for an answer that stops short of the calculation.
+
+**Known-bad check.** The 19 answers the hand labels call both supported and correct were damaged in five ways and judged again
+(flagged / total; the unchanged control counts false alarms):
+
+| Damage | Question | Reasoning on | Reasoning off |
+|---|---|---|---|
+| none (control): good answers flagged | faithfulness | 4 / 19 | 9 / 19 |
+| | correctness | 2 / 19 | 3 / 19 |
+| the first number changed | faithfulness | 11 / 19 | 16 / 19 |
+| | correctness | 9 / 19 | 8 / 19 |
+| a leading yes or no flipped (2 answers) | faithfulness | 1 / 2 | 2 / 2 |
+| | correctness | 2 / 2 | 2 / 2 |
+| a sentence the sources never state added | faithfulness | 19 / 19 | 19 / 19 |
+| replaced by another question's answer | correctness | 17 / 18 | 18 / 19 |
+| replaced by a refusal | abstention | 19 / 19 | 19 / 19 |
+| | correctness | 19 / 19 | 19 / 19 |
+
+(One case with reasoning on had a judge failure and is left out.) "The first number" is often the day of an "As of" date, as for
+whole answers on rag-project, so the row mixes changed figures and changed dates.
+
+**What this shows**
+
+- **Faithfulness is the weakest verdict, and it is too strict.** Against the hand labels, 4 of the 5 misses with reasoning on and
+  all 9 with it off are the judge calling a claim unsupported or partly supported that the hand label found backed, and it flags
+  4 of 19 (reasoning on) and 9 of 19 (reasoning off) of the unchanged answers that the hand labels call supported. The CiteWise faithfulness score of
+  0.908 probably understates the target. In four of the five misses with reasoning on, the claim names a company ("NVIDIA is
+  headquartered in Santa Clara, California") while the cited excerpt states the fact in the filer's own voice without naming the
+  company, and the judge sees the excerpt text without the title of the filing it came from. The labeller's sheet shows that title in each source's heading, so
+  the two did not read the same thing. This is a likely cause, not a tested one.
+- **Correctness misses are all on the strict side** (2 with reasoning on, 3 with it off: partly correct or incorrect where the hand
+  label was correct), and damage that changes the answer's substance (a wrong answer, a refusal, a flipped yes or no) is
+  flagged almost every time.
+- **Abstention is reliable** on this run: 21 and 22 of 23 matched, and every declined answer made up for the check was flagged.
+
+**Limits.**
+
+- 23 hand labels from one labeller. They contain one partly supported and one partly correct label and no unsupported or incorrect
+  one, so they cannot show whether the judge catches a bad answer; the known-bad check covers that, on 19 answers.
+- Which cards were hand-labelled was chosen using the judge's verdicts and the model's labels. The weighted columns assume the 31
+  unlabelled agreeing answers behave like the 10 random ones, on which the model's labels and the hand labels agreed completely.
+- The model's labels are not a person's reading, shared blind spots are possible, and agreement with them says how close the judge
+  is to a stronger model, not to a careful reader. The report cites only the hand labels.
+- The answer prompts are unchanged (version 1) and were not tuned on these labels.
+
 ## Reports
 
 ```
@@ -758,7 +841,8 @@ What running the harness against two targets showed, including where the harness
 - **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
   alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: a fix for small figure and date changes in the judge's verdicts. With citation prompt version 2 they are mostly
+Not done: a test of whether showing the judge each source's filing title removes the strict faithfulness misses on CiteWise,
+and a fix for small figure and date changes in the judge's verdicts. With citation prompt version 2 they are mostly
 flagged as partly supported and rarely as unsupported; the separate figure check catches those where the new figure is in no
 source. With reasoning on, the citation verdict can also accept a sentence with two claims when only one is in the sources. See [`reports/`](reports/) for the two baselines and
 the `RAG_TOP_K` comparison.

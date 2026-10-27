@@ -1,0 +1,322 @@
+{
+ "labels_version": 1,
+ "kind": "answers",
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "golden_version": "citewise-filings-1.0.0",
+ "golden_hash": "bb0103a66617a6b731839411e27fa7e960295a75f36e37d0e00eb1dfc181bd01",
+ "population": {
+  "agree": 34,
+  "disagree": 10
+ },
+ "labeller": "model (Claude Opus, blind to the judge)",
+ "items": {
+  "amzn-tsla-gap": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "partly_correct",
+   "note": "Gives both headcounts but never states the difference the question asks for (about 1,441,000).",
+   "stratum": "disagree"
+  },
+  "tsla-in-texas": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-sqft": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "tsla-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-sqft": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-competition": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-founded": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "aapl-segments": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "followup-amzn-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-amd-cafeteria": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-nvda-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-amd-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-googl-total": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "partly_correct",
+   "note": "Gives both headcounts but never adds them to the combined figure the question asks for (about 413,820).",
+   "stratum": "disagree"
+  },
+  "unknown-aapl-floors": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "apple-japan-segment": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "apple-and-msft-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-buyback": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "All three claims are backed. Also gives the older March 31, 2026 remaining figure ($44.0B), but dated correctly alongside the June 30, 2026 figure ($40.6B) that matches the reference; treated as extra harmless detail.",
+   "stratum": "disagree"
+  },
+  "msft-us-vs-international": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-msft-parking": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "aapl-dividend": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amzn-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "aapl-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-over-200k": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "googl-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-vs-nvda-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-sqft": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-tsla-chargers": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-googl-dog": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "googl-work-councils": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "msft-acres": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "unknown-nvda-acres": {
+   "abstention": "abstained",
+   "faithfulness": null,
+   "correctness": null,
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-nvda-hq": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "AMD source says its executive offices are in Santa Clara, California rather than using the word headquarters; treated as a paraphrase.",
+   "stratum": "agree"
+  },
+  "aapl-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-rd-share": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "partly_correct",
+   "note": "Gives 31,000 of about 42,000 but never states the share (about 74 percent) the question asks for.",
+   "stratum": "agree"
+  },
+  "nvda-hq-and-employees": {
+   "abstention": "partly_answered",
+   "faithfulness": "supported",
+   "correctness": "partly_correct",
+   "note": "Headquarters answered and backed; says the shown source does not state the employee count, which is true of the cited passage, but the reference gives about 42,000.",
+   "stratum": "disagree"
+  },
+  "amd-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-segments": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  },
+  "followup-msft-employees": {
+   "abstention": "answered",
+   "faithfulness": "supported",
+   "correctness": "correct",
+   "note": "",
+   "stratum": "agree"
+  }
+ }
+}

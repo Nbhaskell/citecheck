@@ -1,0 +1,251 @@
+[
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1, citation 2",
+   "prompt_versions": {
+    "abstention": "1",
+    "faithfulness": "1",
+    "correctness": "1",
+    "citation": "2"
+   },
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": true
+  },
+  "labels_run_id": "2026-10-25_135415_baseline-citewise",
+  "dimensions": {
+   "abstention": {
+    "n": 23,
+    "missing_judge_verdict": 0,
+    "agree": 21,
+    "agreement": 0.913,
+    "weighted_agreement": 0.955,
+    "kappa": 0.712,
+    "top_label_agreement": 1.0,
+    "confusion": {
+     "abstained -> abstained": 3,
+     "answered -> answered": 18,
+     "answered -> partly_answered": 2
+    },
+    "disagreements": [
+     {
+      "item_id": "nvda-hq-and-employees",
+      "human": "answered",
+      "judge": "partly_answered"
+     },
+     {
+      "item_id": "msft-googl-total",
+      "human": "answered",
+      "judge": "partly_answered"
+     }
+    ]
+   },
+   "faithfulness": {
+    "n": 20,
+    "missing_judge_verdict": 0,
+    "agree": 15,
+    "agreement": 0.75,
+    "weighted_agreement": 0.856,
+    "kappa": -0.053,
+    "top_label_agreement": 0.75,
+    "confusion": {
+     "partly_supported -> supported": 1,
+     "supported -> partly_supported": 1,
+     "supported -> supported": 15,
+     "supported -> unsupported": 3
+    },
+    "disagreements": [
+     {
+      "item_id": "nvda-hq-and-employees",
+      "human": "partly_supported",
+      "judge": "supported"
+     },
+     {
+      "item_id": "amd-vs-nvda-employees",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "apple-and-msft-hq",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "msft-googl-total",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "amd-nvda-hq",
+      "human": "supported",
+      "judge": "unsupported"
+     }
+    ]
+   },
+   "correctness": {
+    "n": 20,
+    "missing_judge_verdict": 0,
+    "agree": 18,
+    "agreement": 0.9,
+    "weighted_agreement": 0.942,
+    "kappa": 0.467,
+    "top_label_agreement": 0.9,
+    "confusion": {
+     "correct -> correct": 17,
+     "correct -> incorrect": 1,
+     "correct -> partly_correct": 1,
+     "partly_correct -> partly_correct": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "amzn-tsla-gap",
+      "human": "correct",
+      "judge": "incorrect"
+     },
+     {
+      "item_id": "amzn-employees",
+      "human": "correct",
+      "judge": "partly_correct"
+     }
+    ]
+   }
+  }
+ },
+ {
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1, citation 2",
+   "prompt_versions": {
+    "abstention": "1",
+    "faithfulness": "1",
+    "correctness": "1",
+    "citation": "2"
+   },
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": false
+  },
+  "labels_run_id": "2026-10-25_135415_baseline-citewise",
+  "dimensions": {
+   "abstention": {
+    "n": 23,
+    "missing_judge_verdict": 0,
+    "agree": 22,
+    "agreement": 0.957,
+    "weighted_agreement": 0.977,
+    "kappa": 0.836,
+    "top_label_agreement": 1.0,
+    "confusion": {
+     "abstained -> abstained": 3,
+     "answered -> answered": 19,
+     "answered -> partly_answered": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "nvda-hq-and-employees",
+      "human": "answered",
+      "judge": "partly_answered"
+     }
+    ]
+   },
+   "faithfulness": {
+    "n": 20,
+    "missing_judge_verdict": 0,
+    "agree": 11,
+    "agreement": 0.55,
+    "weighted_agreement": 0.741,
+    "kappa": 0.126,
+    "top_label_agreement": 0.55,
+    "confusion": {
+     "partly_supported -> partly_supported": 1,
+     "supported -> partly_supported": 3,
+     "supported -> supported": 10,
+     "supported -> unsupported": 6
+    },
+    "disagreements": [
+     {
+      "item_id": "aapl-segments",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "googl-work-councils",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "amzn-tsla-gap",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "amd-vs-nvda-employees",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "apple-and-msft-hq",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "msft-buyback",
+      "human": "supported",
+      "judge": "partly_supported"
+     },
+     {
+      "item_id": "msft-googl-total",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "amd-nvda-hq",
+      "human": "supported",
+      "judge": "unsupported"
+     },
+     {
+      "item_id": "tsla-in-texas",
+      "human": "supported",
+      "judge": "partly_supported"
+     }
+    ]
+   },
+   "correctness": {
+    "n": 20,
+    "missing_judge_verdict": 0,
+    "agree": 17,
+    "agreement": 0.85,
+    "weighted_agreement": 0.914,
+    "kappa": 0.348,
+    "top_label_agreement": 0.85,
+    "confusion": {
+     "correct -> correct": 16,
+     "correct -> partly_correct": 3,
+     "partly_correct -> partly_correct": 1
+    },
+    "disagreements": [
+     {
+      "item_id": "amzn-tsla-gap",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "msft-buyback",
+      "human": "correct",
+      "judge": "partly_correct"
+     },
+     {
+      "item_id": "msft-sqft",
+      "human": "correct",
+      "judge": "partly_correct"
+     }
+    ]
+   }
+  }
+ }
+]

@@ -112,6 +112,19 @@ def answer_groups(answerable: bool) -> list[dict]:
     return groups
 
 
+CITED_ONLY_RULE = (
+    "<b>For this system the passages shown are the sources the answer cited.</b> It does not report what it retrieved, so "
+    "the cited excerpts are all that can be checked against, here and for the system's own verdicts.")
+
+
+def sources_shown(response: TargetResponse) -> tuple[list[dict], bool]:
+    """What a labeller checks faithfulness against, as the judge does: the retrieved passages, or, for a target that does not
+    report them, the excerpts of the sources the answer cited. The flag is True when the cited excerpts are used."""
+    if response.retrieved:
+        return [{"head": f"[{c.rank}] {c.doc_id}", "text": c.text} for c in response.retrieved], False
+    return [{"head": f"[{c.marker or '-'}] {c.doc_id}", "text": c.text} for c in response.citations if c.text], True
+
+
 def history_block(history: list) -> list[dict]:
     if not history:
         return []
@@ -122,10 +135,12 @@ def sheet_data(run: dict, golden: dict, sample: dict) -> dict:
     """Everything a labeller needs to see about each picked answer, and nothing from the judge."""
     items = {i["id"]: i for i in golden["items"]}
     records = {r["item_id"]: r for r in run["records"] if r["repeat"] == 1}
-    cards = []
+    cards, cited_only = [], False
     for item_id in sample["picks"]:
         item, record = items[item_id], records[item_id]
         response = TargetResponse.from_dict(record["response"])
+        shown, used_citations = sources_shown(response)
+        cited_only = cited_only or used_citations
         answerable = not item["expected_abstain"]
         blocks = history_block(record.get("history", [])) + [
             {"label": "Question", "text": item["question"]}, {"label": "The system's answer", "text": response.answer, "css": "answer"}]
@@ -133,9 +148,10 @@ def sheet_data(run: dict, golden: dict, sample: dict) -> dict:
             blocks.append({"label": "Reference answer (known correct)", "text": item.get("reference_answer", ""), "css": "reference"})
         cards.append({
             "id": item_id, "stratum": sample["strata"][item_id], "blocks": blocks, "groups": answer_groups(answerable),
-            "details": {"summary": "Passages the system was given",
-                        "items": [{"head": f"[{c.rank}] {c.doc_id}", "text": c.text} for c in response.retrieved]}})
-    return {"labels_version": LABELS_VERSION, "kind": "answers", "title": "Label the answers", "rules": ANSWER_RULES,
+            "details": {"summary": "Sources the answer cited" if used_citations else "Passages the system was given",
+                        "items": shown}})
+    rules = ANSWER_RULES[:3] + [CITED_ONLY_RULE] + ANSWER_RULES[3:] if cited_only else ANSWER_RULES
+    return {"labels_version": LABELS_VERSION, "kind": "answers", "title": "Label the answers", "rules": rules,
             "run_id": run["run_id"], "golden_version": run["golden"]["golden_version"], "golden_hash": run["golden"]["hash"],
             "population": sample["population"], "cards": cards}
 
