@@ -1,0 +1,163 @@
+{
+ "labels_version": 1,
+ "kind": "citations",
+ "run_id": "2026-10-27_121007_holdout-citewise",
+ "golden_version": "citewise-citation-holdout-1.0.0",
+ "golden_hash": "6e675c19c6dd71cc8bf5f13f9b45e1aed06112f22a33512d18ac521cf5dd0f60",
+ "population": {
+  "disagree": 12,
+  "agree": 28
+ },
+ "items": {
+  "googl-employees-and-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-segments-and-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-segments#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "googl-aapl-segments#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-competitors#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amzn-buyback#3": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-tsla-employees-total#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-googl-hq-and-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amzn-nvda-employees-total#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "tsla-googl-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-amd-sqft#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "nvda-segments-and-hq#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "most-employees-amd-nvda-msft#2": {
+   "citation_support": "unsupported",
+   "note": "figure right, comparison not in source",
+   "stratum": "disagree"
+  },
+  "msft-googl-hq-and-employees#2": {
+   "citation_support": "unsupported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "tsla-employees-and-segments#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "nvda-competitors#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "aapl-amd-nvda-employees-total#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amzn-nvda-employees-total#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amzn-segments-and-employees#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amzn-segments-and-employees#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-googl-hq-and-employees#3": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "amzn-msft-hq#1": {
+   "citation_support": "partly_supported",
+   "note": "",
+   "stratum": "disagree"
+  },
+  "tsla-exchange#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-aapl-hq#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "googl-aapl-segments#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "msft-aapl-employees-gap#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "most-employees-amd-nvda-msft#1": {
+   "citation_support": "supported",
+   "note": "lead-in: ‘the source information indicates\"",
+   "stratum": "disagree"
+  },
+  "nvda-amd-sqft#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "amd-aapl-hq#1": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "agree"
+  },
+  "tsla-employees-and-segments#2": {
+   "citation_support": "supported",
+   "note": "",
+   "stratum": "disagree"
+  }
+ }
+}

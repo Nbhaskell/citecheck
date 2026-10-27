@@ -1,0 +1,3806 @@
+{
+ "scores_version": 4,
+ "run_id": "2026-10-25_135415_baseline-citewise",
+ "golden_version": "citewise-filings-1.0.0",
+ "config": {
+  "ks": [
+   1,
+   3,
+   5
+  ],
+  "require_doc": true,
+  "judge": {
+   "model": "qwen3:8b",
+   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "prompt_version": "1, citation 2",
+   "prompt_versions": {
+    "abstention": "1",
+    "faithfulness": "1",
+    "correctness": "1",
+    "citation": "2"
+   },
+   "temperature": 0,
+   "seed": 0,
+   "num_ctx": 8192,
+   "think": true
+  }
+ },
+ "summary": {
+  "overall": {
+   "asked": 44,
+   "errors": 0,
+   "retrieval": {
+    "n": 0
+   },
+   "answer": {
+    "judged": 44,
+    "judge_errors": 0,
+    "abstention": {
+     "unanswerable": {
+      "n": 6,
+      "abstained": 6,
+      "answered": 0,
+      "partly_answered": 0
+     },
+     "answerable": {
+      "n": 38,
+      "abstained": 0,
+      "answered": 36,
+      "partly_answered": 2
+     }
+    },
+    "faithfulness": {
+     "n": 38,
+     "supported": 34,
+     "partly_supported": 1,
+     "unsupported": 3,
+     "score": 0.9079
+    },
+    "correctness": {
+     "n": 38,
+     "correct": 35,
+     "partly_correct": 2,
+     "incorrect": 1,
+     "score": 0.9474
+    }
+   },
+   "citations": {
+    "answers": 38,
+    "declined": {
+     "n": 6,
+     "with_markers": 5,
+     "with_listed_sources": 5
+    },
+    "with_markers": 38,
+    "with_dangling_marker": 0,
+    "with_unused_source": 0,
+    "cited_sentence_share": 0.9254,
+    "evidence": {
+     "n": 38,
+     "all_cited": 36,
+     "mean_share_cited": 0.9737,
+     "text_checked": 38
+    },
+    "source_precision": {
+     "n": 38,
+     "mean": 1.0
+    },
+    "support": {
+     "sentences": 44,
+     "judged": 44,
+     "errors": 0,
+     "supported": 43,
+     "partly_supported": 0,
+     "unsupported": 1,
+     "score": 0.9773
+    }
+   },
+   "figures": {
+    "answers": 38,
+    "with_figures": 23,
+    "all_grounded": 23,
+    "all_derivable": 23,
+    "figures": 58,
+    "ungrounded": 0,
+    "underived": 0
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "asked": 44,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 44,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 6,
+       "abstained": 6,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 38,
+       "abstained": 0,
+       "answered": 36,
+       "partly_answered": 2
+      }
+     },
+     "faithfulness": {
+      "n": 38,
+      "supported": 34,
+      "partly_supported": 1,
+      "unsupported": 3,
+      "score": 0.9079
+     },
+     "correctness": {
+      "n": 38,
+      "correct": 35,
+      "partly_correct": 2,
+      "incorrect": 1,
+      "score": 0.9474
+     }
+    },
+    "citations": {
+     "answers": 38,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 38,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9254,
+     "evidence": {
+      "n": 38,
+      "all_cited": 36,
+      "mean_share_cited": 0.9737,
+      "text_checked": 38
+     },
+     "source_precision": {
+      "n": 38,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 44,
+      "judged": 44,
+      "errors": 0,
+      "supported": 43,
+      "partly_supported": 0,
+      "unsupported": 1,
+      "score": 0.9773
+     }
+    },
+    "figures": {
+     "answers": 38,
+     "with_figures": 23,
+     "all_grounded": 23,
+     "all_derivable": 23,
+     "figures": 58,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_category": {
+   "edge_case": {
+    "asked": 3,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 3,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 3,
+       "abstained": 0,
+       "answered": 2,
+       "partly_answered": 1
+      }
+     },
+     "faithfulness": {
+      "n": 3,
+      "supported": 2,
+      "partly_supported": 0,
+      "unsupported": 1,
+      "score": 0.6667
+     },
+     "correctness": {
+      "n": 3,
+      "correct": 2,
+      "partly_correct": 0,
+      "incorrect": 1,
+      "score": 0.6667
+     }
+    },
+    "citations": {
+     "answers": 3,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 3,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 1.0,
+     "evidence": {
+      "n": 3,
+      "all_cited": 3,
+      "mean_share_cited": 1.0,
+      "text_checked": 3
+     },
+     "source_precision": {
+      "n": 3,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 4,
+      "judged": 4,
+      "errors": 0,
+      "supported": 4,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     }
+    },
+    "figures": {
+     "answers": 3,
+     "with_figures": 3,
+     "all_grounded": 3,
+     "all_derivable": 3,
+     "figures": 10,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "factual": {
+    "asked": 23,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 23,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 23,
+       "abstained": 0,
+       "answered": 23,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 23,
+      "supported": 23,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     },
+     "correctness": {
+      "n": 23,
+      "correct": 22,
+      "partly_correct": 1,
+      "incorrect": 0,
+      "score": 0.9783
+     }
+    },
+    "citations": {
+     "answers": 23,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 23,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9565,
+     "evidence": {
+      "n": 23,
+      "all_cited": 23,
+      "mean_share_cited": 1.0,
+      "text_checked": 23
+     },
+     "source_precision": {
+      "n": 23,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 25,
+      "judged": 25,
+      "errors": 0,
+      "supported": 25,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     }
+    },
+    "figures": {
+     "answers": 23,
+     "with_figures": 14,
+     "all_grounded": 14,
+     "all_derivable": 14,
+     "figures": 31,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "follow_up": {
+    "asked": 4,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 4,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 4,
+       "abstained": 0,
+       "answered": 4,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 4,
+      "supported": 4,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     },
+     "correctness": {
+      "n": 4,
+      "correct": 4,
+      "partly_correct": 0,
+      "incorrect": 0,
+      "score": 1.0
+     }
+    },
+    "citations": {
+     "answers": 4,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 4,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 1.0,
+     "evidence": {
+      "n": 4,
+      "all_cited": 4,
+      "mean_share_cited": 1.0,
+      "text_checked": 4
+     },
+     "source_precision": {
+      "n": 4,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 4,
+      "judged": 4,
+      "errors": 0,
+      "supported": 4,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     }
+    },
+    "figures": {
+     "answers": 4,
+     "with_figures": 3,
+     "all_grounded": 3,
+     "all_derivable": 3,
+     "figures": 7,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "multi_topic": {
+    "asked": 5,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 5,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 5,
+       "abstained": 0,
+       "answered": 4,
+       "partly_answered": 1
+      }
+     },
+     "faithfulness": {
+      "n": 5,
+      "supported": 2,
+      "partly_supported": 1,
+      "unsupported": 2,
+      "score": 0.5
+     },
+     "correctness": {
+      "n": 5,
+      "correct": 4,
+      "partly_correct": 1,
+      "incorrect": 0,
+      "score": 0.9
+     }
+    },
+    "citations": {
+     "answers": 5,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 5,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.8333,
+     "evidence": {
+      "n": 5,
+      "all_cited": 3,
+      "mean_share_cited": 0.8,
+      "text_checked": 5
+     },
+     "source_precision": {
+      "n": 5,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 8,
+      "judged": 8,
+      "errors": 0,
+      "supported": 7,
+      "partly_supported": 0,
+      "unsupported": 1,
+      "score": 0.875
+     }
+    },
+    "figures": {
+     "answers": 5,
+     "with_figures": 2,
+     "all_grounded": 2,
+     "all_derivable": 2,
+     "figures": 7,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "unanswerable": {
+    "asked": 6,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 6,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 6,
+       "abstained": 6,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     },
+     "correctness": {
+      "n": 0,
+      "correct": 0,
+      "partly_correct": 0,
+      "incorrect": 0,
+      "score": null
+     }
+    },
+    "citations": {
+     "answers": 0,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 0,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": null,
+     "evidence": {
+      "n": 0,
+      "all_cited": 0,
+      "mean_share_cited": null,
+      "text_checked": 0
+     },
+     "source_precision": {
+      "n": 0,
+      "mean": null
+     },
+     "support": {
+      "sentences": 0,
+      "judged": 0,
+      "errors": 0,
+      "supported": 0,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": null
+     }
+    },
+    "figures": {
+     "answers": 0,
+     "with_figures": 0,
+     "all_grounded": 0,
+     "all_derivable": 0,
+     "figures": 0,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   },
+   "yes_no": {
+    "asked": 3,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 3,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 0,
+       "abstained": 0,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 3,
+       "abstained": 0,
+       "answered": 3,
+       "partly_answered": 0
+      }
+     },
+     "faithfulness": {
+      "n": 3,
+      "supported": 3,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     },
+     "correctness": {
+      "n": 3,
+      "correct": 3,
+      "partly_correct": 0,
+      "incorrect": 0,
+      "score": 1.0
+     }
+    },
+    "citations": {
+     "answers": 3,
+     "declined": {
+      "n": 0,
+      "with_markers": 0,
+      "with_listed_sources": 0
+     },
+     "with_markers": 3,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.6667,
+     "evidence": {
+      "n": 3,
+      "all_cited": 3,
+      "mean_share_cited": 1.0,
+      "text_checked": 3
+     },
+     "source_precision": {
+      "n": 3,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 3,
+      "judged": 3,
+      "errors": 0,
+      "supported": 3,
+      "partly_supported": 0,
+      "unsupported": 0,
+      "score": 1.0
+     }
+    },
+    "figures": {
+     "answers": 3,
+     "with_figures": 1,
+     "all_grounded": 1,
+     "all_derivable": 1,
+     "figures": 3,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  },
+  "by_repeat": [
+   {
+    "asked": 44,
+    "errors": 0,
+    "retrieval": {
+     "n": 0
+    },
+    "answer": {
+     "judged": 44,
+     "judge_errors": 0,
+     "abstention": {
+      "unanswerable": {
+       "n": 6,
+       "abstained": 6,
+       "answered": 0,
+       "partly_answered": 0
+      },
+      "answerable": {
+       "n": 38,
+       "abstained": 0,
+       "answered": 36,
+       "partly_answered": 2
+      }
+     },
+     "faithfulness": {
+      "n": 38,
+      "supported": 34,
+      "partly_supported": 1,
+      "unsupported": 3,
+      "score": 0.9079
+     },
+     "correctness": {
+      "n": 38,
+      "correct": 35,
+      "partly_correct": 2,
+      "incorrect": 1,
+      "score": 0.9474
+     }
+    },
+    "citations": {
+     "answers": 38,
+     "declined": {
+      "n": 6,
+      "with_markers": 5,
+      "with_listed_sources": 5
+     },
+     "with_markers": 38,
+     "with_dangling_marker": 0,
+     "with_unused_source": 0,
+     "cited_sentence_share": 0.9254,
+     "evidence": {
+      "n": 38,
+      "all_cited": 36,
+      "mean_share_cited": 0.9737,
+      "text_checked": 38
+     },
+     "source_precision": {
+      "n": 38,
+      "mean": 1.0
+     },
+     "support": {
+      "sentences": 44,
+      "judged": 44,
+      "errors": 0,
+      "supported": 43,
+      "partly_supported": 0,
+      "unsupported": 1,
+      "score": 0.9773
+     }
+    },
+    "figures": {
+     "answers": 38,
+     "with_figures": 23,
+     "all_grounded": 23,
+     "all_derivable": 23,
+     "figures": 58,
+     "ungrounded": 0,
+     "underived": 0
+    }
+   }
+  ]
+ },
+ "items": [
+  {
+   "item_id": "amd-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of employees AMD had as of a particular date, directly answering the question with a factual statement.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in all key details: the date (December 27, 2025), the number of employees (31,000), and the company (AMD). The additional citation [1] does not contradict or alter the factual content.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 27, 2025, AMD had approximately 31,000 employees in its global workforce [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of December 27, 2025, AMD had approximately 31,000 employees in its global workforce. The cited source [1] explicitly states: 'As of December 27, 2025, we had approximately 31,000 employees in our global workforce.' This directly matches the statement's content.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amzn-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of employees Amazon has as of a particular date, directly answering the question with a factual statement.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly states the number of full-time and part-time employees (1,576,000) as of December 31, 2025, which matches the reference. However, it omits the mention of independent contractors and temporary personnel, which are also part of Amazon's workforce. Since the question asks for the total number of people employed, the answer is incomplete.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees. The cited source [1] explicitly states the same figure and date, confirming the statement's accuracy.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "googl-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical figure for Alphabet's headcount with a date, directly addressing the question without indicating uncertainty or lack of information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in all aspects: the number of employees (190,820), the date (December 31, 2025), and the fact that it's Alphabet's total headcount. The citation [1] doesn't affect the factual agreement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Alphabet's total headcount as of December 31, 2025, was 190,820 employees [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Alphabet's total headcount as of December 31, 2025, was 190,820 employees, which is directly stated in cited source [1]. The source explicitly provides the same date and number, supporting the statement entirely.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific numbers for both parts of the question (employee count and number of countries) without indicating any lack of knowledge or context gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer exactly in terms of numbers (42,000 employees) and countries (38), with the added citation [1] being an acceptable extra detail.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA had approximately 42,000 employees in 38 countries as of the end of fiscal year 2026. Source [1] explicitly states: 'we had approximately 42,000 employees in 38 countries', directly supporting the statement's main claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical figure for Tesla's worldwide employee headcount as of a particular date, directly addressing the question without hesitation or caveats.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in both the date (December 31, 2025) and the employee headcount number (134,785). The additional citation [1] does not contradict the factual information provided.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 31, 2025, Tesla's worldwide employee headcount was 134,785 [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Tesla's worldwide employee headcount was 134,785 as of December 31, 2025. Source [1] explicitly states 'As of December 31, 2025, our employee headcount worldwide was 134,785,' directly supporting the statement's claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of full-time employees (223,000) with a date (June 30, 2026), directly answering the question without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in all details including the number of employees, date, and phrasing, with the added citation [1] which does not affect factual accuracy.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of June 30, 2026, Microsoft employed approximately 223,000 full-time people, which is directly stated in source [1]. The cited source confirms this exact figure without contradiction.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of full-time equivalent employees for Apple with a date and citation, directly answering the question without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in all critical details: the number (166,000), the metric (full-time equivalent employees), and the date (September 27, 2025). The citation [1] is irrelevant to the factual accuracy of the statement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of September 27, 2025, Apple had approximately 166,000 full-time equivalent employees. The cited source explicitly states: 'As of September 27, 2025, the Company had approximately 166,000 full-time equivalent employees.' Since the source directly supports the statement's date, number, and terminology, the statement is fully backed.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct and specific location for Apple's headquarters without indicating any lack of knowledge or contextual gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies Apple's headquarters as Cupertino, California, matching the reference answer. The additional detail about Apple Inc. and the citation [1] do not contradict the reference and are irrelevant to the question's factual requirement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Apple Inc. is headquartered in Cupertino, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Apple Inc. is headquartered in Cupertino, California, which is explicitly stated in the cited source under Item 2. Properties. The source directly confirms this location, supporting the statement fully.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific location for AMD's headquarters, directly answering the question without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states AMD's headquarters are in Santa Clara, California, matching the reference answer. The additional citation [1] does not contradict the factual information.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "AMD's headquarters are located in Santa Clara, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims AMD's headquarters are in Santa Clara, California. The cited source explicitly states 'Our headquarters are located in Santa Clara, California', directly supporting the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific location for NVIDIA's headquarters, directly answering the question with a factual statement.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states NVIDIA's headquarters is in Santa Clara, California, which matches the reference answer. The additional citation [4] does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "NVIDIA's headquarters is in Santa Clara, California [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA's headquarters is in Santa Clara, California. Source [4] explicitly states 'Headquartered in Santa Clara, California' in the Note 1 section, directly supporting the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific city (Austin, Texas) as the headquarters of Tesla, directly answering the question without ambiguity or hesitation.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies Austin, Texas as Tesla's headquarters, matching the reference answer exactly. The citation [1] does not alter the factual claim.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Tesla is headquartered in Austin, Texas [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Tesla is headquartered in Austin, Texas, which is explicitly stated in the cited source [1] under ITEM 2. PROPERTIES. The source directly confirms this location as the company's headquarters.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific location for Microsoft's corporate headquarters, directly addressing the question with a factual response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies Redmond, Washington as Microsoft's corporate headquarters, matching the reference answer. The added citation [1] is an extra detail that does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Microsoft's corporate headquarters are located in Redmond, Washington [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft's corporate headquarters are in Redmond, Washington, which is explicitly stated in source [1]. The cited source directly confirms this location without contradiction.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-segments",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct list of Apple's reportable segments without indicating uncertainty or lack of coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly lists the same reportable segments as the reference answer: Americas, Europe, Greater China, Japan, and Rest of Asia Pacific. The additional citations [1][4] are not part of the factual content being judged.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific [1][4].",
+      "markers": [
+       1,
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Apple's reportable segments are the Americas, Europe, Greater China, Japan, and Rest of Asia Pacific. Both cited sources [1] and [4] explicitly list these exact segments, confirming the statement's accuracy.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-segments",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct and specific response to the question by listing the three segments Microsoft reports in, without indicating any lack of knowledge or citing document gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly lists the three segments mentioned in the reference answer, with no contradictory information. The additional [4] is not part of the factual answer to the question.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Microsoft reports its financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft reports financial performance in three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. Source [4] explicitly lists these same three segments under the 'Reportable Segments' section, confirming the statement's accuracy.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-buyback",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific figures for both the size of the program ($60.0 billion) and the remaining amounts ($44.0 billion and $40.6 billion as of specific dates), directly addressing both parts of the question without indicating a lack of knowledge.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the $60.0 billion authorization and matches the reference's $40.6 billion remaining as of June 30, 2026. It also includes an additional data point for March 31, 2026, which does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      2,
+      4
+     ],
+     "listed": [
+      1,
+      2,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 3,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Microsoft's current share repurchase program authorizes up to $60.0 billion in share repurchases [1][2][4].",
+      "markers": [
+       1,
+       2,
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft's current share repurchase program authorizes up to $60.0 billion in repurchases. Sources [1][2], and [4] all explicitly state that the program approved on September 16, 2024, authorizes up to $60.0 billion, confirming the statement's main point.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "As of March 31, 2026, $44.0 billion remained of this $60.0 billion program [2][4].",
+      "markers": [
+       2,
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of March 31, 2026, $44.0 billion remained of a $60.0 billion share repurchase program. Source [2] explicitly states, 'As of March 31, 2026, $44.0 billion remained of this $60.0 billion share repurchase program,' and source [4] repeats this exact figure and context. Both sources directly support the statement's claim.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "As of June 30, 2026, $40.6 billion remained of this $60.0 billion program [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of June 30, 2026, $40.6 billion remained of the $60.0 billion program. Source [1] explicitly states: 'As of June 30, 2026, $40.6 billion remained of this $60.0 billion share repurchase program.' This directly supports the statement's claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 7,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical figure (14 million square feet) directly addressing the question about Microsoft's office space in King County, Washington, without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the total office space as 14 million square feet in King County, matching the reference. Additional details about usage do not contradict the reference and are irrelevant to the specific question about space quantity.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Microsoft has approximately 14 million square feet of space located in King County, Washington, which is used for engineering, sales, marketing, and operations, among other general and administrative purposes [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft has approximately 14 million square feet of space in King County, Washington, used for engineering, sales, marketing, operations, and other administrative purposes. Source [1] explicitly states this exact figure and purpose, confirming the claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific numerical figures for both the total square feet of space AMD has worldwide and the portion that is owned, directly addressing both parts of the question.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the total space (6.8 million sq ft) and the breakdown between owned (1.4 million) and leased (5.4 million) as in the reference answer. The additional details about uses and citation [1] are not contradictory and do not affect the factual accuracy of the numbers requested in the question.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "AMD has approximately 6.8 million square feet of space worldwide for research and development, engineering, administrative, and warehouse use."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Of this, approximately 1.4 million square feet is owned, with the remaining 5.4 million square feet being leased [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that AMD's 6.8 million square feet of space includes 1.4 million owned and 5.4 million leased. Source [1] explicitly states 'approximately 5.4 million square feet of leased space and approximately 1.4 million square feet of owned space,' matching the statement's numbers and total. The sources back the statement's breakdown of owned vs. leased space.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-sqft",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical figure (3 million square feet) directly addressing the question about NVIDIA's owned and leased space for its corporate headquarters, without indicating lack of knowledge or document coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the 3 million square feet figure and mentions the corporate headquarters, matching the reference answer. The citation [4] is additional detail but does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA owns and leases approximately 3 million square feet of office and building space for its corporate headquarters. Source [4] explicitly states: 'We own and lease approximately 3 million square feet of office and building space for our corporate headquarters,' directly supporting the statement's claim about the headquarters' space.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-competition",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a direct list of competitive factors as stated by NVIDIA in the context, addressing the question substantively without indicating a lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer lists all the same principal competitive factors as the reference answer, with identical wording and no omissions or additions. The citation [1] is not part of the factual content being compared.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "NVIDIA identifies the principal competitive factors in its market as performance, breadth of product offerings, access to customers and partners, distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement lists NVIDIA's identified principal competitive factors, which are directly stated in the cited source [1]. The source explicitly mentions all the factors listed in the statement, confirming their validity.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "aapl-dividend",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific figure ($0.26) for Apple's quarterly cash dividend per share from the latest annual report (2025 Form 10-K), directly addressing the question with a substantive fact.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the quarterly cash dividend per share as $0.26, matching the reference answer. It also correctly identifies the 2025 Form 10-K as the latest annual report, aligning with the reference's context.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Apple's quarterly cash dividend per share in its latest annual report, which is the 2025 Form 10-K, was $0.26 per share [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Apple's 2025 Form 10-K reports a $0.26 quarterly cash dividend. Source [1] states: 'As of September 27, 2025, the Company’s quarterly cash dividend was $0.26 per share,' directly supporting the statement. The 2025 Form 10-K would include this data, and the source confirms the $0.26 figure.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-founded",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific year (1969) as the founding date of AMD, directly answering the factual question without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states the founding year of AMD as 1969, which matches the reference answer. The citation [2] is an extra detail but does not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      2
+     ],
+     "listed": [
+      2
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "AMD was founded in 1969 [2].",
+      "markers": [
+       2
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims AMD was founded in 1969, which is explicitly stated in source [2]: 'Founded in 1969 as a Silicon Valley start-up'. The sources directly support this assertion.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-acres",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical value (520 acres) directly addressing the question about Microsoft's land ownership at its corporate headquarters, without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that Microsoft owns approximately 520 acres of land at its corporate headquarters, which matches the reference answer. The additional detail about square footage in the reference is irrelevant to the specific question asked.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Microsoft owns approximately 520 acres of land at its corporate headquarters [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft owns approximately 520 acres of land at its corporate headquarters. Source [1] explicitly states: 'approximately 12 million square feet of owned space situated on approximately 520 acres of land we own at our corporate headquarters,' directly supporting the statement's claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 1,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "googl-work-councils",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "factual",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question by confirming that Alphabet mentions work councils and employee representation, citing a source. It provides a substantive response without avoiding the question or indicating lack of information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms Alphabet mentions work councils and statutory employee representation obligations in certain countries, aligning exactly with the reference answer. The additional citation of source [2] does not contradict the factual agreement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      2
+     ],
+     "listed": [
+      2
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Alphabet mentions work councils and statutory employee representation obligations in certain countries."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "This is stated in source [2].",
+      "markers": [
+       2
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that the mention of work councils and statutory obligations is stated in source [2]. Source [2] explicitly includes this information, confirming the statement's assertion.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "tsla-in-texas",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly confirms Tesla's headquarters is in Texas with a specific location (Austin) and a citation, providing a clear factual response.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms Tesla's headquarters is in Austin, Texas, matching the reference answer's statement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      3
+     ],
+     "listed": [
+      3
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Yes, Tesla is headquartered in Austin, Texas [3].",
+      "markers": [
+       3
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Tesla is headquartered in Austin, Texas, which is directly stated in cited source [3]: 'We are headquartered in Austin, Texas.'",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "apple-japan-segment",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly confirms that Apple reports Japan as its own segment and provides specific context about the segments listed, citing a source. It does not avoid the question or indicate a lack of information.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms Apple reports Japan as a segment and lists the same five segments as the reference answer, with no contradictory information.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Apple reports Japan as its own segment."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Japan is listed as one of the reportable segments, alongside the Americas, Europe, Greater China, and Rest of Asia Pacific [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Japan is listed as a reportable segment alongside the Americas, Europe, Greater China, and Rest of Asia Pacific. Source [1] explicitly states the reportable segments include Japan, Americas, Europe, Greater China, and Rest of Asia Pacific. The statement accurately reflects this list, confirming Japan's inclusion.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-over-200k",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "yes_no",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer directly addresses the question with a factual statement and a specific number, confirming that Microsoft employs more than 200,000 people.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer confirms that Microsoft employs more than 200,000 people and provides the exact figure (223,000) and date (June 30, 2026) matching the reference answer. The additional citation [1] does not contradict the factual agreement.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "Yes, Microsoft employs more than 200,000 people."
+     ]
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of June 30, 2026, Microsoft employed approximately 223,000 full-time people, which is directly stated in source [1]. The source confirms this exact figure and provides additional context about employee distribution without contradicting the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-hq-and-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "partly_answered",
+     "reasoning": "The answer provides the headquarters location but states that the employee count is not mentioned in the sources, addressing part of the question and abstaining from the other.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "partly_correct",
+     "reasoning": "The answer correctly identifies NVIDIA's headquarters as Santa Clara, California, which matches the reference. However, it states that the employee count is not provided in the sources, whereas the reference specifies 42,000 employees. The answer misses the employee number, which is part of the question.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 1,
+     "uncited": [
+      "The sources provided do not state the number of employees NVIDIA has."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 1,
+     "all_cited": false,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "NVIDIA is headquartered in Santa Clara, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA is headquartered in Santa Clara, California. Source [1] explicitly states: 'Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993...' which directly supports the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-us-vs-international",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific numbers for both the U.S. and international employee counts, directly addressing both parts of the question without indicating a lack of knowledge or document coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the same numbers for U.S. and international employees as the reference answer (121,000 and 102,000 respectively), even though it adds a date and citation not present in the reference. The question only asks for the counts, which are correctly stated.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of June 30, 2026, Microsoft employed approximately 121,000 people in the U.S. and 102,000 internationally [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft had 121,000 U.S. employees and 102,000 international employees as of June 30, 2026. The cited source explicitly states these same numbers in the exact wording, confirming the statement's figures directly.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-vs-nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific employee numbers for both AMD and NVIDIA from reliable sources and directly states which company has more employees, fulfilling the question's request for a comparison.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that NVIDIA has more employees (42,000) than AMD (31,000), matching the reference answer. The specific dates provided in the answer do not contradict the factual comparison requested in the question.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      2,
+      5
+     ],
+     "listed": [
+      2,
+      5
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 3,
+     "cited_sentences": 2,
+     "uncited": [
+      "Therefore, NVIDIA has more employees than AMD."
+     ]
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 27, 2025, AMD had approximately 31,000 employees [2].",
+      "markers": [
+       2
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims AMD had approximately 31,000 employees as of December 27, 2025. The cited source directly states: 'As of December 27, 2025, we had approximately 31,000 employees in our global workforce.' This matches the statement exactly.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees [5].",
+      "markers": [
+       5
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA had approximately 42,000 employees as of the end of fiscal year 2026, which is directly stated in source [5]. The cited source explicitly mentions this figure, supporting the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "apple-and-msft-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific, correct locations for both Apple and Microsoft headquarters without indicating any lack of knowledge or contextual gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "partly_supported",
+     "unsupported_claims": [
+      "Microsoft is headquartered in Redmond, Washington [4]."
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly identifies Apple's headquarters as Cupertino, California and Microsoft's as Redmond, Washington, matching the reference answer. The citations [1] and [4] are additional details that do not contradict the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "Apple Inc. is headquartered in Cupertino, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Apple Inc. is headquartered in Cupertino, California, which is explicitly stated in the cited source under Item 2. Properties. The source directly confirms this location, supporting the statement fully.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "Microsoft is headquartered in Redmond, Washington [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Microsoft's headquarters is in Redmond, Washington. Source [4] explicitly states 'Our corporate headquarters are located in Redmond, Washington,' directly supporting the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amd-nvda-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "multi_topic",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific locations for both AMD and NVIDIA headquarters without indicating lack of knowledge or partial coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "NVIDIA is headquartered in Santa Clara, California"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states that both AMD and NVIDIA are headquartered in Santa Clara, California, matching the reference answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 1,
+     "all_cited": false,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "AMD is headquartered in Santa Clara, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims AMD is headquartered in Santa Clara, California. Source [1] states AMD's mailing address and executive offices are located at 2485 Augustine Drive, Santa Clara, California 95054, directly supporting the statement.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "NVIDIA is also headquartered in Santa Clara, California [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "unsupported",
+      "reasoning": "The statement claims NVIDIA is headquartered in Santa Clara, California, citing source [4]. Source [4] mentions 'Our headquarters is in Santa Clara, California,' but the text does not explicitly name NVIDIA. Since the source is not directly tied to NVIDIA and the statement attributes the location to NVIDIA without clear support from the cited text, the claim is not fully substantiated by the provided sources.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "msft-googl-total",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "partly_answered",
+     "reasoning": "The answer provides the individual employee counts for Microsoft and Alphabet but does not explicitly state their combined total. While the data is sufficient to calculate the combined headcount, the answer does not directly answer the question by giving the sum.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "unsupported",
+     "unsupported_claims": [
+      "As of June 30, 2026, Microsoft had approximately 223,000 full-time employees"
+     ],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the same employee counts for both companies as the reference answer (190,820 for Alphabet and 223,000 for Microsoft), which are the exact figures needed to calculate the combined headcount. The answer does not explicitly state the total, but the numbers match the reference.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      3,
+      4
+     ],
+     "listed": [
+      3,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 2,
+     "cited_sentences": 2,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 31, 2025, Alphabet had 190,820 employees [3].",
+      "markers": [
+       3
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of December 31, 2025, Alphabet had 190,820 employees, which is directly stated in source [3]. The cited source explicitly repeats this figure without contradiction.",
+      "cached": true,
+      "error": null
+     },
+     {
+      "sentence": "As of June 30, 2026, Microsoft had approximately 223,000 full-time employees [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of June 30, 2026, Microsoft had approximately 223,000 full-time employees. Source [4] explicitly states: 'As of June 30, 2026, we employed approximately 223,000 people on a full-time basis,' directly supporting the statement's main point.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 4,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "nvda-rd-share",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific numerical figure (73.8%) representing the share of NVIDIA's employees in research and development, directly addressing the question without indicating lack of knowledge or contextual gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer provides the exact employee numbers (31,000 in R&D, 42,000 total) that match the reference answer's calculation for the 74% share. While it doesn't explicitly state the percentage, the numbers align perfectly with the reference's figures.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in total, with 31,000 engaged in research and development [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims NVIDIA had 42,000 total employees and 31,000 in R&D as of fiscal year 2026. Source [1] explicitly states 'approximately 42,000 employees... 31,000 were engaged in research and development', directly supporting the statement's numbers and timeframe.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "amzn-tsla-gap",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "edge_case",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides specific employee numbers for both Amazon and Tesla, which allows the question to be answered through subtraction. It does not claim ignorance or lack of coverage.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "incorrect",
+     "reasoning": "The answer provides the correct employee numbers for Amazon and Tesla but does not explicitly state the difference, which is required to answer the question. The reference answer includes the difference (1,441,000), which the answer omits.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1,
+      4
+     ],
+     "listed": [
+      1,
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 2,
+     "cited": 2,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 2,
+     "expected": 2,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 31, 2025, Amazon had approximately 1,576,000 employees [1], while Tesla had 134,785 employees [4].",
+      "markers": [
+       1,
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims Amazon had approximately 1,576,000 employees and Tesla had 134,785 employees as of December 31, 2025. Source [1] states Amazon employed approximately 1,576,000 full-time and part-time employees, matching the figure. Source [4] reports Tesla's employee headcount worldwide as 134,785, which aligns with the statement. Both numbers are directly supported by the cited sources.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "unknown-tsla-chargers",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the provided sources do not specify the number of electric vehicle chargers at Tesla's headquarters, indicating a lack of available information rather than providing a factual answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 6,
+    "listed": 6
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-amd-cafeteria",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the provided sources do not mention AMD's cafeteria policy, indicating a lack of information in the context rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 4,
+    "listed": 4
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-nvda-acres",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the sources do not specify the number of acres for NVIDIA's headquarters campus, indicating a lack of available information rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 1,
+    "listed": 1
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-aapl-floors",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the provided sources do not specify the number of floors in Apple's headquarters, indicating a lack of information rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 1,
+    "listed": 1
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-msft-parking",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer explicitly states that the provided sources do not contain information about the number of parking spaces at Microsoft's Redmond campus, indicating a lack of relevant data rather than providing a substantive answer.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 0,
+    "listed": 0
+   },
+   "figures": null
+  },
+  {
+   "item_id": "unknown-googl-dog",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "unanswerable",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": true,
+   "judged": {
+    "abstention": {
+     "verdict": "abstained",
+     "reasoning": "The answer states that the provided sources do not mention Alphabet's policy on allowing dogs in offices, indicating a lack of information rather than providing a fact.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": null,
+   "declined": {
+    "markers": 6,
+    "listed": 6
+   },
+   "figures": null
+  },
+  {
+   "item_id": "followup-nvda-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of employees (42,000) and additional context about their global presence, directly addressing the question without indicating a lack of knowledge or citing document limitations.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in both the number of employees (42,000) and the geographic scope (38 countries), with the same fiscal year reference (2026).",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      4
+     ],
+     "listed": [
+      4
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries [4].",
+      "markers": [
+       4
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of the end of fiscal year 2026, NVIDIA had approximately 42,000 employees in 38 countries. Source [4] explicitly states this exact figure and timeframe, confirming the statement's accuracy.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 3,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-amd-hq",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific location for AMD's headquarters, directly addressing the question without indicating lack of knowledge or referencing document gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer correctly states AMD's headquarters are in Santa Clara, California, matching the reference answer exactly.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "AMD is headquartered in Santa Clara, California [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims AMD is headquartered in Santa Clara, California, which is explicitly stated in the cited source [1]. The source directly mentions \"Our headquarters are located in Santa Clara, California,\" confirming the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 0,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-msft-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific number of employees and a date, directly addressing the question about Microsoft's workforce size.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in all key details: the number of employees (223,000), the timeframe (June 30, 2026), and the employment type (full-time basis). The citation [1] in the answer does not affect the factual accuracy.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of June 30, 2026, Microsoft employed approximately 223,000 people on a full-time basis [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of June 30, 2026, Microsoft employed approximately 223,000 full-time people, which is directly stated in source [1]. The cited source confirms the exact figure and date mentioned in the statement.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  },
+  {
+   "item_id": "followup-amzn-employees",
+   "repeat": 1,
+   "split": "heldout",
+   "category": "follow_up",
+   "error": null,
+   "retrieval": null,
+   "expected_abstain": false,
+   "judged": {
+    "abstention": {
+     "verdict": "answered",
+     "reasoning": "The answer provides a specific employee count for Amazon as of the same date mentioned in the previous answer, directly addressing the question without indicating a lack of knowledge or contextual gaps.",
+     "cached": true,
+     "error": null
+    },
+    "faithfulness": {
+     "verdict": "supported",
+     "unsupported_claims": [],
+     "cached": true,
+     "error": null
+    },
+    "correctness": {
+     "verdict": "correct",
+     "reasoning": "The answer matches the reference answer in both the number of employees (1,576,000) and the time frame (December 31, 2025). The inclusion of the citation [1] is consistent with the reference's format.",
+     "cached": true,
+     "error": null
+    }
+   },
+   "citations": {
+    "structure": {
+     "markers": [
+      1
+     ],
+     "listed": [
+      1
+     ],
+     "dangling": [],
+     "unused": [],
+     "sentences": 1,
+     "cited_sentences": 1,
+     "uncited": []
+    },
+    "evidence": {
+     "facts": 1,
+     "cited": 1,
+     "all_cited": true,
+     "text_checked": true
+    },
+    "precision": {
+     "documents": 1,
+     "expected": 1,
+     "precision": 1.0
+    },
+    "support": [
+     {
+      "sentence": "As of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees [1].",
+      "markers": [
+       1
+      ],
+      "missing": [],
+      "verdict": "supported",
+      "reasoning": "The statement claims that as of December 31, 2025, Amazon employed approximately 1,576,000 full-time and part-time employees. The cited source [1] directly states this exact figure and date, supporting the statement's main claim.",
+      "cached": true,
+      "error": null
+     }
+    ]
+   },
+   "declined": null,
+   "figures": {
+    "n": 2,
+    "ungrounded": [],
+    "underived": []
+   }
+  }
+ ]
+}

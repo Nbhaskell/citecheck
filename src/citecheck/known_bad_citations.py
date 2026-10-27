@@ -30,7 +30,8 @@ def clean(sentence: str) -> str:
 
 
 def candidates_from(run: dict, golden: dict, labels: dict) -> list[dict]:
-    """The cited sentences labelled supported, each with its question, history and cited (number, excerpt) pairs."""
+    """The cited sentences labelled supported, each with the sentence before it, its history and its cited (number, excerpt)
+    pairs. The question is kept for reference; the citation judge is not shown it."""
     from .citation_calibration import unit_for
     items = {i["id"]: i for i in golden["items"]}
     records = {r["item_id"]: r for r in run["records"] if r["repeat"] == 1}
@@ -42,7 +43,8 @@ def candidates_from(run: dict, golden: dict, labels: dict) -> list[dict]:
         record = records[item_id]
         unit = unit_for(TargetResponse.from_dict(record["response"]), int(index))
         found.append({"key": key, "item_id": item_id, "question": items[item_id]["question"],
-                      "history": record.get("history", []), "statement": clean(unit["sentence"]), "sources": unit["sources"]})
+                      "history": record.get("history", []), "statement": clean(unit["sentence"]),
+                      "previous": clean(unit["previous"]), "sources": unit["sources"]})
     return found
 
 
@@ -102,7 +104,7 @@ def judge_cases(judge, candidates: list[dict], cases: list[dict], progress=None)
     results = []
     for number, case in enumerate(control + cases, 1):
         c = by_key[case["key"]]
-        out = judge.verdict("citation", question=c["question"], statement=case["statement"], cited=case["sources"],
+        out = judge.verdict("citation", statement=case["statement"], previous=c["previous"], cited=case["sources"],
                             history=c["history"])
         results.append({"key": case["key"], "kind": case["kind"], "statement": case["statement"], "verdict": out["verdict"],
                         "error": out["error"]})

@@ -79,15 +79,17 @@ def source_precision(citations: Sequence[Citation], item: dict) -> dict:
 
 
 def claim_units(answer: str, citations: Sequence[Citation]) -> list[dict]:
-    """The sentences that carry markers, each with the excerpts of the sources it cites. Markers with no listed source,
-    and sources without an excerpt, are reported so the judge is never asked about a source it cannot see."""
+    """The sentences that carry markers, each with the excerpts of the sources it cites and the sentence before it (empty
+    for the first), which the judge sees only as context for words such as "this". Markers with no listed source, and
+    sources without an excerpt, are reported so the judge is never asked about a source it cannot see."""
     by_marker = {int(c.marker): c for c in citations if c.marker is not None and c.marker.isdigit()}
     units = []
-    for sentence in sentences(answer):
+    listed = sentences(answer)
+    for position, sentence in enumerate(listed):
         numbers = list(dict.fromkeys(markers_in(sentence)))
         if not numbers:
             continue
-        units.append({"sentence": sentence, "markers": numbers,
+        units.append({"sentence": sentence, "previous": listed[position - 1] if position else "", "markers": numbers,
                       "missing": [n for n in numbers if n not in by_marker or not by_marker[n].text],
                       "sources": [(n, by_marker[n].text) for n in numbers if n in by_marker and by_marker[n].text]})
     return units

@@ -85,6 +85,27 @@ def test_evidence_measured_with_a_different_judge_setting_is_not_borrowed(citewi
     assert any("calibration for citations was supplied only for other judge configurations" in text.lower() for text in built["limits"])
 
 
+def test_a_new_citation_prompt_keeps_the_answer_evidence_and_drops_the_citation_evidence(rag, citewise):
+    newer = lambda judge: {**judge, "prompt_version": "2", "prompt_versions": {"abstention": "1", "faithfulness": "1", "correctness": "1", "citation": "2"}}
+    scores = copy.deepcopy(rag["scores"])
+    scores["config"]["judge"] = newer(scores["config"]["judge"])
+    built = build({**rag, "scores": scores})
+    assert built["calibrated"]["answers"] is True  # the answer prompts are the ones the answer evidence was measured with
+    scores = copy.deepcopy(citewise["scores"])
+    scores["config"]["judge"] = newer(scores["config"]["judge"])
+    built = build({**citewise, "scores": scores})
+    assert built["calibrated"]["citations"] is False
+    assert any("calibration for citations was supplied only for other judge configurations" in text.lower() for text in built["limits"])
+
+
+def test_records_from_before_versions_were_kept_per_verdict_match_on_the_one_version_they_have():
+    old, new = {"model": "m", "think": True, "prompt_version": "1"}, {"model": "m", "think": True, "prompt_version": "1",
+                                                                      "prompt_versions": {"citation": "1", "faithfulness": "1"}}
+    assert report.same_judge(new, old, "citations") and report.same_judge(new, old, "answers")
+    assert not report.same_judge(new, {**old, "prompt_version": "2"}, "citations")
+    assert not report.same_judge(new, {**old, "think": False}, "answers") and not report.same_judge(None, old, "answers")
+
+
 def test_evidence_measured_on_another_run_or_with_no_run_recorded_says_so(citewise):
     other = copy.deepcopy(citewise["agreement"])
     for result in other:
@@ -199,3 +220,10 @@ def test_the_report_command_refuses_scores_from_another_run(tmp_path, capsys, un
 
 def test_the_index_command_stops_when_there_is_nothing_to_list(tmp_path, capsys):
     assert cli.main(["report-index", str(tmp_path)]) == 1 and "no *.report.json" in capsys.readouterr().out
+
+
+def test_the_support_caveat_follows_the_citation_prompt_version():
+    assert report.support_weakness({"prompt_version": "1"}) == report.SUPPORT_WEAKNESS["1"]
+    assert report.support_weakness({"prompt_version": "1, citation 2", "prompt_versions": {"citation": "2"}}) == report.SUPPORT_WEAKNESS["2"]
+    assert "not the question" in report.SUPPORT_WEAKNESS["2"] and "answers the question" in report.SUPPORT_WEAKNESS["1"]
+    assert report.support_weakness(None) == report.SUPPORT_WEAKNESS["2"]

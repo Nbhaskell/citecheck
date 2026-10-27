@@ -59,7 +59,13 @@
  "judge": {
   "model": "qwen3:8b",
   "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
-  "prompt_version": "1",
+  "prompt_version": "1, citation 2",
+  "prompt_versions": {
+   "abstention": "1",
+   "faithfulness": "1",
+   "correctness": "1",
+   "citation": "2"
+  },
   "temperature": 0,
   "seed": 0,
   "num_ctx": 8192,
@@ -105,6 +111,22 @@
    ]
   },
   {
+   "section": "Answers",
+   "metric": "Answers whose every figure, date and time is in the sources, the question or the earlier turns",
+   "result": "23/23 (100%)",
+   "n": 23,
+   "caveats": [
+    "Deterministic and about figures, dates and times only. A wrong figure that the sources also state passes, and an answer that cites nothing has every figure unfound. The count that allows arithmetic can explain a changed figure by coincidence."
+   ]
+  },
+  {
+   "section": "Answers",
+   "metric": "The same, also accepting a sum, difference, product or quotient of two numbers that appear",
+   "result": "23/23 (100%)",
+   "n": 23,
+   "caveats": []
+  },
+  {
    "section": "Citations",
    "metric": "Answers with inline markers",
    "result": "38/38 (100%)",
@@ -148,12 +170,12 @@
   {
    "section": "Citations",
    "metric": "Cited sentences supported by their sources (supported = 1, partly = 0.5)",
-   "result": "0.943: 40 supported, 3 partly, 1 unsupported",
+   "result": "0.977: 43 supported, 0 partly, 1 unsupported",
    "n": 44,
    "caveats": [
-    "The judge saw each excerpt without the title of the filing it came from, and can judge a sentence on whether it answers the question, which it is told not to do. Small figure changes and changed dates are often missed.",
-    "Matched 26/30 (87%) of hand labels, from a sample chosen to be hard; every hand label was `supported`, so the labels cannot show whether the judge catches a bad one.",
-    "Flagged 65/88 (74%) of cited sentences damaged on purpose and 3/30 (10%) of unchanged good ones (false alarms)."
+    "The judge saw each excerpt without the title of the filing it came from, and is shown the sentence before the one it judges but not the question. A changed figure or date is mostly flagged as partly supported and seldom as unsupported, and with reasoning on it can accept a sentence with two claims when only one is in the sources.",
+    "Matched 29/30 (97%) of hand labels, from a sample chosen to be hard (measured on a different run, 2026-10-27_121007_holdout-citewise).",
+    "Flagged 75/88 (85%) of cited sentences damaged on purpose and 1/30 (3%) of unchanged good ones (false alarms)."
    ]
   },
   {
@@ -172,7 +194,7 @@
    "faithfulness": "0.91 (n=38)",
    "correctness": "0.95 (n=38)",
    "evidence_cited": "36/38 (95%)",
-   "support": "0.94 (n=44)"
+   "support": "0.98 (n=44)"
   }
  ],
  "by_category": [
@@ -183,7 +205,7 @@
    "faithfulness": "0.67 (n=3)",
    "correctness": "0.67 (n=3)",
    "evidence_cited": "3/3 (100%)",
-   "support": "0.62 (n=4)"
+   "support": "1.00 (n=4)"
   },
   {
    "group": "factual",
@@ -192,7 +214,7 @@
    "faithfulness": "1.00 (n=23)",
    "correctness": "0.98 (n=23)",
    "evidence_cited": "23/23 (100%)",
-   "support": "0.98 (n=25)"
+   "support": "1.00 (n=25)"
   },
   {
    "group": "follow_up",
@@ -210,7 +232,7 @@
    "faithfulness": "0.50 (n=5)",
    "correctness": "0.90 (n=5)",
    "evidence_cited": "3/5 (60%)",
-   "support": "0.94 (n=8)"
+   "support": "0.88 (n=8)"
   },
   {
    "group": "unanswerable",
@@ -238,13 +260,6 @@
    ]
   },
   {
-   "item_id": "msft-buyback",
-   "category": "factual",
-   "reasons": [
-    "1 cited sentence(s) judged less than supported"
-   ]
-  },
-  {
    "item_id": "nvda-hq-and-employees",
    "category": "multi_topic",
    "reasons": [
@@ -256,8 +271,7 @@
    "item_id": "amd-vs-nvda-employees",
    "category": "multi_topic",
    "reasons": [
-    "faithfulness judged unsupported",
-    "1 cited sentence(s) judged less than supported"
+    "faithfulness judged unsupported"
    ]
   },
   {
@@ -272,15 +286,15 @@
    "category": "multi_topic",
    "reasons": [
     "faithfulness judged unsupported",
-    "the passage stating a fact is not among the cited sources"
+    "the passage stating a fact is not among the cited sources",
+    "1 cited sentence(s) judged less than supported"
    ]
   },
   {
    "item_id": "msft-googl-total",
    "category": "edge_case",
    "reasons": [
-    "faithfulness judged unsupported",
-    "2 cited sentence(s) judged less than supported"
+    "faithfulness judged unsupported"
    ]
   },
   {
@@ -333,16 +347,15 @@
   "This is one pass over the question set. Answers vary from run to run, and a model target gives no seed, so a difference of a few answers is not evidence of a real change.",
   "This target does not report what it retrieved, so retrieval is not scored; faithfulness is checked against the sources it cited, which is weaker than checking against everything the model read.",
   "The judge (qwen3:8b) and the target answer with the same model family (ollama:qwen3:latest), so the judge may favour its own kind of answer. The calibration checks measure agreement with a person and with known damage; they do not rule that out.",
-  "No calibration evidence was supplied for the answer verdicts (abstention, faithfulness, correctness) with this judge configuration (qwen3:8b, reasoning on, prompt v1), so they are unvalidated here.",
-  "Where the tables show hand-label agreement, read it as an estimate for hard cases from a small sample, not a measured error rate.",
-  "In the hand labels for citations, every label in each dimension was the same, so they cannot show whether the judge catches a bad one; the known-bad check, where shown, covers that."
+  "No calibration evidence was supplied for the answer verdicts (abstention, faithfulness, correctness) with this judge configuration (qwen3:8b, reasoning on, prompt v1, citation 2), so they are unvalidated here.",
+  "Where the tables show hand-label agreement, read it as an estimate for hard cases from a small sample, not a measured error rate."
  ],
  "sources": {
   "Run": "runs/published/2026-10-25_135415_baseline-citewise.run.json",
-  "Scores": "runs/published/2026-10-25_135415_baseline-citewise.judge-think-on.scores.json",
+  "Scores": "runs/published/2026-10-25_135415_baseline-citewise.judge-think-on.prompt2.scores.json",
   "Question set": "golden/citewise_filings_v1.json",
-  "Agreement with hand labels 1": "runs/published/2026-10-25_135415_baseline-citewise.citation-agreement.json",
-  "Known-bad check 1": "runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-on.json",
-  "Known-bad check 2": "runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-off.json"
+  "Agreement with hand labels 1": "runs/published/2026-10-27_121007_holdout-citewise.citation-agreement.json",
+  "Known-bad check 1": "runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-on.prompt2.json",
+  "Known-bad check 2": "runs/published/2026-10-25_135415_baseline-citewise.citation-known-bad-think-off.prompt2.json"
  }
 }

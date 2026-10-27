@@ -82,9 +82,9 @@ def test_agreement_compares_labels_on_cited_sentences_with_the_judges_verdicts()
 
 def candidates():
     return [{"key": "a#1", "item_id": "a", "question": "q", "history": [], "statement": "AMD had 31,000 employees.",
-             "sources": [(1, "we had approximately 31,000 employees")]},
+             "previous": "", "sources": [(1, "we had approximately 31,000 employees")]},
             {"key": "b#1", "item_id": "b", "question": "q", "history": [], "statement": "NVIDIA is based in Santa Clara, California.",
-             "sources": [(1, "Our headquarters is in Santa Clara, California")]}]
+             "previous": "AMD had 31,000 employees.", "sources": [(1, "Our headquarters is in Santa Clara, California")]}]
 
 
 def test_each_sentence_gets_the_damage_that_applies_to_it():
@@ -107,9 +107,13 @@ def test_markers_are_removed_from_the_statement_before_damage():
 def test_the_known_bad_run_judges_a_control_and_every_damaged_case():
     def script(kind, text):
         return {"reasoning": "r", "verdict": "unsupported" if "Santa Clara" in text.split("<cited_sources>")[1] and "31,000" in text.split("<statement>")[1].split("</statement>")[0] else "supported"}
-    judge = Judge(FakeClient(script), model="m", cache=NoCache())
+    client = FakeClient(script)
+    judge = Judge(client, model="m", cache=NoCache())
     cs = candidates()
     results = known_bad_citations.judge_cases(judge, cs, known_bad_citations.build_cases(cs))
+    sent = [c["messages"][1]["content"] for c in client.calls]
+    assert not any("<question>" in text for text in sent)
+    assert any("<previous_sentence>\nAMD had 31,000 employees.\n</previous_sentence>" in text for text in sent)  # b#1's context
     summary = known_bad_citations.summarize(results)
     assert summary["control"]["n"] == 2 and summary["control"]["flagged"] == 0
     assert summary["source_swapped"]["flagged"] == 1  # the 31,000 statement shown the Santa Clara source

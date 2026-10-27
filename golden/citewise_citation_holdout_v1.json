@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "golden_version": "citewise-citation-holdout-1.0.0",
+  "target": "citewise",
+  "notes": "Questions for calibrating the citation judge on sentences it was not designed on. They have no evidence passages or reference answers and are not scored for retrieval or correctness; only the cited sentences of the answers are used. The ids say the kind: most ask for two facts, a total or a difference, the kind of question that is answered one sentence per part. Written from the same stored filings as citewise-filings; some may be declined.",
+  "corpus": {
+    "name": "citewise-stored-filings",
+    "source": "https://github.com/Nbhaskell/citewise-markets",
+    "commit": "a10ef5c758ba5c4ea28b132af29bd49d7e152c5b",
+    "fingerprint": "filing-identifier",
+    "documents": {
+      "AAPL 10-K filed 2024-11-01": "c21c332f9d9bce9d57deb44ced48957a63843b82e3d00134f30e329f7834375d",
+      "AAPL 10-K filed 2025-10-31": "50cbb6e3b0ad06f5fcbde951183e99b9b2f6f96e88b57b40516c7192b6348eba",
+      "AAPL 10-Q filed 2026-05-01": "e7572965f0faadd6d289d33931d57b5f437127da91b87819d4308e6c6d66c8f1",
+      "AAPL 10-Q filed 2026-07-31": "8a519d637b1fcf72f3d31704ccb3fd86eed60e7e926b9fe2ef9151d252935bdd",
+      "AMD 10-K filed 2025-02-05": "17fb0745da315c986798f456901955a9a7cc8c6239fac13f222ada2509db1834",
+      "AMD 10-K filed 2026-02-04": "41006b93b8f0a76067806d7cd386dde6706640e2906ed5a7d8ecf09371afb2bc",
+      "AMD 10-Q filed 2026-05-06": "52290db6f87d9c8630fc65e5bb362c8cd5aa14106984f238955ac940dc7089c5",
+      "AMD 10-Q filed 2026-08-05": "4b783180078e0eed06192cfefe044f04fa930457bc8f15ff1a92924871f51604",
+      "AMZN 10-K filed 2025-02-07": "f6fd8b66a6e004067a3a56e9e33b5d10584edc887396b7c7188fd0cbc090e9d1",
+      "AMZN 10-K filed 2026-02-06": "c069c100e6c091231dfa524e711a8f78e16fc5c85d01dc24d3ee78b6a09fb4eb",
+      "AMZN 10-Q filed 2026-04-30": "bbcd6e37888e97933b7d7bca8d5264e1d5ae8350c8dae8a7744a142071ebd3e3",
+      "AMZN 10-Q filed 2026-07-31": "e6fd4f29ed64423451b52d843b721c8d05dc38665362601ecf984049511f1726",
+      "GOOGL 10-K filed 2025-02-05": "fb5ee41610c546692f63468c003eb446c72af65fd5e1310f395c0a67fa3d4e60",
+      "GOOGL 10-K filed 2026-02-05": "8820397b6cc85c3ee7a15a92122832282c974801a30063ef917667c647bff36a",
+      "GOOGL 10-Q filed 2026-04-30": "0b014f7aa4fec3c02bf695a7e13d56ff4a25f31669485013aee2122900872afd",
+      "GOOGL 10-Q filed 2026-07-23": "b4ea74a49f81a5c98ed9b493642462489af35f7446b9dec9e0cc585a51ad3fc2",
+      "MSFT 10-K filed 2025-07-30": "3fd6ef42eff1938f1ff128431056ed797adee425b3b68595c93a5ec7c1ec8a32",
+      "MSFT 10-K filed 2026-07-29": "7871fd7a7fb538879296e36f98b0f3e6a31ca45c497e2d5fb7de4adaf16c10c7",
+      "MSFT 10-Q filed 2026-01-28": "b050aa2183a80ed8f895cf5924dc9bee88a0c058218537f15e85104e37f851da",
+      "MSFT 10-Q filed 2026-04-29": "608340d00d0c1b24dd19d4ae1cc7c8a3f4a807cb56a3facd4fe73ecfa68a9465",
+      "NVDA 10-K filed 2025-02-26": "68854cd4680f647923070c3e6b6d2879f6238ba98cfbc9f427f7f3687427e22a",
+      "NVDA 10-K filed 2026-02-25": "c33e3d29428002348be18b8eb0c8a19b24c04d60bb1c1dd956e39dfcab636df7",
+      "NVDA 10-Q filed 2026-05-20": "555136a2e53ebcf559f6d54fc6e5ba052a28d38a3740c4ec12efae05791c8712",
+      "NVDA 10-Q filed 2026-08-26": "c177c3b7028c7f33d48d70ca3be6aafe63ba9f44140f467214f813cb9acef50d",
+      "TSLA 10-K filed 2025-01-30": "71d3a5bf445a2a22d1e3d6581b7f3e027fb90e46909972b1ce4890d8a6d663ea",
+      "TSLA 10-K filed 2026-01-29": "c43ce6a15b9226d9312afb0efe86fb4cd2166ea47d4a6a328c6f79c61267bfe7",
+      "TSLA 10-Q filed 2026-04-23": "352a67e57a66dd81dc3e31ea2ddd76d7272f8ec78ea6cf3f597b6a98b72a5e6a",
+      "TSLA 10-Q filed 2026-07-23": "ae980e3081e6b3b77094d6c057c338d98793726829e1d5aaa2c08b577714e0c8",
+      "TSLA 10-Q filed 2026-10-22": "cf6bb8c83efe5766efb6498d0a6de01d08cc899a2638cdecc6e5ca96ff0ec5e6"
+    }
+  },
+  "items": [
+    {
+      "id": "amzn-nvda-employees-total",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many employees do Amazon and NVIDIA have in total?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "tsla-vs-aapl-employees",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Which has more employees, Tesla or Apple, and by how many?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "tsla-googl-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where are Tesla and Alphabet each headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amd-tsla-employees-total",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many employees do AMD and Tesla have combined?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "msft-amzn-employees-gap",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What is the difference between Microsoft's and Amazon's number of employees?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "googl-aapl-segments",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Name Alphabet's reportable segments and Apple's reportable segments.",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "most-employees-amd-nvda-msft",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Which of AMD, NVIDIA and Microsoft has the most employees, and how many does it have?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "nvda-segments-and-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What are the two segments NVIDIA reports and where is NVIDIA headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "googl-employees-and-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many employees does Alphabet have and where is it headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amzn-msft-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where are Amazon and Microsoft headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amzn-segments-and-employees",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What are Amazon's segments and how many employees does it have?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "msft-aapl-employees-gap",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many more employees does Microsoft have than Apple?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "aapl-amd-nvda-employees-total",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many employees do Apple, AMD and NVIDIA have combined?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "tsla-segments",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What are Tesla's reportable segments?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amzn-segments",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What segments does Amazon report?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "googl-segments",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What are Alphabet's reportable segments?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "nvda-incorporated",
+      "split": "heldout",
+      "category": "probe",
+      "question": "When and where was NVIDIA incorporated?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amd-fiscal-year",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What is the end date of AMD's most recent fiscal year?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amzn-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where is Amazon headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "googl-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where is Alphabet headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "nvda-competitors",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Who does NVIDIA name as its competitors?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "msft-competitors",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Which companies does Microsoft name as competitors in its filing?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "aapl-exchange",
+      "split": "heldout",
+      "category": "probe",
+      "question": "On which stock exchange are Apple's shares listed?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "tsla-exchange",
+      "split": "heldout",
+      "category": "probe",
+      "question": "On which stock exchange is Tesla's common stock listed?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amzn-buyback",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What stock repurchase authorization does Amazon describe, and how much remains?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "googl-share-classes",
+      "split": "heldout",
+      "category": "probe",
+      "question": "What classes of common stock does Alphabet have?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "tsla-employees-and-segments",
+      "split": "heldout",
+      "category": "probe",
+      "question": "How many employees does Tesla have and what are its segments?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "amd-aapl-hq",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where are AMD and Apple each headquartered?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "nvda-amd-sqft",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Which of NVIDIA and AMD reports more square feet of space, and how much does each report?",
+      "expected_abstain": false,
+      "evidence": []
+    },
+    {
+      "id": "msft-googl-hq-and-employees",
+      "split": "heldout",
+      "category": "probe",
+      "question": "Where are Microsoft and Alphabet headquartered, and how many employees does each have?",
+      "expected_abstain": false,
+      "evidence": []
+    }
+  ]
+}

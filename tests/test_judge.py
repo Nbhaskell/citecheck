@@ -24,6 +24,8 @@ class FakeClient:
             return {"reasoning": "r", "verdict": "abstained" if "I don't know" in user_text else "answered"}
         if kind == "faithfulness":
             return {"unsupported_claims": [], "verdict": "supported"}
+        if kind == "citation":
+            return {"reasoning": "r", "verdict": "supported"}
         return {"reasoning": "r", "verdict": "correct"}
 
     def options(self):
@@ -101,9 +103,25 @@ def test_the_cache_misses_when_the_model_the_prompt_or_the_text_changes(tmp_path
     judge.verdict("abstention", question="q", answer="different")
     other_model = Judge(client, model="other", cache=JudgeCache(tmp_path))
     other_model.verdict("abstention", question="q", answer="a")
-    monkeypatch.setattr(prompts, "PROMPT_VERSION", "2")
+    monkeypatch.setitem(prompts.PROMPT_VERSIONS, "abstention", "2")
     judge.verdict("abstention", question="q", answer="a")
     assert len(client.calls) == 4
+
+
+def test_changing_one_verdicts_prompt_version_leaves_the_other_verdicts_cached(tmp_path, monkeypatch):
+    judge, client = judge_with(cache=JudgeCache(tmp_path))
+    cited = [(1, "A bath is $50.00.")]
+    judge.verdict("abstention", question="q", answer="a")
+    judge.verdict("citation", question="q", statement="A bath is $50.00. [1]", cited=cited)
+    assert len(client.calls) == 2
+    judge.verdict("citation", question="q", statement="A bath is $50.00. [1]", cited=cited)
+    assert len(client.calls) == 2  # asked before, so answered from the cache
+    monkeypatch.setitem(prompts.PROMPT_VERSIONS, "citation", "3")
+    judge.verdict("abstention", question="q", answer="a")
+    judge.verdict("citation", question="q", statement="A bath is $50.00. [1]", cited=cited)
+    assert len(client.calls) == 3  # only the citation verdict was asked again
+    assert judge.config()["prompt_version"] == "1, citation 3"
+    assert judge.config()["prompt_versions"]["citation"] == "3"
 
 
 @pytest.mark.parametrize("reply", [
@@ -126,7 +144,9 @@ def test_a_model_failure_is_recorded_and_does_not_raise():
 
 def test_the_config_names_the_model_its_digest_and_the_prompt_version():
     judge, _ = judge_with()
-    assert judge.config() == {"model": "m", "model_digest": "d" * 64, "prompt_version": prompts.PROMPT_VERSION,
+    assert judge.config() == {"model": "m", "model_digest": "d" * 64,
+                              "prompt_version": "1, citation 2",
+                              "prompt_versions": {"abstention": "1", "faithfulness": "1", "correctness": "1", "citation": "2"},
                               "temperature": 0, "seed": 0, "num_ctx": 8192, "think": False}
 
 
@@ -297,3 +317,12 @@ def test_a_target_that_reports_no_passages_is_judged_against_the_sources_it_cite
     faithfulness_call = next(c for c in client.calls if c["kind"] == "faithfulness")
     assert "[1] - Bath: $50.00" in faithfulness_call["messages"][1]["content"]
     assert "(no passages)" not in faithfulness_call["messages"][1]["content"]
+
+
+def test_the_version_label_names_only_the_verdicts_that_differ(monkeypatch):
+    monkeypatch.setattr(prompts, "PROMPT_VERSIONS", {"abstention": "1", "faithfulness": "1", "correctness": "1", "citation": "1"})
+    assert prompts.version_label() == "1"
+    monkeypatch.setitem(prompts.PROMPT_VERSIONS, "citation", "2")
+    assert prompts.version_label() == "1, citation 2"
+    monkeypatch.setattr(prompts, "PROMPT_VERSIONS", {"abstention": "2", "faithfulness": "2", "correctness": "2", "citation": "2"})
+    assert prompts.version_label() == "2"

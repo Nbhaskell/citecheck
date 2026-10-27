@@ -11,10 +11,11 @@ version). A report for a different configuration says so instead of borrowing it
 """
 from collections import Counter
 
+from .judge import prompts
 from .runner import golden_hash
 
 REPORT_VERSION = 1
-JUDGE_KEYS = ("model", "think", "prompt_version")
+VERDICTS_OF = {"answers": prompts.ANSWER_VERDICTS, "citations": prompts.CITATION_VERDICTS}
 
 # Weaknesses that bear on a metric whatever the data, each worded as a fact about the method.
 WEAKNESS = {
@@ -26,12 +27,25 @@ WEAKNESS = {
     "evidence": "Strict: an answer that cites another passage stating the same fact counts as missing it unless that wording "
                 "is listed in the golden set as an alternate.",
     "precision": "Expected documents are the golden set's evidence documents and any listed alternates.",
-    "support": "The judge saw each excerpt without the title of the filing it came from, and can judge a sentence on "
-               "whether it answers the question, which it is told not to do. Small figure changes and changed dates are often missed.",
     "figures": "Deterministic and about figures, dates and times only. A wrong figure that the sources also state passes, and an "
                "answer that cites nothing has every figure unfound. The count that allows arithmetic can explain a changed "
                "figure by coincidence.",
 }
+
+
+# The citation verdict's known weaknesses, by citation prompt version.
+SUPPORT_WEAKNESS = {
+    "1": "The judge saw each excerpt without the title of the filing it came from, and can judge a sentence on "
+         "whether it answers the question, which it is told not to do. Small figure changes and changed dates are often missed.",
+    "2": "The judge saw each excerpt without the title of the filing it came from, and is shown the sentence before the one "
+         "it judges but not the question. A changed figure or date is mostly flagged as partly supported and seldom as "
+         "unsupported, and with reasoning on it can accept a sentence with two claims when only one is in the sources.",
+}
+
+
+def support_weakness(judge: dict | None) -> str:
+    versions = prompt_versions(judge, "citations") if judge else ()
+    return SUPPORT_WEAKNESS.get(versions[0] if versions else None, SUPPORT_WEAKNESS["2"])
 
 
 def fraction(part: int, whole: int) -> str:
@@ -42,8 +56,18 @@ def number(value, digits: int = 3) -> str:
     return "-" if value is None else f"{value:.{digits}f}"
 
 
-def same_judge(a: dict | None, b: dict | None) -> bool:
-    return a is not None and b is not None and all(a.get(k) == b.get(k) for k in JUDGE_KEYS)
+def prompt_versions(judge: dict, kind: str) -> tuple:
+    """The prompt versions of the verdicts that `kind` of evidence is about. A record from before versions were kept per
+    verdict has one version for all of them."""
+    per_verdict = judge.get("prompt_versions") or {}
+    return tuple(per_verdict.get(verdict, judge.get("prompt_version")) for verdict in VERDICTS_OF[kind])
+
+
+def same_judge(a: dict | None, b: dict | None, kind: str) -> bool:
+    """Whether evidence measured with judge `b` applies to judge `a`: the same model and reasoning setting, and the same
+    prompts for the verdicts the evidence is about."""
+    return (a is not None and b is not None and a.get("model") == b.get("model") and a.get("think") == b.get("think")
+            and prompt_versions(a, kind) == prompt_versions(b, kind))
 
 
 def kind_of_known_bad(data: dict) -> str:
@@ -64,12 +88,12 @@ def calibration_evidence(judge: dict | None, agreements: list, known_bad: list) 
     for result in agreements:
         kind = kind_of_agreement(result)
         supplied.setdefault(kind, []).append(("agreement with hand labels", result["judge"]))
-        if same_judge(judge, result["judge"]):
+        if same_judge(judge, result["judge"], kind):
             evidence[kind]["agreement"] = result
     for data in known_bad:
         kind = kind_of_known_bad(data)
         supplied.setdefault(kind, []).append(("known-bad check", data["judge"]))
-        if same_judge(judge, data["judge"]):
+        if same_judge(judge, data["judge"], kind):
             evidence[kind]["known_bad"] = data
     for kind, entries in supplied.items():
         if not evidence[kind]:
@@ -137,6 +161,7 @@ def row(section: str, metric: str, result: str, n, caveats: list) -> dict:
 
 def build_rows(scores: dict, evidence: dict, reports_retrieved: bool, run_id: str) -> list[dict]:
     overall = scores["summary"]["overall"]
+    judge = scores["config"].get("judge")
     rows = []
     retrieval = overall["retrieval"]
     if reports_retrieved and retrieval["n"]:
@@ -193,7 +218,7 @@ def build_rows(scores: dict, evidence: dict, reports_retrieved: bool, run_id: st
             rows.append(row("Citations", "Cited sentences supported by their sources (supported = 1, partly = 0.5)",
                             f"{number(support['score'])}: {support['supported']} supported, {support['partly_supported']} partly, "
                             f"{support['unsupported']} unsupported", support["judged"],
-                            [WEAKNESS["support"], agreement_caveat(evidence["citations"], "citation_support", run_id),
+                            [support_weakness(judge), agreement_caveat(evidence["citations"], "citation_support", run_id),
                              known_bad_caveat(evidence["citations"], "citation_support", run_id)]))
         if inline:
             rows.append(row("Citations", "Declined answers that still carry citation markers",

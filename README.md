@@ -25,6 +25,7 @@ adapter, so one harness can score different projects.
 | 6 | Figure and date check that needs no model, measured against the judge's gaps | done |
 | 7 | Sheet and command for reviewing reference answers by hand | done; all 44 CiteWise references checked by hand, none corrected |
 | 8 | HTML pages for reports and comparisons, rendered from their saved JSON | done |
+| 9 | Citation prompt version 2 (no question shown, the previous sentence as context), calibrated again on a held-out sample | done |
 
 ## Quick start
 
@@ -120,7 +121,7 @@ Faithfulness and correctness are reported as a mean with supported/correct = 1, 
 reported as how many unanswerable questions were declined (right) and how many answerable ones were (a false refusal).
 Follow-ups are judged with their earlier conversation. A failed call is counted as an error and left out of the averages.
 
-Judge replies are cached on disk (`.cache/judge/`) under a hash of the model and its digest, the prompt version, the full
+Judge replies are cached on disk (`.cache/judge/`) under a hash of the model and its digest, the verdict's prompt version, the full
 prompt and the sampling options, so re-scoring is free and a changed model or prompt never reuses an old verdict. Each
 scores file records the judge's model, digest, prompt version and settings.
 
@@ -322,7 +323,8 @@ What differs from rag-project, all handled by [`src/citecheck/adapters/citewise.
 
 ### Calibration of citation support
 
-The citation verdict is a new use of the judge, so it was calibrated on its own, in the same two ways.
+The citation verdict is a new use of the judge, so it was calibrated on its own, in the same two ways. The numbers in this
+section are for citation prompt version 1; version 2 and its results are in [Citation prompt version 2](#citation-prompt-version-2).
 
 **1. Agreement with hand labels.** 30 cited sentences were labelled by hand: 5 that either judge setting flagged, and 25
 that both called supported, shown without any verdict. Each card shows the question, the whole answer, the one statement and
@@ -359,6 +361,90 @@ names a company cannot be checked against the excerpt's own text; the labels con
 the check changed the first number in each sentence, which was usually the day of an "As of" date. Its results
 (`citation-known-bad-first-number-*` in [`runs/published/`](runs/published/)) were kept, and the check was split into figures and
 dates. The step 2 "first price or number changed" row for whole answers has the same property.
+
+### Citation prompt version 2
+
+**What was wrong.** On the 30 hand-labelled cited sentences the judge flagged 4 that were labelled supported, all in two answers
+(the combined headcount of two companies, and which of two companies has more employees). Its reasons said the sources were
+fine and then marked the sentence down because it did not cover the whole question. A probe isolated the cause: the same 30
+sentences with the same sources, with the question extended by a demand no single sentence could meet ("Also say how this
+compares with the same figure for another company."), were flagged 17 of 30 times with reasoning on and 12 of 30 with it off. The
+labels cannot change when only the question does, so the question was pulling the verdict.
+
+**What changed.** Citation prompt version 2 differs from version 1 in three ways:
+
+- the question is not shown to the citation judge, only the statement, its cited sources and any earlier conversation;
+- the sentence before the statement is shown as context only, marked as not evidence, so that "Of this, 1.4 million is owned"
+  or "This is stated in source [2]." can be read;
+- the wording says to check what the statement itself says, not to lower the verdict for what it leaves out, and gives an
+  invented example (the ovens of a bakery, not from the corpus). A number or date the sources do not state makes a statement
+  partly supported.
+
+The prompt version is now kept per verdict, so only the citation verdict changed: the answer verdicts keep version 1, their
+cached replies and their calibration evidence, and a report matches evidence to a judge by the versions of the verdicts the
+evidence is about. The version 1 files are kept unchanged beside the new ones.
+
+**How it was chosen, and what that does to the evidence.** Four prompts were tried on the 30 labelled sentences, with reasoning
+on and off: the current one, new wording alone, the question left out alone, and both. A fifth added the previous sentence.
+Leaving the question out removed the probe's effect by construction; new wording alone cut it but did not remove it (8 and 5 of
+30 flagged; a judge call timed out in the first, so it may be 9). The choice between the last two was fixed before their known-bad results were seen: adopt the one with context
+unless it was worse than the other by more than 2 on the control or on any damage kind. **The prompt was designed while looking
+at those 30 labelled sentences and their disagreements, so agreement and the known-bad check on that sample show that the
+problem is fixed there, not that the prompt works elsewhere.** The held-out sample below is the independent check.
+
+**Known-bad check, same 30 sentences** (flagged / total; the unchanged control is a false-alarm count):
+
+| Damage | Old, reasoning on | New, reasoning on | Old, reasoning off | New, reasoning off |
+|---|---|---|---|---|
+| none (control): good sentences flagged | 3 / 30 | 1 / 30 | 1 / 30 | 1 / 30 |
+| a figure changed | 12 / 18 | 12 / 18 | 8 / 18 | 17 / 18 |
+| the day of a date changed | 2 / 10 | 5 / 10 | 2 / 10 | 9 / 10 |
+| shown the sources of a different sentence | 28 / 30 | 28 / 30 | 28 / 30 | 28 / 30 |
+| a clause the sources never state added | 23 / 30 | 30 / 30 | 27 / 30 | 30 / 30 |
+
+Detection did not fall anywhere, and false alarms did not rise. Most flags are `partly_supported`: the changed dates are
+flagged as `unsupported` in 0 of 10 cases in either setting, and the changed figures in 7 of 18. A changed date or figure is
+therefore noticed, but counts as a partial failure, not a failed citation.
+
+**Held-out agreement.** 30 new questions (`golden/citewise_citation_holdout_v1.json`, category `probe`; most ask for two facts,
+a total or a difference) were asked of CiteWise, giving 46 cited sentences, 44 of them not seen before. Forty were judged by
+all four settings (old and new prompt, reasoning on and off). The 30 shown for labelling were the 12 that any setting flagged or
+the settings disagreed on, and 18 chosen at random from the rest, so neither prompt was favoured by the choice. They were
+labelled without any verdict in view
+([`labels/citewise_citation_holdout_v1.citation-labels.json`](labels/citewise_citation_holdout_v1.citation-labels.json)): 27
+supported, 1 partly supported, 2 unsupported.
+
+| Judge setting | Matched | Agreement | Weighted to the full run | Kappa |
+|---|---|---|---|---|
+| Old prompt, reasoning on | 22 / 30 | 0.733 | 0.800 | 0.310 |
+| Old prompt, reasoning off | 26 / 30 | 0.867 | 0.900 | 0.447 |
+| New prompt, reasoning on | 29 / 30 | 0.967 | 0.975 | 0.786 |
+| New prompt, reasoning off | 29 / 30 | 0.967 | 0.975 | 0.818 |
+
+Seven of the old prompt's 8 errors with reasoning on, and 3 of its 4 with reasoning off, were sentences labelled supported
+that it marked down. The new prompt's single miss in both settings is a sentence with two claims, one of them (Amazon's
+headquarters) absent from its cited source: labelled partly supported, called supported with reasoning on and unsupported with
+reasoning off. Two cards carried a note (a sentence whose lead-in is "the source information indicates", and one where the figure
+was right but the comparison was not in the source); without them the counts are 27 / 28 for the new prompt in both settings and
+22 / 28 and 24 / 28 for the old one.
+
+**Effect on CiteWise's published scores.** Citation support moves from 0.943 to 0.977 with reasoning on (43 of 44 sentences
+supported) and from 0.921 to 1.000 with reasoning off. The answer scores (faithfulness, correctness, abstention) are
+unchanged, because their prompts and cached replies are. The baseline report is rebuilt from the new scores and now cites the
+held-out agreement and the version 2 known-bad runs; the version 1 files stay in [`runs/published/`](runs/published/).
+
+**Limits.**
+
+- Only 3 of the 30 held-out labels are not supported, so the sample shows little about strictness. With reasoning on the new
+  prompt matched 2 of those 3 and with reasoning off 2 of 3. How well it catches bad citations rests mainly on the known-bad
+  check, whose sentences were used to design it.
+- The sample was chosen using the judge verdicts, so the plain agreement figures lean toward hard cases; the weighted column
+  re-weights to the full run and is an estimate from a small sample.
+- One labeller, one pass. The labels were made with written guidance on the definitions, including that a statement is not
+  marked down for leaving out part of the question: the principle the new prompt states. Part of the agreement is therefore
+  agreement on a shared definition.
+- The 30 questions are of one kind (two companies, one or two facts), so the result says little about longer answers or other
+  filings.
 
 ## Reports
 
@@ -513,7 +599,9 @@ SHA-256 for every document, so a score can be tied to the exact text the questio
 Each item has:
 
 - a `question`, a `category` (`factual`, `yes_no`, `multi_topic`, `edge_case`, `follow_up`, `unanswerable`,
-  `ambiguous`, `conflicting`) and an `expected_abstain` flag;
+  `ambiguous`, `conflicting`, `probe`) and an `expected_abstain` flag. A `probe` is a question asked only to collect
+  answers for hand labelling or for checking a judge: it has no evidence or reference answer and is not scored for retrieval or
+  correctness;
 - `evidence`: the facts the answer depends on. Each has a short `anchor` phrase and the verbatim passage(s) that state it,
   with document, heading path and page. Retrieval is judged against these, by text rather than by chunk id, so it still
   works when a target changes how it chunks;
@@ -642,9 +730,9 @@ What running the harness against two targets showed, including where the harness
   cited sentence matches its sources the two settings were about equal.
 - **A second target found a harness bug.** CiteWise reports only the passages an answer cited, so faithfulness, checked against
   "retrieved passages", scored 0.00 for every answer. It is now checked against the cited sources for such a target.
-- **A prompt told the judge one thing and it did another.** The citation prompt says not to judge completeness, and the model
-  still marked half of a two-part answer as less than supported. The hand labels showed this, and the instruction was tightened,
-  but the mistake did not go away.
+- **A prompt told the judge one thing and it did another.** The citation prompt said not to judge completeness, and the model
+  still marked half of a two-part answer as less than supported. Tightening the instruction did not remove the mistake; not
+  showing the judge the question did (see [citation prompt version 2](#citation-prompt-version-2)).
 - **A damage test was measuring the wrong thing.** "Change the first number" mostly changed the day in an "As of" date. Splitting
   it into figure changes and date changes showed that with reasoning on the judge catches about two thirds of small figure changes (12 of 18)
   and misses most changed dates (2 of 10).
@@ -670,9 +758,9 @@ What running the harness against two targets showed, including where the harness
 - **A check developed on the data it is measured on looks better than it is.** The rules for figures were shaped by reading false
   alarms on the runs used to measure them, so the low false-alarm rate needs repeating on a new target before it is trusted.
 
-Not done: a fix for the judge's own weak spots. The
-judge still misses small figure and date changes; the separate figure check now catches those where the new figure is in no
-source, and the completeness mistake in the citation verdict is unchanged. See [`reports/`](reports/) for the two baselines and
+Not done: a fix for small figure and date changes in the judge's verdicts. With citation prompt version 2 they are mostly
+flagged as partly supported and rarely as unsupported; the separate figure check catches those where the new figure is in no
+source. With reasoning on, the citation verdict can also accept a sentence with two claims when only one is in the sources. See [`reports/`](reports/) for the two baselines and
 the `RAG_TOP_K` comparison.
 
 ## Layout
