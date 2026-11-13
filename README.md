@@ -890,9 +890,14 @@ tools/           one-off scripts: the golden-set converter and the CiteWise gold
 tests/
 runs/            saved runs (not in git except runs/published/)
 reports/         generated report pages and their index
-docs/            a one-page account of how the citation judge was fixed
+docs/            a one-page account of how the citation judge was fixed, and the decision log
+SECURITY.md      how to report a vulnerability
 .github/         the CI workflow (tests only)
 ```
+
+## Security
+
+See [`SECURITY.md`](SECURITY.md) for what counts as a vulnerability and how to report one privately.
 
 ## License
 
