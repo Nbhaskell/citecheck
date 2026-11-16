@@ -125,7 +125,7 @@ def messages(kind: str, *, question: str = "", answer: str = "", history: Sequen
              previous: str = "") -> list[dict]:
     """The chat messages for one judge call. A citation call takes the statement, its cited (number, excerpt) pairs and the
     sentence before it, in place of an answer, and is not shown the question: with it the judge marked down correctly
-    sourced sentences because they did not answer all of it (see the README's calibration of citation support)."""
+    sourced sentences because they did not answer all of it (see the calibration of citation support in docs/METRICS.md)."""
     parts = []
     if history:
         parts.append(_block("earlier_conversation", _history_lines(history)))

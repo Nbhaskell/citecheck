@@ -3,7 +3,7 @@
 Plain urllib, like the target adapter, so the judge adds no dependency. Requests ask for a JSON reply that matches a
 schema (Ollama's structured output), with temperature 0 and a fixed seed and context size, so the same prompt gives the
 same verdict on the same model. The model reasons before answering by default (DEFAULT_THINK): with it off, the judge
-flagged most good answers as unsupported (see the README's calibration section).
+flagged most good answers as unsupported (see the calibration section of docs/METRICS.md).
 """
 import json
 import urllib.error
