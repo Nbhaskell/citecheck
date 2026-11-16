@@ -62,4 +62,4 @@ alarms stayed at 1 of 30 or fell.
 A system can look fine in a demo and still be scored wrongly by the tool used to check it. Test the checker, change one thing
 at a time, and keep a sample of answers that the fix was not designed on.
 
-The full method, numbers and limits are in the README's section on citation prompt version 2.
+The full method, numbers and limits are in the section on [citation prompt version 2](METRICS.md#citation-prompt-version-2).
